@@ -1,0 +1,17 @@
+<div class="form-group {{itemMargin|iif:itemMargin:'bi-margin-b10':'bi-margin-b10'}}">
+    <label class="col-sm-2 control-label bi-pad0">{{itemLabel}}</label>
+    <div class="col-sm-6">
+        <input type="{{itemDataType|ifdef:itemDataType:'text'}}" class="form-control" placeholder="{{itemTip}}" ng-model="itemValue"
+               ng-disabled="itemLocked" ng-required="itemRequired" ng-minlength="itemMinLength" ng-maxlength="itemMaxLength" name="{{::itemName}}">
+        <div class="bi-required-inner text-warning" ng-if="::itemRequired" style="font-size: 20px;">*</div>
+        <div class="form-control-feedback" aria-hidden="true" ng-show="isValidated(itemName, itemRequired, itemMinLength, itemMaxLength)">
+            <span class="bi-feedback">{{inputError}}</span>
+        </div>
+    </div>
+    <div ng-if="isNotInsert()" class="col-sm-4 trimL bi-old-val has-success">
+        <div class='weixin right' ng-if="itemValue != itemOldValue">
+            <div class='weixin-content'>{{itemOldValue}}</div>
+            <div class="arrow"></div>
+        </div>
+    </div>
+</div>

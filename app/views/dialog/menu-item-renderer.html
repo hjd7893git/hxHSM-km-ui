@@ -1,0 +1,23 @@
+<div ui-tree-handle ng-init="isTrunk=(node.items && node.items.length > 0)">
+    <a data-nodrag ng-click="toggle(this)" ng-if="isTrunk">
+        <i class="fa" ng-class="{
+        'fa-chevron-circle-right': collapsed,
+        'fa-chevron-circle-down': !collapsed
+        }"></i>
+    </a><i class="fa fa-minus-circle" ng-if="!isTrunk" style="opacity: 0.0;"></i>
+    <i class="fa" ng-class="{
+        'fa-folder fontsize16': isTrunk && collapsed,
+        'fa-folder-open': isTrunk && !collapsed,
+        'fa-file-text fontsize17': !isTrunk
+    }"></i>
+    <a data-nodrag ng-click="toggleMenuChosen(node, $parentNodeScope)"><i class="fa" ng-class="{
+        'fa-circle-o': !node.chosen || node.chosen == 0,
+        'fa-adjust': node.chosen && node.chosen == -1,
+        'fa-circle': node.chosen && node.chosen == 1
+        }"></i></a>
+    {{node.name}}&nbsp;&nbsp;<i class="fa fa-exclamation text-warning" ng-if="node.chosen != node.bakChosen"></i>
+</div>
+<ul ui-tree-nodes="" ng-model="node.items" ng-class="{hidden: collapsed}">
+    <div ng-repeat="node in node.items" ui-tree-node ng-include="'views/dialog/menu-item-renderer.html'">
+    </div>
+</ul>

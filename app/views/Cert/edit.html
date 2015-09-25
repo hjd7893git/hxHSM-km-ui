@@ -1,0 +1,35 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{opType|optionName:'opType'}}</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="panel-body bi-pad0">
+                            <form class="form-horizontal">
+                                <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
+                                              item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'名称'" item-tip="'输入中文'"
+                                              item-value="rec.name" item-old-value="bak.name" item-locked="lock"></bi-edit-item>
+                                <div class="form-group bi-margin-b0">
+                                    <label class="col-sm-2 control-label">菜单权限</label>
+                                    <div class="col-sm-6">
+                                        <textarea type="text" class="form-control" rows="4" disabled>{{rec.menus | treeStringify:menus}}</textarea>
+                                        <button ng-click="chooseMenus()" class="btn btn-sm btn-default bi-btn-inner" ng-disabled="lock"><i class="fa fa-gear"></i></button>
+                                    </div>
+                                    <div ng-if="$parent.opType != 1" class="col-sm-4 trimL bi-old-val">
+                                        <div class='weixin right' ng-if="itemValue != itemOldValue">
+                                            <div class='weixin-content'>{{itemOldValue}}</div>
+                                            <div class="arrow"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <bi-edit-buttons></bi-edit-buttons>
+            </div>
+        </div>
+    </div>
+</div>

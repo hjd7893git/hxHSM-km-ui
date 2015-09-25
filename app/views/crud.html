@@ -1,0 +1,10 @@
+<bi-header></bi-header>
+<div class="container">
+    <div class="page-header bi-margin-b0 bi-pad0">
+        <h4>&nbsp;<i class="fa fa-leaf"></i>&nbsp;{{title}}</h4>
+    </div>
+    <div class="bi-margin0" role="tablist" ng-model="crudPanels.activePanel" bs-collapse>
+        <div ng-repeat="page in curdPages" ng-include="page"></div>
+    </div>
+</div>
+<bi-footer></bi-footer>

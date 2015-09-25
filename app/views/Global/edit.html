@@ -1,0 +1,46 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{opType|optionName:'opType'}}</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="panel-body bi-pad0">
+                            <form class="form-horizontal">
+                                <bi-select-item item-label="'环境'" is-option-field="'true'"
+                                                item-value="rec.env" item-old-value="bak.env" item-locked="'true'" item-options="'env'|theOption"></bi-select-item>
+                                <div class="form-group bi-margin-b0">
+                                    <label class="col-sm-2 control-label">数据库</label>
+                                    <div class="col-sm-6">
+                                        <textarea type="text" class="form-control" rows="4" disabled>{{rec.esIpAddresses | splitBy:','}}</textarea>
+                                        <button ng-click="editIpAddresses()" class="btn btn-sm btn-default bi-btn-inner" ng-disabled="lock"><i class="fa fa-gear"></i></button>
+                                    </div>
+                                    <div ng-if="$parent.opType != 1" class="col-sm-4 trimL bi-old-val">
+                                        <div class='weixin right' ng-if="!isEq(rec.esIpAddresses, bak.esIpAddresses)" style="padding: 0; border: none;">
+                                            <textarea type="text" class="form-control weixin-content" rows="4" disabled style="background-color: #FFFFCC;">{{bak.esIpAddresses | splitBy:','}}</textarea>
+                                            <div class="arrow"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group bi-margin-b0">
+                                    <label class="col-sm-2 control-label">加密服务</label>
+                                    <div class="col-sm-6">
+                                        <textarea type="text" class="form-control" rows="4" disabled>{{rec.esIpAddresses | splitBy:','}}</textarea>
+                                        <button ng-click="editIpAddresses()" class="btn btn-sm btn-default bi-btn-inner" ng-disabled="lock"><i class="fa fa-gear"></i></button>
+                                    </div>
+                                    <div ng-if="$parent.opType != 1" class="col-sm-4 trimL bi-old-val">
+                                        <div class='weixin right' ng-if="!isEq(rec.esIpAddresses, bak.esIpAddresses)" style="padding: 0; border: none;">
+                                            <textarea type="text" class="form-control weixin-content" rows="4" disabled style="background-color: #FFFFCC;">{{bak.esIpAddresses | splitBy:','}}</textarea>
+                                            <div class="arrow"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <bi-edit-buttons></bi-edit-buttons>
+            </div>
+        </div>
+    </div>
+</div>

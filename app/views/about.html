@@ -1,0 +1,53 @@
+<bi-header></bi-header>
+<!-- Section: about -->
+<section id="about" class="home-section text-center" ng-controller="myAboutCtrl">
+    <div class="heading-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="wow bounceInDown" data-wow-delay="0.4s">
+                        <div class="section-heading">
+                            <h2>About us</h2>
+                            <i class="fa fa-2x fa-angle-down"></i>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form name="myForm">
+            <label>
+                User name:
+                <input type="text" name="userName" ng-model="user11.name" required>
+            </label>
+            <div role="alert">
+      <span class="error" ng-show="isEmpty(myForm.userName)">
+       Required!</span>
+            </div>
+            <label>
+                Last name:
+                <input type="text" name="lastName" ng-model="user11.last"
+                       ng-minlength="3" ng-maxlength="10">
+            </label>
+            <div role="alert">
+      <span class="error" ng-show="myForm.lastName.$error.minlength">
+        Too short!</span>
+      <span class="error" ng-show="myForm.lastName.$error.maxlength">
+        Too long!</span>
+            </div>
+        </form>
+        <hr>
+        <tt>user = {{user}}</tt><br/>
+        <tt>myForm.userName.$valid = {{myForm.userName.$valid}}</tt><br/>
+        <tt>myForm.userName.$error = {{myForm.userName.$error}}</tt><br/>
+        <tt>myForm.lastName.$valid = {{myForm.lastName.$valid}}</tt><br/>
+        <tt>myForm.lastName.$error = {{myForm.lastName.$error}}</tt><br/>
+        <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
+        <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
+        <tt>myForm.$error.minlength = {{!!myForm.$error.minlength}}</tt><br/>
+        <tt>myForm.$error.maxlength = {{!!myForm.$error.maxlength}}</tt><br/>
+    </div>
+</section>
+<!-- /Section: about -->

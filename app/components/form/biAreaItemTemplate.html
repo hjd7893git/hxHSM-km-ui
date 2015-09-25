@@ -1,0 +1,13 @@
+<div class="form-group {{itemMargin|iif:itemMargin:'bi-margin-b10':'bi-margin-b10'}}">
+    <label class="col-sm-2 control-label bi-pad0">{{itemLabel}}</label>
+    <div class="col-sm-6">
+        <textarea class="form-control" rows="4" disabled>{{itemValue}}</textarea>
+        <button ng-click="itemSetting()" class="btn btn-sm btn-default bi-btn-inner" ng-disabled="itemLocked"><i class="fa fa-gear"></i></button>
+    </div>
+    <div ng-if="isNotInsert()" class="col-sm-4 trimL bi-old-val">
+        <div class='weixin right' ng-if="itemEq" style="padding: 0; border: none;">
+            <textarea class="form-control weixin-content" rows="4" disabled style="background-color: #FFFFCC;">{{itemOldValue}}</textarea>
+            <div class="arrow"></div>
+        </div>
+    </div>
+</div>

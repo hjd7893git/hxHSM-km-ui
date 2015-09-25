@@ -1,0 +1,21 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><i class="fa fa-gear"></i>&nbsp;角色权限设置 - {{rec.name}}</h4>
+            </div>
+            <div class="modal-body" style="background-color: #eeeeee">
+                <div ui-tree class="code" role="complementary">
+                    <ul ui-tree-nodes ng-model="menuTree" data-type="node">
+                        <li ng-repeat="node in menuTree" ui-tree-node ng-include="'views/dialog/menu-item-renderer.html'"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="confirm(rec)">确认</button>
+                <button type="button" class="btn btn-default" ng-click="$hide()">取消</button>
+            </div>
+        </div>
+    </div>
+</div>

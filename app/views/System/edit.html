@@ -1,0 +1,49 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{opType|optionName:'opType'}}</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="panel-body bi-pad0">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
+                                <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
+                                              item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'代码'" item-tip="'为3-8位的大写字母'" item-name="'symbol'" item-required="'true'"
+                                              item-value="rec.symbol" item-old-value="bak.symbol" item-locked="lock"></bi-edit-item>
+                                <bi-edit-item item-label="'名称'" item-tip="'中文名称'"
+                                              item-value="rec.name" item-old-value="bak.name" item-locked="lock"></bi-edit-item>
+                                <bi-edit-item item-label="'英文名称'"
+                                              item-value="rec.nameEn" item-old-value="bak.nameEn" item-locked="lock"></bi-edit-item>
+                                <bi-text-item item-label="'简介'"
+                                              item-value="rec.summary" item-old-value="bak.summary" item-locked="lock"></bi-text-item>
+                                <div class="form-group bi-margin-b0">
+                                    <label class="col-sm-2 control-label">密钥方案</label>
+                                    <div class="col-sm-6">
+                                        <table class="table table-condensed bi-margin-b0 crud-r" style="margin-top: -1px;">
+                                            <thead><tr>
+                                                <th class="text-center" style="width: 50px;">标识</th><th>密钥名称</th><th>类型</th><th>密钥值</th>
+                                                <th style="width: 50px;" ng-show="!lock"><a ng-click="showRefEditorX(rec.keyDefines, 'editKeyDefine')"><i class="fa fa-plus-circle"></i></a></th></tr>
+                                            </thead>
+                                            <tr ng-repeat="op in rec.keyDefines">
+                                                <td class="text-center">{{op.rec.id}}</td>
+                                                <td><a href ng-click="showRefEditor(rec.keyDefines, $index, 'editKeyDefine', 'System')">{{op.rec.keyName}}</a></td>
+                                                <td>{{op.rec.keyType}}</td>
+                                                <td>{{op.rec.keyValue}}</td>
+                                                <td ng-show="!lock">
+                                                    <a ng-click="deleteRefRecX(rec.keyDefines, $index)"><i class="fa fa-minus-circle"></i></a>&nbsp;
+                                                    <a ng-click="unlockRefEditorX(rec.keyDefines, $index, 'editKeyDefine')"><i class="fa fa-edit"></i></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <bi-edit-buttons></bi-edit-buttons>
+            </div>
+        </div>
+    </div>
+</div>

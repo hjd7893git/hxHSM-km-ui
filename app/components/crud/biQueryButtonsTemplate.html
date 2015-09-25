@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="btn-group" role="group" aria-label="操作">
+            <button class="btn btn-default bi-bar-lt" ng-click="showEditorX()">
+                <i class="fa fa-plus"></i>&nbsp;增加</button>
+            <button class="btn btn-default" ng-click="unlockEditorX()">
+                <i class="fa fa-edit"></i>&nbsp;修改</button>
+            <button class="btn btn-default" ng-click="deleteRecX()">
+                <i class="fa fa-trash-o"></i>&nbsp;删除</button>
+            <button class="btn btn-default" ng-click="showHistoryX()">
+                <i class="fa fa-history"></i>&nbsp;历史</button>
+            <button class="btn btn-default bi-bar-rt" ng-click="deleteRecX()">
+                <i class="fa fa-print"></i>&nbsp;打印</button>
+        </div>
+    </div>
+    <ng-include src="'components/crud/biMultiPagesBar.html'"></ng-include>
+</div>

@@ -1,0 +1,104 @@
+[
+  {
+    "seq": 8,
+    "table": "Machine",
+    "opType": "2",
+    "status": 0,
+    "failureTimes": 0,
+    "rec": {
+      "id": 1,
+      "model": "11",
+      "batch": "11",
+      "number": "11",
+      "producer": "11",
+      "produceDate": "20150918",
+      "supplier": "11",
+      "supplyDate": "20150919",
+      "bizSeq": 8,
+      "opType": 2,
+      "readies": [
+        {
+          "rec": {
+            "id": 1,
+            "machineId": 1,
+            "env": 2,
+            "room": "1",
+            "position": "1",
+            "readyDate": "20150918",
+            "ip": "192.169.1.2",
+            "port": 1,
+            "connectionPoolSize": 1,
+            "commandSetVersion": "11a",
+            "issueDate": "20150918",
+            "status": 0,
+            "bizSeq": 8,
+            "opType": 2
+          },
+          "bak": {
+            "id": 1,
+            "machineId": 1,
+            "env": 2,
+            "room": "1",
+            "position": "1",
+            "readyDate": "20150918",
+            "ip": "192.169.1.2",
+            "port": 1,
+            "connectionPoolSize": 1,
+            "commandSetVersion": "1",
+            "issueDate": "20150918",
+            "status": 0
+          }
+        }
+      ]
+    },
+    "bak": {
+      "id": 1,
+      "model": "11",
+      "batch": "11",
+      "number": "11",
+      "producer": "11",
+      "produceDate": "20150918",
+      "supplier": "11",
+      "supplyDate": "20150919"
+    }
+  },
+  {
+    "seq": 14,
+    "table": "GroupDefine",
+    "opType": "2",
+    "status": 0,
+    "failureTimes": 0,
+    "rec": {
+      "id": 1,
+      "name": "高频",
+      "description": "高频应用分组",
+      "bizSeq": 14,
+      "seq": 0,
+      "opType": 2
+    },
+    "bak": {
+      "id": 1,
+      "name": "1",
+      "description": "dfdfsf"
+    }
+  },
+  {
+    "seq": 16,
+    "table": "Role",
+    "opType": "2",
+    "status": 0,
+    "failureTimes": 0,
+    "rec": {
+      "id": 0,
+      "name": "Base",
+      "description": "基本权限集，该角色默认赋予每个用户",
+      "bizSeq": 16,
+      "opType": 2
+    },
+    "bak": {
+      "id": 0,
+      "name": "Base",
+      "description": "基本权限集，该角色默认赋予每个用户"
+    }
+  }
+]

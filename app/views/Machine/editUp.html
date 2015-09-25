@@ -1,0 +1,48 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{ref.opType|optionName:'opType'}}&nbsp;-&nbsp;密码机<code>【&nbsp;{{rec.number}}&nbsp;】</code>上架信息</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="panel-body bi-pad0">
+                            <form class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
+                                                      item-value="ref.rec.id" item-old-value="ref.bak.id" item-locked="'true'"></bi-edit-item>
+                                        <bi-select-item item-label="'环境'" item-options="'env'|theOption"
+                                                        item-value="ref.rec.env" item-old-value="ref.bak.env" item-locked="ref.lock"></bi-select-item>
+                                        <bi-edit-item item-label="'机房'" item-tip="'输入中文'"
+                                                      item-value="ref.rec.room" item-old-value="ref.bak.room" item-locked="ref.lock"></bi-edit-item>
+                                        <bi-edit-item item-label="'IP'"
+                                                      item-value="ref.rec.ip" item-old-value="ref.bak.ip" item-locked="ref.lock"></bi-edit-item>
+                                        <bi-edit-item item-label="'指令集版本'" item-tip="'5.6.0.0.0 3 FEB'"
+                                                      item-value="ref.rec.commandSetVersion" item-old-value="ref.bak.commandSetVersion" item-locked="ref.lock"></bi-edit-item>
+                                        <bi-edit-item item-label="'长连接数'" item-tip="'输入正数'" item-data-type="'number'" item-margin="'bi-margin-b0'"
+                                                      item-value="ref.rec.connectionPoolSize" item-old-value="ref.bak.connectionPoolSize" item-locked="ref.lock"></bi-edit-item>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <bi-date-item item-label="'上架日期'"
+                                                      item-value="ref.rec.readyDate" item-old-value="ref.bak.readyDate" item-locked="ref.lock"></bi-date-item>
+                                        <bi-edit-item item-label="'机位'"
+                                                      item-value="ref.rec.position" item-old-value="ref.bak.position" item-locked="ref.lock"></bi-edit-item>
+                                        <bi-edit-item item-label="'端口'" item-tip="'输入数字'" item-data-type="'number'"
+                                                      item-value="ref.rec.port" item-old-value="ref.bak.port" item-locked="ref.lock"></bi-edit-item>
+                                        <bi-select-item item-label="'分组'" item-options="groupList"
+                                                      item-value="ref.rec.groupId" item-old-value="ref.bak.groupId" item-locked="ref.lock"></bi-select-item>
+                                        <bi-date-item item-label="'启用日期'"
+                                                      item-value="ref.rec.issueDate" item-old-value="ref.bak.issueDate" item-locked="ref.lock"></bi-date-item>
+                                        <bi-select-item item-label="'状态'" item-options="'machineStatus'|theOption" item-margin="'bi-margin-b0'"
+                                                        item-value="ref.rec.status" item-old-value="ref.bak.status" item-locked="ref.lock"></bi-select-item>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <bi-two-ref-edit-buttons></bi-two-ref-edit-buttons>
+            </div>
+        </div>
+    </div>
+</div>

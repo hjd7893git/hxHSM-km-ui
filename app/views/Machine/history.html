@@ -1,0 +1,44 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;密码机<code>【&nbsp;{{his.name}}&nbsp;】</code>的维护记录</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item bi-ptb0">
+                        <div class="panel-body bi-pad0">
+                            <table class="table table-condensed bg-white bi-margin-b0">
+                                <thead><tr>
+                                    <th>标识</th>
+                                    <th>型号</th><th>批次</th><th>编号</th><th>生产商</th><th>生产日期</th><th>供应商</th><th>供应日期</th><th>状态</th>
+                                    <th>维护类型</th>
+                                    <th class="his-col-id">序号</th>
+                                    <th class="his-col-op">操作</th>
+                                    <th class="his-col-ts">操作时间戳</th>
+                                    <th class="his-col-uid">操作员</th></tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="his in histories">
+                                    <td>{{his.id}}</td>
+                                    <td>{{his.model}}</td>
+                                    <td>{{his.batch}}</td>
+                                    <td><a href ng-click="showEditor($index)">{{his.number}}</a></td>
+                                    <td>{{his.producer}}</td>
+                                    <td>{{his.produceDate|biDate}}</td>
+                                    <td>{{his.supplier}}</td>
+                                    <td>{{his.supplyDate|biDate}}</td>
+                                    <td>{{his.status}}</td>
+                                    <td>{{his.opType|optionName:'opType'}}</td>
+                                    <td colspan="5" style="padding: 0;">
+                                        <bi-history-columns row-operations="his.operations"></bi-history-columns>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+                <ng-include src="'components/crud/biHistoryButtonsTemplate.html'"></ng-include>
+            </div>
+        </div>
+    </div>
+</div>

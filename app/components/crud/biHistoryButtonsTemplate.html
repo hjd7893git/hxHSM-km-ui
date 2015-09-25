@@ -1,0 +1,23 @@
+<div class="panel-footer row bi-ptb10 bi-margin0">
+    <div class="col-sm-8 bi-pl30">
+        <form class="form-inline">
+            操作日期：
+            <input type="date" class="form-control input-sm text-center" ng-model="hisQry.dateFROM" model-format="date" ng-change="syncHisInput()">&nbsp;<i class="fa fa-arrow-right"></i>
+            <input type="date" class="form-control input-sm text-center" ng-model="hisQry.dateTO" model-format="date" ng-change="syncHisInput()">
+            <button class="btn btn-sm btn-primary" ng-click="hisPageQuery(0, hisQry)">
+                <i class="fa fa-search"></i>&nbsp;过滤</button>
+            <button class="btn btn-sm btn-default" ng-click="hisQry = {}">
+                <i class="fa fa-eraser"></i>&nbsp;清除</button>
+        </form>
+    </div>
+    <div class="col-sm-4 text-right" style="padding-right: 0;">
+        <div class="btn-group" role="group" aria-label="操作">
+            <button class="btn btn-sm btn-default" ng-class="{'disabled': hisPageNo.n <= 0}" ng-click="hisPageQuery(-1, hisQry)">
+                <i class="fa fa-backward"></i></button>
+            <button class="btn btn-sm btn-default" ng-class="{'disabled': (!histories || histories.length == 0)}" ng-click="hisPageQuery(1, hisQry)">
+                <i class="fa fa-forward"></i></button>
+            <button class="btn btn-sm btn-default" ng-click="gotoPage('query')">
+                <i class="fa fa-arrow-left"></i>&nbsp;返回</button>
+        </div>
+    </div>
+</div>

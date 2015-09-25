@@ -1,0 +1,22 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;交易量</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="panel-body">
+                            <flot dataset="dataset" options="options" height="400px" width="1080px"></flot>
+                        </div>
+                    </li>
+                </ul>
+                <div class="panel-footer row bi-ptb10 bi-margin0">
+                    <div class="col-sm-offset-10 col-sm-2 text-right bi-pr10">
+                        <button class="btn btn-default" ng-click="gotoPage('edit')">
+                            <i class="fa fa-arrow-left"></i>&nbsp;返回</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

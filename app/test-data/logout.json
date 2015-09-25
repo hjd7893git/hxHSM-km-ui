@@ -1,0 +1,60 @@
+[
+  {
+    "rec": {
+      "id": 1,
+      "model": "11",
+      "batch": "11",
+      "number": "11",
+      "producer": "11",
+      "produceDate": "20150918",
+      "supplier": "11",
+      "supplyDate": "20150919",
+      "bizSeq": 8,
+      "opType": 2,
+      "readies": [
+        {
+          "rec": {
+            "id": 1,
+            "machineId": 1,
+            "env": 2,
+            "room": "1",
+            "position": "1",
+            "readyDate": "20150918",
+            "ip": "192.169.1.2",
+            "port": 1,
+            "connectionPoolSize": 1,
+            "commandSetVersion": "11a",
+            "issueDate": "20150918",
+            "status": 0,
+            "bizSeq": 8,
+            "opType": 2
+          },
+          "bak": {
+            "id": 1,
+            "machineId": 1,
+            "env": 2,
+            "room": "1",
+            "position": "1",
+            "readyDate": "20150918",
+            "ip": "192.169.1.2",
+            "port": 1,
+            "connectionPoolSize": 1,
+            "commandSetVersion": "1",
+            "issueDate": "20150918",
+            "status": 0
+          }
+        }
+      ]
+    },
+    "bak": {
+      "id": 1,
+      "model": "11",
+      "batch": "11",
+      "number": "11",
+      "producer": "11",
+      "produceDate": "20150918",
+      "supplier": "11",
+      "supplyDate": "20150919"
+    }
+  }
+]

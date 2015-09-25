@@ -1,0 +1,23 @@
+<div class="col-md-6">
+    <form class="form-inline">
+        <nav class="text-right">
+            <ul class="pagination bi-p0m0">
+                <li ng-class="{'disabled': pageNo.n <= 0}">
+                    <a href="javascript:void(0)" style="border-top-left-radius: 0;" ng-click="pageQuery(-1, qry)"><!--用class不管用-->
+                        <span class="fa fa-backward"></span>
+                    </a>
+                </li>
+                <li class="disabled"><span style="padding: 6px 6px;">第</span></li>
+                <li><a href="javascript:void(0)" style="padding: 0; border: none;">
+                    <input text="text" class="form-control" ng-model="pageNo.n" style="border-radius: 0; width: 45px; text-align: center;" ng-keydown="pageQuery(pageNo.n, qry, $event)">
+                </a></li>
+                <li class="disabled"><span style="padding: 6px 6px;">页</span></li>
+                <li ng-class="{'disabled': (!recs || recs.length == 0)}">
+                    <a href="javascript:void(0)" style="border-top-right-radius: 0;" ng-click="pageQuery(1, qry)">
+                        <span class="fa fa-forward"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </form>
+</div>

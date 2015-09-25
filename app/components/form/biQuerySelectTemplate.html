@@ -1,0 +1,9 @@
+<div class="form-group bi-margin-b10">
+    <label class="col-sm-4 control-label bi-pad0">{{itemLabel}}</label>
+    <div class="col-sm-8">
+        <select class="form-control input-sm" ng-model="itemValue" model-format="{{itemDataType|ifdef:itemDataType:'int'}}">
+            <option></option>
+            <option value="{{o.value}}" ng-repeat="o in itemOptions">{{o.name}}</option>
+        </select>
+    </div>
+</div>
