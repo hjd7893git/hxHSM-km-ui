@@ -90,7 +90,20 @@ angular.module('myApp.options', ['ngResource'])
                     };
                     myServer.retrieveRoles($scope);
                 }
+            },
+            {tableId: 'Host', title: '主机管理', keyInfo: 'name',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    $scope.preInsert = function(rec) {
+                        rec.clusters = [{}];
+                    };
+                    $scope.preUpdate = function(rec) {
+                        if (angular.isUndefined(rec.clusters) || rec.clusters.length == 0)
+                            rec.clusters = [{}];
+                    };
+                    myServer.retrieveClusters($scope);
+                }
             }
+
         ];
         var tableNames = angular.element.map(tableControllers, function(obj) {
             return {value: obj.tableId, name: obj.title};

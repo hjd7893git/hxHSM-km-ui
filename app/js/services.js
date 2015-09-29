@@ -497,6 +497,19 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'RoleList'), {}, ok1);
                 }
             },
+            retrieveClusters: function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
+                        $scope.$root.clusterList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.name};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.clusterList)) {
+                    $scope.$root.clusterList = [];
+                    $scope.queryBase($resource(URLPrefix + 'ClusterList'), {}, ok1);
+                }
+            },
             retrieveGroups: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
