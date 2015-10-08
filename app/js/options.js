@@ -61,6 +61,7 @@ angular.module('myApp.options', ['ngResource'])
                 }
             },
             {tableId: 'Menu', title: '菜单管理'},
+            {tableId: 'Cluster', title: '集群管理'},
             {tableId: 'Role', title: '角色管理',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.roleMenuDialog($scope, "Role");
