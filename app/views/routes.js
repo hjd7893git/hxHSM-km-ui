@@ -67,7 +67,7 @@ angular.module('myApp.views', ['ngRoute'])
     }])
 
    .controller('todoCheckCtrl', ['$log', '$rootScope', '$scope', 'myServer', 'myOptions', function($log, $rootScope, $scope, myServer, myOptions) {
-        myServer.crud($scope, "Journal", '代办事项', myServer.journals);
+        myServer.crud($scope, "Journal", '待办事项', myServer.journals);
         $scope.qry.status = 0;
         $scope.query($scope.qry);
         myServer.retrieveMenuTree($scope);

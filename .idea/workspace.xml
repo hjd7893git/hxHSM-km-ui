@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2eca004a-9301-4b5d-b266-5a665d07c4aa" name="Default" comment="option.js中tableControllers添加“集群管理”对象">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/Key/edit.html" afterPath="$PROJECT_DIR$/app/views/SecretKey/edit.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/Key/history.html" afterPath="$PROJECT_DIR$/app/views/SecretKey/history.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/Key/query.html" afterPath="$PROJECT_DIR$/app/views/SecretKey/query.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/MachineMode/edit.html" afterPath="$PROJECT_DIR$/app/views/MachineModel/edit.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/MachineMode/history.html" afterPath="$PROJECT_DIR$/app/views/MachineModel/history.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/MachineMode/query.html" afterPath="$PROJECT_DIR$/app/views/MachineModel/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/header/biHeaderTemplate.html" afterPath="$PROJECT_DIR$/app/components/header/biHeaderTemplate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/options.js" afterPath="$PROJECT_DIR$/app/js/options.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/services.js" afterPath="$PROJECT_DIR$/app/js/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="2eca004a-9301-4b5d-b266-5a665d07c4aa" name="Default" comment="option.js中tableControllers添加“集群管理”对象" />
     <ignored path="hxHSM-km-ui.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
