@@ -510,27 +510,20 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'ClusterList'), {}, ok1);
                 }
             },
-            retrieveCompanys: function($scope) {
+            retrieveCompanies: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
-                        $scope.$root.producerList = angular.element.map(ret, function(obj) {
-                            return {value: obj.id, name: obj.name};
-                        });
-                        $scope.$root.supplierList = angular.element.map(ret, function(obj) {
+                        $scope.$root.companiesList = angular.element.map(ret, function(obj) {
                             return {value: obj.id, name: obj.name};
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.producerList)) {
-                    $scope.$root.producerList = [];
-                    $scope.queryBase($resource(URLPrefix + 'CompanyList'), {}, ok1);
-                }
-                if (angular.isUndefined($scope.$root.supplierList)) {
-                    $scope.$root.supplierList = [];
+                if (angular.isUndefined($scope.$root.companiesList)) {
+                    $scope.$root.companiesList = [];
                     $scope.queryBase($resource(URLPrefix + 'CompanyList'), {}, ok1);
                 }
             },
-            retrieveMachineModes: function($scope) {
+            retrieveMachineModels: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
                         $scope.$root.modelList = angular.element.map(ret, function(obj) {
@@ -540,7 +533,7 @@ angular.module('myApp.services', ['ngResource'])
                 };
                 if (angular.isUndefined($scope.$root.modelList)) {
                     $scope.$root.modelList = [];
-                    $scope.queryBase($resource(URLPrefix + 'MachineModeList'), {}, ok1);
+                    $scope.queryBase($resource(URLPrefix + 'MachineModelList'), {}, ok1);
                 }
             },
             retrieveGroups: function($scope) {
