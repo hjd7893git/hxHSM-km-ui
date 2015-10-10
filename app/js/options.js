@@ -15,6 +15,7 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'opTypeIcon', names: [{value: 0, name: 'flag'}, {value: 1, name: 'plus'}, {value: 2, name: 'edit'}, {value: 3, name: 'trash-o'}]},
             {option: 'status', names: [{value: 0, name: '待复核'}, {value: 1, name: '拒绝'}, {value: 2, name: '已复核'}]},
             {option: 'sex', names: [{value: 0, name: '女'}, {value: 1, name: '男'}]},
+            {option: 'companyType', names: [{value: 0, name: '生产商'}, {value: 1, name: '供应商'},{value:2,name:'运维商'}]},
             {option: 'YesNo', names: [{value: 0, name: '否'}, {value: 1, name: '是'}]},
             {option: 'action', names: [{value: 'input', name: '录入'}, {value: 'check', name: '复核'}, {value: 'reject', name: '拒绝'}]},
             {option: 'equipmentType', names: [{value: 1, name: '自助设备'}, {value: 2, name: 'POS机'}, {value: 3, name: '网银Key'}, {value: 4, name: '密码键盘'}]},
@@ -38,6 +39,8 @@ angular.module('myApp.options', ['ngResource'])
                     }
                 }
             },
+
+            {tableId: 'Company', title: '厂商管理',keyInfo:'name'},
             {tableId: 'Cert', title: '证书管理'},
             {tableId: 'Equipment', title: '设备管理'},
             {tableId: 'Global', title: '全局配置'},
@@ -48,11 +51,15 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveGroups($scope);
                     $scope.preInsert = function(rec) {
                         rec.readies = [];
+                        rec.models = [{}];
                     };
                     $scope.preUpdate = function(rec) {
                         rec.readies = rec.readies || [];
+                        if (angular.isUndefined(rec.models) || rec.models.length == 0)
+                            rec.models = [{}];
                     };
                     $scope.refFields = ['readies']; // 只有1类Entity-Relation需要
+                    myServer.retrieveMachineModes($scope);
                 }
             },
             {tableId: 'MachineReady', title: '密码机上架管理',
@@ -92,7 +99,7 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveRoles($scope);
                 }
             },
-            {tableId: 'Host', title: '主机管理', keyInfo: 'name',
+            {tableId: 'Host', title: '主机管理', keyInfo: 'hardware',
                 controller: function($log, $rootScope, $scope, myServer) {
                     $scope.preInsert = function(rec) {
                         rec.clusters = [{}];
@@ -102,6 +109,22 @@ angular.module('myApp.options', ['ngResource'])
                             rec.clusters = [{}];
                     };
                     myServer.retrieveClusters($scope);
+                }
+            },
+            {tableId: 'MachineMode', title: '密码机型号管理', keyInfo: 'model',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    $scope.preInsert = function(rec) {
+                        rec.producers = [{}];
+                        rec.suppliers = [{}];
+                    };
+                    $scope.preUpdate = function(rec) {
+                        if (angular.isUndefined(rec.producers) || rec.producers.length == 0)
+                            rec.producers = [{}];
+
+                        if (angular.isUndefined(rec.suppliers) || rec.suppliers.length == 0)
+                            rec.suppliers = [{}];
+                    };
+                    myServer.retrieveCompanys($scope);
                 }
             }
 

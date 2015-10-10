@@ -9,8 +9,8 @@
                             <form class="form-horizontal">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'型号'" item-tip="'如：SJJ1309-A'"
-                                              item-value="rec.model" item-old-value="bak.model" item-locked="lock"></bi-edit-item>
+                                <bi-select-item item-label="'型号'" item-options="modelList"
+                                              item-value="rec.modelId" item-old-value="bak.modelId" item-locked="lock"></bi-select-item>
                                 <bi-edit-item item-label="'批次'" item-tip="'如：AN'"
                                               item-value="rec.batch" item-old-value="bak.batch" item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'编号'" item-tip="'SJJ1309AN084'"
