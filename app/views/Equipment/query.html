@@ -26,7 +26,7 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th><th>设备类型</th><th>设备编号</th><th>所属分支行</th></tr>
+                                <th>标识</th><th>设备类型</th><th>设备编号</th><th>所属分支行</th><th>密钥ID</th></tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">
@@ -35,9 +35,10 @@
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.id}}</td>
-                                <td>{{r.rec.equipmentType}}</td>
+                                <td>{{r.rec.equipmentType|optionName:'equipmentType'}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.equipmentNo}}</a></td>
                                 <td>{{r.rec.branchName}}</td>
+                                <td>{{r.ref.keyId}}</td>
                             </tr>
                             </tbody>
                         </table>

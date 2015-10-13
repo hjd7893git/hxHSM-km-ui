@@ -28,7 +28,7 @@
                                             <tr ng-repeat="op in rec.keyDefines">
                                                 <td class="text-center">{{op.rec.id}}</td>
                                                 <td><a href ng-click="showRefEditor(rec.keyDefines, $index, 'editKeyDefine', 'System')">{{op.rec.keyName}}</a></td>
-                                                <td>{{op.rec.keyType}}</td>
+                                                <td>{{op.rec.keyType|optionName:'keyType'}}</td>
                                                 <td>{{op.rec.keyValue}}</td>
                                                 <td ng-show="!lock">
                                                     <a ng-click="deleteRefRecX(rec.keyDefines, $index)"><i class="fa fa-minus-circle"></i></a>&nbsp;

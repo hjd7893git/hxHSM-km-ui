@@ -8,13 +8,13 @@
         <!-- ng-if="signedUp" 先封掉-->
         <div ng-model="signedUp" ng-init="signedUp = false" class="collapse navbar-collapse" role="navigation" style="margin-top: 7px;">
             <ul class="nav navbar-nav">
-                <li><a href="#/views/System">系统</a></li>
-                <li><a href="#/views/Equipment">设备</a></li>
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">
-                        安全管理 <span class="caret"></span>
+                        密钥管理 <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
+                        <li><a href="#/views/System">系统</a></li>
+                        <li><a href="#/views/Equipment">设备</a></li>
                         <li><a href="#/views/SecretKey">密钥</a></li>
                         <li><a href="#/views/Cert">证书</a></li>
                         <li><a href="#/views/Card">数据准备</a></li>

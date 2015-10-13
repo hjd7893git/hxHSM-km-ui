@@ -523,6 +523,32 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'CompanyList'), {}, ok1);
                 }
             },
+            retrieveSecretKeies: function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
+                        $scope.$root.secretKeyList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.keyValue};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.secretKeyList)) {
+                    $scope.$root.secretKeyList = [];
+                    $scope.queryBase($resource(URLPrefix + 'SecretKeyList'), {}, ok1);
+                }
+            },
+            retrieveSystemKeyDefines: function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
+                        $scope.$root.systemKeyDefineList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.keyName};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.systemKeyDefineList)) {
+                    $scope.$root.systemKeyDefineList = [];
+                    $scope.queryBase($resource(URLPrefix + 'SystemKeyDefineList'), {}, ok1);
+                }
+            },
             retrieveMachineModels: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
