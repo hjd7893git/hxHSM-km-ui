@@ -549,6 +549,32 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'SystemKeyDefineList'), {}, ok1);
                 }
             },
+            retrievePartners: function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
+                        $scope.$root.partnerList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.partnerName};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.partnerList)) {
+                    $scope.$root.partnerList = [];
+                    $scope.queryBase($resource(URLPrefix + 'PartnerList'), {}, ok1);
+                }
+            },
+            retrieveBranches: function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
+                        $scope.$root.branchList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.branchName};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.branchList)) {
+                    $scope.$root.branchList = [];
+                    $scope.queryBase($resource(URLPrefix + 'BranchList'), {}, ok1);
+                }
+            },
             retrieveMachineModels: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {

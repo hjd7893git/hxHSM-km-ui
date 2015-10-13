@@ -1,0 +1,53 @@
+<div class="panel-collapse in" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a data-toggle="collapse" data-target="#registerStep1" aria-expanded="true" aria-controls="registerStep1">
+                            <i class="fa fa-search"></i>&nbsp;查询
+                        </a>
+                        <div id="registerStep1" class="panel-collapse collapse" role="tabpanel">
+                            <hr class="bi-margin-b10 bi-margin-t8">
+                            <div class="panel-body bi-pad0">
+                                <form class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <bi-query-item item-label="'标识'" item-tip="'大于0的整数'" item-value="qry.id"></bi-query-item>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <bi-query-item item-label="'名称'" item-tip="'文本,可模糊匹配'" item-value="qry.name"></bi-query-item>
+                                        </div>
+                                    </div>
+                                </form>
+                                <bi-query-action></bi-query-action>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item bi-pt0">
+                        <table class="table table-hover table-condensed bg-white crud-r">
+                            <thead><tr>
+                                <th><input type="checkbox" ng-click="toggleChosen();"></th>
+                                <th>标识</th><th>伙伴类型</th><th>伙伴名称</th><th>分支行名称</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">
+                                <td class="text-center">
+                                    <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
+                                    <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
+                                </td>
+                                <td>{{r.rec.id}}</td>
+                                <td>{{r.rec.partnerType|optionName:'PartnerType'}}</td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.partnerName}}</a></td>
+                                <td>{{r.rec.branchName}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <bi-query-buttons></bi-query-buttons>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

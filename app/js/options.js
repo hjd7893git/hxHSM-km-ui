@@ -26,8 +26,8 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'keySchema', names: [{value: 'Y', name: '16 Bits'}, {value: 'X', name: '32 Bits'}, {value: 'Z', name: '48 Bits'}]},
             {option: 'keyUse', names: [{value: 0, name: '应用模块'}, {value: 1, name: '设备'}, {value: 2, name: '合作伙伴'}]},
             {option: 'keyUseType', names: [{value: 0, name: '不适用'}, {value: 1, name: '全行统一'}, {value: 2, name: '分行统一'},{value:3,name:'网店统一'},{value:4,name:'一机一密'}]},
-            {option: 'machineStatus', names: [{value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}]}
-
+            {option: 'machineStatus', names: [{value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}]},
+            {option: 'PartnerType', names:[{value:0,name:'政府机构'},{value:1,name:'商业企业'}]}
         ];
         var tableControllers = [
             {tableId: 'Application', title: '应用管理', keyInfo: 'name',
@@ -45,6 +45,7 @@ angular.module('myApp.options', ['ngResource'])
                     }
                 }
             },
+            {tableId: 'Partner', title: '合作伙伴管理',keyInfo:'partnerName'},
             {tableId: 'Cert', title: '证书管理'},
             {tableId: 'Cluster', title: '集群管理'},
             {tableId: 'Company', title: '厂商管理', keyInfo: 'name'},
@@ -121,6 +122,16 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveSystemKeyDefines($scope);
                 }
             },
+            {tableId: 'PartnerBranch', title: '合作伙伴分支机构管理',keyInfo:'branchName',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrievePartners($scope);
+                }
+            },
+            {tableId: 'Branch', title: '分支行机构管理',keyInfo:'branchName',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveBranches($scope);
+                }
+            }
 
         ];
         var tableNames = angular.element.map(tableControllers, function(obj) {
