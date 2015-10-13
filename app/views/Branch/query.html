@@ -39,7 +39,7 @@
                                 </td>
                                 <td>{{r.rec.id}}</td>
                                 <td>{{r.rec.branchNo}}</td>
-                                <td>{{r.rec.upBranchId}}</td>
+                                <td>{{r.rec.upBranchId|optionName:branchList}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.branchName}}</a></td>
                                 <td>{{r.rec.isLeaf|optionName:'YesNo'}}</td>
                             </tr>

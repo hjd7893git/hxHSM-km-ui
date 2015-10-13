@@ -38,7 +38,7 @@
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.id}}</td>
-                                <td>{{r.rec.partnerId}}</td>
+                                <td>{{r.rec.partnerId|optionName:partnerList}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.branchName}}</a></td>
                             </tr>
                             </tbody>

@@ -39,8 +39,8 @@
                                 </td>
                                 <td>{{r.rec.id}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.model}}</a></td>
-                                <td>{{r.rec.producerId|optionName:'companyType'}}</td>
-                                <td>{{r.rec.supplierId|optionName:'companyType'}}</td>
+                                <td>{{r.rec.producerId|optionName:companiesList}}</td>
+                                <td>{{r.rec.supplierId|optionName:companiesList}}</td>
                                 <td>{{r.rec.remark}}</td>
                             </tr>
                             </tbody>
