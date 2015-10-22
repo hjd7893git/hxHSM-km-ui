@@ -1,7 +1,7 @@
 <div class="panel-collapse" role="tabpanel" bs-collapse-target>
     <div class="panel-group" role="tablist">
         <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{ref.opType|optionName:'opType'}}&nbsp;-&nbsp;密钥方案</div>
+            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{ref.opType|optionName:'opType'}}&nbsp;-&nbsp;{{rec.name}}&nbsp;-&nbsp;密钥方案</div>
             <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
                 <ul class="list-group">
                     <li class="list-group-item">
@@ -9,27 +9,24 @@
                             <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                                 item-value="ref.rec.id" item-old-value="ref.bak.id" item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'系统ID'" item-tip="'后台自动产生'"
-                                                item-value="ref.rec.systemId" item-old-value="ref.bak.systemId" item-locked="'true'"></bi-edit-item>
                                 <bi-edit-item item-label="'密钥名称'" item-tip="'如:ATM-P主密钥'" item-name="'keyName'" item-required="'true'"
                                                 item-value="ref.rec.keyName" item-old-value="ref.bak.keyName" item-locked="ref.lock"></bi-edit-item>
                                 <bi-select-item item-label="'是否ZMK加密'"
                                                 item-value="ref.rec.createMode" item-old-value="ref.bak.createMode" item-locked="ref.lock" item-options="'YesNo'|theOption"></bi-select-item>
                                 <bi-select-item item-label="'密钥类型'" item-data-type="'text'"
                                                 item-value="ref.rec.keyType" item-old-value="ref.bak.keyType" item-locked="ref.lock" item-options="'keyType'|theOption"></bi-select-item>
-                                <bi-select-item item-label="'密钥方案'" item-data-type="'text'"
+                                <bi-select-item item-label="'密钥长度'" item-data-type="'text'"
                                                 item-value="ref.rec.keySchema" item-old-value="ref.bak.keySchema" item-locked="ref.lock" item-options="'keySchema'|theOption"></bi-select-item>
-                                <bi-select-item item-label="'密钥用途'"
+                                <bi-select-item item-label="'密钥用于'"
                                                 item-value="ref.rec.keyUseFor" item-old-value="ref.bak.keyUseFor" item-locked="ref.lock" item-options="'keyUse'|theOption"></bi-select-item>
-                                <bi-edit-item item-label="'合作伙伴'" item-tip="'合作伙伴ID'"
-                                                item-value="ref.rec.partnerId" item-old-value="ref.bak.partnerId" item-locked="ref.lock"></bi-edit-item>
-                                <bi-select-item item-label="'设备类型'"
+                                <bi-select-item item-label="'合作伙伴'" item-options="partnerList" ng-show="ref.rec.keyUseFor == 2"
+                                                item-value="ref.rec.partnerId" item-old-value="ref.bak.partnerId" item-locked="ref.lock"></bi-select-item>
+                                <bi-select-item item-label="'设备类型'"  ng-show="ref.rec.keyUseFor == 1"
                                                 item-value="ref.rec.equipmentType" item-old-value="ref.bak.equipmentType" item-locked="ref.lock" item-options="'equipmentType'|theOption"></bi-select-item>
-                                <bi-select-item item-label="'设备密钥用法'"
+                                <bi-select-item item-label="'设备密钥用法'"  ng-show="ref.rec.keyUseFor == 1"
                                                 item-value="ref.rec.keyUseType" item-old-value="ref.bak.keyUseType" item-locked="ref.lock" item-options="'keyUseType'|theOption"></bi-select-item>
-                                <bi-select-item item-label="'密钥ID'" item-options="secretKeyList"
-                                                item-value="ref.rec.keyId" item-old-value="ref.bak.keyId" item-locked="ref.lock"></bi-select-item>
-
+                                <bi-edit-item item-label="'密钥ID'"
+                                                item-value="ref.rec.keyId" item-old-value="ref.bak.keyId" item-locked="'true'"></bi-edit-item>
                                 <div class="form-group bi-margin-b0">
                                     <label class="col-sm-2 control-label"></label>
                                     <div class="col-sm-6">

@@ -71,8 +71,8 @@ angular.module('myApp.views', ['ngRoute'])
         $scope.qry.status = 0;
         $scope.query($scope.qry);
         myServer.retrieveMenuTree($scope);
-        myServer.retrieveRoles($scope);
-        myServer.retrieveGroups($scope);
+        myServer.retrieveRoleList($scope);
+        myServer.retrieveGroupList($scope);
         $rootScope.detailPanels = [];
         $rootScope.detailPageIDs = {check: 0};
         $scope.showRowDetails = function(rec, idx) {

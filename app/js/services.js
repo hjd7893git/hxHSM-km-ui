@@ -484,7 +484,7 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'MenuTree'), {}, ok1);
                 }
             },
-            retrieveRoles: function($scope) {
+            retrieveRoleList: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
                         $scope.$root.roleList = angular.element.map(ret, function(obj) {
@@ -497,7 +497,7 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'RoleList'), {}, ok1);
                 }
             },
-            retrieveClusters: function($scope) {
+            retrieveClusterList: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
                         $scope.$root.clusterList = angular.element.map(ret, function(obj) {
@@ -510,46 +510,33 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'ClusterList'), {}, ok1);
                 }
             },
-            retrieveCompanies: function($scope) {
+            retrieveCompanyList: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
-                        $scope.$root.companiesList = angular.element.map(ret, function(obj) {
+                        $scope.$root.companyList = angular.element.map(ret, function(obj) {
                             return {value: obj.id, name: obj.name};
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.companiesList)) {
-                    $scope.$root.companiesList = [];
+                if (angular.isUndefined($scope.$root.companyList)) {
+                    $scope.$root.companyList = [];
                     $scope.queryBase($resource(URLPrefix + 'CompanyList'), {}, ok1);
                 }
             },
-            retrieveSecretKeies: function($scope) {
+            retrieveKeyDefineList: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
-                        $scope.$root.secretKeyList = angular.element.map(ret, function(obj) {
-                            return {value: obj.id, name: obj.keyValue};
-                        });
-                    }
-                };
-                if (angular.isUndefined($scope.$root.secretKeyList)) {
-                    $scope.$root.secretKeyList = [];
-                    $scope.queryBase($resource(URLPrefix + 'SecretKeyList'), {}, ok1);
-                }
-            },
-            retrieveSystemKeyDefines: function($scope) {
-                var ok1 = function(ret) {
-                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
-                        $scope.$root.systemKeyDefineList = angular.element.map(ret, function(obj) {
+                        $scope.$root.keyDefineList = angular.element.map(ret, function(obj) {
                             return {value: obj.id, name: obj.keyName};
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.systemKeyDefineList)) {
-                    $scope.$root.systemKeyDefineList = [];
+                if (angular.isUndefined($scope.$root.keyDefineList)) {
+                    $scope.$root.keyDefineList = [];
                     $scope.queryBase($resource(URLPrefix + 'SystemKeyDefineList'), {}, ok1);
                 }
             },
-            retrievePartners: function($scope) {
+            retrievePartnerList: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
                         $scope.$root.partnerList = angular.element.map(ret, function(obj) {
@@ -562,7 +549,7 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'PartnerList'), {}, ok1);
                 }
             },
-            retrieveBranches: function($scope) {
+            retrieveBrancheList: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
                         $scope.$root.branchList = angular.element.map(ret, function(obj) {
@@ -575,20 +562,20 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'BranchList'), {}, ok1);
                 }
             },
-            retrieveMachineModels: function($scope) {
+            retrieveMachineModelList: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
-                        $scope.$root.modelList = angular.element.map(ret, function(obj) {
+                        $scope.$root.machineModelList = angular.element.map(ret, function(obj) {
                             return {value: obj.id, name: obj.model};
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.modelList)) {
-                    $scope.$root.modelList = [];
+                if (angular.isUndefined($scope.$root.machineModelList)) {
+                    $scope.$root.machineModelList = [];
                     $scope.queryBase($resource(URLPrefix + 'MachineModelList'), {}, ok1);
                 }
             },
-            retrieveGroups: function($scope) {
+            retrieveGroupList: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
                         $scope.$root.groupList = angular.element.map(ret, function(obj) {
