@@ -49,7 +49,14 @@ angular.module('myApp.options', ['ngResource'])
             {tableId: 'Cert', title: '证书管理'},
             {tableId: 'Cluster', title: '集群管理'},
             {tableId: 'Company', title: '厂商管理', keyInfo: 'name'},
-            {tableId: 'Equipment', title: '设备管理', keyInfo: 'equipmentNo'},
+            {tableId: 'Equipment', title: '设备管理', keyInfo: 'equipmentNo',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    $scope.preCommit = function(rec) {
+                        if (angular.isDefined(rec.createKey) && rec.createKey)
+                            rec.keyId = 0;
+                    };
+                }
+            },
             {tableId: 'Global', title: '全局配置'},
             {tableId: 'GroupDefine', title: '分组管理'},
             {tableId: 'SystemKeyDefine', title: '系统密钥生成', keyInfo: 'keyName'},

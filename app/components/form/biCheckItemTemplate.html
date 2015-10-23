@@ -1,0 +1,16 @@
+<div class="form-group {{itemMargin|iif:itemMargin:'bi-margin-b10':'bi-margin-b10'}}">
+    <label class="col-sm-2 control-label bi-pad0"></label>
+    <div class="col-sm-6">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="itemValue" ng-disabled="itemLocked">&nbsp;{{itemLabel}}
+            </label>
+        </div>
+    </div>
+    <div ng-if="isNotInsert()" class="col-sm-4 trimL bi-old-val has-success">
+        <div class='weixin right' ng-if="itemValue != itemOldValue">
+            <div class='weixin-content'>{{itemOldValue}}</div>
+            <div class="arrow"></div>
+        </div>
+    </div>
+</div>

@@ -107,6 +107,21 @@ angular.module('myApp.components.form', [])
             controller: 'biFormItemCtrl'
         };
     })
+    .directive('biCheckItem', function($templateCache) {
+        return {
+            restrict : 'E',
+            templateUrl : 'components/form/biCheckItemTemplate.html',
+            replace : true,
+            scope: {
+                itemMargin: '=itemMargin',
+                itemLabel: '=itemLabel',
+                itemValue: '=itemValue',
+                itemOldValue: '=itemOldValue',
+                itemLocked: '=itemLocked'
+            },
+            controller: 'biFormItemCtrl'
+        };
+    })
     .directive('biQueryItem', function($templateCache) {
         return {
             restrict : 'E',

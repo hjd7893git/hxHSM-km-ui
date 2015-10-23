@@ -233,6 +233,8 @@ angular.module('myApp.services', ['ngResource'])
                 $scope.submitEdited = function() {
                     if (!isValidForm(this))
                         return;
+                    if (angular.isDefined($scope.preCommit))
+                        $scope.preCommit($scope.rec);
                     var newRec = new $scope.resource($scope.rec);
                     if (angular.isDefined($scope.refFields)) {
                         angular.element.each($scope.refFields, function(n, ele) {
