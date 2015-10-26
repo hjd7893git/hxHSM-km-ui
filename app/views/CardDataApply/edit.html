@@ -1,0 +1,33 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{opType|optionName:'opType'}}</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="panel-body bi-pad0">
+                            <form class="form-horizontal">
+                                <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
+                                              item-value="rec.id" item-old-value="bak.id"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-select-item item-label="'机构ID'" item-options="branchList"
+                                              item-value="rec.branchId" item-old-value="bak.branchId"
+                                              item-locked="lock"></bi-select-item>
+                                <bi-edit-item item-label="'卡数据文件'"
+                                              item-value="rec.cardDataFile" item-old-value="bak.cardDataFile"
+                                              item-locked="lock"></bi-edit-item>
+                                <bi-edit-item item-label="'卡数量'" item-tip="'输入正数'" item-data-type="'number'"
+                                              item-value="rec.cardQuantity" item-old-value="bak.cardQuantity"
+                                              item-locked="lock"></bi-edit-item>
+                                <bi-edit-item item-label="'RSA密钥文件'"
+                                              item-value="rec.rsaKeyFile" item-old-value="bak.rsaKeyFile"
+                                              item-locked="lock"></bi-edit-item>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <bi-edit-buttons></bi-edit-buttons>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,24 +1,26 @@
 <div class="panel-collapse in" role="tabpanel" bs-collapse-target>
     <div class="panel-group" role="tablist">
         <div class="panel panel-default">
-            <div class="panel-collapse collapse in" role="tabpanel">
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <a data-toggle="collapse" data-target="#roleFilterPanel" aria-expanded="true" aria-controls="roleFilterPanel">
+                        <a data-toggle="collapse" data-target="#registerStep1" aria-expanded="true" aria-controls="registerStep1">
                             <i class="fa fa-search"></i>&nbsp;查询
                         </a>
-                        <div id="roleFilterPanel" class="panel-collapse collapse" role="tabpanel">
+                        <div id="registerStep1" class="panel-collapse collapse" role="tabpanel">
                             <hr class="bi-margin-b10 bi-margin-t8">
                             <div class="panel-body bi-pad0">
                                 <form class="form-horizontal">
-                                    <div class="col-md-6">
-                                        <bi-query-item item-label="'标识'" item-tip="'大于0的整数'" item-value="qry.id"></bi-query-item>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <bi-query-item item-label="'标识'" item-tip="'大于0的整数'" item-value="qry.id"></bi-query-item>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <bi-query-item item-label="'名称'" item-tip="'文本,可模糊匹配'" item-value="qry.name"></bi-query-item>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <bi-query-item item-label="'名称'" item-tip="'文本,可模糊匹配'" item-value="qry.name"></bi-query-item>
-                                    </div>
-                                    <bi-query-action></bi-query-action>
                                 </form>
+                                <bi-query-action></bi-query-action>
                             </div>
                         </div>
                     </li>
@@ -26,7 +28,8 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th><th>名称</th></tr>
+                                <th>标识</th><th>机构ID</th><th>计划数量</th><th>计划时间</th><th>开始时间</th><th>结束时间</th><th>完成数量</th><th>批次状态</th></tr>
+                            </tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">
@@ -35,7 +38,13 @@
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.id}}</td>
-                                <td><a href ng-click="showEditor($index)">{{r.rec.name}}</a></td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.branchId}}</a></td>
+                                <td>{{r.rec.planQuantity}}</td>
+                                <td>{{r.rec.planDatetime}}</td>
+                                <td>{{r.rec.startDatetime}}</td>
+                                <td>{{r.rec.endDatetime}}</td>
+                                <td>{{r.rec.completeQuantity}}</td>
+                                <td>{{r.rec.batchStatus}}</td>
                             </tr>
                             </tbody>
                         </table>

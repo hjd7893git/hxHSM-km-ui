@@ -577,6 +577,32 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'MachineModelList'), {}, ok1);
                 }
             },
+            retrieveRsaKeyBatchList: function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
+                        $scope.$root.rsaKeyBatchList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.branchId};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.rsaKeyBatchList)) {
+                    $scope.$root.rsaKeyBatchList = [];
+                    $scope.queryBase($resource(URLPrefix + 'RsaKeyBatchList'), {}, ok1);
+                }
+            },
+            retrieveSystemKeyDefineList: function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
+                        $scope.$root.systemKeyDefineList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.keyName};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.systemKeyDefineList)) {
+                    $scope.$root.systemKeyDefineList = [];
+                    $scope.queryBase($resource(URLPrefix + 'SystemKeyDefineList'), {}, ok1);
+                }
+            },
             retrieveGroupList: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
@@ -590,6 +616,7 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'GroupDefineList'), {}, ok1);
                 }
             },
+
             journals: $resource(URLPrefix + 'JournalBiz/:status', {seqNo: '@status'})
         };
     }]);

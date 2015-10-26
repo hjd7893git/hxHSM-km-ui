@@ -27,7 +27,8 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'keyUse', names: [{value: 0, name: '应用模块'}, {value: 1, name: '设备'}, {value: 2, name: '合作伙伴'}]},
             {option: 'keyUseType', names: [{value: 0, name: '不适用'}, {value: 1, name: '全行统一'}, {value: 2, name: '分行统一'}, {value: 3, name: '网店统一'}, {value: 4, name: '一机一密'}]},
             {option: 'machineStatus', names: [{value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}]},
-            {option: 'PartnerType', names:[{value: 0, name: '政府机构'}, {value: 1, name: '商业企业'}]}
+            {option: 'PartnerType', names:[{value: 0, name: '政府机构'}, {value: 1, name: '商业企业'}]},
+            {option: 'certStates', names:[{value: 0, name: '密钥已产生'}, {value: 1, name: '申请证书中'},{value:2,name:'证书已导入'}]}
         ];
         var tableControllers = [
             {tableId: 'Application', title: '应用管理', keyInfo: 'name',
@@ -120,10 +121,11 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveCompanyList($scope);
                 }
             },
-            {tableId: 'SystemKeyDefine', title: '系统密钥定义', keyInfo: 'keyName',
-                controller: function($log, $rootScope, $scope, myServer) {
-                    myServer.retrieveSecretKeies($scope);
-                }
+            {tableId: 'SystemKeyDefine', title: '系统密钥定义'
+                //, keyInfo: 'keyName',
+                //controller: function($log, $rootScope, $scope, myServer) {
+                //    myServer.retrieveSecretKeies($scope);
+                //}
             },
             {tableId: 'SecretKey', title: '密钥管理',
                 controller: function($log, $rootScope, $scope, myServer) {
@@ -139,7 +141,28 @@ angular.module('myApp.options', ['ngResource'])
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveBrancheList($scope);
                 }
+            },
+            {tableId: 'CardDataApply', title: '卡数据申请',
+                controller:function($log,$rootScope,$scope,myServer) {
+                    myServer.retrieveBrancheList($scope);
+                }
+            },
+            {tableId: 'RsaKeyBatch', title:'RSA密钥生成批次',
+                controller:function($log,$rootScope,$scope,myServer) {
+                    myServer.retrieveBrancheList($scope);
+                }
+            },
+            {tableId: 'RsaKey', title:'RSA密钥',
+                controller:function($log,$rootScope,$scope,myServer) {
+                    myServer.retrieveRsaKeyBatchList($scope);
+                }
+            },
+            {tableId: 'SecretCert', title:'证书',
+                controller:function($log,$rootScope,$scope,myServer) {
+                    myServer.retrieveSystemKeyDefineList($scope);
+                }
             }
+
 
         ];
         var tableNames = angular.element.map(tableControllers, function(obj) {

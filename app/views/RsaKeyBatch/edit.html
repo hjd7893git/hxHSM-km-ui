@@ -1,0 +1,43 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{opType|optionName:'opType'}}</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="panel-body bi-pad0">
+                            <form class="form-horizontal">
+                                <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
+                                              item-value="rec.id" item-old-value="bak.id"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-select-item item-label="'机构ID'" item-options="branchList"
+                                              item-value="rec.branchId" item-old-value="bak.branchId"
+                                              item-locked="lock"></bi-select-item>
+                                <bi-edit-item item-label="'计划数量'" item-tip="'输入正数'" item-data-type="'number'"
+                                              item-value="rec.planQuantity" item-old-value="bak.planQuantity"
+                                              item-locked="lock"></bi-edit-item>
+                                <bi-edit-item item-label="'计划时间'"
+                                              item-value="rec.planDatetime" item-old-value="bak.planDatetime"
+                                              item-locked="lock"></bi-edit-item>
+                                <bi-date-item item-label="'开始时间'"
+                                              item-value="rec.startDatetime" item-old-value="bak.startDatetime"
+                                              item-locked="lock"></bi-date-item>
+                                <bi-date-item item-label="'结束时间'"
+                                              item-value="rec.endDatetime" item-old-value="bak.endDatetime"
+                                              item-locked="lock"></bi-date-item>
+                                <bi-edit-item item-label="'完成数量'" item-tip="'输入正数'" item-data-type="'number'"
+                                                item-value="rec.completeQuantity" item-old-value="bak.completeQuantity"
+                                                item-locked="lock" item-options="clusterList"></bi-edit-item>
+                                <bi-select-item item-label="'批次状态'" item-options="'machineStatus'|theOption"
+                                                item-value="rec.batchStatus" item-old-value="bak.batchStatus"
+                                                item-locked="lock"></bi-select-item>
+
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <bi-edit-buttons></bi-edit-buttons>
+            </div>
+        </div>
+    </div>
+</div>
