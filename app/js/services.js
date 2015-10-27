@@ -474,6 +474,12 @@ angular.module('myApp.services', ['ngResource'])
                     }
                     return changed;
                 };
+                $scope.isKeySet = function(v) {
+                    if (angular.isDefined(v))
+                        return v != -1;
+                    else
+                        return false;
+                };
             },
             retrieveMenuTree: function($scope) {
                 var ok1 = function(ret) {
@@ -616,7 +622,31 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'GroupDefineList'), {}, ok1);
                 }
             },
-
+            partnerKeyDefineList: function($scope, id) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
+                        $scope.theKeyDefineList = angular.element.map(ret, function(obj) {
+                            return {value: obj.defineId, name: obj.systemName + '::' + obj.defineName};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.theKeyDefineList)) {
+                    $scope.theKeyDefineList= [];
+                    $scope.queryBase($resource(URLPrefix + 'KeyDefineList'), {partnerId: id}, ok1);
+                }
+            },
+            setKeyAbout: function($scope) {
+                $scope.preCommit = function(rec) {
+                    if (angular.isDefined(rec.createKey) && rec.createKey) {
+                        rec.keyBizSeq = -1; // 0会判为false
+                        if (angular.isDefined(rec.keys)) {
+                            if (rec.keys.length > 0)
+                                rec.keys[0].rec.opType = 2;
+                        }
+                    }
+                };
+                $scope.refFields = ['keys'];
+            },
             journals: $resource(URLPrefix + 'JournalBiz/:status', {seqNo: '@status'})
         };
     }]);

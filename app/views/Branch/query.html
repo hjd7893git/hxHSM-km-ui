@@ -28,7 +28,7 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th><th>机构号</th><th>上级机构</th><th>机构名称</th><th>是否叶子</th>
+                                <th>标识</th><th>机构号</th><th>上级机构</th><th>机构名称</th><th>是否叶子</th><th>密钥</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -42,6 +42,7 @@
                                 <td>{{r.rec.upBranchId|optionName:branchList}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.branchName}}</a></td>
                                 <td>{{r.rec.isLeaf|optionName:'YesNo'}}</td>
+                                <td>{{r.rec.keyBizSeq | ifdef:'已创建':'-'}}</td>
                             </tr>
                             </tbody>
                         </table>

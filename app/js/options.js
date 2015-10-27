@@ -46,16 +46,21 @@ angular.module('myApp.options', ['ngResource'])
                     }
                 }
             },
-            {tableId: 'Partner', title: '合作伙伴管理', keyInfo: 'partnerName'},
+            {tableId: 'Partner', title: '合作伙伴管理', keyInfo: 'partnerName',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.setKeyAbout($scope);
+                    $scope.changeDefineList = function() {
+                        if (this.itemValue)
+                            myServer.partnerKeyDefineList($scope, $scope.rec.id)
+                    };
+                }
+            },
             {tableId: 'Cert', title: '证书管理'},
             {tableId: 'Cluster', title: '集群管理'},
             {tableId: 'Company', title: '厂商管理', keyInfo: 'name'},
             {tableId: 'Equipment', title: '设备管理', keyInfo: 'equipmentNo',
                 controller: function($log, $rootScope, $scope, myServer) {
-                    $scope.preCommit = function(rec) {
-                        if (angular.isDefined(rec.createKey) && rec.createKey)
-                            rec.keyId = 0;
-                    };
+                    myServer.setKeyAbout($scope);
                 }
             },
             {tableId: 'Global', title: '全局配置'},
@@ -129,17 +134,28 @@ angular.module('myApp.options', ['ngResource'])
             },
             {tableId: 'SecretKey', title: '密钥管理',
                 controller: function($log, $rootScope, $scope, myServer) {
-                    myServer.retrieveKeyDefineList($scope);
+                    $scope.readOnly = true;
+                    //myServer.retrieveKeyDefineList($scope);
                 }
             },
             {tableId: 'PartnerBranch', title: '合作伙伴分支机构管理', keyInfo: 'branchName',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrievePartnerList($scope);
+                    myServer.setKeyAbout($scope);
+                    $scope.changeDefineList = function() {
+                        if (this.itemValue)
+                            myServer.partnerKeyDefineList($scope, $scope.rec.id)
+                    };
                 }
             },
             {tableId: 'Branch', title: '分支行机构管理', keyInfo: 'branchName',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveBrancheList($scope);
+                    myServer.setKeyAbout($scope);
+                    $scope.changeDefineList = function() {
+                        if (this.itemValue)
+                            myServer.partnerKeyDefineList($scope, $scope.rec.id)
+                    };
                 }
             },
             {tableId: 'CardDataApply', title: '卡数据申请',

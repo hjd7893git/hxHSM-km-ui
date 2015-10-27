@@ -117,6 +117,7 @@ angular.module('myApp.components.form', [])
                 itemLabel: '=itemLabel',
                 itemValue: '=itemValue',
                 itemOldValue: '=itemOldValue',
+                onItemChanged: '=onItemChanged',
                 itemLocked: '=itemLocked'
             },
             controller: 'biFormItemCtrl'
@@ -195,6 +196,9 @@ angular.module('myApp.components.form', [])
                 }
             }
             return false;
+        };
+        $scope.changeDefineList = function() {
+            $log.info("changeDefineList ...");
         };
     }]);
 

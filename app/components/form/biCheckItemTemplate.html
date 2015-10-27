@@ -3,7 +3,7 @@
     <div class="col-sm-6">
         <div class="checkbox">
             <label>
-                <input type="checkbox" ng-model="itemValue" ng-disabled="itemLocked">&nbsp;{{itemLabel}}
+                <input type="checkbox" ng-model="itemValue" ng-disabled="itemLocked" ng-change="onItemChanged()">&nbsp;{{itemLabel}}
             </label>
         </div>
     </div>

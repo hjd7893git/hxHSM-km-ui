@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-md-6">
         <div class="btn-group" role="group" aria-label="操作">
-            <button class="btn btn-default bi-bar-lt" ng-click="showEditorX()">
+            <button class="btn btn-default bi-bar-lt" ng-click="showEditorX()" ng-show="!readOnly">
                 <i class="fa fa-plus"></i>&nbsp;增加</button>
-            <button class="btn btn-default" ng-click="unlockEditorX()">
+            <button class="btn btn-default" ng-click="unlockEditorX()" ng-show="!readOnly">
                 <i class="fa fa-edit"></i>&nbsp;修改</button>
-            <button class="btn btn-default" ng-click="deleteRecX()">
+            <button class="btn btn-default" ng-click="deleteRecX()" ng-show="!readOnly">
                 <i class="fa fa-trash-o"></i>&nbsp;删除</button>
             <button class="btn btn-default" ng-click="showHistoryX()">
                 <i class="fa fa-history"></i>&nbsp;历史</button>

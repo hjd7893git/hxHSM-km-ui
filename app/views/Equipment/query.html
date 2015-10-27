@@ -38,7 +38,7 @@
                                 <td>{{r.rec.equipmentType|optionName:'equipmentType'}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.equipmentNo}}</a></td>
                                 <td>{{r.rec.branchName}}</td>
-                                <td>{{r.rec.keyId | ifdef:'已创建':''}}</td>
+                                <td>{{r.rec.keyBizSeq | ifdef:'已创建':'-'}}</td>
                             </tr>
                             </tbody>
                         </table>

@@ -23,9 +23,9 @@
         <div class="btn-group" role="group" ng-show="recStatus == -1 && lock">
             <button class="btn btn-default" ng-click="showHistory()">
                 <i class="fa fa-history"></i>&nbsp;历史</button>
-            <button class="btn btn-primary" ng-click="unlockEditor()" ng-if="!rec.bizSeq">
+            <button class="btn btn-primary" ng-click="unlockEditor()" ng-if="!rec.bizSeq && !readOnly">
                 <i class="fa fa-edit"></i>&nbsp;修改</button>&nbsp;
-            <button class="btn btn-warning" ng-click="deleteRec()" ng-if="!rec.bizSeq">
+            <button class="btn btn-warning" ng-click="deleteRec()" ng-if="!rec.bizSeq && !readOnly">
                 <i class="fa fa-trash-o"></i>&nbsp;删除</button>
         </div>
     </div>

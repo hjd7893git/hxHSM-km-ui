@@ -9,12 +9,24 @@
                             <form class="form-horizontal">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
-                                <bi-select-item item-label="'伙伴类型'" item-tip="'为3-16位的字母'" item-options="'PartnerType'|theOption"
+                                <bi-select-item item-label="'伙伴类型'" item-options="'PartnerType'|theOption"
                                               item-value="rec.partnerType" item-old-value="bak.partnerType" item-locked="lock"></bi-select-item>
                                 <bi-edit-item item-label="'伙伴名称'"
                                               item-value="rec.partnerName" item-old-value="bak.partnerName" item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'分支行名称'" item-tip="'如:山西分行-刀削面支行'"
                                               item-value="rec.branchName" item-old-value="bak.branchName" item-locked="lock"></bi-edit-item>
+                                <bi-check-item item-label="'创建/更新密钥'" on-item-changed="changeDefineList" ng-show="opType == 2"
+                                               item-value="rec.createKey" item-old-value="bak.createKey" item-locked="lock"></bi-check-item>
+                                <bi-select-item item-label="'密钥方案'" item-options="theKeyDefineList" ng-show="rec.createKey"
+                                                item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="lock"></bi-select-item>
+                                <bi-edit-item item-label="'密钥方案'" ng-show="isKeySet(rec.keyBizSeq)"
+                                              item-value="rec.keys[0].rec.keyDefineRemark" item-old-value="rec.keys[0].bak.keyDefineRemark" item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'密钥ID'" ng-show="isKeySet(rec.keyBizSeq)"
+                                              item-value="rec.keys[0].rec.id" item-old-value="rec.keys[0].bak.id" item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'密钥值'" ng-show="isKeySet(rec.keyBizSeq)"
+                                              item-value="rec.keys[0].rec.keyValue" item-old-value="rec.keys[0].bak.keyValue" item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'密钥校验值'" ng-show="isKeySet(rec.keyBizSeq)"
+                                              item-value="rec.keys[0].rec.checkValue" item-old-value="rec.keys[0].bak.checkValue" item-locked="'true'"></bi-edit-item>
                             </form>
                         </div>
                     </li>
