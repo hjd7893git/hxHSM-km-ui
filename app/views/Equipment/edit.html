@@ -13,9 +13,12 @@
                                                 item-value="rec.equipmentType" item-old-value="bak.equipmentType" item-locked="lock"></bi-select-item>
                                 <bi-edit-item item-label="'设备编号'" item-tip="'输入中文'" item-required="'true'" item-name="'equipmentNo'"
                                               item-value="rec.equipmentNo" item-old-value="bak.equipmentNo" item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'所属分支行'" item-tip="'陕西分行岐山臊子面支行'" item-name="'branchName'" item-min-length="'4'"
-                                              item-value="rec.branchName" item-old-value="bak.branchName" item-locked="lock"></bi-edit-item>
-                                <bi-check-item item-label="'创建/更新密钥'" item-value="rec.createKey" item-old-value="bak.createKey" item-locked="lock"></bi-check-item>
+                                <bi-select-item item-label="'所属分支行'" item-options="branchList"
+                                                item-value="rec.branchId" item-old-value="bak.branchId" item-locked="lock"></bi-select-item>
+                                <bi-check-item item-label="'创建/更新密钥'" on-item-changed="changeDefineList"
+                                               item-value="rec.createKey" item-old-value="bak.createKey" item-locked="lock"></bi-check-item>
+                                <bi-select-item item-label="'密钥方案'" item-options="theKeyDefineList" ng-show="rec.createKey"
+                                                item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="lock"></bi-select-item>
                                 <bi-edit-item item-label="'密钥方案'" ng-show="isKeySet(rec.keyBizSeq)"
                                               item-value="rec.keys[0].rec.keyDefineRemark" item-old-value="rec.keys[0].bak.keyDefineRemark" item-locked="'true'"></bi-edit-item>
                                 <bi-edit-item item-label="'密钥ID'" ng-show="isKeySet(rec.keyBizSeq)"

@@ -46,26 +46,42 @@ angular.module('myApp.options', ['ngResource'])
                     }
                 }
             },
-            {tableId: 'Partner', title: '合作伙伴管理', keyInfo: 'partnerName',
+            {tableId: 'Branch', title: '分支行机构管理', keyInfo: 'branchName',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveBranchList($scope);
                     myServer.setKeyAbout($scope);
                     $scope.changeDefineList = function() {
-                        if (this.itemValue)
-                            myServer.partnerKeyDefineList($scope, $scope.rec.id)
+                        if (this.itemValue) {
+                            var useType = angular.isDefined($scope.rec.upBranchId) ? 3 : 2;
+                            myServer.retrieveKeyDefineList($scope, {useType: useType})
+                        }
                     };
                 }
             },
-            {tableId: 'Cert', title: '证书管理'},
+            {tableId: 'CardDataApply', title: '卡数据申请',
+                controller:function($log,$rootScope,$scope,myServer) {
+                    myServer.retrieveBranchList($scope);
+                }
+            },
             {tableId: 'Cluster', title: '集群管理'},
             {tableId: 'Company', title: '厂商管理', keyInfo: 'name'},
             {tableId: 'Equipment', title: '设备管理', keyInfo: 'equipmentNo',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveBranchList($scope);
                     myServer.setKeyAbout($scope);
+                    $scope.changeDefineList = function() {
+                        if (this.itemValue)
+                            myServer.retrieveKeyDefineList($scope, {equipmentType: $scope.rec.equipmentType})
+                    };
                 }
             },
             {tableId: 'Global', title: '全局配置'},
             {tableId: 'GroupDefine', title: '分组管理'},
-            {tableId: 'SystemKeyDefine', title: '系统密钥生成', keyInfo: 'keyName'},
+            {tableId: 'Host', title: '主机管理', keyInfo: 'hardware',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveClusterList($scope);
+                }
+            },
             {tableId: 'Machine', title: '密码机信息管理', keyInfo: 'number',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveGroupList($scope);
@@ -79,16 +95,61 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveMachineModelList($scope);
                 }
             },
+            {tableId: 'MachineModel', title: '密码机型号管理', keyInfo: 'model',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveCompanyList($scope);
+                }
+            },
             {tableId: 'MachineReady', title: '密码机上架管理',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveGroupList($scope);
                 }
             },
             {tableId: 'Menu', title: '菜单管理'},
+            {tableId: 'Partner', title: '合作伙伴管理', keyInfo: 'partnerName',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.setKeyAbout($scope);
+                    $scope.changeDefineList = function() {
+                        if (this.itemValue)
+                            myServer.retrieveKeyDefineList($scope, {partnerId: $scope.rec.id, useType: 1})
+                    };
+                }
+            },
+            {tableId: 'PartnerBranch', title: '合作伙伴分支机构管理', keyInfo: 'branchName',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrievePartnerList($scope);
+                    myServer.setKeyAbout($scope);
+                    $scope.changeDefineList = function() {
+                        if (this.itemValue)
+                            myServer.retrieveKeyDefineList($scope, {partnerId: $scope.rec.id, useType: 2})
+                    };
+                }
+            },
             {tableId: 'Role', title: '角色管理',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.roleMenuDialog($scope, "Role");
                     myServer.retrieveMenuTree($scope);
+                }
+            },
+            {tableId: 'RsaKey', title:'RSA密钥',
+                controller:function($log,$rootScope,$scope,myServer) {
+                    myServer.retrieveRsaKeyBatchList($scope);
+                }
+            },
+            {tableId: 'RsaKeyBatch', title:'RSA密钥生成批次',
+                controller:function($log,$rootScope,$scope,myServer) {
+                    myServer.retrieveBranchList($scope);
+                }
+            },
+            {tableId: 'SecretCert', title:'证书',
+                controller:function($log,$rootScope,$scope,myServer) {
+                    myServer.retrieveSystemKeyDefineList($scope);
+                }
+            },
+            {tableId: 'SecretKey', title: '密钥管理',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    $scope.readOnly = true;
+                    //myServer.retrieveKeyDefineList($scope);
                 }
             },
             {tableId: 'System', title: '系统管理', keyInfo: 'name',
@@ -103,6 +164,7 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrievePartnerList($scope);
                 }
             },
+            {tableId: 'SystemKeyDefine', title: '系统密钥定义', keyInfo: 'keyName'},
             {tableId: 'User', title: '用户管理', keyInfo: 'name',
                 controller: function($log, $rootScope, $scope, myServer) {
                     $scope.preInsert = function(rec) {
@@ -115,71 +177,7 @@ angular.module('myApp.options', ['ngResource'])
                     };
                     myServer.retrieveRoleList($scope);
                 }
-            },
-            {tableId: 'Host', title: '主机管理', keyInfo: 'hardware',
-                controller: function($log, $rootScope, $scope, myServer) {
-                    myServer.retrieveClusterList($scope);
-                }
-            },
-            {tableId: 'MachineModel', title: '密码机型号管理', keyInfo: 'model',
-                controller: function($log, $rootScope, $scope, myServer) {
-                    myServer.retrieveCompanyList($scope);
-                }
-            },
-            {tableId: 'SystemKeyDefine', title: '系统密钥定义'
-                //, keyInfo: 'keyName',
-                //controller: function($log, $rootScope, $scope, myServer) {
-                //    myServer.retrieveSecretKeies($scope);
-                //}
-            },
-            {tableId: 'SecretKey', title: '密钥管理',
-                controller: function($log, $rootScope, $scope, myServer) {
-                    $scope.readOnly = true;
-                    //myServer.retrieveKeyDefineList($scope);
-                }
-            },
-            {tableId: 'PartnerBranch', title: '合作伙伴分支机构管理', keyInfo: 'branchName',
-                controller: function($log, $rootScope, $scope, myServer) {
-                    myServer.retrievePartnerList($scope);
-                    myServer.setKeyAbout($scope);
-                    $scope.changeDefineList = function() {
-                        if (this.itemValue)
-                            myServer.partnerKeyDefineList($scope, $scope.rec.id)
-                    };
-                }
-            },
-            {tableId: 'Branch', title: '分支行机构管理', keyInfo: 'branchName',
-                controller: function($log, $rootScope, $scope, myServer) {
-                    myServer.retrieveBrancheList($scope);
-                    myServer.setKeyAbout($scope);
-                    $scope.changeDefineList = function() {
-                        if (this.itemValue)
-                            myServer.partnerKeyDefineList($scope, $scope.rec.id)
-                    };
-                }
-            },
-            {tableId: 'CardDataApply', title: '卡数据申请',
-                controller:function($log,$rootScope,$scope,myServer) {
-                    myServer.retrieveBrancheList($scope);
-                }
-            },
-            {tableId: 'RsaKeyBatch', title:'RSA密钥生成批次',
-                controller:function($log,$rootScope,$scope,myServer) {
-                    myServer.retrieveBrancheList($scope);
-                }
-            },
-            {tableId: 'RsaKey', title:'RSA密钥',
-                controller:function($log,$rootScope,$scope,myServer) {
-                    myServer.retrieveRsaKeyBatchList($scope);
-                }
-            },
-            {tableId: 'SecretCert', title:'证书',
-                controller:function($log,$rootScope,$scope,myServer) {
-                    myServer.retrieveSystemKeyDefineList($scope);
-                }
             }
-
-
         ];
         var tableNames = angular.element.map(tableControllers, function(obj) {
             return {value: obj.tableId, name: obj.title};

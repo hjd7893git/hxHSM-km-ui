@@ -557,7 +557,7 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'PartnerList'), {}, ok1);
                 }
             },
-            retrieveBrancheList: function($scope) {
+            retrieveBranchList: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
                         $scope.$root.branchList = angular.element.map(ret, function(obj) {
@@ -622,7 +622,7 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'GroupDefineList'), {}, ok1);
                 }
             },
-            partnerKeyDefineList: function($scope, id) {
+            retrieveKeyDefineList: function($scope, params) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
                         $scope.theKeyDefineList = angular.element.map(ret, function(obj) {
@@ -630,9 +630,11 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.theKeyDefineList)) {
+                var filter = JSON.stringify(params);
+                if (angular.isUndefined($scope.theKeyDefineList) || filter != $scope.theKeyDefineFilter) {
+                    $scope.theKeyDefineFilter = filter;
                     $scope.theKeyDefineList= [];
-                    $scope.queryBase($resource(URLPrefix + 'KeyDefineList'), {partnerId: id}, ok1);
+                    $scope.queryBase($resource(URLPrefix + 'KeyDefineList'), params, ok1);
                 }
             },
             setKeyAbout: function($scope) {
