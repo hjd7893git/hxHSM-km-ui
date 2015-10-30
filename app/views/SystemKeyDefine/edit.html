@@ -1,0 +1,70 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-edit"></i>{{rec.name}}&nbsp;&nbsp;密钥方案
+            </div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="panel-body bi-pad0">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
+                                <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
+                                              item-value="rec.id" item-old-value="bak.id"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-select-item item-label="'系统ID'"
+                                                item-value="rec.systemId" item-old-value="rec.systemId"
+                                                item-options="systemList"></bi-select-item>
+                                <bi-edit-item item-label="'密钥名称'" item-tip="'如:ATM-P主密钥'" item-name="'keyName'"
+                                              item-required="'true'"
+                                              item-value="rec.keyName" item-old-value="bak.keyName"
+                                              item-locked="lock"></bi-edit-item>
+                                <bi-select-item item-label="'是否ZMK加密'"
+                                                item-value="rec.createMode" item-old-value="bak.createMode"
+                                                item-locked="lock"
+                                                item-options="'YesNo'|theOption"></bi-select-item>
+                                <bi-select-item item-label="'密钥类型'" item-data-type="'text'"
+                                                item-value="rec.keyType" item-old-value="bak.keyType"
+                                                item-locked="lock"
+                                                item-options="'keyType'|theOption"></bi-select-item>
+                                <bi-select-item item-label="'密钥长度'" item-data-type="'text'"
+                                                item-value="rec.keySchema" item-old-value="bak.keySchema"
+                                                item-locked="lock"
+                                                item-options="'keySchema'|theOption"></bi-select-item>
+                                <bi-select-item item-label="'密钥用于'"
+                                                item-value="rec.keyUseFor" item-old-value="bak.keyUseFor"
+                                                item-locked="lock"
+                                                item-options="'keyUse'|theOption"></bi-select-item>
+                                <bi-select-item item-label="'合作伙伴'" item-options="partnerList"
+                                                ng-show="rec.keyUseFor == 2"
+                                                item-value="rec.partnerId" item-old-value="bak.partnerId"
+                                                item-locked="lock"></bi-select-item>
+                                <bi-select-item item-label="'设备类型'" ng-show="rec.keyUseFor == 1"
+                                                item-value="rec.equipmentType"
+                                                item-old-value="bak.equipmentType" item-locked="lock"
+                                                item-options="'equipmentType'|theOption"></bi-select-item>
+                                <bi-select-item item-label="'设备密钥用法'" ng-show="rec.keyUseFor == 1"
+                                                item-value="rec.keyUseType" item-old-value="bak.keyUseType"
+                                                item-locked="lock"
+                                                item-options="'keyUseType'|theOption"></bi-select-item>
+                                <bi-check-item item-label="'创建/更新密钥'" on-item-changed="changeDefineList"
+                                               item-value="rec.createKey" item-old-value="bak.createKey" item-locked="lock"></bi-check-item>
+                                <bi-edit-item item-label="'密钥ID'" ng-show="isKeySet(rec.keyBizSeq)"
+                                              item-value="rec.keys[0].rec.id" item-old-value="rec.keys[0].bak.id"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'密钥值'" ng-show="isKeySet(rec.keyBizSeq)"
+                                              item-value="rec.keys[0].rec.keyValue"
+                                              item-old-value="rec.keys[0].bak.keyValue"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'密钥校验值'" ng-show="isKeySet(rec.keyBizSeq)"
+                                              item-value="rec.keys[0].rec.checkValue"
+                                              item-old-value="rec.keys[0].bak.checkValue"
+                                              item-locked="'true'"></bi-edit-item>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <bi-edit-buttons></bi-edit-buttons>
+            </div>
+        </div>
+    </div>
+</div>

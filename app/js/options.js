@@ -164,7 +164,12 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrievePartnerList($scope);
                 }
             },
-            {tableId: 'SystemKeyDefine', title: '系统密钥定义', keyInfo: 'keyName'},
+            {tableId: 'SystemKeyDefine', title: '系统密钥定义', keyInfo: 'keyName',
+                controller:function($log,$rootScope,$scope,myServer){
+                    myServer.retrieveSystemList($scope);
+                    myServer.setKeyAbout($scope);
+                }
+            },
             {tableId: 'User', title: '用户管理', keyInfo: 'name',
                 controller: function($log, $rootScope, $scope, myServer) {
                     $scope.preInsert = function(rec) {

@@ -531,17 +531,17 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'CompanyList'), {}, ok1);
                 }
             },
-            retrieveKeyDefineList: function($scope) {
+            retrieveSystemList: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
-                        $scope.$root.keyDefineList = angular.element.map(ret, function(obj) {
-                            return {value: obj.id, name: obj.keyName};
+                        $scope.$root.systemList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.name};
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.keyDefineList)) {
-                    $scope.$root.keyDefineList = [];
-                    $scope.queryBase($resource(URLPrefix + 'SystemKeyDefineList'), {}, ok1);
+                if (angular.isUndefined($scope.$root.systemList)) {
+                    $scope.$root.systemList = [];
+                    $scope.queryBase($resource(URLPrefix + 'SystemList'), {}, ok1);
                 }
             },
             retrievePartnerList: function($scope) {

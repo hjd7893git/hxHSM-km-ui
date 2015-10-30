@@ -1,0 +1,54 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;系统密钥<code>【&nbsp;{{rec.name}}&nbsp;】</code>的维护记录</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item bi-ptb0">
+                        <div class="panel-body bi-pad0">
+                            <table class="table table-condensed bg-white bi-margin-b0">
+                                <thead><tr>
+                                    <th>标识</th>
+                                    <th>系统</th>
+                                    <th>密钥名称</th>
+                                    <th>是否ZMK加密</th>
+                                    <th>密钥类型</th>
+                                    <th>密钥长度</th>
+                                    <th>密钥用于</th>
+                                    <th>合作伙伴</th>
+                                    <th>设备类型</th>
+                                    <th>设备密钥用法</th>
+                                    <th>密钥ID</th>
+                                    <th>维护类型</th>
+                                    <th class="his-col-id">序号</th>
+                                    <th class="his-col-op">操作</th>
+                                    <th class="his-col-ts">操作时间戳</th>
+                                    <th class="his-col-uid">操作员</th></tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="his in histories">
+                                    <td>{{his.id}}</td>
+                                    <td>{{his.systemId}}</td>
+                                    <td>{{his.keyName}}</td>
+                                    <td>{{his.createMode}}</td>
+                                    <td>{{his.keyType}}</td>
+                                    <td>{{his.keySchema|optionName:''}}</td>
+                                    <td>{{his.keyUseFor}}</td>
+                                    <td>{{his.partnerId}}</td>
+                                    <td>{{his.equipmentType}}</td>
+                                    <td>{{his.keyUseType}}</td>
+                                    <td>{{his.keyId}}</td>
+                                    <td colspan="5" style="padding: 0;">
+                                        <bi-history-columns row-operations="his.operations"></bi-history-columns>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+                <ng-include src="'components/crud/biHistoryButtonsTemplate.html'"></ng-include>
+            </div>
+        </div>
+    </div>
+</div>
