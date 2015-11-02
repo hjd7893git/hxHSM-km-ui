@@ -637,6 +637,19 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'KeyDefineList'), params, ok1);
                 }
             },
+            retrieveMachineList :  function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
+                        $scope.$root.machineList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.number};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.machineList)) {
+                    $scope.$root.machineList = [];
+                    $scope.queryBase($resource(URLPrefix + 'MachineList'), {}, ok1);
+                }
+            },
             setKeyAbout: function($scope) {
                 $scope.preCommit = function(rec) {
                     if (angular.isDefined(rec.createKey) && rec.createKey) {

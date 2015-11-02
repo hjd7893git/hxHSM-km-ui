@@ -43,8 +43,8 @@
                                 <td>{{r.rec.performance}}</td>
                                 <td>{{r.rec.ip}}</td>
                                 <td>{{r.rec.port}}</td>
-                                <td>{{r.rec.clusterId}}</td>
-                                <td>{{r.rec.status}}</td>
+                                <td>{{r.rec.clusterId | optionName:clusterList}}</td>
+                                <td>{{r.rec.status | optionName:"machineStatus"}}</td>
                             </tr>
                             </tbody>
                         </table>

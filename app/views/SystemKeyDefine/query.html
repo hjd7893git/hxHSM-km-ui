@@ -37,7 +37,7 @@
                                 <th>系统</th>
                                 <th>密钥名称</th>
                                 <th>类型</th>
-                                <th>密钥值</th>
+                                <th>设备密钥</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -50,7 +50,7 @@
                                 <td>{{r.rec.systemId | optionName:systemList}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.keyName}}</a></td>
                                 <td>{{r.rec.keyType | optionName:'keyType'}}</td>
-                                <td>{{r.rec.keyValue}}</td>
+                                <td>{{r.rec.keyBizSeq | ifdef:'已创建':'-'}}</td>
                             </tr>
                             </tbody>
                         </table>

@@ -36,12 +36,12 @@
                                     <i class="fa fa-{{r.rec.opType|optionName:'opTypeIcon'}} text-danger" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.id}}</td>
-                                <td>{{r.rec.model}}</td>
+                                <td>{{r.rec.modelId | optionName:machineModelList}}</td>
                                 <td>{{r.rec.batch}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.number}}</a></td>
-                                <td>{{r.rec.producer}}</td>
+                                <td>{{r.rec.producer | optionName:companyList}}</td>
                                 <td>{{r.rec.produceDate|biDate}}</td>
-                                <td>{{r.rec.supplier}}</td>
+                                <td>{{r.rec.supplier | optionName:companyList}}</td>
                                 <td>{{r.rec.supplyDate|biDate}}</td>
                                 <td>{{r.rec.status}}</td>
                             </tr>

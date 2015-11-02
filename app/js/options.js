@@ -92,6 +92,7 @@ angular.module('myApp.options', ['ngResource'])
                         rec.readies = rec.readies || [];
                     };
                     $scope.refFields = ['readies']; // 只有1类Entity-Relation需要
+                    myServer.retrieveCompanyList($scope)
                     myServer.retrieveMachineModelList($scope);
                 }
             },
@@ -103,6 +104,7 @@ angular.module('myApp.options', ['ngResource'])
             {tableId: 'MachineReady', title: '密码机上架管理',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveGroupList($scope);
+                    myServer.retrieveMachineList($scope);
                 }
             },
             {tableId: 'Menu', title: '菜单管理'},
