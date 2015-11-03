@@ -170,6 +170,7 @@ angular.module('myApp.options', ['ngResource'])
                 controller:function($log,$rootScope,$scope,myServer){
                     myServer.retrieveSystemList($scope);
                     myServer.setKeyAbout($scope);
+                    myServer.retrievePartnerList($scope);
                 }
             },
             {tableId: 'User', title: '用户管理', keyInfo: 'name',

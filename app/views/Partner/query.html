@@ -28,7 +28,7 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th><th>伙伴类型</th><th>伙伴名称</th><th>分支行名称</th><th>密钥</th>
+                                <th>标识</th><th>伙伴类型</th><th>伙伴名称</th><th>密钥</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -40,7 +40,6 @@
                                 <td>{{r.rec.id}}</td>
                                 <td>{{r.rec.partnerType|optionName:'PartnerType'}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.partnerName}}</a></td>
-                                <td>{{r.rec.branchName}}</td>
                                 <td>{{r.rec.keyBizSeq | ifdef:'已创建':'-'}}</td>
                             </tr>
                             </tbody>
