@@ -10,6 +10,7 @@
                                 <thead><tr>
                                     <th>标识</th>
                                     <th>名称</th>
+                                    <th>集群</th>
                                     <th>描述</th>
                                     <th>维护类型</th>
                                     <th class="his-col-id">序号</th>
@@ -21,6 +22,7 @@
                                 <tr ng-repeat="his in histories">
                                     <td>{{his.id}}</td>
                                     <td>{{his.name}}</td>
+                                    <td>{{his.clusterId | optionName:clusterList}}</td>
                                     <td>{{his.description}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">

@@ -38,7 +38,7 @@
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.id}}</td>
-                                <td><a href ng-click="showEditor($index)">{{r.rec.branchId}}</a></td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.branchId|optionName:branchList}}</a></td>
                                 <td>{{r.rec.cardDataFile}}</td>
                                 <td>{{r.rec.cardQuantity}}</td>
                                 <td>{{r.rec.rsaKeyFile}}</td>

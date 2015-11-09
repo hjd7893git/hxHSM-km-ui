@@ -8,33 +8,54 @@
                         <div class="panel-body bi-pad0">
                             <form class="form-horizontal">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
-                                              item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
+                                              item-value="rec.id" item-old-value="bak.id"
+                                              item-locked="'true'"></bi-edit-item>
                                 <bi-edit-item item-label="'代码'" item-tip="'为3-8位的大写字母'"
-                                              item-value="rec.symbol" item-old-value="bak.symbol" item-locked="lock"></bi-edit-item>
+                                              item-value="rec.symbol" item-old-value="bak.symbol"
+                                              item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'名称'" item-tip="'中文名称'"
-                                              item-value="rec.name" item-old-value="bak.name" item-locked="lock"></bi-edit-item>
+                                              item-value="rec.name" item-old-value="bak.name"
+                                              item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'英文名称'"
-                                              item-value="rec.nameEn" item-old-value="bak.nameEn" item-locked="lock"></bi-edit-item>
+                                              item-value="rec.nameEn" item-old-value="bak.nameEn"
+                                              item-locked="lock"></bi-edit-item>
                                 <bi-text-item item-label="'简介'"
-                                              item-value="rec.summary" item-old-value="bak.summary" item-locked="lock"></bi-text-item>
+                                              item-value="rec.summary" item-old-value="bak.summary"
+                                              item-locked="lock"></bi-text-item>
                                 <bi-edit-item item-label="'IP地址列表'" item-tip="'如：192.168.1.1-4, 192.168.2.1'"
-                                              item-value="rec.ipList" item-old-value="bak.ipList" item-locked="lock"></bi-edit-item>
+                                              item-value="rec.ipList" item-old-value="bak.ipList"
+                                              item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'管控指令集'" item-tip="'如：NC, #3'"
-                                              item-value="rec.commandList" item-old-value="bak.commandList" item-locked="lock"></bi-edit-item>
-                                <bi-select-item item-label="'指令集管控策略'" item-options="'acceptRejectPolicy'|theOption"
-                                                item-value="rec.acceptRejectPolicy" item-old-value="bak.acceptRejectPolicy" item-locked="lock"></bi-select-item>
-                                <bi-select-item item-label="'密码机分组'" is-option-field="'true'" item-margin="'bi-margin-b0'"
-                                                item-value="rec.groupId" item-old-value="bak.groupId" item-locked="lock" item-options="groupList"></bi-select-item>
+                                              item-value="rec.commandList" item-old-value="bak.commandList"
+                                              item-locked="lock"></bi-edit-item>
+                                <bi-edit-item item-label="'API列表'"
+                                              item-value="rec.apiList" item-old-value="bak.apiList"
+                                              item-locked="lock"></bi-edit-item>
+                                <bi-select-item item-label="'是否短连接'" item-options="'YesNo'|theOption"
+                                                item-value="rec.shortConnection" item-old-value="bak.shortConnection"
+                                                item-locked="lock"></bi-select-item>
+                                <bi-select-item item-label="'密码机分组'" is-option-field="'true'"
+                                                item-margin="'bi-margin-b0'"
+                                                item-value="rec.groupId" item-old-value="bak.groupId" item-locked="lock"
+                                                item-options="groupList"></bi-select-item>
                                 <div class="form-group bi-margin-b0 bi-margin-t10" ng-if="recStatus == -1 && lock">
                                     <label class="col-sm-2 control-label">加密服务调用统计</label>
+
                                     <div class="col-sm-6">
                                         <div class="btn-group" role="group" style="width: 100%;">
                                             <button ng-click="gotoPage('chart')" class="btn btn-default"
-                                                    data-toggle="tooltip" data-placement="top" data-title="成功失败交易量-时间变化图" bs-tooltip><i class="fa fa-line-chart"></i>&nbsp;线型图</button>
+                                                    data-toggle="tooltip" data-placement="top"
+                                                    data-title="成功失败交易量-时间变化图" bs-tooltip><i
+                                                    class="fa fa-line-chart"></i>&nbsp;线型图
+                                            </button>
                                             <button ng-click="gotoPage('chart')" class="btn btn-default"
-                                                    data-toggle="tooltip" data-placement="top" data-title="失败原因分类-数量占比图" bs-tooltip><i class="fa fa-pie-chart"></i>&nbsp;饼状图</button>
+                                                    data-toggle="tooltip" data-placement="top" data-title="失败原因分类-数量占比图"
+                                                    bs-tooltip><i class="fa fa-pie-chart"></i>&nbsp;饼状图
+                                            </button>
                                             <button ng-click="gotoPage('chart')" class="btn btn-default"
-                                                    data-toggle="tooltip" data-placement="top" data-title="交易耗时-实时变化图" bs-tooltip><i class="fa fa-area-chart"></i>&nbsp;电波图</button>
+                                                    data-toggle="tooltip" data-placement="top" data-title="交易耗时-实时变化图"
+                                                    bs-tooltip><i class="fa fa-area-chart"></i>&nbsp;电波图
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

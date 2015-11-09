@@ -1,7 +1,7 @@
 <div class="panel-collapse" role="tabpanel" bs-collapse-target>
     <div class="panel-group" role="tablist">
         <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;密码机<code>【&nbsp;{{his.name}}&nbsp;】</code>的维护记录</div>
+            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;密码机<code>【&nbsp;{{his.id}}&nbsp;】</code>的上架记录</div>
             <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
                 <ul class="list-group">
                     <li class="list-group-item bi-ptb0">
@@ -20,7 +20,7 @@
                                 <tbody>
                                 <tr ng-repeat="his in histories">
                                     <td>{{his.id}}</td>
-                                    <td>{{his.env}}</td>
+                                    <td>{{his.env|optionName:'env'}}</td>
                                     <td>{{his.room}}</td>
                                     <td>{{his.position}}</td>
                                     <td>{{his.readyDate}}</td>
@@ -29,8 +29,8 @@
                                     <td>{{his.connectionPoolSize}}</td>
                                     <td>{{his.commandSetVersion}}</td>
                                     <td>{{his.issueDate}}</td>
-                                    <td>{{his.groupId}}</td>
-                                    <td>{{his.status}}</td>
+                                    <td>{{his.groupId|optionName:groupList}}</td>
+                                    <td>{{his.status|optionName:'machineStatus'}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">
                                         <bi-history-columns row-operations="his.operations"></bi-history-columns>

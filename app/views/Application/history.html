@@ -12,7 +12,7 @@
                                     <th>代码</th>
                                     <th>名称</th>
                                     <th>英文名称</th>
-                                    <th>指令集管控策略</th>
+                                    <th>是否短连接</th>
                                     <th>密码机分组</th>
                                     <th>维护类型</th><th class="his-col-id">序号</th><th class="his-col-op">操作</th><th class="his-col-ts">时间戳</th><th class="his-col-uid">操作员</th></tr>
                                 </thead>
@@ -22,8 +22,8 @@
                                     <td>{{his.symbol}}</td>
                                     <td>{{his.name}}</td>
                                     <td>{{his.nameEn}}</td>
-                                    <td>{{rec.acceptRejectPolicy|optionName:'acceptRejectPolicy'}}</td>
-                                    <td>{{his.groupId|optionName:groups}}</td>
+                                    <td>{{his.shortConnection|optionName:'YesNo'}}</td>
+                                    <td>{{his.groupId|optionName:groupList}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">
                                         <bi-history-columns row-operations="his.operations"></bi-history-columns>

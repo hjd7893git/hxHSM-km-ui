@@ -18,7 +18,7 @@
                                 <tbody>
                                 <tr ng-repeat="his in histories">
                                     <td>{{his.id}}</td>
-                                    <td>{{his.branchId}}</td>
+                                    <td>{{his.branchId|optionName:branchList}}</td>
                                     <td>{{his.cardDataFile}}</td>
                                     <td>{{his.cardQuantity}}</td>
                                     <td>{{his.rsaKeyFile}}</td>

@@ -9,7 +9,7 @@
                             <table class="table table-condensed bg-white bi-margin-b0">
                                 <thead><tr>
                                     <th>标识</th>
-                                    <th>机构ID</th>
+                                    <th>机构</th>
                                     <th>计划数量</th>
                                     <th>计划时间</th>
                                     <th>开始时间</th>
@@ -21,13 +21,13 @@
                                 <tbody>
                                 <tr ng-repeat="his in histories">
                                     <td>{{his.id}}</td>
-                                    <td>{{his.branchId}}</td>
+                                    <td>{{his.branchId|optionName:branchList}}</td>
                                     <td>{{his.planQuantity}}</td>
                                     <td>{{his.planDatetime}}</td>
                                     <td>{{his.startDatetime}}</td>
                                     <td>{{his.endDatetime}}</td>
                                     <td>{{his.completeQuantity}}</td>
-                                    <td>{{his.batchStatus}}</td>
+                                    <td>{{his.batchStatus|optionName:'machineStatus'}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">
                                         <bi-history-columns row-operations="his.operations"></bi-history-columns>

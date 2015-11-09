@@ -34,31 +34,18 @@
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
                                 <th>标识</th>
-                                <th><a ng-click="sortOn('symbol')">代码</a>&nbsp;<i
-                                        class="fa fa-sort{{sortByname|iif:'-alpha-asc':'-alpha-desc':''}}"></i></th>
-                                <th><a ng-click="sortOn('name')">名称</a>&nbsp;<i
-                                        class="fa fa-sort{{sortByname|iif:'-alpha-asc':'-alpha-desc':''}}"></i></th>
-                                <th>英文名称</th>
-                                <th>IP地址列表</th>
-                                <th>API列表</th>
-                                <th>是否短连接</th>
-                                <th>密码机分组</th>
+                                <th>假活错误码</th>
+                            </tr>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">
+                            <tr ng-repeat="r in recs" class="chosen-{{r.rec.fadeAliveCodes}}">
                                 <td class="text-center">
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.id}}</td>
-                                <td>{{r.rec.symbol}}</td>
-                                <td><a href ng-click="showEditor($index)">{{r.rec.name}}</a></td>
-                                <td>{{r.rec.nameEn}}</td>
-                                <td>{{r.rec.ipList}}</td>
-                                <td>{{r.rec.apiList}}</td>
-                                <td>{{r.rec.shortConnection|optionName:'YesNo'}}</td>
-                                <td>{{r.rec.groupId|optionName:groupList}}</td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.fadeAliveCodes}}</a></td>
                             </tr>
                             </tbody>
                         </table>

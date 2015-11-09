@@ -9,7 +9,7 @@
                             <table class="table table-condensed bg-white bi-margin-b0">
                                 <thead><tr>
                                     <th>标识</th>
-                                    <th>系统ID</th>
+                                    <th>系统</th>
                                     <th>卡BIN</th>
                                     <th>证书序列号</th>
                                     <th>失效日期</th>
@@ -26,7 +26,7 @@
                                 <tbody>
                                 <tr ng-repeat="his in histories">
                                     <td>{{his.id}}</td>
-                                    <td>{{his.keyDefineId}}</td>
+                                    <td>{{his.keyDefineId|optionName:systemKeyDefineList}}</td>
                                     <td>{{his.cardBin}}</td>
                                     <td>{{his.serialNo}}</td>
                                     <td>{{his.invalidDate}}</td>
@@ -37,7 +37,7 @@
                                     <td>{{his.downloadTimes}}</td>
                                     <td>{{his.rootPublicKeyFile}}</td>
                                     <td>{{his.certFileName}}</td>
-                                    <td>{{his.certStatus}}</td>
+                                    <td>{{his.certStatus|optionName:'certStatus'}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">
                                         <bi-history-columns row-operations="his.operations"></bi-history-columns>

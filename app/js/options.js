@@ -20,15 +20,15 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'action', names: [{value: 'input', name: '录入'}, {value: 'check', name: '复核'}, {value: 'reject', name: '拒绝'}]},
             {option: 'equipmentType', names: [{value: 0, name: '自助设备'}, {value: 1, name: 'POS机'}, {value: 2, name: '网银U盾'}, {value: 3, name: '密码键盘'}]},
             {option: 'env', names: [{value: 0, name: '开发'}, {value: 1, name: '测试'}, {value: 2, name: '集成'}, {value: 3, name: '验收'}, {value: 4, name: '演练'}, {value: 5, name: '灾备'}, {value: 6, name: '生产'}]},
-            {option: 'machineStatus', names: [{value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}]},
             {option: 'acceptRejectPolicy', names: [{value: 0, name: '只允许集合内的'}, {value: 1, name: '除了集合内的'}]},
             {option: 'keyType', names:[{value: '000', name: 'ZMK'}, {value: '001', name: 'ZPK'}]},
             {option: 'keySchema', names: [{value: 'Y', name: '16 Bits'}, {value: 'X', name: '32 Bits'}, {value: 'Z', name: '48 Bits'}]},
             {option: 'keyUse', names: [{value: 0, name: '应用模块'}, {value: 1, name: '设备'}, {value: 2, name: '合作伙伴'}]},
             {option: 'keyUseType', names: [{value: 0, name: '不适用'}, {value: 1, name: '全行统一'}, {value: 2, name: '分行统一'}, {value: 3, name: '网店统一'}, {value: 4, name: '一机一密'}]},
-            {option: 'machineStatus', names: [{value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}]},
+            {option: 'machineStatus', names: [{value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}, {value:3, name: '预备'}]},
             {option: 'PartnerType', names:[{value: 0, name: '政府机构'}, {value: 1, name: '商业企业'}]},
-            {option: 'certStates', names:[{value: 0, name: '密钥已产生'}, {value: 1, name: '申请证书中'},{value:2,name:'证书已导入'}]}
+            {option: 'certStatus', names:[{value: 0, name: '密钥已产生'}, {value: 1, name: '申请证书中'},{value:2,name:'证书已导入'}]},
+            {option: 'RSAStatus' , names:[{value: 0, name: '未用'}, {value: 1, name: '已用'}, {value:2, name:'过期'}]}
         ];
         var tableControllers = [
             {tableId: 'Application', title: '应用管理', keyInfo: 'name',
@@ -76,7 +76,11 @@ angular.module('myApp.options', ['ngResource'])
                 }
             },
             {tableId: 'Global', title: '全局配置'},
-            {tableId: 'GroupDefine', title: '分组管理'},
+            {tableId: 'GroupDefine', title: '分组管理', keyInfo: 'name',
+                controller: function($log,$rootScope,$scope,myServer) {
+                    myServer.retrieveClusterList($scope)
+                }
+            },
             {tableId: 'Host', title: '主机管理', keyInfo: 'hardware',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveClusterList($scope);

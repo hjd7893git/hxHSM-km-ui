@@ -10,13 +10,13 @@
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
-                                <bi-select-item item-label="'系统ID'" item-options="systemKeyDefineList"
+                                <bi-select-item item-label="'系统'" item-options="systemKeyDefineList"
                                                 item-value="rec.keyDefineId" item-old-value="bak.keyDefineId"
                                                 item-locked="lock"></bi-select-item>
-                                <bi-edit-item item-label="'卡BIN'"
+                                <bi-edit-item item-label="'卡BIN'" item-required="'true'"
                                               item-value="rec.cardBin" item-old-value="bak.cardBin"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'证书序列号'" item-tip="'由业务人员联系CFCA获得'"
+                                <bi-edit-item item-label="'证书序列号'" item-tip="'由业务人员联系CFCA获得'" item-data-type="'number'"
                                               item-value="rec.serialNo" item-old-value="bak.serialNo"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-date-item item-label="'失效日期'" item-tip="'由业务人员联系CFCA获得'"
@@ -32,20 +32,20 @@
                                               item-value="rec.checkValue" item-old-value="bak.checkValue"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'请求文件名'" item-value="rec.requestFileName"
-                                              item-old-value="rec.requestFileName"
+                                              item-old-value="bak.requestFileName"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'下载次数'" item-value="rec.downloadTimes"
-                                              item-old-value="rec.downloadTimes"
+                                <bi-edit-item item-label="'下载次数'" item-value="rec.downloadTimes" item-data-type="'number'"
+                                              item-old-value="bak.downloadTimes"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'根公钥文件'" item-value="rec.rootPublicKeyFile"
-                                              item-old-value="rec.rootPublicKeyFile"
+                                              item-old-value="bak.rootPublicKeyFile"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'证书文件名'" item-value="rec.certFileName"
-                                              item-old-value="rec.certFileName"
+                                              item-old-value="bak.certFileName"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-select-item item-label="'证书状态'" item-options="'certStates'|theOption"
+                                <bi-select-item item-label="'证书状态'" item-options="'certStatus'|theOption"
                                                 item-value="rec.certStatus"
-                                                item-old-value="rec.certStatus"
+                                                item-old-value="bak.certStatus"
                                                 item-locked="lock"></bi-select-item>
                             </form>
                         </div>

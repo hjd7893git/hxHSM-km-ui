@@ -34,7 +34,7 @@
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
                                 <th>标识</th>
-                                <th>系统ID</th>
+                                <th>系统</th>
                                 <th>卡BIN</th>
                                 <th>证书序列号</th>
                                 <th>失效日期</th>
@@ -56,7 +56,7 @@
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.id}}</td>
-                                <td><a href ng-click="showEditor($index)">{{r.rec.keyDefineId}}</a></td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.keyDefineId|optionName:systemKeyDefineList}}</a></td>
                                 <td>{{r.rec.cardBin}}</td>
                                 <td>{{r.rec.serialNo}}</td>
                                 <td>{{r.rec.invalidDate}}</td>
@@ -67,7 +67,7 @@
                                 <td>{{r.rec.downloadTimes}}</td>
                                 <td>{{r.rec.rootPublicKeyFile}}</td>
                                 <td>{{r.rec.certFileName}}</td>
-                                <td>{{r.rec.certStatus|optionName:"machineStatus"}}</td>
+                                <td>{{r.rec.certStatus|optionName:"certStatus"}}</td>
                             </tr>
                             </tbody>
                         </table>
