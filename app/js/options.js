@@ -34,16 +34,37 @@ angular.module('myApp.options', ['ngResource'])
             {tableId: 'Application', title: '应用管理', keyInfo: 'name',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveGroupList($scope);
-                    $scope.dataset = [{ data: [], yaxis: 1, label: 'sin' }];
-                    $scope.options = {
-                        legend: {
-                            container: '#legend',
-                            show: true
-                        }
+                    $scope.displayChart = function(appId) {
+                        $scope.gotoPage('chart');
+                        $scope.dataset = [];//[['January', 10], ['February', 8], ['March', 4], ['April', 13], ['May', 12], ['June', 9]]];
+                        $scope.options = {
+                            series: {
+                                bars: {
+                                    show: true,
+                                    align: 'center'
+                                }
+                            },
+                            xaxis: {
+                                mode: 'categories',
+                                tickLength: 0
+                            }
+                        };
+                        var formatTime = function (x1) {
+                            var x = x1.substring(8);
+                            return x.substr(0, 2) + ':' + x.substr(2, 2) + ':' + x.substr(4);
+                        };
+                        var ok = function(ret) {
+                            if (angular.isUndefined(ret.status)) { // normal
+                                $scope.dataset.push( angular.element.map(ret, function(obj) {
+                                    return [[formatTime(obj.gatherDatetime), obj.failRate]];
+                                }));
+                                $log.info(JSON.stringify($scope.dataset));
+                            }
+                            else
+                                $scope.showModal(ret);
+                        };
+                        $scope.queryBase(myServer.statistics, {tableId: 'Application', appId: appId}, ok);
                     };
-                    for (var i = 0; i < 14; i += 0.5) {
-                        $scope.dataset[0].data.push([i, Math.sin(i)])
-                    }
                 }
             },
             {tableId: 'Branch', title: '分支行机构管理', keyInfo: 'branchName',

@@ -908,3 +908,7 @@ a:focus {
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px;
 }
+.bi-split {
+    border-right: solid 1px #f2dede;
+    text-align: right;
+}
