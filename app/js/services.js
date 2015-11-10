@@ -25,6 +25,29 @@ angular.module('myApp.services', ['ngResource'])
                 });
                 return deferred.promise;
             },
+            uploadDialog: function($scope, who) {
+                var uploadModal = $modal({scope: $scope, template: 'views/dialog/upload.html', show: false});
+                var dhxConf = {
+                    "parent": "xFileBox",
+                    "uploadUrl": "http://localhost:8080/service/upload",
+                    "swfUrl": "http://localhost:8080/service/upload",
+                    "slUrl": "http://localhost:8080/service/upload",
+                    "swfPath": "dhxvault.swf",
+                    "slXap": "dhxvault.xap",
+                    "maxFileSize": 5242880
+                };
+                var myVault = null;
+                $scope.showUpload = function() {
+                    uploadModal.$promise.then(uploadModal.show).then(function() {
+                        if (myVault == null)
+                            myVault = new dhtmlXVaultObject(dhxConf);
+                        else {
+                            myVault.destroy();
+                            myVault = new dhtmlXVaultObject(dhxConf);
+                        }
+                    });
+                };
+            },
             errorDialog: function($scope, who) {
                 var errorModal = $modal({scope: $scope, template: 'views/dialog/error.html', show: false});
                 $scope.showModal = function(ret) {

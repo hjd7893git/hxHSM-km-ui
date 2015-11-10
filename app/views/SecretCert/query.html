@@ -34,17 +34,13 @@
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
                                 <th>标识</th>
-                                <th>系统</th>
                                 <th>卡BIN</th>
                                 <th>证书序列号</th>
                                 <th>失效日期</th>
-                                <th>私钥</th>
-                                <th>公钥</th>
-                                <th>校验值</th>
-                                <th>请求文件名</th>
+                                <th>请求文件</th>
                                 <th>下载次数</th>
                                 <th>根公钥文件</th>
-                                <th>证书文件名</th>
+                                <th>证书文件</th>
                                 <th>证书状态</th>
                             </tr>
                             </tr>
@@ -56,14 +52,10 @@
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.id}}</td>
-                                <td><a href ng-click="showEditor($index)">{{r.rec.keyDefineId|optionName:systemKeyDefineList}}</a></td>
                                 <td>{{r.rec.cardBin}}</td>
                                 <td>{{r.rec.serialNo}}</td>
                                 <td>{{r.rec.invalidDate}}</td>
-                                <td>{{r.rec.privateKeyValue}}</td>
-                                <td>{{r.rec.publicKeyValue}}</td>
-                                <td>{{r.rec.checkValue}}</td>
-                                <td>{{r.rec.requestFileName}}</td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.requestFileName}}</a></td>
                                 <td>{{r.rec.downloadTimes}}</td>
                                 <td>{{r.rec.rootPublicKeyFile}}</td>
                                 <td>{{r.rec.certFileName}}</td>
