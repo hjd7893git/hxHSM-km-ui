@@ -39,23 +39,26 @@
                                                 item-value="rec.groupId" item-old-value="bak.groupId" item-locked="lock"
                                                 item-options="groupList"></bi-select-item>
                                 <div class="form-group bi-margin-b0 bi-margin-t10" ng-if="recStatus == -1 && lock">
-                                    <label class="col-sm-2 control-label">加密服务调用统计</label>
-
+                                    <label class="col-sm-2 control-label trimR">加密服务调用统计</label>
                                     <div class="col-sm-6">
+                                        <table class="table table-condensed bi-margin-b0 crud-r" style="margin-top: -1px;">
+                                            <thead><tr>
+                                                <th class="text-center"></th><th class="text-right">成功</th><th class="text-right">失败</th><th class="text-right">失败率</th><th></th></tr>
+                                            </thead>
+                                            <tr>
+                                                <td class="text-center"><i class="fa fa-refresh"></i></td>
+                                                <td class="text-right">{{rec.statistics.total}}</td>
+                                                <td class="text-right">{{rec.statistics.failed}}</td>
+                                                <td class="text-right">{{rec.statistics.failRate}}&nbsp;‰</td><td></td>
+                                            </tr>
+                                        </table>
                                         <div class="btn-group" role="group" style="width: 100%;">
+                                            <button ng-click="displayChart(rec.id)" class="btn btn-default bi-bar-lt"
+                                                    data-toggle="tooltip" data-placement="top" data-title="成功失败交易量-时间变化图" bs-tooltip><i class="fa fa-line-chart"></i>&nbsp;线型图</button>
                                             <button ng-click="gotoPage('chart')" class="btn btn-default"
-                                                    data-toggle="tooltip" data-placement="top"
-                                                    data-title="成功失败交易量-时间变化图" bs-tooltip><i
-                                                    class="fa fa-line-chart"></i>&nbsp;线型图
-                                            </button>
-                                            <button ng-click="gotoPage('chart')" class="btn btn-default"
-                                                    data-toggle="tooltip" data-placement="top" data-title="失败原因分类-数量占比图"
-                                                    bs-tooltip><i class="fa fa-pie-chart"></i>&nbsp;饼状图
-                                            </button>
-                                            <button ng-click="gotoPage('chart')" class="btn btn-default"
-                                                    data-toggle="tooltip" data-placement="top" data-title="交易耗时-实时变化图"
-                                                    bs-tooltip><i class="fa fa-area-chart"></i>&nbsp;电波图
-                                            </button>
+                                                    data-toggle="tooltip" data-placement="top" data-title="失败原因分类-数量占比图" bs-tooltip><i class="fa fa-pie-chart"></i>&nbsp;饼状图</button>
+                                            <button ng-click="gotoPage('chart')" class="btn btn-default bi-bar-rt"
+                                                    data-toggle="tooltip" data-placement="top" data-title="交易耗时-实时变化图" bs-tooltip><i class="fa fa-area-chart"></i>&nbsp;电波图</button>
                                         </div>
                                     </div>
                                 </div>

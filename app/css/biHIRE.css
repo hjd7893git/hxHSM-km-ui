@@ -758,6 +758,15 @@ a:focus {
     right: -5px;
     z-index: 11;
 }
+.bi-btn-inner-right {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    height: 34px;
+    z-index: 11;
+}
 .bBorder {
     border: 1px solid;
 }
@@ -907,4 +916,8 @@ a:focus {
     padding: 8px 10px 8px 10px;
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px;
+}
+.bi-split {
+    border-right: solid 1px #f2dede;
+    text-align: right;
 }

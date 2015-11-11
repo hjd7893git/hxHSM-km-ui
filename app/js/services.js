@@ -671,6 +671,7 @@ angular.module('myApp.services', ['ngResource'])
                 };
                 $scope.refFields = ['keys'];
             },
-            journals: $resource(URLPrefix + 'JournalBiz/:status', {seqNo: '@status'})
+            journals: $resource(URLPrefix + 'JournalBiz/:status', {seqNo: '@status'}),
+            statistics: $resource(URLPrefix + 'statistics/:tableId/:appId', {tableId:'@tableId', appId: '@appId'})
         };
     }]);

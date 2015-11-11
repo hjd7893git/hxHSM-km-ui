@@ -10,43 +10,64 @@
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
-                                <bi-select-item item-label="'系统'" item-options="systemKeyDefineList"
-                                                item-value="rec.keyDefineId" item-old-value="bak.keyDefineId"
-                                                item-locked="lock"></bi-select-item>
                                 <bi-edit-item item-label="'卡BIN'" item-required="'true'"
                                               item-value="rec.cardBin" item-old-value="bak.cardBin"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'证书序列号'" item-tip="'由业务人员联系CFCA获得'" item-data-type="'number'"
+                                              item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
+                                <bi-edit-item item-label="'证书序列号'" item-required="'true'" item-tip="'由业务人员联系银联获得'" item-data-type="'number'"
                                               item-value="rec.serialNo" item-old-value="bak.serialNo"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-date-item item-label="'失效日期'" item-tip="'由业务人员联系CFCA获得'"
+                                              item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
+                                <bi-date-item item-label="'失效日期'" item-required="'true'"
                                               item-value="rec.invalidDate" item-old-value="bak.invalidDate"
-                                              item-locked="lock"></bi-date-item>
-                                <bi-edit-item item-label="'私钥'"
+                                              item-locked="opType != 1 || recStatus != -1"></bi-date-item>
+                                <bi-select-item item-label="'公钥长度'" item-options="'pubKeyLength'|theOption"
+                                                item-value="rec.rootPublicKeyLength"
+                                                item-old-value="bak.rootPublicKeyLength"
+                                                item-locked="opType != 1 || recStatus != -1"></bi-select-item>
+                                <div class="form-group bi-margin-b0" ng-if="opType == 1 && !lock">
+                                    <label class="col-sm-2 control-label trimR"><i class="fa fa-info-circle"></i></label>
+                                    <div class="col-sm-6">
+                                        <label class="control-label">后台据此产生公钥并生成公钥输入文件供申请证书所用.</label>
+                                    </div>
+                                </div>
+                                <bi-edit-item item-label="'私钥'" ng-show="opType != 1 || recStatus != -1"
                                               item-value="rec.privateKeyValue" item-old-value="bak.privateKeyValue"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'公钥'"
-                                              item-value="rec.publicKeyValue" item-old-value="bak.privateKeyValue"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'校验值'"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'公钥'" ng-show="opType != 1 || recStatus != -1"
+                                              item-value="rec.publicKeyValue" item-old-value="bak.publicKeyValue"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'校验值'" ng-show="opType != 1 || recStatus != -1"
                                               item-value="rec.checkValue" item-old-value="bak.checkValue"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'请求文件名'" item-value="rec.requestFileName"
-                                              item-old-value="bak.requestFileName"
-                                              item-locked="lock"></bi-edit-item>
+                                              item-locked="'true'"></bi-edit-item>
+                                <div class="form-group bi-margin-b10" ng-show="opType != 1 || recStatus != -1">
+                                    <label class="col-sm-2 control-label trimR">请求文件</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" ng-model="rec.requestFileName" ng-disabled="true">
+                                        <button ng-click="itemSetting()" class="btn btn-sm btn-default bi-btn-inner-right"><i class="fa fa-download"></i> 下载 ...</button>
+                                    </div>
+                                </div>
                                 <bi-edit-item item-label="'下载次数'" item-value="rec.downloadTimes" item-data-type="'number'"
-                                              item-old-value="bak.downloadTimes"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'根公钥文件'" item-value="rec.rootPublicKeyFile"
-                                              item-old-value="bak.rootPublicKeyFile"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'证书文件名'" item-value="rec.certFileName"
-                                              item-old-value="bak.certFileName"
-                                              item-locked="lock"></bi-edit-item>
+                                              item-old-value="bak.downloadTimes" ng-show="opType != 1"
+                                              item-locked="'true'"></bi-edit-item>
+                                <div class="form-group bi-margin-b10" ng-show="opType != 1 || recStatus != -1">
+                                    <label class="col-sm-2 control-label trimR">根公钥文件</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" ng-model="rec.rootPublicKeyFile" ng-disabled="true">
+                                        <button ng-click="showUploadX(rec, 'rootPublicKeyFile', 'dhxDivKey')" class="btn btn-sm btn-default bi-btn-inner-right"><i class="fa fa-upload"></i> 导入 ...</button>
+                                        <div id="dhxDivKey" style="display: none; height: 58px; margin-top: 5px; margin-right: -2px;"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group bi-margin-b10" ng-show="opType != 1 || recStatus != -1">
+                                    <label class="col-sm-2 control-label trimR">证书文件</label>
+                                    <div class="col-sm-6" >
+                                        <input type="text" class="form-control" ng-model="rec.certFileName" ng-disabled="true">
+                                        <button ng-click="showUploadX(rec, 'certFileName', 'dhxDivCert')" class="btn btn-sm btn-default bi-btn-inner-right"><i class="fa fa-upload"></i> 导入 ...</button>
+                                        <div id="dhxDivCert" style="display: none; height: 58px; margin-top: 5px; margin-right: -2px;"></div>
+                                    </div>
+                                </div>
                                 <bi-select-item item-label="'证书状态'" item-options="'certStatus'|theOption"
-                                                item-value="rec.certStatus"
+                                                item-value="rec.certStatus" ng-show="opType != 1 || recStatus != -1"
                                                 item-old-value="bak.certStatus"
-                                                item-locked="lock"></bi-select-item>
+                                                item-locked="'true'"></bi-select-item>
                             </form>
                         </div>
                     </li>

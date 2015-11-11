@@ -27,23 +27,45 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'keyUseType', names: [{value: 0, name: '不适用'}, {value: 1, name: '全行统一'}, {value: 2, name: '分行统一'}, {value: 3, name: '网店统一'}, {value: 4, name: '一机一密'}]},
             {option: 'machineStatus', names: [{value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}, {value:3, name: '预备'}]},
             {option: 'PartnerType', names:[{value: 0, name: '政府机构'}, {value: 1, name: '商业企业'}]},
-            {option: 'certStatus', names:[{value: 0, name: '密钥已产生'}, {value: 1, name: '申请证书中'},{value:2,name:'证书已导入'}]},
-            {option: 'RSAStatus' , names:[{value: 0, name: '未用'}, {value: 1, name: '已用'}, {value:2, name:'过期'}]}
+            {option: 'certStatus', names:[{value: 0, name: '申请中 ...'}, {value: 1, name: '已导入'}, {value: 2, name: '过期作废'}]},
+            {option: 'pubKeyLength', names:[{value: 0, name: '1024 Bits'}, {value: 1, name: '1152 Bits'}, {value: 2, name: '1408 Bits'}, {value: 3, name: '1984 Bits'}]},
+            {option: 'RSAStatus' , names:[{value: 0, name: '未用'}, {value: 1, name: '已用'}, {value: 2, name: '过期'}]}
         ];
         var tableControllers = [
             {tableId: 'Application', title: '应用管理', keyInfo: 'name',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveGroupList($scope);
-                    $scope.dataset = [{ data: [], yaxis: 1, label: 'sin' }];
-                    $scope.options = {
-                        legend: {
-                            container: '#legend',
-                            show: true
-                        }
+                    $scope.displayChart = function(appId) {
+                        $scope.gotoPage('chart');
+                        $scope.dataset = [];//[['January', 10], ['February', 8], ['March', 4], ['April', 13], ['May', 12], ['June', 9]]];
+                        $scope.options = {
+                            series: {
+                                bars: {
+                                    show: true,
+                                    align: 'center'
+                                }
+                            },
+                            xaxis: {
+                                mode: 'categories',
+                                tickLength: 0
+                            }
+                        };
+                        var formatTime = function (x1) {
+                            var x = x1.substring(8);
+                            return x.substr(0, 2) + ':' + x.substr(2, 2) + ':' + x.substr(4);
+                        };
+                        var ok = function(ret) {
+                            if (angular.isUndefined(ret.status)) { // normal
+                                $scope.dataset.push( angular.element.map(ret, function(obj) {
+                                    return [[formatTime(obj.gatherDatetime), obj.failRate]];
+                                }));
+                                $log.info(JSON.stringify($scope.dataset));
+                            }
+                            else
+                                $scope.showModal(ret);
+                        };
+                        $scope.queryBase(myServer.statistics, {tableId: 'Application', appId: appId}, ok);
                     };
-                    for (var i = 0; i < 14; i += 0.5) {
-                        $scope.dataset[0].data.push([i, Math.sin(i)])
-                    }
                 }
             },
             {tableId: 'Branch', title: '分支行机构管理', keyInfo: 'branchName',
@@ -138,24 +160,44 @@ angular.module('myApp.options', ['ngResource'])
                 }
             },
             {tableId: 'RsaKey', title:'RSA密钥',
-                controller:function($log,$rootScope,$scope,myServer) {
+                controller:function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveRsaKeyBatchList($scope);
                 }
             },
             {tableId: 'RsaKeyBatch', title:'RSA密钥生成批次',
-                controller:function($log,$rootScope,$scope,myServer) {
+                controller:function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveBranchList($scope);
                 }
             },
             {tableId: 'SecretCert', title:'证书',
-                controller:function($log,$rootScope,$scope,myServer) {
-                    myServer.retrieveSystemKeyDefineList($scope);
+                controller:function($log, $rootScope, $scope, myServer) {
+                    var myVaults = [];
+                    $scope.showUploadX = function(rec, fieldId, boxId) {
+                        angular.element("#"+boxId).show();
+                        var dhxConf = {
+                            "parent": boxId,
+                            "uploadUrl": "http://localhost:8080/service/upload",
+                            "swfUrl": "http://localhost:8080/service/upload",
+                            "slUrl": "http://localhost:8080/service/upload",
+                            "swfPath": "dhxvault.swf",
+                            "slXap": "dhxvault.xap",
+                            "filesLimit": 1
+                        };
+                        if (angular.isUndefined(myVaults[boxId])) {
+                            myVaults[boxId] = new dhtmlXVaultObject(dhxConf);
+                            myVaults[boxId].attachEvent("onFileAdd", function(file) {
+                                $scope.$apply(function () {
+                                    rec[fieldId] = file.name; // TODO: UI不能立即刷新, 需解决(加上$apply就OK了)
+                                });
+                            });
+                        }
+                        myVaults[boxId].f.click();
+                    };
                 }
             },
             {tableId: 'SecretKey', title: '密钥管理',
                 controller: function($log, $rootScope, $scope, myServer) {
                     $scope.readOnly = true;
-                    //myServer.retrieveKeyDefineList($scope);
                 }
             },
             {tableId: 'System', title: '系统管理', keyInfo: 'name',
@@ -171,7 +213,7 @@ angular.module('myApp.options', ['ngResource'])
                 }
             },
             {tableId: 'SystemKeyDefine', title: '系统密钥定义', keyInfo: 'keyName',
-                controller:function($log,$rootScope,$scope,myServer){
+                controller:function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveSystemList($scope);
                     myServer.setKeyAbout($scope);
                     myServer.retrievePartnerList($scope);
