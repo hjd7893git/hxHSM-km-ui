@@ -52,14 +52,16 @@
                                     <label class="col-sm-2 control-label trimR">根公钥文件</label>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control" ng-model="rec.rootPublicKeyFile" ng-disabled="true">
-                                        <button ng-click="showUpload()" class="btn btn-sm btn-default bi-btn-inner-right"><i class="fa fa-upload"></i> 导入 ...</button>
+                                        <button ng-click="showUploadX(rec, 'rootPublicKeyFile', 'dhxDivKey')" class="btn btn-sm btn-default bi-btn-inner-right"><i class="fa fa-upload"></i> 导入 ...</button>
+                                        <div id="dhxDivKey" style="display: none; height: 58px; margin-top: 5px; margin-right: -2px;"></div>
                                     </div>
                                 </div>
                                 <div class="form-group bi-margin-b10" ng-show="opType != 1 || recStatus != -1">
                                     <label class="col-sm-2 control-label trimR">证书文件</label>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6" >
                                         <input type="text" class="form-control" ng-model="rec.certFileName" ng-disabled="true">
-                                        <button ng-click="itemSetting()" class="btn btn-sm btn-default bi-btn-inner-right"><i class="fa fa-upload"></i> 导入 ...</button>
+                                        <button ng-click="showUploadX(rec, 'certFileName', 'dhxDivCert')" class="btn btn-sm btn-default bi-btn-inner-right"><i class="fa fa-upload"></i> 导入 ...</button>
+                                        <div id="dhxDivCert" style="display: none; height: 58px; margin-top: 5px; margin-right: -2px;"></div>
                                     </div>
                                 </div>
                                 <bi-select-item item-label="'证书状态'" item-options="'certStatus'|theOption"

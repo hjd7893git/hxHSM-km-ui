@@ -171,7 +171,28 @@ angular.module('myApp.options', ['ngResource'])
             },
             {tableId: 'SecretCert', title:'证书',
                 controller:function($log, $rootScope, $scope, myServer) {
-                    myServer.uploadDialog($scope, "SecretCert");
+                    var myVaults = [];
+                    $scope.showUploadX = function(rec, fieldId, boxId) {
+                        angular.element("#"+boxId).show();
+                        var dhxConf = {
+                            "parent": boxId,
+                            "uploadUrl": "http://localhost:8080/service/upload",
+                            "swfUrl": "http://localhost:8080/service/upload",
+                            "slUrl": "http://localhost:8080/service/upload",
+                            "swfPath": "dhxvault.swf",
+                            "slXap": "dhxvault.xap",
+                            "filesLimit": 1
+                        };
+                        if (angular.isUndefined(myVaults[boxId])) {
+                            myVaults[boxId] = new dhtmlXVaultObject(dhxConf);
+                            myVaults[boxId].attachEvent("onFileAdd", function(file) {
+                                $scope.$apply(function () {
+                                    rec[fieldId] = file.name; // TODO: UI不能立即刷新, 需解决(加上$apply就OK了)
+                                });
+                            });
+                        }
+                        myVaults[boxId].f.click();
+                    };
                 }
             },
             {tableId: 'SecretKey', title: '密钥管理',

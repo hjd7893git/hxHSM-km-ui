@@ -51,8 +51,8 @@ angular.module('myApp.views', ['ngRoute'])
         $scope.$on('$viewContentLoaded', function() {
             $log.info("event: view-reloaded");
         });
-        $scope.$on('$includeContentLoaded', function() {
-            $log.info("event: include-reloaded");
+        $scope.$on('$includeContentLoaded', function(e) {
+            $log.info("event: include-reloaded: " + e.targetScope.$parent.$parent.tableId);
         });
         var path = $location.path();
         var tableId = path.substring(7);
