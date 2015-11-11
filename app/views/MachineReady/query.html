@@ -14,14 +14,16 @@
                             <div class="panel-body bi-pad0">
                                 <form class="form-horizontal">
                                     <div class="col-md-6">
-                                        <bi-query-item item-label="'标识'" item-tip="'大于0的整数'"
-                                                       item-value="qry.id"></bi-query-item>
+                                        <bi-query-item item-label="'标识'" item-tip="'大于0的整数'" item-value="qry.id"></bi-query-item>
+                                        <bi-query-select item-label="'环境'" item-value="qry.env" item-options="'env'|theOption"></bi-query-select>
+                                        <bi-query-item item-label="'指令集版本'" item-value="commandSetVersion"></bi-query-item>
+                                        <bi-query-action></bi-query-action>
                                     </div>
                                     <div class="col-md-6">
-                                        <bi-query-item item-label="'名称'" item-tip="'文本,可模糊匹配'"
-                                                       item-value="qry.name"></bi-query-item>
+                                        <bi-query-select item-label="'编号'" item-value="qry.machineId" item-options="machineList"></bi-query-select>
+                                        <bi-query-item item-label="'机房'" item-value="qry.room"></bi-query-item>
+                                        <bi-query-select item-label="'密码机分组'" item-value="qry.groupId" item-options="groupList"></bi-query-select>
                                     </div>
-                                    <bi-query-action></bi-query-action>
                                 </form>
                             </div>
                         </div>

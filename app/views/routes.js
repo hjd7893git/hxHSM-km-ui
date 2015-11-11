@@ -16,6 +16,9 @@ angular.module('myApp.views', ['ngRoute'])
         }).when('/views/check', {
             templateUrl: 'views/Todo/check.html',
             controller: 'todoCheckCtrl'
+        }).when('/views/deploy', {
+            templateUrl: 'views/deploy.html',
+            controller: 'DeployCtrl'
         }).when('/views/:viewId', { // 其他view都是crud
             templateUrl: 'views/crud.html',
             controller: 'table.CRUD.controller'
@@ -25,6 +28,11 @@ angular.module('myApp.views', ['ngRoute'])
     }])
 
     .controller('myLoginCtrl', ['$log', '$scope', function($log, $scope) {
+        $scope.$on('$viewContentLoaded', function() {
+            angular.element('.carousel').carousel();
+        });
+    }])
+    .controller('myDeployCtrl', ['$log', '$scope', function($log, $scope) {
         $scope.$on('$viewContentLoaded', function() {
             angular.element('.carousel').carousel();
         });
@@ -111,6 +119,24 @@ angular.module('myApp.views', ['ngRoute'])
                     $scope.selectedRec = ele;
                     $scope.authorize(action, status);
                 }
+            });
+        };
+    }])
+    .controller('DeployCtrl', ['$location', '$scope', '$rootScope', 'myServer', '$log', function($location, $scope, $rootScope, myServer, $log) {
+        myServer.errorDialog($scope, "initData");
+        myServer.confirmDialog($scope,"initData")
+        $scope.doDeploy = function(initData) {
+            var promise = myServer.call("deploy", initData); // 同步调用，获得承诺接口
+            $log.info("initData:"+initData)
+            promise.then(function(ret) { // 调用承诺API获取数据 .resolve
+                $log.info("deploy --> ok: " + ret);
+                if (ret.status == 200 || ret.status == 201) {
+                    $scope.confirmModal(ret)
+                    $location.path("views/check").replace();
+                }
+            }, function(ret) { // 处理错误 .reject
+                $log.info("deploy --> fail: " + ret)
+                $scope.showModal(ret)
             });
         };
     }]);

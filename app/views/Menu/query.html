@@ -39,9 +39,9 @@
                                 <td>{{r.rec.id}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.name}}</a></td>
                                 <td>{{r.rec.transactionCode}}</td>
-                                <td>{{r.rec.isForNavigating}}</td>
-                                <td>{{r.rec.isRequireCheck}}</td>
-                                <td>{{r.rec.isRequireAuthorize}}</td>
+                                <td>{{r.rec.isForNavigating |optionName:'YesNo'}}</td>
+                                <td>{{r.rec.isRequireCheck |optionName:'YesNo'}}</td>
+                                <td>{{r.rec.isRequireAuthorize |optionName:'YesNo'}}</td>
                                 <td>{{r.rec.authorizeRoleId}}</td>
                             </tr>
                             </tbody>

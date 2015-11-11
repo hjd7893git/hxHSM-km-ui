@@ -44,6 +44,15 @@ angular.module('myApp.services', ['ngResource'])
                     errorModal.$promise.then(errorModal.show);
                 };
             },
+            confirmDialog: function($scope, who) {
+                var confirmModal = $modal({scope: $scope, template: 'views/dialog/confirm.html', show: false});
+                $scope.confirmModal = function(ret) {
+                    if (angular.isDefined(ret)) {
+                        $scope.title = '部署成功！';
+                    }
+                    confirmModal.$promise.then(confirmModal.show);
+                };
+            },
             roleMenuDialog: function($scope, who) {
                 var arrayDup = function(a) { // 数组复制
                     return angular.element.map(a, function(obj){
