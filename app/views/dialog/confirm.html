@@ -1,11 +1,12 @@
 <div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header" ng-show="title">
-                <button type="button" class="close" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><i class="fa"></i>&nbsp;{{title}}</h4>
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" ng-click="$hide()"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">&nbsp;部署状态：</h4>
             </div>
-            <div class="modal-body" style="background-color: #b3d4fc">&nbsp;{{errorMsg}}</div>
+            <div class="modal-body" style="background-color: #b3d4fc"><h3>&nbsp;{{confirmMsg}}</h3></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" ng-click="$hide()">Close</button>
             </div>

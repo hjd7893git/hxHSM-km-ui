@@ -1,27 +1,41 @@
+
 <bi-header></bi-header>
-<div class="panel-body bi-pad0">
-    <div class="panel panel-default">
-        <form class="form-horizontal" name="deployForm" ng-submit="doDeploy(initData)" ng-controller="DeployCtrl" style="margin-top: 50px">
-            <div class="form-group">
-                <label for="inputClusterId" class="col-sm-3 control-label">集群ID</label>
-                <div class="col-sm-4">
-                    <input type="number" class="form-control" id="inputClusterId" ng-model="initData.clusterId"
-                           placeholder="eg:1" required="required"/>
+<div class="container">
+    <div class="page-header bi-margin-b0 bi-pad0">
+        <h4>&nbsp;<i class="fa fa-leaf"></i>&nbsp;部署信息</h4>
+    </div>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;部署</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <form class="form-horizontal" name="deployForm" ng-submit="doDeploy(initData)" ng-controller="DeployCtrl">
+                <ul class="list-group">
+                    <li>
+                        <div class="panel-body bi-pad0">
+                                <div class="form-group">
+                                    <label for="inputClusterId" class="col-sm-2 control-label">集群ID</label>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" id="inputClusterId" ng-model="initData.clusterId" placeholder="eg: 1" required="required"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="directory" class="col-sm-2 control-label">部署目录</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="directory" ng-model="initData.directory" placeholder="eg: /User/Tmp/bdb" required="required"/>
+                                    </div>
+                                </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="panel-footer row bi-ptb10 bi-margin0">
+                    <div class="col-sm-offset-2">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-check"></i>&nbsp;部署</button>
+                    </div>
                 </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="directory" class="col-sm-3 control-label">部署目录</label>
-                <div class="col-sm-4">
-                    <input type="text" class="form-control" id="directory" ng-model="initData.directory"
-                           placeholder="部署目录" required="required"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-10">
-                    <button type="submit" class="btn btn-primary">部署</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 <bi-footer></bi-footer>

@@ -48,7 +48,7 @@ angular.module('myApp.services', ['ngResource'])
                 var confirmModal = $modal({scope: $scope, template: 'views/dialog/confirm.html', show: false});
                 $scope.confirmModal = function(ret) {
                     if (angular.isDefined(ret)) {
-                        $scope.title = '部署成功！';
+                        $scope.confirmMsg = '部署成功！'
                     }
                     confirmModal.$promise.then(confirmModal.show);
                 };
