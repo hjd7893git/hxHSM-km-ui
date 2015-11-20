@@ -27,7 +27,7 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'keyUseType', names: [{value: 0, name: '不适用'}, {value: 1, name: '全行统一'}, {value: 2, name: '分行统一'}, {value: 3, name: '网店统一'}, {value: 4, name: '一机一密'}]},
             {option: 'machineStatus', names: [{value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}, {value:3, name: '预备'}]},
             {option: 'PartnerType', names:[{value: 0, name: '政府机构'}, {value: 1, name: '商业企业'}]},
-            {option: 'certStatus', names:[{value: 0, name: '申请中 ...'}, {value: 1, name: '已导入'}, {value: 2, name: '过期作废'}]},
+            {option: 'certStatus', names:[{value: 0, name: '密钥已生成'}, {value: 1, name: '申请中 ...'}, {value: 2, name: '已导入'}, {value: 3, name: '过期作废'}]},
             {option: 'pubKeyLength', names:[{value: 0, name: '1024 Bits'}, {value: 1, name: '1152 Bits'}, {value: 2, name: '1408 Bits'}, {value: 3, name: '1984 Bits'}]},
             {option: 'RSAStatus' , names:[{value: 0, name: '未用'}, {value: 1, name: '已用'}, {value: 2, name: '过期'}]}
         ];
