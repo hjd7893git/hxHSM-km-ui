@@ -188,10 +188,16 @@ angular.module('myApp.options', ['ngResource'])
                             myVaults[boxId].attachEvent("onFileAdd", function(file) {
                                 $scope.$apply(function () {
                                     rec[fieldId] = file.name; // TODO: UI不能立即刷新, 需解决(加上$apply就OK了)
+                                    if (rec.rootPublicKeyFile && rec.certFileName)
+                                        rec.certStatus = 2;
                                 });
                             });
                         }
                         myVaults[boxId].f.click();
+                    };
+                    $scope.downloaded = function(rec) {
+                        rec.downloadTimes = rec.downloadTimes + 1;
+                        rec.certStatus = 1;
                     };
                 }
             },

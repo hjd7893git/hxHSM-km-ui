@@ -155,7 +155,6 @@ angular.module('myApp.components.form', [])
             if ($scope.$parent.opType == 1)
                 return false;
             else if (angular.isDefined($scope.$parent.ref)) {
-                $log.info("ref.opType: " + $scope.$parent.ref.rec.opType);
                 return ($scope.$parent.ref.rec.opType == 2);
             }
             else
