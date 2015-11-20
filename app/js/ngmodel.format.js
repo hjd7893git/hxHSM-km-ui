@@ -146,6 +146,29 @@
                     return angular.isUndefined(value);
                 }
             },
+            "datetime-local": {
+                "formatter": function(args) {
+                    var x = args.$modelValue;
+                    if (angular.isDefined(x)) {
+                        var y = parseInt(x.substr(0, 4));
+                        var m = parseInt(x.substr(4, 2)) - 1;
+                        var d = parseInt(x.substr(6, 2));
+                        var h = parseInt(x.substr(8, 2));
+                        var M = parseInt(x.substr(10, 2));
+                        var s = parseInt(x.substr(12));
+                        return new Date(y, m, d, h, M, s);
+                    }
+                },
+                "parser": function(args) {
+                    var x = args.$viewValue;
+                    if (angular.isDefined(x)) {
+                        return args.$filter("date")(x, 'yyyyMMddHHmmss');
+                    }
+                },
+                "isEmpty": function(value) {
+                    return angular.isUndefined(value);
+                }
+            },
             "text": {
                 "formatter": function(args) {
                     return args.$modelValue;

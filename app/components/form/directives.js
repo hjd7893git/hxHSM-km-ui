@@ -36,9 +36,9 @@ angular.module('myApp.components.form', [])
             scope: {
                 itemMargin: '=itemMargin',
                 itemLabel: '=itemLabel',
-                itemTip: '=itemTip',
                 itemValue: '=itemValue',
                 itemOldValue: '=itemOldValue',
+                itemDataType: '=itemDataType',
                 itemLocked: '=itemLocked',
                 itemName: '=itemName',
                 itemRequired: '=itemRequired',

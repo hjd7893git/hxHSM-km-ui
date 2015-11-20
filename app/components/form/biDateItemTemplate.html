@@ -1,7 +1,7 @@
 <div class="form-group {{itemMargin|iif:itemMargin:'bi-margin-b10':'bi-margin-b10'}}">
     <label class="col-sm-2 control-label bi-pad0">{{itemLabel}}</label>
     <div class="col-sm-6">
-        <input type="date" class="form-control" placeholder="{{itemTip}}" ng-model="itemValue" model-format="date"
+        <input type="{{itemDataType|ifdef:itemDataType:'date'}}" class="form-control" ng-model="itemValue" model-format="{{itemDataType|ifdef:itemDataType:'date'}}"
                ng-disabled="itemLocked" ng-required="itemRequired" ng-minlength="itemMinLength" ng-maxlength="itemMaxLength" name="{{::itemName}}">
         <div class="bi-required-inner text-warning" ng-if="::itemRequired" style="font-size: 20px;">*</div>
         <div class="form-control-feedback" aria-hidden="true" ng-show="isValidated(itemName, itemRequired, itemMinLength, itemMaxLength)">
