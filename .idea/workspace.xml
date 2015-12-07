@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2eca004a-9301-4b5d-b266-5a665d07c4aa" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/downloads/TT001000.INP" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/form/biDateItemTemplate.html" afterPath="$PROJECT_DIR$/app/components/form/biDateItemTemplate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/form/directives.js" afterPath="$PROJECT_DIR$/app/components/form/directives.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/RsaKeyBatch/edit.html" afterPath="$PROJECT_DIR$/app/views/RsaKeyBatch/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/ngmodel.format.js" afterPath="$PROJECT_DIR$/app/js/ngmodel.format.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/options.js" afterPath="$PROJECT_DIR$/app/js/options.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="hxHSM-km-ui.iws" />
@@ -52,8 +46,8 @@
       <file leaf-file-name="ngmodel.format.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/js/ngmodel.format.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.8629707">
+              <caret line="55" column="44" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -680,7 +674,13 @@
       <option name="project" value="LOCAL" />
       <updated>1448004300351</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="调整了RsaKeyBatch各字段显示逻辑 - 未完成.">
+      <created>1448010846759</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1448010846759</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView" selected-index="1">
@@ -754,7 +754,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="有一些明明提交了,但还是modified状态." />
     <MESSAGE value="关联维护的diff状态还是有些问题,可能也是个结构性问题(如果要支持查看&quot;自己&quot;改过的diff的话" />
     <MESSAGE value="结构性的问题尝试解决,未完成." />
     <MESSAGE value="解决Role-Menu之间的交互问题" />
@@ -779,7 +778,8 @@
     <MESSAGE value="将压缩的文字展开" />
     <MESSAGE value="调整了SecretCert各字段显示逻辑." />
     <MESSAGE value="调整了SecretCert各字段显示逻辑 - 完成." />
-    <option name="LAST_COMMIT_MESSAGE" value="调整了SecretCert各字段显示逻辑 - 完成." />
+    <MESSAGE value="调整了RsaKeyBatch各字段显示逻辑 - 未完成." />
+    <option name="LAST_COMMIT_MESSAGE" value="调整了RsaKeyBatch各字段显示逻辑 - 未完成." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1165,8 +1165,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/ngmodel.format.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.8629707">
+          <caret line="55" column="44" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
           <folding />
         </state>
       </provider>
