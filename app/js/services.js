@@ -239,6 +239,19 @@ angular.module('myApp.services', ['ngResource'])
                         }
                     }
                 };
+                $scope.cancelEditing = function() {
+                    $scope.opType = 0;
+                    $scope.gotoPage('query');
+                };
+                $scope.isNotInsertUp = function() {
+                    if ($scope.opType == 1)
+                        return false;
+                    else if (angular.isDefined($scope.ref)) {
+                        return ($scope.ref.rec.opType == 2);
+                    }
+                    else
+                        return ($scope.opType == 2 || $scope.rec.opType == 2);
+                };
                 $scope.submitEdited = function() {
                     if (!isValidForm(this))
                         return;

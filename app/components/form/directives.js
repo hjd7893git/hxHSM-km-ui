@@ -36,9 +36,9 @@ angular.module('myApp.components.form', [])
             scope: {
                 itemMargin: '=itemMargin',
                 itemLabel: '=itemLabel',
-                itemTip: '=itemTip',
                 itemValue: '=itemValue',
                 itemOldValue: '=itemOldValue',
+                itemDataType: '=itemDataType',
                 itemLocked: '=itemLocked',
                 itemName: '=itemName',
                 itemRequired: '=itemRequired',
@@ -155,7 +155,6 @@ angular.module('myApp.components.form', [])
             if ($scope.$parent.opType == 1)
                 return false;
             else if (angular.isDefined($scope.$parent.ref)) {
-                $log.info("ref.opType: " + $scope.$parent.ref.rec.opType);
                 return ($scope.$parent.ref.rec.opType == 2);
             }
             else
