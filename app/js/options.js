@@ -30,7 +30,8 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'certStatus', names:[{value: 0, name: '密钥已生成'}, {value: 1, name: '申请中 ...'}, {value: 2, name: '已导入'}, {value: 3, name: '过期作废'}]},
             {option: 'batchStatus', names:[{value: 0, name: '预备'}, {value: 1, name: '进行中 ...'}, {value: 2, name: '失败结束'}, {value: 3, name: '成功完成'}]},
             {option: 'pubKeyLength', names:[{value: 0, name: '1024 Bits'}, {value: 1, name: '1152 Bits'}, {value: 2, name: '1408 Bits'}, {value: 3, name: '1984 Bits'}]},
-            {option: 'RSAStatus' , names:[{value: 0, name: '未用'}, {value: 1, name: '已用'}, {value: 2, name: '过期'}]}
+            {option: 'RSAStatus' , names:[{value: 0, name: '未用'}, {value: 1, name: '已用'}, {value: 2, name: '过期'}]},
+            {option: 'packType' , names:[{value: 0, name: 'HSM'}, {value: 1, name: 'HxHSM'}, {value: 2, name: 'HxJSON'}, {value: 3, name: 'HxHSM+HxJSON'}]}
         ];
         var tableControllers = [
             {tableId: 'Application', title: '应用管理', keyInfo: 'name',

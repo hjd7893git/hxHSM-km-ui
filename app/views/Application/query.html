@@ -36,7 +36,7 @@
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
                                 <th>标识</th>
-                                <th><a ng-click="sortOn('symbol')">代码</a>&nbsp;<i
+                                <th><a ng-click="sortOn('symbol')">渠道</a>&nbsp;<i
                                         class="fa fa-sort{{sortByname|iif:'-alpha-asc':'-alpha-desc':''}}"></i></th>
                                 <th><a ng-click="sortOn('name')">名称</a>&nbsp;<i
                                         class="fa fa-sort{{sortByname|iif:'-alpha-asc':'-alpha-desc':''}}"></i></th>
@@ -44,6 +44,9 @@
                                 <th>IP地址列表</th>
                                 <th>API列表</th>
                                 <th>是否短连接</th>
+                                <th>头长</th>
+                                <th>同步请求应答</th>
+                                <th>可接收报文类型</th>
                                 <th>密码机分组</th>
                             </tr>
                             </thead>
@@ -60,6 +63,9 @@
                                 <td>{{r.rec.ipList}}</td>
                                 <td>{{r.rec.apiList}}</td>
                                 <td>{{r.rec.shortConnection|optionName:'YesNo'}}</td>
+                                <td>{{r.rec.headLength}}</td>
+                                <td>{{r.rec.syncRqRs|optionName:'YesNo'}}</td>
+                                <td>{{r.rec.packType|optionName:'packType'}}</td>
                                 <td>{{r.rec.groupId|optionName:groupList}}</td>
                             </tr>
                             </tbody>

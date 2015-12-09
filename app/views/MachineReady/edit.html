@@ -25,16 +25,16 @@
                                 <bi-date-item item-label="'上架日期'" item-required="'true'"
                                               item-value="rec.readyDate" item-old-value="bak.readyDate"
                                               item-locked="lock"></bi-date-item>
-                                <bi-edit-item item-label="'IP'"
-                                              item-value="rec.ip" item-old-value="bak.ip"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'端口'" item-tip="'请输入数字'" item-required="'true'"
-                                              item-data-type="'number'"
-                                              item-value="rec.port" item-old-value="bak.port"
+                                <bi-edit-item item-label="'地址'" item-tip="'格式：ip:port'"
+                                              item-value="rec.address" item-old-value="bak.address"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'连接池大小'" item-required="'true'" item-data-type="'number'"
                                               item-value="rec.connectionPoolSize"
                                               item-old-value="bak.connectionPoolSize"
+                                              item-locked="lock"></bi-edit-item>
+                                <bi-edit-item item-label="'超时时长'" item-data-type="'number'"
+                                              item-value="rec.receiveTimeOut"
+                                              item-old-value="bak.receiveTimeOut"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'指令集'" item-tip="'5.6.0.0.0 3 FEB'"
                                               item-value="rec.commandSetVersion"
