@@ -1,0 +1,151 @@
+<bi-header></bi-header>
+<div id="dashboard" style="margin: 15px;">
+    <!-- bsActivePane is optional -->
+    <div bs-active-pane="activeClusterTab" bs-tabs>
+        <div ng-repeat="tab in clusters" title="{{ tab.cluster.name }}（{{tab.cluster.description}}）" name="{{ tab.cluster.name }}" bs-pane style="padding-top: 15px;">
+            <div class="row">
+                <div class="col-lg-2">
+                    <a href="#" class="btn btn-primary btn-block disabled bi-margin-b10" role="button">应用</a>
+                    <div class="row" ng-repeat="app in tab.applications">
+                        <div class="col-md-12">
+                            <div class="panel panel-default" style="margin-bottom: 10px;">
+                                <div class="panel-heading"><span class="badge">{{app.symbol}}</span>&nbsp;{{app.name}}
+                                    <a class="bi-display-op" ng-click="toggleDetails(app)"><i class="fa fa-{{app.displayDetails|iif:'minus':'plus':'plus'}}-square-o"></i></a>
+                                </div>
+                                <div class="panel-body" style="padding: 0 5px 0 10px;">
+                                    <table class="table table-hover table-condensed" style="margin: 0;">
+                                        <thead>
+                                        <tr><th>IPs</th><th>{{app.ipList}}</th></tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-show="app.displayDetails"><td>简介</td><td>{{app.summary}}</td></tr>
+                                        <tr><td>状态</td><td>{{app.status}}</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <a href="#" class="btn btn-primary btn-block disabled bi-margin-b10" role="button">
+                        应用&nbsp;<i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp;加密平台</a>
+                    <div class="bi-shadow" style="margin-right: 1px; margin-bottom: 20px;">
+                        <flot dataset="inbounds" options="optionsPie" height="200px" width="100%"></flot>
+                    </div>
+                    <table class="table table-hover table-condensed bi-shadow" ng-repeat="a2n in tab.apps2nodes">
+                        <thead>
+                        <tr><th colspan="2" class="text-center">{{a2n.app}}&nbsp;<i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp;{{a2n.node}}</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td class="text-center" style="width: 40px;">连接</td><td>
+                            <div class="progress" style="margin: 0;">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{a2n.connectionQuantity}}" aria-valuemin="0" aria-valuemax="50" style="width: {{a2n.connectionQuantity*2}}%;">
+                                    {{a2n.connectionQuantity}}
+                                </div>
+                            </div>
+                        </td></tr>
+                        <tr><td>TPS</td><td>
+                            <div class="progress" style="margin: 0;">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{a2n.exchangeTPS}}" aria-valuemin="0" aria-valuemax="1000" style="width: {{a2n.exchangeTPS/1000*100}}%;">
+                                    {{a2n.exchangeTPS}}
+                                </div>
+                            </div>
+                        </td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-3">
+                    <a href="#" class="btn btn-danger btn-block disabled bi-margin-b10" role="button" id="xPlatTop">加密平台</a>
+                    <div class="row" ng-repeat="node in tab.hosts">
+                        <div class="col-md-12">
+                            <div class="panel panel-default" style="margin-bottom: 10px;">
+                                <div class="panel-heading"><span class="badge">节点&nbsp;{{node.nodeName}}</span>
+                                    <a class="bi-display-op" ng-click="toggleDetails(node)"><i class="fa fa-{{app.displayDetails|iif:'minus':'plus':'plus'}}-square-o"></i></a>
+                                </div>
+                                <div class="panel-body" style="padding: 0 5px 0 10px;">
+                                    <table class="table table-hover table-condensed" style="margin: 0;">
+                                        <thead>
+                                        <tr><th>IP</th><th>{{node.ip}}</th></tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-show="node.displayDetails"><td>TCP接入端口</td><td>{{node.tcpPort}}</td></tr>
+                                        <tr ng-show="node.displayDetails"><td>HTTP接入端口</td><td>{{node.httpPort}}</td></tr>
+                                        <tr><td>操作系统</td><td>{{node.os}} {{node.performance}} </td></tr>
+                                        <tr ng-show="node.displayDetails"><td>硬件设备</td><td>{{node.hardware}}</td></tr>
+                                        <tr ng-show="node.displayDetails"><td>用户</td><td>{{node.osUser}}</td></tr>
+                                        <tr><td>状态</td><td>{{node.status}}</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bi-shadow">
+                        <flot dataset="transactions" options="options" height="200px" width="100%"></flot>
+                    </div>
+                    <button class="btn-block" ng-click="updateQuantities();"><i class="fa fa-refresh"></i></button>
+                </div>
+                <div class="col-lg-2">
+                    <a href="#" class="btn btn-info btn-block disabled bi-margin-b10" role="button">
+                        加密平台&nbsp;<i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp;密码机(组)</a>
+                    <div class="bi-shadow" style="margin-right: 1px; margin-bottom: 20px;">
+                        <flot dataset="outbounds" options="optionsPie" height="200px" width="100%"></flot>
+                    </div>
+                    <table class="table table-hover table-condensed bi-shadow" ng-repeat="a2n in tab.nodes2machines">
+                        <thead>
+                        <tr><th colspan="2" class="text-center">{{a2n.node}}&nbsp;<i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>&nbsp;{{a2n.machine}}</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td class="text-center" style="width: 40px;">连接</td><td>
+                            <div class="progress" style="margin: 0;">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{a2n.connectionQuantity}}" aria-valuemin="0" aria-valuemax="50" style="width: {{a2n.connectionQuantity*2}}%;">
+                                    {{a2n.connectionQuantity}}
+                                </div>
+                            </div>
+                        </td></tr>
+                        <tr><td>TPS</td><td>
+                            <div class="progress" style="margin: 0;">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{a2n.exchangeTPS}}" aria-valuemin="0" aria-valuemax="1000" style="width: {{a2n.exchangeTPS/1000*100}}%;">
+                                    {{a2n.exchangeTPS}}
+                                </div>
+                            </div>
+                        </td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-3">
+                    <a href="#" class="btn btn-info btn-block disabled bi-margin-b5" role="button">密码机(组)</a>
+                    <div class="row" ng-repeat="pool in tab.groups">
+                        <div class="col-md-12">
+                            <h4><span class="bi-badge">{{pool.group.name}}</span>&nbsp;&nbsp;<small>{{pool.group.description}}</small></h4>
+                            <div class="row" ng-repeat="m in pool.machines">
+                                <div class="col-md-offset-1 col-md-11" style="border-left: gray dashed 1px;">
+                                    <div class="panel panel-default" style="margin-bottom: 10px;">
+                                        <div class="panel-heading"><span class="badge">{{m.model.model}}{{m.machine.number}}</span>
+                                            <a class="bi-display-op" ng-click="toggleDetails(m)"><i class="fa fa-{{app.displayDetails|iif:'minus':'plus':'plus'}}-square-o"></i></a>
+                                        </div>
+                                        <div class="panel-body" style="padding: 0 5px 0 10px;">
+                                            <table class="table table-hover table-condensed" style="margin: 0;">
+                                                <thead>
+                                                <tr><th>IP</th><th>{{m.ready.ip}}</th></tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-show="m.displayDetails"><td>生产</td><td>{{m.machine.produceDate|biDate}} ({{m.producer.name}})</td></tr>
+                                                <tr ng-show="m.displayDetails"><td>供应</td><td>{{m.machine.supplyDate|biDate}} ({{m.supplier.name}})</td></tr>
+                                                <tr><td>连接数</td><td>{{m.connectionQuantity}}</td></tr>
+                                                <tr><td>状态</td><td>{{m.ready.status}}</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<bi-footer></bi-footer>

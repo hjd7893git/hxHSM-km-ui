@@ -9,11 +9,12 @@ angular.module('myApp.services', ['ngResource'])
     .factory('myServer', ['$http', '$log', '$q', '$resource', '$modal', '$timeout', function($http, $log, $q, $resource, $modal, $timeout) {
         var URLPrefix = "http://localhost:8080/service/";
         return {
-            call: function(uri, data) {
+            call: function(uri, data, m) {
+                var method = angular.isDefined(m) ? m : 'POST';
                 var deferred = $q.defer(); // 声明延后执行，表示要去监控后面的执行
                 var conf = {
                     url: URLPrefix + uri,
-                    method: 'POST',
+                    method: method,
                     data: data
                 };
                 $http(conf).success(function(data, status, headers) {

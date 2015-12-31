@@ -19,6 +19,9 @@ angular.module('myApp.views', ['ngRoute'])
         }).when('/views/deploy', {
             templateUrl: 'views/deploy.html',
             controller: 'DeployCtrl'
+        }).when('/views/monitor', {
+            templateUrl: 'views/monitor/dashboard.html',
+            controller: 'monitor.controller'
         }).when('/views/:viewId', { // 其他view都是crud
             templateUrl: 'views/crud.html',
             controller: 'table.CRUD.controller'
@@ -32,10 +35,118 @@ angular.module('myApp.views', ['ngRoute'])
             angular.element('.carousel').carousel();
         });
     }])
+
     .controller('myDeployCtrl', ['$log', '$scope', function($log, $scope) {
-        $scope.$on('$viewContentLoaded', function() {
-            angular.element('.carousel').carousel();
+    }])
+
+    .controller('monitor.controller', ['$log', '$scope', '$timeout', 'myServer', function($log, $scope, $timeout, myServer) {
+        $scope.activeClusterTab = '';
+        myServer.errorDialog($scope, "monitor");
+        var promise = myServer.call("monitor", {sessionId: $scope.$root.sessionId}, 'GET'); // 同步调用，获得承诺接口
+        promise.then(function(ret) { // 调用承诺API获取数据 .resolve
+            if (ret.status == 200 || ret.status == 201) {
+                $scope.clusters = ret.data;
+                if ($scope.clusters.length > 0) {
+                    $scope.activeClusterTab = $scope.clusters[0].name;
+                }
+            }
+        }, function(ret) { // 处理错误 .reject
+            $scope.showModal(ret)
         });
+        $scope.toggleDetails = function(ele) {
+            if (angular.isDefined(ele.displayDetails))
+                ele.displayDetails = !ele.displayDetails;
+            else
+                ele.displayDetails = true;
+        };
+        function pieLabelFormatter(label, series) {
+            return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+        }
+        $scope.optionsPie = {
+            series: {
+                pie: {
+                    show: true,
+                    radius: 7/8,
+                    label: {
+                        show: true,
+                        radius: 3/5,
+                        formatter: pieLabelFormatter,
+                        threshold: 0.1
+                    }
+                }
+            },
+            legend: { show: false }
+        };
+        $scope.options = {
+            series: {
+                shadowSize: 0
+            },
+            xaxis: {
+                mode: 'categories',
+                tickLength: 0
+            },
+            grid: {
+                backgroundColor: { colors: [ "#fff", "#eee" ] },
+                borderWidth: {
+                    top: 1,
+                    right: 1,
+                    bottom: 2,
+                    left: 2
+                }
+            }
+        };
+        var displayPoints = 15;
+        $scope.lastPoint = 0;
+        $scope.transactions = [];
+        $scope.inbounds = [];
+        $scope.outbounds = [];
+        var exchangeQuantity = [];
+        var linkQuantity = [];
+        function update1(data, newData) {
+            if (data.length >= displayPoints)
+                data = data.slice(1);
+            angular.element.each(newData, function (n, ele) {
+                $log.info("ele: " + JSON.stringify(ele));
+                $log.info("data.len: " + data.length + ', ' + displayPoints);
+                if (data.length < displayPoints) {
+                    data.push([ele.seqNo, ele.sum]);
+                    $scope.lastPoint = ele.seqNo;
+                }
+            });
+        }
+        $scope.updateQuantities = function() {
+            var promise2 = myServer.call("statistics/" + displayPoints + "/" + $scope.lastPoint, {sessionId: $scope.$root.sessionId}, 'GET'); // 同步调用，获得承诺接口
+            promise2.then(function(ret) { // 调用承诺API获取数据 .resolve
+                if (ret.status == 200 || ret.status == 201) {
+                    update1(exchangeQuantity, ret.data.exchanges);
+                    update1(linkQuantity, ret.data.links);
+                    $scope.inbounds = ret.data.apps;
+                    $scope.outbounds = ret.data.groups;
+                    $scope.transactions = [
+                        {label: "TPS", data: exchangeQuantity, lines: { show: true }, points: { show: true }, color: '#5bc0de'},
+                        {label: "连接数", data: linkQuantity, color: '#8a6d3b', lines: { show: true, steps: true, fill: true }}
+                    ];
+                    $log.info("data: " + JSON.stringify(exchangeQuantity));
+                    $log.info("last: " + $scope.lastPoint);
+                }
+            }, function(ret) { // 处理错误 .reject
+                $scope.showModal(ret)
+            });
+        };
+        $scope.updateQuantity = function() {
+            var d31 = $scope.retrieveQuantity(d3, 15);
+            var d41 = $scope.retrieveQuantityX(d4, 15);
+            $scope.dataset = [
+                {label: "TPS", data: d31, lines: { show: true }, points: { show: true }, color: '#5bc0de'},
+                {label: "连接数", data: d41, color: '#8a6d3b', lines: { show: true, steps: true, fill: true }}
+            ];
+            //$timeout($scope.updateQuantity, 5000);
+        };
+        $scope.$on('$viewContentLoaded', function() {
+            $scope.updateQuantities();
+        });
+        // TODO: 图 - 失败率, 失败分布, 内存/CPU
+        // TODO: 文字 - 重连
     }])
 
     .controller('myAboutCtrl', ['myOptions', '$log', '$scope', function(myOptions, $log, $scope) {
@@ -74,7 +185,7 @@ angular.module('myApp.views', ['ngRoute'])
         }
     }])
 
-   .controller('todoCheckCtrl', ['$log', '$rootScope', '$scope', 'myServer', 'myOptions', function($log, $rootScope, $scope, myServer, myOptions) {
+    .controller('todoCheckCtrl', ['$log', '$rootScope', '$scope', 'myServer', 'myOptions', function($log, $rootScope, $scope, myServer, myOptions) {
         myServer.crud($scope, "Journal", '待办事项', myServer.journals);
         $scope.qry.status = 0;
         $scope.query($scope.qry);

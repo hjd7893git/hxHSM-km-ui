@@ -10,6 +10,8 @@ angular.module('myApp', [
     'mgcrea.ngStrap.modal', // angular-strap的组件
     'mgcrea.ngStrap.popover', // angular-strap的组件
     'mgcrea.ngStrap.collapse', // angular-strap的组件
+    'mgcrea.ngStrap.tab', // angular-strap的组件
+    'mgcrea.ngStrap.button', // angular-strap的组件
     'myApp.views', // 页面
     'myApp.filters', // 过滤器
     'myApp.services', // 后台服务
