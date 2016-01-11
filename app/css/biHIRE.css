@@ -945,3 +945,6 @@ a:focus {
     right: 30px;
     z-index: 11;
 }
+.bi-no-radius {
+    border-radius: 0;
+}

@@ -27,7 +27,7 @@ angular.module('myApp.services', ['ngResource'])
                 return deferred.promise;
             },
             errorDialog: function($scope, who) {
-                var errorModal = $modal({scope: $scope, template: 'views/dialog/error.html', show: false});
+                var errorModal = $modal({scope: $scope, templateUrl: 'views/dialog/error.html', show: false});
                 $scope.showModal = function(ret) {
                     if (angular.isDefined(ret)) {
                         $scope.title = '服务错误';
@@ -46,7 +46,7 @@ angular.module('myApp.services', ['ngResource'])
                 };
             },
             confirmDialog: function($scope, who) {
-                var confirmModal = $modal({scope: $scope, template: 'views/dialog/confirm.html', show: false});
+                var confirmModal = $modal({scope: $scope, templateUrl: 'views/dialog/confirm.html', show: false});
                 $scope.confirmModal = function(ret) {
                     if (angular.isDefined(ret)) {
                         $scope.confirmMsg = '部署成功！'
@@ -60,7 +60,7 @@ angular.module('myApp.services', ['ngResource'])
                         return angular.element.extend(true, {}, obj);
                     });
                 };
-                var menuModal = $modal({scope: $scope, template: 'views/dialog/rolemenus.html', show: false});
+                var menuModal = $modal({scope: $scope, templateUrl: 'views/dialog/rolemenus.html', show: false});
                 var clearChosenMenus = function(children, abId) {
                     angular.element.each(children, function(n, ele) {
                         ele.chosen = 0;
