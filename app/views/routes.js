@@ -10,6 +10,9 @@ angular.module('myApp.views', ['ngRoute'])
         $routeProvider.when('/views/login', {
             templateUrl: 'views/login.html',
             controller: 'myLoginCtrl'
+        }).when('/views/change', {
+            templateUrl: 'views/change.html',
+            controller: 'myChangePasswordCtrl'
         }).when('/views/about', {
             templateUrl: 'views/about.html',
             controller: 'myAboutCtrl'
@@ -31,6 +34,12 @@ angular.module('myApp.views', ['ngRoute'])
     }])
 
     .controller('myLoginCtrl', ['$log', '$scope', function($log, $scope) {
+        $scope.$on('$viewContentLoaded', function() {
+            angular.element('.carousel').carousel();
+        });
+    }])
+
+    .controller('myChangePasswordCtrl', ['$log', '$scope', function($log, $scope) {
         $scope.$on('$viewContentLoaded', function() {
             angular.element('.carousel').carousel();
         });
@@ -222,10 +231,19 @@ angular.module('myApp.views', ['ngRoute'])
         });
         var path = $location.path();
         var tableId = path.substring(7);
+        var pos = tableId.indexOf('.');
+        if (pos > 0)
+            tableId = tableId.substring(0, pos);
         var ctrl = myOptions.findController(tableId);
-        var title = angular.isDefined(ctrl) ? ctrl.title : tableId + '管理';
+        var title = tableId + '管理';
+        var params = {};
+        if (angular.isDefined(ctrl)) {
+            title = ctrl.title;
+            if (angular.isDefined(ctrl.setParams) && pos > 0)
+                ctrl.setParams($log, $rootScope, $scope, params);
+        }
         myServer.crud($scope, tableId, title);
-        $scope.query();
+        $scope.query(params);
         if (angular.isDefined(ctrl)) {
             if (angular.isDefined(ctrl.controller))
                 ctrl.controller($log, $rootScope, $scope, myServer);

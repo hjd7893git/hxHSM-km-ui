@@ -13,9 +13,23 @@ angular.module('myApp.components.user', [])
             replace : true
         };
     })
+    .directive('biChangePassword', function($templateCache) {
+        return {
+            restrict : 'E',
+            templateUrl : 'components/user/biChangePasswordTemplate.html',
+            replace : true
+        };
+    })
     .controller('biLoginFormCtrl', ['$location', '$scope', '$rootScope', 'myServer', '$log', function($location, $scope, $rootScope, myServer, $log) {
-        myServer.errorDialog($scope, "user");
+        var jumpTo = function(scope) {
+            $scope.user.password = '';
+            $location.path("views/change").replace();
+        };
+        myServer.errorDialog($scope, "user", jumpTo);
         $scope.doLogin = function(user) {
+            $log.info("user: " + JSON.stringify(user));
+            user.password = angular.element.md5(user.password);
+            $log.info("user: " + JSON.stringify(user));
             var promise = myServer.call("login", user); // 同步调用，获得承诺接口
             promise.then(function(ret) { // 调用承诺API获取数据 .resolve
                 $log.info("login --> ok: " + ret);
@@ -24,10 +38,36 @@ angular.module('myApp.components.user', [])
                     $rootScope.user = ret.data.user;
                     $rootScope.sessionId = ret.data.sessionId;
                     $location.path("views/check").replace();
+                } else if (ret.status == 202) {
+                    $scope.confirmLabel = '立即更改';
+                    $scope.showModal(ret);
                 }
             }, function(ret) { // 处理错误 .reject
-                $log.info("login --> fail: " + ret)
-                $scope.showModal(ret)
+                $log.info("login --> fail: " + ret);
+                $scope.showModal(ret);
+            });
+        };
+    }])
+    .controller('biChangePasswordFormCtrl', ['$location', '$scope', '$rootScope', 'myServer', '$log', function($location, $scope, $rootScope, myServer, $log) {
+        myServer.errorDialog($scope, "change");
+        $scope.doChangePassword = function(user) {
+            $log.info("user: " + JSON.stringify(user));
+            user.password = angular.element.md5(user.password);
+            user.passwordNew = angular.element.md5(user.passwordNew);
+            user.passwordAgain = angular.element.md5(user.passwordAgain);
+            $log.info("user: " + JSON.stringify(user));
+            var promise = myServer.call("changePassword", user); // 同步调用，获得承诺接口
+            promise.then(function(ret) { // 调用承诺API获取数据 .resolve
+                $log.info("changePassword --> ok: " + ret);
+                if (ret.status == 200 || ret.status == 201) {
+                    $rootScope.signedUp = false;
+                    $rootScope.user = null;
+                    $rootScope.sessionId = null;
+                    $location.path("views/login").replace();
+                }
+            }, function(ret) { // 处理错误 .reject
+                $log.info("changePassword --> fail: " + ret);
+                $scope.showModal(ret);
             });
         };
     }]);

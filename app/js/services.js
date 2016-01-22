@@ -26,7 +26,7 @@ angular.module('myApp.services', ['ngResource'])
                 });
                 return deferred.promise;
             },
-            errorDialog: function($scope, who) {
+            errorDialog: function($scope, who, jumpTo) {
                 var errorModal = $modal({scope: $scope, templateUrl: 'views/dialog/error.html', show: false});
                 $scope.showModal = function(ret) {
                     if (angular.isDefined(ret)) {
@@ -43,6 +43,11 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.errorMsg = '服务端未启动或网络原因.';
                     }
                     errorModal.$promise.then(errorModal.show);
+                };
+                $scope.confirm = function() {
+                    errorModal.$promise.then(errorModal.hide);
+                    if (angular.isDefined(jumpTo))
+                        jumpTo($scope);
                 };
             },
             confirmDialog: function($scope, who) {

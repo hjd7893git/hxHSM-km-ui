@@ -110,6 +110,15 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveClusterList($scope);
                 }
             },
+            {tableId: 'Journal', title: '操作历史',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    $scope.readOnly = true;
+                    $scope.browseOnly = true;
+                },
+                setParams: function($log, $rootScope, $scope, params) {
+                    params.userId = $rootScope.user.id;
+                }
+            },
             {tableId: 'Machine', title: '密码机信息管理', keyInfo: 'number',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveGroupList($scope);
@@ -120,7 +129,7 @@ angular.module('myApp.options', ['ngResource'])
                         rec.readies = rec.readies || [];
                     };
                     $scope.refFields = ['readies']; // 只有1类Entity-Relation需要
-                    myServer.retrieveCompanyList($scope)
+                    myServer.retrieveCompanyList($scope);
                     myServer.retrieveMachineModelList($scope);
                 }
             },

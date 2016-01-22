@@ -5,8 +5,7 @@
                 <a href="#/views/login"><img src="images/logo-corp.png" class="bLogo" alt="logo"/></a>
             </div>
         </div>
-        <!-- ng-if="signedUp" 先封掉-->
-        <div ng-model="signedUp" ng-init="signedUp = false" class="collapse navbar-collapse" role="navigation" style="margin-top: 7px;">
+        <div ng-model="signedUp" ng-init="signedUp = false" ng-if="signedUp" class="collapse navbar-collapse" role="navigation" style="margin-top: 7px;">
             <ul class="nav navbar-nav">
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">
@@ -15,12 +14,15 @@
                     <ul class="dropdown-menu">
                         <li><a href="#/views/System">系统</a></li>
                         <li><a href="#/views/SystemKeyDefine">系统密钥方案</a></li>
+                        <li role="separator" class="divider"></li>
                         <li><a href="#/views/Branch">分支行</a></li>
                         <li><a href="#/views/Equipment">设备</a></li>
                         <li><a href="#/views/Partner">合作伙伴</a></li>
                         <li><a href="#/views/PartnerBranch">合作伙伴分支</a></li>
+                        <li role="separator" class="divider"></li>
                         <li><a href="#/views/SecretKey">密钥</a></li>
                         <li><a href="#/views/SecretCert">证书</a></li>
+                        <li role="separator" class="divider"></li>
                         <li><a href="#/views/CardDataApply">制卡数据申请</a></li>
                         <li><a href="#/views/RsaKeyBatch">RSA密钥批次</a></li>
                         <li><a href="#/views/RsaKey">RSA密钥</a></li>
@@ -32,16 +34,21 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="#/views/Application">加密应用</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#/views/Host">主机</a></li>
+                        <li><a href="#/views/Cluster">主机集群</a></li>
+                        <li role="separator" class="divider"></li>
                         <li><a href="#/views/Company">厂商</a></li>
-                        <li><a href="#/views/Global">全局配置</a></li>
                         <li><a href="#/views/MachineModel">密码机型号</a></li>
                         <li><a href="#/views/Machine">密码机信息</a></li>
                         <li><a href="#/views/MachineReady">密码机上架</a></li>
                         <li><a href="#/views/GroupDefine">密码机分组</a></li>
-                        <li><a href="#/views/Host">主机</a></li>
-                        <li><a href="#/views/Cluster">主机集群</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#/views/Global">全局配置</a></li>
+                        <li><a href="#/views/deploy">部署</a></li>
                     </ul>
                 </li>
+                <li><a href="#/views/monitor">运维监控</a></li>
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">
                         权限管理 <span class="caret"></span>
@@ -53,12 +60,21 @@
                     </ul>
                 </li>
                 <li><a href="#/views/check">待办事项</a></li>
-                <li><a href="#/views/deploy">部署信息</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="javascript:void(0)">你好，{{user.name}}</a></li>
-                <li><a class="disabled"><span class="glyphicon glyphicon-user"></span></a></li>
-                <li><a href="javascript:void(0)" ng-click="doLogout()">退出</a></li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-user"></span>，{{user.name}} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/views/Journal.All">我的操作历史</a></li>
+                        <li><a href="#/views/Journal">全员的操作历史</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#/views/change">修改密码</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="javascript:void(0)" ng-click="doLogout()">退出</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div ng-if="!signedUp" class="collapse navbar-collapse" role="navigation" style="margin-top: 7px;">
