@@ -24,7 +24,8 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'keyType', names:[{value: '000', name: 'ZMK'}, {value: '001', name: 'ZPK'}]},
             {option: 'keySchema', names: [{value: 'Y', name: '16 Bits'}, {value: 'X', name: '32 Bits'}, {value: 'Z', name: '48 Bits'}]},
             {option: 'keyUse', names: [{value: 0, name: '应用模块'}, {value: 1, name: '设备'}, {value: 2, name: '合作伙伴'}]},
-            {option: 'keyUseType', names: [{value: 0, name: '不适用'}, {value: 1, name: '全行统一'}, {value: 2, name: '分行统一'}, {value: 3, name: '网店统一'}, {value: 4, name: '一机一密'}]},
+            {option: 'keyUseType', names: [{value: 0, name: '不适用'}, {value: 1, name: '全行统一'}, {value: 2, name: '分行统一'}, {value: 3, name: '网点统一'}, {value: 4, name: '一机一密'}]},
+            {option: 'keyUseType4Partner', names: [{value: 0, name: '不适用'}, {value: 1, name: '总对总'}, {value: 2, name: '分对分'}]},
             {option: 'machineStatus', names: [{value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}, {value:3, name: '预备'}]},
             {option: 'PartnerType', names:[{value: 0, name: '政府机构'}, {value: 1, name: '商业企业'}]},
             {option: 'certStatus', names:[{value: 0, name: '密钥已生成'}, {value: 1, name: '申请中 ...'}, {value: 2, name: '已导入'}, {value: 3, name: '过期作废'}]},
@@ -80,9 +81,12 @@ angular.module('myApp.options', ['ngResource'])
                             myServer.retrieveKeyDefineList($scope, {useType: useType})
                         }
                     };
+                    $scope.preInsert = function(rec) {
+                        rec.isLeaf = 1;
+                    };
                 }
             },
-            {tableId: 'CardDataApply', title: '卡数据申请',
+            {tableId: 'CardDataApply', title: '制卡数据申请',
                 controller:function($log,$rootScope,$scope,myServer) {
                     myServer.retrieveBranchList($scope);
                 }
@@ -170,12 +174,13 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveMenuTree($scope);
                 }
             },
-            {tableId: 'RsaKey', title:'RSA密钥',
+            {tableId: 'RsaKey', title:'制卡数据',
                 controller:function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveRsaKeyBatchList($scope);
+                    $scope.readOnly = true;
                 }
             },
-            {tableId: 'RsaKeyBatch', title:'RSA密钥生成批次',
+            {tableId: 'RsaKeyBatch', title:'制卡数据生成批次',
                 controller:function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveBranchList($scope);
                     $scope.preInsert = function(rec) {

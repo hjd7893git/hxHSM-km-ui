@@ -16,7 +16,7 @@
                                 <bi-edit-item item-label="'机构名称'"
                                               item-value="rec.branchName" item-old-value="bak.branchName" item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'是否叶子'" item-options="'YesNo'|theOption"
-                                              item-value="rec.isLeaf" item-old-value="bak.isLeaf" item-locked="lock"></bi-select-item>
+                                              item-value="rec.isLeaf" item-old-value="bak.isLeaf" item-locked="'true'"></bi-select-item>
                                 <bi-check-item item-label="'创建/更新密钥'" on-item-changed="changeDefineList" ng-show="opType == 2"
                                                item-value="rec.createKey" item-old-value="bak.createKey" item-locked="lock"></bi-check-item>
                                 <bi-select-item item-label="'密钥方案'" item-options="theKeyDefineList" ng-show="rec.createKey"

@@ -662,7 +662,7 @@ angular.module('myApp.services', ['ngResource'])
                 if (angular.isUndefined($scope.theKeyDefineList) || filter != $scope.theKeyDefineFilter) {
                     $scope.theKeyDefineFilter = filter;
                     $scope.theKeyDefineList= [];
-                    $scope.queryBase($resource(URLPrefix + 'KeyDefineList'), params, ok1);
+                    $scope.queryBase($resource(URLPrefix + 'KeyDefineList'), params, ok1); // 注: 不是SystemKeyDefineList
                 }
             },
             retrieveMachineList :  function($scope) {
