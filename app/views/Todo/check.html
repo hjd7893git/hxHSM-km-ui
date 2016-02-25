@@ -12,7 +12,8 @@
                             <li class="list-group-item">
                                 <a data-toggle="collapse" data-target="#registerStep1" aria-expanded="true" aria-controls="registerStep1">
                                     <i class="fa fa-search"></i>&nbsp;查询
-                                </a>
+                                </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <a href ng-click="conditionQuery(qry)"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
                                 <div id="registerStep1" class="panel-collapse collapse" role="tabpanel">
                                     <hr class="bi-margin-b10 bi-margin-t8">
                                     <div class="panel-body bi-pad0">
@@ -32,7 +33,7 @@
                             <li class="list-group-item bi-pt0">
                                 <table class="table table-hover table-condensed bg-white crud-r">
                                     <thead><tr>
-                                        <th><input type="checkbox" ng-click="toggleChosen();"></th>
+                                        <th><input type="checkbox" ng-click="toggleTodoChosen();"></th>
                                         <th>流水号</th><th>应用</th><th>交易码</th><th>状态</th><th>失败次数</th></tr>
                                     </thead>
                                     <tbody>

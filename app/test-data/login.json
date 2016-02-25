@@ -1,104 +1,52 @@
 [
   {
-    "seq": 8,
-    "table": "Machine",
-    "opType": "2",
-    "status": 0,
-    "failureTimes": 0,
     "rec": {
       "id": 1,
-      "model": "11",
-      "batch": "11",
-      "number": "11",
-      "producer": "11",
-      "produceDate": "20150918",
-      "supplier": "11",
-      "supplyDate": "20150919",
-      "bizSeq": 8,
-      "opType": 2,
-      "readies": [
+      "equipmentType": 0,
+      "equipmentNo": "010A-ATM-1",
+      "branchId": 4,
+      "keyBizSeq": 42,
+      "keys": [
         {
           "rec": {
-            "id": 1,
-            "machineId": 1,
-            "env": 2,
-            "room": "1",
-            "position": "1",
-            "readyDate": "20150918",
-            "ip": "192.169.1.2",
-            "port": 1,
-            "connectionPoolSize": 1,
-            "commandSetVersion": "11a",
-            "issueDate": "20150918",
-            "status": 0,
-            "bizSeq": 8,
-            "opType": 2
-          },
-          "bak": {
-            "id": 1,
-            "machineId": 1,
-            "env": 2,
-            "room": "1",
-            "position": "1",
-            "readyDate": "20150918",
-            "ip": "192.169.1.2",
-            "port": 1,
-            "connectionPoolSize": 1,
-            "commandSetVersion": "1",
-            "issueDate": "20150918",
-            "status": 0
+            "id": 2,
+            "keyDefineId": 5,
+            "keyValue": "X1C69DAD1EFE06D49E69C4DD5CE3A9B05",
+            "checkValue": "D55B97BE77534892",
+            "keyDefineRemark": "综合前置系统::ATM主密钥",
+            "equipmentId": 1
           }
         }
       ]
-    },
-    "bak": {
-      "id": 1,
-      "model": "11",
-      "batch": "11",
-      "number": "11",
-      "producer": "11",
-      "produceDate": "20150918",
-      "supplier": "11",
-      "supplyDate": "20150919"
     }
   },
   {
-    "seq": 14,
-    "table": "GroupDefine",
-    "opType": "2",
-    "status": 0,
-    "failureTimes": 0,
     "rec": {
-      "id": 1,
-      "name": "高频",
-      "description": "高频应用分组",
-      "bizSeq": 14,
-      "seq": 0,
-      "opType": 2
-    },
-    "bak": {
-      "id": 1,
-      "name": "1",
-      "description": "dfdfsf"
-    }
-  },
-  {
-    "seq": 16,
-    "table": "Role",
-    "opType": "2",
-    "status": 0,
-    "failureTimes": 0,
-    "rec": {
-      "id": 0,
-      "name": "Base",
-      "description": "基本权限集，该角色默认赋予每个用户",
-      "bizSeq": 16,
-      "opType": 2
-    },
-    "bak": {
-      "id": 0,
-      "name": "Base",
-      "description": "基本权限集，该角色默认赋予每个用户"
+      "id": 2,
+      "equipmentType": 1,
+      "equipmentNo": "JY-1",
+      "branchId": 8,
+      "keyBizSeq": 81,
+      "keys": [
+        {
+          "rec": {
+            "id": 4,
+            "keyDefineId": 8,
+            "keyValue": "Y38FBCA8FB2B82C0ABDF08E7514AD6D63E903F472BF67342E",
+            "checkValue": "5DB8D308853A664E",
+            "keyDefineRemark": "综合前置系统::POS密钥",
+            "equipmentId": 2
+          }
+        },
+        {
+          "rec": {
+            "id": 0,
+            "keyDefineId": 9,
+            "keyValue": "-",
+            "checkValue": "-"
+          }
+        }
+      ]
     }
   }
 ]

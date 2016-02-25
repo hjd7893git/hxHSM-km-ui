@@ -9,7 +9,7 @@
     </div>
     <div ng-if="isNotInsert()" class="col-sm-4 trimL bi-old-val has-success">
         <div class='weixin right' ng-if="itemValue != itemOldValue">
-            <div class='weixin-content'>{{itemOldValue}}</div>
+            <div class='weixin-content'>{{itemOldValue | ifdef:itemOldValue:'&nbsp;'}}</div>
             <div class="arrow"></div>
         </div>
     </div>

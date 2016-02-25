@@ -67,9 +67,13 @@ angular.module('myApp.filters', ['ngRoute'])
     }])
 
     .filter('optionName', ['myOptions', 'optionNameOfFilter', function (myOptions, optionNameOfFilter) {
-        return function (v, o) {
-            var names = (angular.isString(o)) ? myOptions.findOption(o) : o;
-            return angular.isDefined(names) ? optionNameOfFilter(v, names) : '';
+        return function (v, o, vUndef) {
+            if (angular.isUndefined(v) && angular.isDefined(vUndef)) {
+                return vUndef;
+            } else {
+                var names = (angular.isString(o)) ? myOptions.findOption(o) : o;
+                return angular.isDefined(names) ? optionNameOfFilter(v, names) : '?';
+            }
         };
     }])
 

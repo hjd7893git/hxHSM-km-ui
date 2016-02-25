@@ -154,8 +154,12 @@ angular.module('myApp.components.form', [])
         $scope.isNotInsert = function() {
             if ($scope.$parent.opType == 1)
                 return false;
-            else if (angular.isDefined($scope.$parent.ref)) {
-                return ($scope.$parent.ref.rec.opType == 2);
+            else if (angular.isDefined($scope.$parent.ref) && $scope.$parent.ref && $scope.$parent.ref.length > 0) {
+                $log.info('isNotInsert: ' + JSON.stringify($scope.$parent.ref));
+                if (angular.isDefined($scope.$parent.ref.rec))
+                    return ($scope.$parent.ref.rec.opType == 2);
+                else
+                    return false;
             }
             else
                 return ($scope.$parent.opType == 2 || $scope.$parent.rec.opType == 2);
@@ -195,9 +199,6 @@ angular.module('myApp.components.form', [])
                 }
             }
             return false;
-        };
-        $scope.changeDefineList = function() {
-            $log.info("changeDefineList ...");
         };
     }]);
 

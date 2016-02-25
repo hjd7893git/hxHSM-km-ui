@@ -1,335 +1,67 @@
 [
   {
-    "cluster": {
+    "rec": {
       "id": 1,
-      "name": "BII",
-      "description": "网银集群"
-    },
-    "applications": [
-      {
-        "id": 1,
-        "symbol": "API",
-        "name": "接口测试",
-        "nameEn": "API Testing",
-        "summary": "用于测试加密服务的模拟渠道",
-        "ipList": "192.168.0.1",
-        "commandList": "NC,A0,K1",
-        "apiList": "createKeys",
-        "shortConnection": 0,
-        "headLength": 8,
-        "syncRqRs": 1,
-        "packType": 3,
-        "groupId": 1
-      },
-      {
-        "id": 2,
-        "symbol": "console",
-        "name": "控制台",
-        "nameEn": "Operation Console",
-        "summary": "用于加密服务管理的控制台",
-        "ipList": "192.168.2.1",
-        "shortConnection": 1,
-        "headLength": 8,
-        "syncRqRs": 0,
-        "packType": 3,
-        "groupId": 2
-      }
-    ],
-    "hosts": [
-      {
-        "id": 1,
-        "hardware": "PC-Server DELL 1301",
-        "os": "Redhat 2.6.3",
-        "performance": "4Core 32G",
-        "nodeName": "node1",
-        "ip": "192.168.0.66",
-        "tcpPort": 21201,
-        "httpPort": 21211,
-        "osUser": "MyMac",
-        "clusterId": 1,
-        "status": 0
-      },
-      {
-        "id": 2,
-        "hardware": "PC-Server DELL 1301",
-        "os": "Redhat 2.6.3",
-        "performance": "4Core 32G",
-        "nodeName": "node2",
-        "ip": "192.168.0.67",
-        "tcpPort": 21202,
-        "httpPort": 21222,
-        "osUser": "MyMac",
-        "clusterId": 1,
-        "status": 0
-      }
-    ],
-    "groups": [
-      {
-        "group": {
-          "id": 1,
-          "name": "High",
-          "description": "高频应用",
-          "clusterId": 1
+      "equipmentType": 0,
+      "equipmentNo": "010A-ATM-1",
+      "branchId": 4,
+      "keyBizSeq": 42,
+      "keys": [
+        {
+          "id": 0,
+          "keyDefineId": 7,
+          "keyValue": "-",
+          "checkValue": "-",
+          "keyDefineRemark": "综合前置系统::ATM-C端密钥-X",
+          "partnerId": 2
         },
-        "machines": [
-          {
-            "ready": {
-              "id": 1,
-              "machineId": 1,
-              "env": 9,
-              "room": "黑山扈数据中心主机房",
-              "position": "H15V01",
-              "readyDate": "20151031",
-              "ip": "192.168.0.188:8",
-              "headLength": 8,
-              "connectionPoolSize": 1,
-              "receiveTimeOut": 3,
-              "commandSetVersion": "5.2.0.1V3-18",
-              "issueDate": "20151031",
-              "groupId": 1,
-              "status": 0
-            },
-            "machine": {
-              "id": 1,
-              "modelId": 1,
-              "batch": "AN",
-              "number": "AN081",
-              "produceDate": "20150901",
-              "supplyDate": "20151015"
-            },
-            "model": {
-              "id": 1,
-              "model": "1309",
-              "producerId": 1,
-              "supplierId": 2,
-              "remark": "国密设备"
-            },
-            "producer": {
-              "id": 1,
-              "type": 1,
-              "name": "江南无锡五十六所",
-              "remark": "国企"
-            },
-            "supplier": {
-              "id": 2,
-              "type": 2,
-              "name": "北京恒信通诚科技有限公司",
-              "remark": "民企"
-            }
-          },
-          {
-            "ready": {
-              "id": 2,
-              "machineId": 2,
-              "env": 9,
-              "room": "黑山扈数据中心主机房",
-              "position": "H15V02",
-              "readyDate": "20151031",
-              "ip": "192.168.0.189:8",
-              "headLength": 8,
-              "connectionPoolSize": 1,
-              "receiveTimeOut": 3,
-              "commandSetVersion": "5.2.0.1V3-18",
-              "issueDate": "20151031",
-              "groupId": 1,
-              "status": 0
-            },
-            "machine": {
-              "id": 2,
-              "modelId": 1,
-              "batch": "AN",
-              "number": "AN082",
-              "produceDate": "20150901",
-              "supplyDate": "20151015"
-            },
-            "model": {
-              "id": 1,
-              "model": "1309",
-              "producerId": 1,
-              "supplierId": 2,
-              "remark": "国密设备"
-            },
-            "producer": {
-              "id": 1,
-              "type": 1,
-              "name": "江南无锡五十六所",
-              "remark": "国企"
-            },
-            "supplier": {
-              "id": 2,
-              "type": 2,
-              "name": "北京恒信通诚科技有限公司",
-              "remark": "民企"
-            }
-          }
-        ]
-      },
-      {
-        "group": {
-          "id": 2,
-          "name": "Low",
-          "description": "低频应用",
-          "clusterId": 1
+        {
+          "id": 12,
+          "keyDefineId": 5,
+          "keyValue": "XB864ED3BF60E0C241F9448ADA676143F",
+          "checkValue": "13E7D6CBACC63156",
+          "keyDefineRemark": "综合前置系统::ATM主密钥",
+          "equipmentType": 0,
+          "partnerId": 1
         },
-        "machines": [
-          {
-            "ready": {
-              "id": 3,
-              "machineId": 3,
-              "env": 9,
-              "room": "黑山扈数据中心主机房",
-              "position": "H15V03",
-              "readyDate": "20151031",
-              "ip": "10.1.1.3:8",
-              "headLength": 8,
-              "connectionPoolSize": 1,
-              "receiveTimeOut": 3,
-              "commandSetVersion": "5.2.0.1V3-18",
-              "issueDate": "20151031",
-              "groupId": 2,
-              "status": 0
-            },
-            "machine": {
-              "id": 3,
-              "modelId": 1,
-              "batch": "AN",
-              "number": "AN083",
-              "produceDate": "20150901",
-              "supplyDate": "20151015"
-            },
-            "model": {
-              "id": 1,
-              "model": "1309",
-              "producerId": 1,
-              "supplierId": 2,
-              "remark": "国密设备"
-            },
-            "producer": {
-              "id": 1,
-              "type": 1,
-              "name": "江南无锡五十六所",
-              "remark": "国企"
-            },
-            "supplier": {
-              "id": 2,
-              "type": 2,
-              "name": "北京恒信通诚科技有限公司",
-              "remark": "民企"
-            }
-          }
-        ]
-      }
-    ]
+        {
+          "id": 0,
+          "keyDefineId": 10,
+          "keyValue": "-",
+          "checkValue": "-",
+          "keyDefineRemark": "核心系统::TERM端密钥-Z",
+          "partnerId": 3
+        }
+      ]
+    }
   },
   {
-    "cluster": {
+    "rec": {
       "id": 2,
-      "name": "CORE",
-      "description": "核心集群"
-    },
-    "applications": [],
-    "hosts": [],
-    "groups": [
-      {
-        "group": {
-          "id": 3,
-          "name": "ALL",
-          "description": "核心集群所有",
-          "clusterId": 2
+      "equipmentType": 1,
+      "equipmentNo": "JY-1",
+      "branchId": 8,
+      "keyBizSeq": 146,
+      "keys": [
+        {
+          "id": 16,
+          "keyDefineId": 8,
+          "keyValue": "Y54EA052A4F9A624323D983CAB34F22D07A40211642BEBBEE",
+          "checkValue": "CD480136B6F2E7EB",
+          "keyDefineRemark": "综合前置系统::POS密钥",
+          "equipmentType": 1,
+          "equipmentId": 2
         },
-        "machines": [
-          {
-            "ready": {
-              "id": 4,
-              "machineId": 4,
-              "env": 9,
-              "room": "黑山扈数据中心主机房",
-              "position": "H15V04",
-              "readyDate": "20151031",
-              "ip": "10.1.1.4:8",
-              "headLength": 8,
-              "connectionPoolSize": 1,
-              "receiveTimeOut": 3,
-              "commandSetVersion": "5.2.0.1V3-18",
-              "issueDate": "20151031",
-              "groupId": 3,
-              "status": 0
-            },
-            "machine": {
-              "id": 4,
-              "modelId": 1,
-              "batch": "AN",
-              "number": "AN084",
-              "produceDate": "20150901",
-              "supplyDate": "20151015"
-            },
-            "model": {
-              "id": 1,
-              "model": "1309",
-              "producerId": 1,
-              "supplierId": 2,
-              "remark": "国密设备"
-            },
-            "producer": {
-              "id": 1,
-              "type": 1,
-              "name": "江南无锡五十六所",
-              "remark": "国企"
-            },
-            "supplier": {
-              "id": 2,
-              "type": 2,
-              "name": "北京恒信通诚科技有限公司",
-              "remark": "民企"
-            }
-          },
-          {
-            "ready": {
-              "id": 5,
-              "machineId": 5,
-              "env": 9,
-              "room": "黑山扈数据中心主机房",
-              "position": "H15V05",
-              "readyDate": "20151031",
-              "ip": "10.1.1.5:8",
-              "headLength": 8,
-              "connectionPoolSize": 1,
-              "receiveTimeOut": 3,
-              "commandSetVersion": "5.2.0.1V3-18",
-              "issueDate": "20151031",
-              "groupId": 3,
-              "status": 0
-            },
-            "machine": {
-              "id": 5,
-              "modelId": 1,
-              "batch": "AN",
-              "number": "AN085",
-              "produceDate": "20150901",
-              "supplyDate": "20151015"
-            },
-            "model": {
-              "id": 1,
-              "model": "1309",
-              "producerId": 1,
-              "supplierId": 2,
-              "remark": "国密设备"
-            },
-            "producer": {
-              "id": 1,
-              "type": 1,
-              "name": "江南无锡五十六所",
-              "remark": "国企"
-            },
-            "supplier": {
-              "id": 2,
-              "type": 2,
-              "name": "北京恒信通诚科技有限公司",
-              "remark": "民企"
-            }
-          }
-        ]
-      }
-    ]
+        {
+          "id": 17,
+          "keyDefineId": 9,
+          "keyValue": "XF5F1F3F7DE8E483D576624C24DAF2A88",
+          "checkValue": "F52D5AEC8247BF22",
+          "keyDefineRemark": "核心系统::POS-Key",
+          "equipmentType": 1,
+          "equipmentId": 2
+        }
+      ]
+    }
   }
 ]

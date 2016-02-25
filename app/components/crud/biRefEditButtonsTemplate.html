@@ -7,13 +7,13 @@
                 <i class="fa fa-times"></i>&nbsp;放弃</button>
         </div>
         <div class="btn-group" ng-show="ref.lock && !rec.bizSeq && !ref.onChecking">
-            <button class="btn btn-primary" ng-click="unlockRefEditor()">
+            <button class="btn btn-default" ng-click="unlockRefEditor()">
                 <i class="fa fa-edit"></i>&nbsp;修改</button>&nbsp;
-            <button class="btn btn-warning" ng-click="deleteRefRec()">
+            <button class="btn btn-default" ng-click="deleteRefRec()">
                 <i class="fa fa-trash-o"></i>&nbsp;删除</button>
         </div>
     </div>
-    <div class="col-sm-2 text-right" ng-show="ref.lock">
+    <div class="col-sm-2 text-right bi-pr10" ng-show="ref.lock">
         <button class="btn btn-default" ng-click="gotoPage('edit')">
             <i class="fa fa-arrow-left"></i>&nbsp;返回</button>
     </div>

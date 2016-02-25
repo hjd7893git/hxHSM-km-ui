@@ -15,18 +15,37 @@
                                               item-value="rec.equipmentNo" item-old-value="bak.equipmentNo" item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'所属分支行'" item-options="branchList"
                                                 item-value="rec.branchId" item-old-value="bak.branchId" item-locked="lock"></bi-select-item>
-                                <bi-check-item item-label="'创建/更新密钥'" on-item-changed="changeDefineList"
+                                <bi-check-item item-label="'创建/更新密钥'" ng-show="rec.createKey"
                                                item-value="rec.createKey" item-old-value="bak.createKey" item-locked="lock"></bi-check-item>
-                                <bi-select-item item-label="'密钥方案'" item-options="theKeyDefineList" ng-show="rec.createKey"
-                                                item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="lock"></bi-select-item>
-                                <bi-edit-item item-label="'密钥方案'" ng-show="isKeySet(rec.keyBizSeq)"
-                                              item-value="rec.keys[0].rec.keyDefineRemark" item-old-value="rec.keys[0].bak.keyDefineRemark" item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'密钥ID'" ng-show="isKeySet(rec.keyBizSeq)"
-                                              item-value="rec.keys[0].rec.id" item-old-value="rec.keys[0].bak.id" item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'密钥值'" ng-show="isKeySet(rec.keyBizSeq)"
-                                              item-value="rec.keys[0].rec.keyValue" item-old-value="rec.keys[0].bak.keyValue" item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'密钥校验值'" ng-show="isKeySet(rec.keyBizSeq)"
-                                              item-value="rec.keys[0].rec.checkValue" item-old-value="rec.keys[0].bak.checkValue" item-locked="'true'"></bi-edit-item>
+                                <div class="form-group bi-margin-b0" ng-show="opType != 1 && rec.keys && rec.keys.length > 0">
+                                    <label class="col-sm-2 control-label">相关密钥</label>
+                                    <div class="col-sm-6">
+                                        <table class="table table-condensed bi-margin-b0 crud-r" style="margin-top: -1px;" ng-repeat="op in rec.keys">
+                                            <thead><tr>
+                                                <th class="text-center" style="width: 75px;"></th><th>
+                                                    {{op.keyDefineId}} - {{op.keyDefineRemark}} （{{op.partnerId|optionName:'keyUseType':'一机一密'}}）</th>
+                                                <th class="text-center" style="width: 50px;">
+                                                    <input type="checkbox" ng-model="op.chosen" ng-show="rec.createKey && op.partnerId == 4"></th></tr>
+                                            </thead>
+                                            <tr>
+                                                <td class="text-right">密钥值</td>
+                                                <td colspan="2">{{op.keyValue}}</td>
+                                            </tr>
+                                            <tr ng-if="rec.opType == 2 && valueChanged('keyDefineId', 'keyValue', op, bak.keys)" class="chosen-true">
+                                                <td class="text-right">旧值</td>
+                                                <td colspan="2">{{changedValue('keyDefineId', 'keyValue', op, bak.keys)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-right">校验值</td>
+                                                <td colspan="2">{{op.checkValue}}</td>
+                                            </tr>
+                                            <tr ng-if="rec.opType == 2 && valueChanged('keyDefineId', 'checkValue', op, bak.keys)" class="chosen-true">
+                                                <td class="text-right">旧值</td>
+                                                <td colspan="2">{{changedValue('keyDefineId', 'checkValue', op, bak.keys)}}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </li>

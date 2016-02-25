@@ -50,18 +50,18 @@
                                                 item-value="rec.keyUseType" item-old-value="bak.keyUseType"
                                                 item-locked="lock"
                                                 item-options="'keyUseType4Partner'|theOption"></bi-select-item>
-                                <bi-check-item item-label="'创建/更新密钥'" on-item-changed="changeDefineList"
+                                <bi-check-item item-label="'创建/更新密钥'" ng-show="rec.createKey"
                                                item-value="rec.createKey" item-old-value="bak.createKey" item-locked="lock"></bi-check-item>
                                 <bi-edit-item item-label="'密钥ID'" ng-show="isKeySet(rec.keyBizSeq)"
-                                              item-value="rec.keys[0].rec.id" item-old-value="rec.keys[0].bak.id"
+                                              item-value="rec.keys[0].id" item-old-value="bak.keys[0].id"
                                               item-locked="'true'"></bi-edit-item>
                                 <bi-edit-item item-label="'密钥值'" ng-show="isKeySet(rec.keyBizSeq)"
-                                              item-value="rec.keys[0].rec.keyValue"
-                                              item-old-value="rec.keys[0].bak.keyValue"
+                                              item-value="rec.keys[0].keyValue"
+                                              item-old-value="bak.keys[0].keyValue"
                                               item-locked="'true'"></bi-edit-item>
                                 <bi-edit-item item-label="'密钥校验值'" ng-show="isKeySet(rec.keyBizSeq)"
-                                              item-value="rec.keys[0].rec.checkValue"
-                                              item-old-value="rec.keys[0].bak.checkValue"
+                                              item-value="rec.keys[0].checkValue"
+                                              item-old-value="bak.keys[0].checkValue"
                                               item-locked="'true'"></bi-edit-item>
                             </form>
                         </div>

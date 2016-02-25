@@ -251,7 +251,7 @@ angular.module('myApp.views', ['ngRoute'])
     }])
 
     .controller('todoCheckCtrl', ['$log', '$rootScope', '$scope', 'myServer', 'myOptions', function($log, $rootScope, $scope, myServer, myOptions) {
-        myServer.crud($scope, "Journal", '待办事项', myServer.journals);
+        myServer.crud($scope, "JournalBiz", '待办事项', myServer.journals);
         $scope.qry.status = 0;
         $scope.query($scope.qry);
         myServer.retrieveMenuTree($scope);
@@ -265,6 +265,8 @@ angular.module('myApp.views', ['ngRoute'])
             $scope.selectedRec = rec;
             $scope.selectedIndex = idx;
             $scope.lock = true;
+            $scope.lockKeyAbout = true;
+            $scope.ref = [];
             $scope.opType = rec.opType;
             $scope.rec = rec.rec;
             $scope.recStatus = rec.status;
@@ -284,6 +286,10 @@ angular.module('myApp.views', ['ngRoute'])
                 if (ret.status == 200 || ret.status == 201) {
                     $scope.selectedRec.status = status;
                     $scope.crudPanels.activePanel = 0;
+                    var ctrl = myOptions.findController($scope.selectedRec.table);
+                    if (angular.isDefined(ctrl) && angular.isDefined(ctrl.postChecked)) {
+                        ctrl.postChecked($log, $rootScope, $scope, myServer);
+                    }
                 }
             }, function (ret) {  // 处理错误 .reject
                 $scope.showModal(ret);

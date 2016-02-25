@@ -26,6 +26,7 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'keyUse', names: [{value: 0, name: '应用模块'}, {value: 1, name: '设备'}, {value: 2, name: '合作伙伴'}]},
             {option: 'keyUseType', names: [{value: 0, name: '不适用'}, {value: 1, name: '全行统一'}, {value: 2, name: '分行统一'}, {value: 3, name: '网点统一'}, {value: 4, name: '一机一密'}]},
             {option: 'keyUseType4Partner', names: [{value: 0, name: '不适用'}, {value: 1, name: '总对总'}, {value: 2, name: '分对分'}]},
+            {option: 'keyUseALL', names: [{value: '0', name: '-'}, {value: '11', name: '全行统一'}, {value: '12', name: '分行统一'}, {value: '13', name: '网点统一'}, {value: '14', name: '一机一密'}, {value: '21', name: '总对总'}, {value: '22', name: '分对分'}]},
             {option: 'machineStatus', names: [{value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}, {value:3, name: '预备'}]},
             {option: 'PartnerType', names:[{value: 0, name: '政府机构'}, {value: 1, name: '商业企业'}]},
             {option: 'certStatus', names:[{value: 0, name: '密钥已生成'}, {value: 1, name: '申请中 ...'}, {value: 2, name: '已导入'}, {value: 3, name: '过期作废'}]},
@@ -75,15 +76,12 @@ angular.module('myApp.options', ['ngResource'])
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveBranchList($scope);
                     myServer.setKeyAbout($scope);
-                    $scope.changeDefineList = function() {
-                        if (this.itemValue) {
-                            var useType = angular.isDefined($scope.rec.upBranchId) ? 3 : 2;
-                            myServer.retrieveKeyDefineList($scope, {useType: useType})
-                        }
-                    };
                     $scope.preInsert = function(rec) {
                         rec.isLeaf = 1;
                     };
+                },
+                postChecked: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveBranchList($scope, true); // 刷新列表
                 }
             },
             {tableId: 'CardDataApply', title: '制卡数据申请',
@@ -97,10 +95,6 @@ angular.module('myApp.options', ['ngResource'])
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveBranchList($scope);
                     myServer.setKeyAbout($scope);
-                    $scope.changeDefineList = function() {
-                        if (this.itemValue)
-                            myServer.retrieveKeyDefineList($scope, {equipmentType: $scope.rec.equipmentType})
-                    };
                 }
             },
             {tableId: 'Global', title: '全局配置'},
@@ -149,23 +143,11 @@ angular.module('myApp.options', ['ngResource'])
                 }
             },
             {tableId: 'Menu', title: '菜单管理'},
-            {tableId: 'Partner', title: '合作伙伴管理', keyInfo: 'partnerName',
-                controller: function($log, $rootScope, $scope, myServer) {
-                    myServer.setKeyAbout($scope);
-                    $scope.changeDefineList = function() {
-                        if (this.itemValue)
-                            myServer.retrieveKeyDefineList($scope, {partnerId: $scope.rec.id, useType: 1})
-                    };
-                }
-            },
+            {tableId: 'Partner', title: '合作伙伴管理', keyInfo: 'partnerName'},
             {tableId: 'PartnerBranch', title: '合作伙伴分支机构管理', keyInfo: 'branchName',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrievePartnerList($scope);
                     myServer.setKeyAbout($scope);
-                    $scope.changeDefineList = function() {
-                        if (this.itemValue)
-                            myServer.retrieveKeyDefineList($scope, {partnerId: $scope.rec.id, useType: 2})
-                    };
                 }
             },
             {tableId: 'Role', title: '角色管理',

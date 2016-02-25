@@ -9,9 +9,9 @@
                     <i class="fa fa-times"></i>&nbsp;放弃</button>
             </div>
             <div class="btn-group" ng-show="ref.lock && !rec.bizSeq && !ref.onChecking">
-                <button class="btn btn-primary" ng-click="unlockRefEditor()">
+                <button class="btn btn-default" ng-click="unlockRefEditor()">
                     <i class="fa fa-edit"></i>&nbsp;修改</button>&nbsp;
-                <button class="btn btn-warning" ng-click="deleteRefRec()">
+                <button class="btn btn-default" ng-click="deleteRefRec()">
                     <i class="fa fa-trash-o"></i>&nbsp;删除</button>
             </div>
             <div class="alert alert-warning bi-tip-inner" role="alert" ng-if="warning">{{warning}}</div>

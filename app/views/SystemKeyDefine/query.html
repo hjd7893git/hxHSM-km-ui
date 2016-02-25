@@ -7,8 +7,8 @@
                         <a data-toggle="collapse" data-target="#registerStep1" aria-expanded="true"
                            aria-controls="registerStep1">
                             <i class="fa fa-search"></i>&nbsp;查询
-                        </a>
-
+                        </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a href ng-click="conditionQuery(qry)"><i class="fa fa-refresh"></i>&nbsp;刷新</a>
                         <div id="registerStep1" class="panel-collapse collapse" role="tabpanel">
                             <hr class="bi-margin-b10 bi-margin-t8">
                             <div class="panel-body bi-pad0">
@@ -37,20 +37,22 @@
                                 <th>标识</th>
                                 <th>系统</th>
                                 <th>密钥名称</th>
-                                <th>类型</th>
-                                <th>设备密钥</th>
+                                <th>密钥用于</th>
+                                <th>密钥用法</th>
+                                <th>状态</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">
                                 <td class="text-center">
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
-                                    <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
+                                    <i class="fa fa-fw fa-{{r.rec.opType|optionName:'opTypeIcon'}} text-danger" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.id}}</td>
                                 <td>{{r.rec.systemId | optionName:systemList}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.keyName}}</a></td>
-                                <td>{{r.rec.keyType | optionName:'keyType'}}</td>
+                                <td>{{r.rec.keyUseFor | optionName:'keyUse'}}</td>
+                                <td>{{(r.rec.keyUseFor+''+r.rec.keyUseType) | optionName:'keyUseALL'}}</td>
                                 <td>{{r.rec.keyBizSeq | ifdef:'已创建':'-'}}</td>
                             </tr>
                             </tbody>

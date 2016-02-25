@@ -15,27 +15,29 @@
                 <button class="btn btn-default" ng-click="authorize('refuse', 7)">
                     <i class="fa fa-trash-o"></i>&nbsp;拒绝</button>
             </div--><!--暂不支持-->
-            <div class="btn-group" ng-show="recStatus == -1 && !lock">
+            <div class="btn-group" ng-show="recStatus == -1 && (!lock || !lockKeyAbout)">
                 <button class="btn btn-primary" ng-click="submitEdited()">
                     <i class="fa fa-check"></i>&nbsp;提交</button>
                 <button class="btn btn-default" ng-click="gotoPage('query')">
                     <i class="fa fa-times"></i>&nbsp;放弃</button>
             </div>
-            <div class="btn-group" role="group" ng-show="recStatus == -1 && lock">
+            <div class="btn-group" role="group" ng-show="recStatus == -1 && lock && lockKeyAbout">
                 <button class="btn btn-default" ng-click="showHistory()">
                     <i class="fa fa-history"></i>&nbsp;历史</button>
-                <button class="btn btn-primary" ng-click="unlockEditor()" ng-if="!rec.bizSeq">
+                <button class="btn btn-default" ng-click="unlockEditor()" ng-if="!rec.bizSeq">
                     <i class="fa fa-edit"></i>&nbsp;修改</button>&nbsp;
-                <button class="btn btn-warning" ng-click="deleteRec()" ng-if="!rec.bizSeq">
+                <button class="btn btn-default" ng-click="deleteRec()" ng-if="!rec.bizSeq">
                     <i class="fa fa-trash-o"></i>&nbsp;删除</button>
+                <button class="btn btn-default" ng-click="copyEditor()" ng-if="!rec.bizSeq && !readOnly">
+                    <i class="fa fa-copy"></i>&nbsp;拷贝</button>&nbsp;
+                <button class="btn btn-danger" ng-click="preCreateKey()" ng-if="!rec.bizSeq && !readOnly && keyAbout">
+                    <i class="fa fa-key"></i>&nbsp;密钥</button>
             </div>
         </div>
     </div>
     <div class="col-sm-6 row">
-        <div class="col-offset-2 col-sm-2 text-right bi-pr10" ng-show="lock">
-            <button class="btn btn-default" ng-click="gotoPage('query')" ng-if="recStatus == -1">
-                <i class="fa fa-arrow-left"></i>&nbsp;返回</button>
-            <button class="btn btn-default" ng-click="gotoPage('query')" ng-if="recStatus != -1">
+        <div class="col-offset-2 col-sm-2 text-right bi-pr10" ng-show="lock && lockKeyAbout">
+            <button class="btn btn-default" ng-click="gotoPage('query')">
                 <i class="fa fa-arrow-left"></i>&nbsp;返回</button>
         </div>
     </div>
