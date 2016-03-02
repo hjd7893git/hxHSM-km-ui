@@ -6,17 +6,17 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="panel-body bi-pad0">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
                                 <bi-select-item item-label="'机构(默认为总行)'" item-options="branchList"
                                               item-value="rec.branchId" item-old-value="bak.branchId"
                                               item-locked="lock"></bi-select-item>
-                                <bi-edit-item item-label="'计划数量'" item-tip="'输入正数'" item-data-type="'number'"
+                                <bi-edit-item item-label="'计划数量'" item-tip="'输入正数'" item-data-type="'number'" item-name="'planQuantity'" item-required="'true'"
                                               item-value="rec.planQuantity" item-old-value="bak.planQuantity"
                                               item-locked="rec.batchStatus == 0|iif:lock:'true':'true'"></bi-edit-item>
-                                <bi-date-item item-label="'计划开始时间'" item-data-type="'datetime-local'"
+                                <bi-date-item item-label="'计划开始时间'" item-data-type="'datetime-local'" item-name="'startDatetime'" item-required="'true'"
                                               item-value="rec.startDatetime" item-old-value="bak.startDatetime"
                                               item-locked="lock"></bi-date-item>
                                 <bi-edit-item item-label="'完成数量'" item-tip="'输入正数'" item-data-type="'number'" ng-show="rec.batchStatus > 0"
@@ -25,7 +25,7 @@
                                 <bi-date-item item-label="'结束时间'" item-data-type="'datetime-local'" ng-show="rec.batchStatus > 1"
                                               item-value="rec.endDatetime" item-old-value="bak.endDatetime"
                                               item-locked="'true'"></bi-date-item>
-                                <bi-select-item item-label="'批次状态'" item-options="'batchStatus'|theOption"
+                                <bi-select-item item-label="'批次状态'" item-options="'batchStatus'|theOption" item-margin="'bi-margin-b0'"
                                                 item-value="rec.batchStatus" item-old-value="bak.batchStatus"
                                                 item-locked="'true'"></bi-select-item>
                             </form>

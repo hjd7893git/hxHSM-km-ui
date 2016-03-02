@@ -6,40 +6,49 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="panel-body bi-pad0">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'硬件'" item-tip="'为3-16位的字母'"
-                                              item-value="rec.hardware" item-old-value="bak.hardware"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'操作系统'"
-                                              item-value="rec.os" item-old-value="bak.os"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'性能'"
-                                              item-value="rec.performance" item-old-value="bak.performance"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'节点名'"
+                                <bi-edit-item item-label="'节点名'" item-name="'nodeName'" item-required="'true'"
                                               item-value="rec.nodeName" item-old-value="bak.nodeName"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'IP地址'" item-tip="'如：192.168.2.1'"
+                                <bi-edit-item item-label="'机器硬件'" item-name="'hardware'" item-required="'true'"
+                                              item-value="rec.hardware" item-old-value="bak.hardware"
+                                              item-locked="lock"></bi-edit-item>
+                                <bi-edit-item item-label="'IP地址'" item-tip="'如：192.168.2.1'" item-name="'ip'" item-required="'true'"
                                               item-value="rec.ip" item-old-value="bak.ip"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'TCP端口'" item-data-type="'number'"
+                                <bi-edit-item item-label="'TCP端口'" item-tip="'如不需要TCP监听则设为0'" item-data-type="'number'" item-name="'tcpPort'" item-required="'true'"
                                               item-value="rec.tcpPort" item-old-value="bak.tcpPort"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'HTTP端口'" item-data-type="'number'"
+                                <bi-edit-item item-label="'HTTP端口'" item-tip="'如不需要HTTP监听则设为0'" item-data-type="'number'" item-name="'httpPort'" item-required="'true'"
                                               item-value="rec.httpPort" item-old-value="bak.httpPort"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'操作系统用户'" item-required="'true'"
-                                              item-value="rec.osUser" item-old-value="bak.osUser"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-select-item item-label="'集群'"
+                                <bi-select-item item-label="'集群'" item-name="'clusterId'" item-required="'true'"
                                                 item-value="rec.clusterId" item-old-value="bak.clusterId"
                                                 item-locked="lock" item-options="clusterList"></bi-select-item>
-                                <bi-select-item item-label="'状态'" item-options="'machineStatus'|theOption"
-                                                item-value="rec.status" item-old-value="bak.status"
+                                <bi-select-item item-label="'状态'" item-options="'machineStatus'|theOption" item-name="'status'" item-required="'true'"
+                                                item-value="rec.status" item-old-value="bak.status" item-margin="(opType == 0)|iif:'':'bi-margin-b0':'bi-margin-b0'"
                                                 item-locked="lock"></bi-select-item>
+                                <div class="form-group" ng-show="opType == 0">
+                                    <label class="col-sm-2 control-label trimR"><i class="fa fa-info-circle"></i></label>
+                                    <div class="col-sm-6">
+                                        <label class="control-label">下列信息由运维监控自动填入.</label>
+                                    </div>
+                                </div>
+                                <bi-edit-item item-label="'操作系统'" ng-show="opType == 0"
+                                              item-value="rec.os" item-old-value="bak.os"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'操作系统用户'" ng-show="opType == 0"
+                                              item-value="rec.osUser" item-old-value="bak.osUser"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'程序'" ng-show="opType == 0"
+                                              item-value="rec.program" item-old-value="bak.program"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'程序内存'" ng-show="opType == 0" item-margin="'bi-margin-b0'"
+                                              item-value="rec.programMemory" item-old-value="bak.programMemory"
+                                              item-locked="'true'"></bi-edit-item>
 
                             </form>
                         </div>

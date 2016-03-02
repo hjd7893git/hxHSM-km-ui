@@ -6,11 +6,11 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="panel-body bi-pad0">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'假活错误码'" item-tip="'用逗号隔开'"
+                                <bi-edit-item item-label="'假活错误码'" item-tip="'用逗号隔开'" item-margin="'bi-margin-b0'"
                                               item-value="rec.fadeAliveCodes" item-old-value="bak.fadeAliveCodes"
                                               item-locked="lock"></bi-edit-item>
                             </form>

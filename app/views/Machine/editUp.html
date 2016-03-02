@@ -6,35 +6,45 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="panel-body bi-pad0">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                                       item-value="ref.rec.id" item-old-value="ref.bak.id" item-locked="'true'"></bi-edit-item>
-                                        <bi-select-item item-label="'环境'" item-options="'env'|theOption"
-                                                        item-value="ref.rec.env" item-old-value="ref.bak.env" item-locked="ref.lock"></bi-select-item>
-                                        <bi-edit-item item-label="'机房'" item-tip="'输入中文'"
+                                        <bi-date-item item-label="'上架日期'" item-name="'readyDate'" item-required="'true'"
+                                                      item-value="ref.rec.readyDate" item-old-value="ref.bak.readyDate" item-locked="ref.lock"></bi-date-item>
+                                        <bi-edit-item item-label="'机房'" item-tip="'输入中文'" item-name="'room'" item-required="'true'"
                                                       item-value="ref.rec.room" item-old-value="ref.bak.room" item-locked="ref.lock"></bi-edit-item>
-                                        <bi-edit-item item-label="'IP'"
+                                        <bi-edit-item item-label="'IP:端口'" item-name="'ip'" item-required="'true'"
                                                       item-value="ref.rec.ip" item-old-value="ref.bak.ip" item-locked="ref.lock"></bi-edit-item>
-                                        <bi-edit-item item-label="'指令集版本'" item-tip="'5.6.0.0.0 3 FEB'"
-                                                      item-value="ref.rec.commandSetVersion" item-old-value="ref.bak.commandSetVersion" item-locked="ref.lock"></bi-edit-item>
-                                        <bi-edit-item item-label="'长连接数'" item-tip="'输入正数'" item-data-type="'number'" item-margin="'bi-margin-b0'"
+                                        <bi-edit-item item-label="'长连接数'" item-tip="'输入正数'" item-data-type="'number'" item-name="'connectionPoolSize'" item-required="'true'"
                                                       item-value="ref.rec.connectionPoolSize" item-old-value="ref.bak.connectionPoolSize" item-locked="ref.lock"></bi-edit-item>
+                                        <bi-select-item item-label="'分组'" item-options="groupList" item-name="'groupId'" item-required="'true'"
+                                                        item-value="ref.rec.groupId" item-old-value="ref.bak.groupId" item-locked="ref.lock"></bi-select-item>
+                                        <div class="form-group" ng-show="ref.opType == 0">
+                                            <label class="col-sm-2 control-label trimR"><i class="fa fa-info-circle"></i></label>
+                                            <div class="col-sm-6">
+                                                <label class="control-label">下列信息从密码机探测获取.</label>
+                                            </div>
+                                        </div>
+                                        <bi-edit-item item-label="'指令集版本'" item-margin="'bi-margin-b0'" ng-show="ref.opType == 0"
+                                                      item-value="ref.rec.commandSetVersion" item-old-value="ref.bak.commandSetVersion" item-locked="'true'"></bi-edit-item>
                                     </div>
                                     <div class="col-sm-6">
-                                        <bi-date-item item-label="'上架日期'"
-                                                      item-value="ref.rec.readyDate" item-old-value="ref.bak.readyDate" item-locked="ref.lock"></bi-date-item>
-                                        <bi-edit-item item-label="'机位'"
-                                                      item-value="ref.rec.position" item-old-value="ref.bak.position" item-locked="ref.lock"></bi-edit-item>
-                                        <bi-edit-item item-label="'端口'" item-tip="'输入数字'" item-data-type="'number'"
-                                                      item-value="ref.rec.port" item-old-value="ref.bak.port" item-locked="ref.lock"></bi-edit-item>
-                                        <bi-select-item item-label="'分组'" item-options="groupList"
-                                                      item-value="ref.rec.groupId" item-old-value="ref.bak.groupId" item-locked="ref.lock"></bi-select-item>
-                                        <bi-date-item item-label="'启用日期'"
+                                        <div style="height: 45px;"></div>
+                                        <bi-select-item item-label="'环境'" item-options="'env'|theOption" item-name="'env'" item-required="'true'"
+                                                        item-value="ref.rec.env" item-old-value="ref.bak.env" item-locked="ref.lock"></bi-select-item>
+                                        <bi-edit-item item-label="'机位'" item-name="'number'" item-required="'true'"
+                                                      item-value="ref.rec.position" item-old-value="ref.bak.receiveTimeOut" item-locked="ref.lock"></bi-edit-item>
+                                        <bi-edit-item item-label="'超时时间'" item-tip="'输入正数'" item-data-type="'number'" item-name="'receiveTimeOut'" item-required="'true'"
+                                                      item-value="ref.rec.receiveTimeOut" item-old-value="ref.bak.receiveTimeOut" item-locked="ref.lock"></bi-edit-item>
+                                        <bi-date-item item-label="'启用日期'" item-name="'issueDate'" item-required="'true'"
                                                       item-value="ref.rec.issueDate" item-old-value="ref.bak.issueDate" item-locked="ref.lock"></bi-date-item>
-                                        <bi-select-item item-label="'状态'" item-options="'machineStatus'|theOption" item-margin="'bi-margin-b0'"
+                                        <bi-select-item item-label="'状态'" item-options="'machineStatus'|theOption" item-name="'status'" item-required="'true'"
                                                         item-value="ref.rec.status" item-old-value="ref.bak.status" item-locked="ref.lock"></bi-select-item>
+                                        <div style="height: 41px;" ng-show="ref.opType == 0"></div>
+                                        <bi-edit-item item-label="'消息头长'" item-margin="'bi-margin-b0'" ng-show="ref.opType == 0"
+                                                      item-value="ref.rec.headLength" item-old-value="ref.bak.headLength" item-locked="'true'"></bi-edit-item>
                                     </div>
                                 </div>
                             </form>

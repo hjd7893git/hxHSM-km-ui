@@ -6,24 +6,24 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="panel-body bi-pad0">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'卡BIN'" item-required="'true'"
+                                <bi-edit-item item-label="'卡BIN'" item-name="'cardBin'" item-required="'true'"
                                               item-value="rec.cardBin" item-old-value="bak.cardBin"
                                               item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
-                                <bi-edit-item item-label="'证书序列号'" item-required="'true'" item-tip="'由业务人员联系银联获得'" item-data-type="'number'"
+                                <bi-edit-item item-label="'证书序列号'" item-name="'serialNo'" item-required="'true'" item-tip="'由业务人员联系银联获得'" item-data-type="'number'"
                                               item-value="rec.serialNo" item-old-value="bak.serialNo"
                                               item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
-                                <bi-date-item item-label="'失效日期'" item-required="'true'"
+                                <bi-date-item item-label="'失效日期'" item-name="'invalidDate'" item-required="'true'"
                                               item-value="rec.invalidDate" item-old-value="bak.invalidDate"
                                               item-locked="opType != 1 || recStatus != -1"></bi-date-item>
-                                <bi-select-item item-label="'公钥长度'" item-options="'pubKeyLength'|theOption"
+                                <bi-select-item item-label="'公钥长度'" item-options="'pubKeyLength'|theOption" item-name="'pubKeyLength'" item-required="'true'"
                                                 item-value="rec.rootPublicKeyLength"
                                                 item-old-value="bak.rootPublicKeyLength"
                                                 item-locked="opType != 1 || recStatus != -1"></bi-select-item>
-                                <div class="form-group bi-margin-b0" ng-if="opType == 1 && !lock">
+                                <div class="form-group" style="margin-top: 0; margin-bottom: 6px;" ng-if="opType == 1 && !lock">
                                     <label class="col-sm-2 control-label trimR"><i class="fa fa-info-circle"></i></label>
                                     <div class="col-sm-6">
                                         <label class="control-label">后台据此产生公钥并生成公钥输入文件供申请证书所用.</label>
@@ -84,7 +84,7 @@
                                 </div>
                                 <bi-select-item item-label="'证书状态'" item-options="'certStatus'|theOption"
                                                 item-value="rec.certStatus" ng-show="opType != 1 || recStatus != -1"
-                                                item-old-value="bak.certStatus"
+                                                item-old-value="bak.certStatus" item-margin="'bi-margin-b0'"
                                                 item-locked="'true'"></bi-select-item>
                             </form>
                         </div>

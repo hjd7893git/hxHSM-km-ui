@@ -21,7 +21,7 @@ angular.module('myApp.views', ['ngRoute'])
             controller: 'todoCheckCtrl'
         }).when('/views/deploy', {
             templateUrl: 'views/deploy.html',
-            controller: 'DeployCtrl'
+            controller: 'myDeployCtrl'
         }).when('/views/monitor', {
             templateUrl: 'views/monitor/dashboard.html',
             controller: 'monitor.controller'
@@ -43,9 +43,6 @@ angular.module('myApp.views', ['ngRoute'])
         $scope.$on('$viewContentLoaded', function() {
             angular.element('.carousel').carousel();
         });
-    }])
-
-    .controller('myDeployCtrl', ['$log', '$scope', function($log, $scope) {
     }])
 
     .controller('monitor.controller', ['$log', '$scope', '$timeout', 'myServer', function($log, $scope, $timeout, myServer) {
@@ -223,12 +220,6 @@ angular.module('myApp.views', ['ngRoute'])
     }])
 
     .controller('table.CRUD.controller', ['$log', '$rootScope', '$scope', '$location', 'myServer', 'myOptions', function($log, $rootScope, $scope, $location, myServer, myOptions) {
-        $scope.$on('$viewContentLoaded', function() {
-            $log.info("event: view-reloaded");
-        });
-        $scope.$on('$includeContentLoaded', function(e) {
-            $log.info("event: include-reloaded: " + e.targetScope.$parent.$parent.tableId);
-        });
         var path = $location.path();
         var tableId = path.substring(7);
         var pos = tableId.indexOf('.');
@@ -260,8 +251,6 @@ angular.module('myApp.views', ['ngRoute'])
         $rootScope.detailPanels = [];
         $rootScope.detailPageIDs = {check: 0};
         $scope.showRowDetails = function(rec, idx) {
-            $log.info("show editor ... " + idx + ': ' + rec.table);
-            $log.info('journal-page: ' + $scope.crudPanels.activePanel);
             $scope.selectedRec = rec;
             $scope.selectedIndex = idx;
             $scope.lock = true;
@@ -304,20 +293,26 @@ angular.module('myApp.views', ['ngRoute'])
             });
         };
     }])
-    .controller('DeployCtrl', ['$location', '$scope', '$rootScope', 'myServer', '$log', function($location, $scope, $rootScope, myServer, $log) {
-        myServer.errorDialog($scope, "initData");
-        myServer.confirmDialog($scope,"initData")
-        $scope.doDeploy = function(initData) {
-            var promise = myServer.call("deploy", initData); // 同步调用，获得承诺接口
-            $log.info("initData:"+initData)
+    .controller('myDeployCtrl', ['$location', '$scope', '$rootScope', 'myServer', '$log', function($location, $scope, $rootScope, myServer, $log) {
+        $log.info("deploy ...");
+        myServer.crud($scope, "Deploy", '部署');
+        $scope.rec = {"confCreated": false};
+        myServer.errorDialog($scope, "deploy");
+        myServer.confirmDialog($scope, "deploy");
+        myServer.retrieveClusterList($scope);
+        $scope.doDeploy = function(rqData) {
+            var promise = myServer.call("deploy", rqData); // 同步调用，获得承诺接口
+            $log.info("initData:" + JSON.stringify(rqData));
             promise.then(function(ret) { // 调用承诺API获取数据 .resolve
                 $log.info("deploy --> ok: " + ret);
                 if (ret.status == 200 || ret.status == 201) {
-                    $scope.confirmModal(ret)
-                    $location.path("views/check").replace();
+                    $scope.rec.confCreated = true;
+                    $scope.rec.hxConf = "hxHSM-" + $scope.rec.clusterId + ".conf";
+                    $scope.rec.bdbConf = "hxHSM-bdb-" + $scope.rec.clusterId + ".conf";
+                    $scope.rec.bdbTar = "hxHSM-bdb-" + $scope.rec.clusterId + ".tar.gz";
                 }
             }, function(ret) { // 处理错误 .reject
-                $log.info("deploy --> fail: " + ret)
+                $log.info("deploy --> fail: " + ret);
                 $scope.showModal(ret)
             });
         };

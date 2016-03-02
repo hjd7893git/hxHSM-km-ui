@@ -6,22 +6,18 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="panel-body bi-pad0">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
-                                <bi-select-item item-label="'型号'" item-options="machineModelList"
+                                <bi-select-item item-label="'型号'" item-options="machineModelList" item-name="'modelId'" item-required="'true'"
                                               item-value="rec.modelId" item-old-value="bak.modelId" item-locked="lock"></bi-select-item>
-                                <bi-edit-item item-label="'批次'" item-tip="'如：AN'"
+                                <bi-edit-item item-label="'批次'" item-tip="'如：AN'" item-name="'batch'" item-required="'true'"
                                               item-value="rec.batch" item-old-value="bak.batch" item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'编号'" item-tip="'SJJ1309AN084'"
+                                <bi-edit-item item-label="'编号'" item-tip="'SJJ1309AN084'" item-name="'number'" item-required="'true'"
                                               item-value="rec.number" item-old-value="bak.number" item-locked="lock"></bi-edit-item>
-                                <bi-select-item item-label="'生产商'" item-options="companyList"
-                                              item-value="rec.producer" item-old-value="bak.producer" item-locked="lock"></bi-select-item>
-                                <bi-date-item item-label="'生产日期'"
+                                <bi-date-item item-label="'生产日期'" item-name="'produceDate'" item-required="'true'"
                                               item-value="rec.produceDate" item-old-value="bak.produceDate" item-locked="lock"></bi-date-item>
-                                <bi-select-item item-label="'供应商'" item-options="companyList"
-                                              item-value="rec.supplier" item-old-value="bak.supplier" item-locked="lock"></bi-select-item>
-                                <bi-date-item item-label="'供应日期'"
+                                <bi-date-item item-label="'供应日期'" item-name="'supplyDate'" item-required="'true'"
                                               item-value="rec.supplyDate" item-old-value="bak.supplyDate" item-locked="lock"></bi-date-item>
                                 <div class="form-group bi-margin-b0">
                                     <label class="col-sm-2 control-label">上架状态</label>

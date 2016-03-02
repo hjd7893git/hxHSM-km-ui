@@ -5,8 +5,8 @@
             <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <div class="panel-body bi-pad0">
-                            <form class="form-horizontal">
+                        <div class="panel-body bi-pad0" name="{{::thePageId}}Form">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
@@ -19,11 +19,11 @@
                                 <bi-edit-item item-label="'公钥'"
                                               item-value="rec.publicKeyValue" item-old-value="bak.publicKeyValue"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-date-item item-label="'生成时间'"
+                                <bi-date-item item-label="'生成时间'" item-data-type="'datetime-local'"
                                               item-value="rec.createDatetime" item-old-value="bak.createDatetime"
                                               item-locked="lock"></bi-date-item>
                                 <bi-select-item item-label="'使用状态'" item-options="'RSAStatus'|theOption"
-                                              item-value="rec.useStatus" item-old-value="bak.useStatus"
+                                              item-value="rec.useStatus" item-old-value="bak.useStatus" item-margin="'bi-margin-b0'"
                                               item-locked="lock"></bi-select-item>
                             </form>
                         </div>

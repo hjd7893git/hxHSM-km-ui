@@ -2,35 +2,75 @@
   {
     "rec": {
       "id": 1,
-      "equipmentType": 0,
-      "equipmentNo": "010A-ATM-1",
-      "branchId": 4,
-      "keyBizSeq": 42,
-      "keys": [
+      "symbol": "FRONT",
+      "name": "综合前置系统",
+      "nameEn": "Common Front System",
+      "summary": "中台。",
+      "keyDefines": [
         {
-          "id": 0,
-          "keyDefineId": 7,
-          "keyValue": "-",
-          "checkValue": "-",
-          "keyDefineRemark": "综合前置系统::ATM-C端密钥-X",
-          "partnerId": 2
+          "rec": {
+            "id": 1,
+            "systemId": 1,
+            "keyName": "主密钥分发信封私钥",
+            "createMode": 0,
+            "keyType": "000",
+            "keySchema": "Y",
+            "keyUseFor": 0
+          }
         },
         {
-          "id": 12,
-          "keyDefineId": 5,
-          "keyValue": "XB864ED3BF60E0C241F9448ADA676143F",
-          "checkValue": "13E7D6CBACC63156",
-          "keyDefineRemark": "综合前置系统::ATM主密钥",
-          "equipmentType": 0,
-          "partnerId": 1
+          "rec": {
+            "id": 5,
+            "systemId": 1,
+            "keyName": "ATM主密钥",
+            "createMode": 0,
+            "keyType": "001",
+            "keySchema": "X",
+            "keyUseFor": 1,
+            "equipmentType": 0,
+            "keyUseType": 1,
+            "keyBizSeq": 160
+          }
         },
         {
-          "id": 0,
-          "keyDefineId": 10,
-          "keyValue": "-",
-          "checkValue": "-",
-          "keyDefineRemark": "核心系统::TERM端密钥-Z",
-          "partnerId": 3
+          "rec": {
+            "id": 6,
+            "systemId": 1,
+            "keyName": "银联主密钥",
+            "createMode": 0,
+            "keyType": "000",
+            "keySchema": "Y",
+            "keyUseFor": 2,
+            "partnerId": 1,
+            "keyUseType": 1,
+            "keyBizSeq": 18
+          }
+        },
+        {
+          "rec": {
+            "id": 7,
+            "systemId": 1,
+            "keyName": "ATM-C端密钥-X",
+            "createMode": 0,
+            "keyType": "001",
+            "keySchema": "X",
+            "keyUseFor": 1,
+            "equipmentType": 0,
+            "keyUseType": 2
+          }
+        },
+        {
+          "rec": {
+            "id": 8,
+            "systemId": 1,
+            "keyName": "POS密钥",
+            "createMode": 0,
+            "keyType": "000",
+            "keySchema": "Y",
+            "keyUseFor": 1,
+            "equipmentType": 1,
+            "keyUseType": 4
+          }
         }
       ]
     }
@@ -38,28 +78,48 @@
   {
     "rec": {
       "id": 2,
-      "equipmentType": 1,
-      "equipmentNo": "JY-1",
-      "branchId": 8,
-      "keyBizSeq": 146,
-      "keys": [
+      "symbol": "ACCS",
+      "name": "核心系统",
+      "nameEn": "Core banking System",
+      "keyDefines": [
         {
-          "id": 16,
-          "keyDefineId": 8,
-          "keyValue": "Y54EA052A4F9A624323D983CAB34F22D07A40211642BEBBEE",
-          "checkValue": "CD480136B6F2E7EB",
-          "keyDefineRemark": "综合前置系统::POS密钥",
-          "equipmentType": 1,
-          "equipmentId": 2
+          "rec": {
+            "id": 9,
+            "systemId": 2,
+            "keyName": "POS-Key",
+            "createMode": 0,
+            "keyType": "001",
+            "keySchema": "X",
+            "keyUseFor": 1,
+            "equipmentType": 1,
+            "keyUseType": 4
+          }
         },
         {
-          "id": 17,
-          "keyDefineId": 9,
-          "keyValue": "XF5F1F3F7DE8E483D576624C24DAF2A88",
-          "checkValue": "F52D5AEC8247BF22",
-          "keyDefineRemark": "核心系统::POS-Key",
-          "equipmentType": 1,
-          "equipmentId": 2
+          "rec": {
+            "id": 10,
+            "systemId": 2,
+            "keyName": "TERM端密钥-Z",
+            "createMode": 0,
+            "keyType": "000",
+            "keySchema": "X",
+            "keyUseFor": 1,
+            "equipmentType": 0,
+            "keyUseType": 3
+          }
+        },
+        {
+          "rec": {
+            "id": 11,
+            "systemId": 2,
+            "keyName": "拉卡拉密钥",
+            "createMode": 0,
+            "keyType": "000",
+            "keySchema": "X",
+            "keyUseFor": 2,
+            "partnerId": 1,
+            "keyUseType": 2
+          }
         }
       ]
     }

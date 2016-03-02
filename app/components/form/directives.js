@@ -154,8 +154,7 @@ angular.module('myApp.components.form', [])
         $scope.isNotInsert = function() {
             if ($scope.$parent.opType == 1)
                 return false;
-            else if (angular.isDefined($scope.$parent.ref) && $scope.$parent.ref && $scope.$parent.ref.length > 0) {
-                $log.info('isNotInsert: ' + JSON.stringify($scope.$parent.ref));
+            else if (angular.isDefined($scope.$parent.ref) && $scope.$parent.ref && (!angular.isArray($scope.$parent.ref))) {
                 if (angular.isDefined($scope.$parent.ref.rec))
                     return ($scope.$parent.ref.rec.opType == 2);
                 else
@@ -174,13 +173,14 @@ angular.module('myApp.components.form', [])
             }
             return '';
         };
+        // 输入域检查, 汉字长度算1, 但没关系, MySQL里也是算1, 都不是按Byte字节算的.
+        // 输入域需定义name(封装后定义item-name)才能生效
         $scope.isValidated = function(n, rqr, min, max) {
             if (angular.isUndefined(n))
                 return false;
             var p = this.$parent;
-            var formName = getPageId(p) + 'Form';
+            var formName = getPageId(p) + 'Form'; // 注意页面里form元素的name的命名
             var form = p[formName];
-            $log.info("isValidated----" + formName + "/" + angular.isDefined(form));
             if (angular.isUndefined(form))
                 return false;
             $scope.inputError = '';
