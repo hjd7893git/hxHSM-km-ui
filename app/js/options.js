@@ -142,7 +142,11 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveMachineList($scope);
                 }
             },
-            {tableId: 'Menu', title: '菜单管理'},
+            {tableId: 'Menu', title: '菜单管理',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    $scope.readOnly = true;
+                }
+            },
             {tableId: 'Partner', title: '合作伙伴管理', keyInfo: 'partnerName'},
             {tableId: 'PartnerBranch', title: '合作伙伴分支机构管理', keyInfo: 'branchName',
                 controller: function($log, $rootScope, $scope, myServer) {

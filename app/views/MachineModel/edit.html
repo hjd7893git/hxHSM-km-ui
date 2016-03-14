@@ -6,16 +6,16 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="panel-body bi-pad0">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'型号'"
+                                <bi-edit-item item-label="'型号'" item-name="'model'" item-required="'true'"
                                               item-value="rec.model" item-old-value="bak.model" item-locked="lock"></bi-edit-item>
-                                <bi-select-item item-label="'生产商'" item-options="companyList"
+                                <bi-select-item item-label="'生产商'" item-options="companyList" item-name="'producerId'" item-required="'true'"
                                               item-value="rec.producerId" item-old-value="bak.producerId" item-locked="lock"></bi-select-item>
-                                <bi-select-item item-label="'供应商'" item-options="companyList"
+                                <bi-select-item item-label="'供应商'" item-options="companyList" item-name="'supplierId'" item-required="'true'"
                                               item-value="rec.supplierId" item-old-value="bak.supplierId" item-locked="lock"></bi-select-item>
-                                <bi-edit-item item-label="'备注'"
+                                <bi-edit-item item-label="'备注'" item-margin="'bi-margin-b0'"
                                               item-value="rec.remark" item-old-value="bak.remark" item-locked="lock"></bi-edit-item>
                             </form>
                         </div>

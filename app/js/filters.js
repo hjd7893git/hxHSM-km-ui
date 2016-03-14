@@ -32,6 +32,15 @@ angular.module('myApp.filters', ['ngRoute'])
         };
     })
 
+    .filter('biDateTime', function () {
+        return function (y) {
+            var x = y.substr(0, 8);
+            var d = x.substr(0, 4) + '-' + x.substr(4, 2) + '-' + x.substr(6);
+            x = y.substr(8);
+            return d + ' ' + x.substr(0, 2) + ':' + x.substr(2, 2) + ':' + x.substr(4);
+        };
+    })
+
     .filter('treeStringify', ['$log', '$rootScope', function ($log, $rootScope) {
         var stringify = function (tree, chosens, tab) {
             var out = "";

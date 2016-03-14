@@ -84,7 +84,8 @@
                         <span class="input-group-addon bi-no-radius">间隔</span>
                         <input type="text" class="form-control text-center" aria-label="刷新间隔(秒)" ng-model="tab.tickInterval">
                         <span class="input-group-addon bi-no-radius">秒</span>
-                        <span class="input-group-addon bi-no-radius"><a ng-click="updateQuantities(tab.cluster.id, tab.tickInterval);">刷新</a></span>
+                        <span class="input-group-addon bi-no-radius"><a ng-click="updateQuantities(tab.cluster.id, tab.tickInterval);"><i class="fa fa-refresh"></i> 刷新</a></span>
+                        <span class="input-group-addon bi-no-radius"><a ng-click="updateQuantities(tab.cluster.id, 0);"><i class="fa fa-stop"></i> 停止</a></span>
                         <span class="input-group-addon bi-no-radius">
                             <a ng-click="toggleMax()"><i class="fa fa-{{tab.displayMax|iif:'plus':'minus':'minus'}}-square-o"></i></a>
                         </span>

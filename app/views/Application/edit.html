@@ -6,11 +6,11 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="panel-body bi-pad0">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'渠道'" item-tip="'为3-8位的大写字母'"
+                                <bi-edit-item item-label="'渠道'" item-tip="'为3-8位的大写字母'" item-name="'symbol'" item-required="'true'"
                                               item-value="rec.symbol" item-old-value="bak.symbol"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'名称'" item-tip="'中文名称'"
@@ -31,16 +31,19 @@
                                 <bi-edit-item item-label="'API列表'"
                                               item-value="rec.apiList" item-old-value="bak.apiList"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-select-item item-label="'是否短连接'" item-options="'YesNo'|theOption"
+                                <bi-select-item item-label="'是否A码报文'" item-options="'YesNo'|theOption" item-name="'ascEncode'" item-required="'true'"
+                                                item-value="rec.ascEncode" item-old-value="bak.ascEncode"
+                                                item-locked="lock"></bi-select-item>
+                                <bi-select-item item-label="'是否短连接'" item-options="'YesNo'|theOption" item-name="'shortConnection'" item-required="'true'"
                                                 item-value="rec.shortConnection" item-old-value="bak.shortConnection"
                                                 item-locked="lock"></bi-select-item>
                                 <bi-edit-item item-label="'头长'" item-tip="'如：8'" item-data-type="'number'"
                                               item-value="rec.headLength" item-old-value="bak.headLength"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-select-item item-label="'同步请求应答'" item-options="'YesNo'|theOption"
+                                <bi-select-item item-label="'同步请求应答'" item-options="'YesNo'|theOption" item-name="'syncRqRs'" item-required="'true'"
                                                 item-value="rec.syncRqRs" item-old-value="bak.syncRqRs"
                                                 item-locked="lock"></bi-select-item>
-                                <bi-select-item item-label="'可接收的报文类型'" item-options="'packType'|theOption"
+                                <bi-select-item item-label="'可接收的报文类型'" item-options="'packType'|theOption" item-name="'packType'" item-required="'true'"
                                                 item-value="rec.packType" item-old-value="bak.packType"
                                                 item-locked="lock"></bi-select-item>
                                 <bi-select-item item-label="'密码机分组'" is-option-field="'true'"

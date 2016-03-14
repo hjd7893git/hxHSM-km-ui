@@ -48,10 +48,10 @@
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.id}}</td>
-                                <td><a href ng-click="showEditor($index)">{{r.rec.batchId}}</a></td>
-                                <td>{{r.rec.privateKeyValue}}</td>
+                                <td>{{r.rec.batchId}}</td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.privateKeyValue}}</a></td>
                                 <td>{{r.rec.publicKeyValue}}</td>
-                                <td>{{r.rec.createDatetime}}</td>
+                                <td>{{r.rec.createDatetime|biDateTime}}</td>
                                 <td>{{r.rec.useStatus|optionName:"RSAStatus"}}</td>
                             </tr>
                             </tbody>

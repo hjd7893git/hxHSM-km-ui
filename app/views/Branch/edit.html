@@ -6,20 +6,21 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="panel-body bi-pad0">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'机构号'"
+                                <bi-edit-item item-label="'机构号'" item-name="'branchNo'" item-required="'true'"
                                               item-value="rec.branchNo" item-old-value="bak.branchNo" item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'上级机构'" item-options="branchList"
                                               item-value="rec.upBranchId" item-old-value="bak.upBranchId" item-locked="lock"></bi-select-item>
-                                <bi-edit-item item-label="'机构名称'"
+                                <bi-edit-item item-label="'机构名称'" item-name="'branchName'" item-required="'true'"
                                               item-value="rec.branchName" item-old-value="bak.branchName" item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'是否叶子'" item-options="'YesNo'|theOption"
-                                              item-value="rec.isLeaf" item-old-value="bak.isLeaf" item-locked="'true'"></bi-select-item>
+                                                item-margin="((opType == 0 || rec.createKey) && rec.keys && rec.keys.length > 0)|iif:'':'bi-margin-b0':'bi-margin-b0'"
+                                                item-value="rec.isLeaf" item-old-value="bak.isLeaf" item-locked="'true'"></bi-select-item>
                                 <bi-check-item item-label="'创建/更新密钥'" ng-show="rec.createKey"
                                                item-value="rec.createKey" item-old-value="bak.createKey" item-locked="lock"></bi-check-item>
-                                <div class="form-group bi-margin-b0" ng-show="opType != 1 && rec.keys && rec.keys.length > 0">
+                                <div class="form-group bi-margin-b0" ng-show="(opType == 0 || rec.createKey) && rec.keys && rec.keys.length > 0">
                                     <label class="col-sm-2 control-label">相关密钥</label>
                                     <div class="col-sm-6">
                                         <table class="table table-condensed bi-margin-b0 crud-r" style="margin-top: -1px;" ng-repeat="op in rec.keys">

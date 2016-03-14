@@ -6,14 +6,14 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="panel-body bi-pad0">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
-                                <bi-select-item item-label="'厂家类型'" item-options="'companyType'|theOption"
+                                <bi-select-item item-label="'厂家类型'" item-options="'companyType'|theOption" item-name="'type'" item-required="'true'"
                                                 item-value="rec.type" item-old-value="bak.type" item-locked="lock"></bi-select-item>
-                                <bi-edit-item item-label="'厂家名称'"
+                                <bi-edit-item item-label="'厂家名称'" item-name="'name'" item-required="'true'"
                                               item-value="rec.name" item-old-value="bak.name" item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'备注'"
+                                <bi-edit-item item-label="'备注'" item-margin="'bi-margin-b0'"
                                               item-value="rec.remark" item-old-value="bak.remark" item-locked="lock"></bi-edit-item>
                             </form>
                         </div>
