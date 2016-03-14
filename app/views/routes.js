@@ -74,6 +74,8 @@ angular.module('myApp.views', ['ngRoute'])
                             angular.element.each($scope.clusters, function (n, ele) {
                                 if (ele.cluster.name == newValue) {
                                     $scope.activeCluster = ele;
+                                    if (angular.isDefined($scope.theTimer))
+                                        $timeout.cancel($scope.theTimer);
                                     $scope.updateQuantities($scope.activeCluster.cluster.id);
                                 }
                             });
@@ -93,6 +95,7 @@ angular.module('myApp.views', ['ngRoute'])
         function pieLabelFormatter(label, series) {
             return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
         }
+        // jquery.flot.pie.js: 536行 ... if (options.series.pie.innerRadius > 0) { ... 需要加上options != null条件
         $scope.optionsPie = {
             series: {
                 pie: {
@@ -191,7 +194,7 @@ angular.module('myApp.views', ['ngRoute'])
         $scope.updateQuantities = function(clusterId, i) {
             if (angular.isDefined(i))
                 $scope.activeCluster.tickInterval = i;
-            var uri = "statistics/" + clusterId + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint
+            var uri = "statistics/" + $scope.activeCluster.cluster.id + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint
             var promise2 = myServer.call(uri, {sessionId: $scope.$root.sessionId}, 'GET'); // 同步调用，获得承诺接口
             promise2.then(function(ret) { // 调用承诺API获取数据 .resolve
                 if (ret.status == 200 || ret.status == 201) {
@@ -204,8 +207,11 @@ angular.module('myApp.views', ['ngRoute'])
                     $scope.activeCluster.outbounds = ret.data.groups;
                     $scope.activeCluster.transactions = [ {label: "TPS", data: $scope.activeCluster.exchangeQuantity, lines: { show: true }, points: { show: true }, color: '#5bc0de'} ];
                     $scope.activeCluster.links = [ {label: "连接数", data: $scope.activeCluster.linkQuantity, color: '#8a6d3b', lines: { show: true, steps: true, fill: true }} ];
-                    if ($scope.activeCluster.tickInterval > 0)
-                        $timeout($scope.updateQuantities, $scope.activeCluster.tickInterval * 1000);
+                    if ($scope.activeCluster.tickInterval > 0) {
+                        if (angular.isDefined($scope.theTimer))
+                            $timeout.cancel($scope.theTimer);
+                        $scope.theTimer = $timeout($scope.updateQuantities, $scope.activeCluster.tickInterval * 1000);
+                    }
                 }
             }, function(ret) { // 处理错误 .reject
                 $scope.showModal(ret)

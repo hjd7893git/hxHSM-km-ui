@@ -25,6 +25,9 @@
                                 <bi-edit-item item-label="'HTTP端口'" item-tip="'如不需要HTTP监听则设为0'" item-data-type="'number'" item-name="'httpPort'" item-required="'true'"
                                               item-value="rec.httpPort" item-old-value="bak.httpPort"
                                               item-locked="lock"></bi-edit-item>
+                                <bi-edit-item item-label="'内存数据库同步端口'" item-tip="'如不需要监听则设为0'" item-data-type="'number'"
+                                              item-value="rec.dbSyncPort" item-old-value="bak.dbSyncPort"
+                                              item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'集群'" item-name="'clusterId'" item-required="'true'"
                                                 item-value="rec.clusterId" item-old-value="bak.clusterId"
                                                 item-locked="lock" item-options="clusterList"></bi-select-item>

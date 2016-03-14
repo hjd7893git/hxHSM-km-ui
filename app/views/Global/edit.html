@@ -10,6 +10,12 @@
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
+                                <bi-select-item item-label="'是否启动监控采集'" item-options="'YesNo'|theOption" item-name="'startMonitor'" item-required="'true'"
+                                                item-value="rec.startMonitor" item-old-value="bak.startMonitor"
+                                                item-locked="lock"></bi-select-item>
+                                <bi-select-item item-label="'启动时是否尝试连接'" item-options="'YesNo'|theOption" item-name="'tryConnectivity'" item-required="'true'"
+                                                item-value="rec.tryConnectivity" item-old-value="bak.tryConnectivity"
+                                                item-locked="lock"></bi-select-item>
                                 <bi-edit-item item-label="'假活错误码'" item-tip="'用逗号隔开'" item-margin="'bi-margin-b0'"
                                               item-value="rec.fadeAliveCodes" item-old-value="bak.fadeAliveCodes"
                                               item-locked="lock"></bi-edit-item>
