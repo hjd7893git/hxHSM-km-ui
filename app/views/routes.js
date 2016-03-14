@@ -82,6 +82,20 @@ angular.module('myApp.views', ['ngRoute'])
                             });
                         }
                     }, true);
+                    if ($scope.activeCluster.hosts.length > 0)
+                        $scope.activeCluster.hosts.forEach(function(host){
+                            host.occupys = [];
+                            host.occupys.cpu = [];
+                            host.occupys.memory = [];
+                        });
+                    if ($scope.activeCluster.groups.length > 0)
+                        $scope.activeCluster.groups.forEach(function(group){
+                           if (group.machines.length > 0)
+                               group.machines.forEach(function(machine){
+                                   machine.occupys = [];
+                                   machine.occupys.percent = [];
+                               });
+                        });
                 }
             }
         }, function(ret) { // 处理错误 .reject
@@ -92,6 +106,64 @@ angular.module('myApp.views', ['ngRoute'])
                 ele.displayDetails = !ele.displayDetails;
             else
                 ele.displayDetails = true;
+        };
+        $scope.getOccupyAndToggleDetails = function(ele, object, objectId) {
+            // toggle details
+            if (angular.isDefined(ele.displayOccupy))
+                ele.displayOccupy = !ele.displayOccupy;
+            else {
+                ele.displayOccupy = true;
+                ele.occupys = $scope.getOccupy(object, objectId);
+            }
+        };
+        $scope.getOccupy = function(object, objectId) {
+            // get occupy
+            var uri = "occupy/" + object + "/" + objectId + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint
+            var promise3 = myServer.call(uri, {sessionId: $scope.$root.sessionId}, 'GET'); // 同步调用，获得承诺接口
+            var occupys = [];
+
+            promise3.then(function(ret) {
+                if (ret.status == 200 || ret.status == 201) {
+                    if (object == "node")
+                        occupys.cpu = [{
+                            label: "CPU(%)",
+                            data: updateOccupy([], ret.data.occupys, object + ".cpu"),
+                            lines: {show: true},
+                            points: {show: true},
+                            color: '#5bc0de'
+                        }];
+                        occupys.memory = [{
+                            label: "系统剩余内存(MB)",
+                            data: updateOccupy([], ret.data.occupys, object + ".osmemory"),
+                            lines: {show: true},
+                            points: {show: true},
+                            color: '#5bc0de'
+                        },
+                            {
+                                label: "应用占用内存(MB)",
+                                data: updateOccupy([], ret.data.occupys, object + ".appmemory"),
+                                lines: {show: true},
+                                points: {show: true},
+                                color: '#AAAAAA'
+                            }];
+                    if (object == "machine")
+                        occupys.percent = [{
+                            label: "CPU(%)",
+                            data: updateOccupy([], ret.data.occupys, object + ".cpu"),
+                            lines: {show: true},
+                            points: {show: true},
+                            color: '#5bc0de'
+                        },
+                            {
+                                label: "MEM(%)",
+                                data: updateOccupy([], ret.data.occupys, object + ".memory"),
+                                lines: {show: true},
+                                points: {show: true},
+                                color: '#AAAAAA'
+                            }];
+                }
+            });
+            return occupys;
         };
         function pieLabelFormatter(label, series) {
             return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
@@ -143,6 +215,48 @@ angular.module('myApp.views', ['ngRoute'])
                 // $log.info("tps-post: " + JSON.stringify($scope.activeCluster.exchangeQuantity));
             }
         };
+        function updateOccupy(data, newData, type) {
+            var myPoints = 10;
+            switch (type) {
+                case "node.cpu" :
+                    return analyOccupy(data, newData, "node", "cpuPercent");
+                case "node.osmemory" :
+                    return analyOccupy(data, newData, "node", "osFreeMemory");
+                case "node.appmemory" :
+                    return analyOccupy(data, newData, "node", "heapUsed");
+                case "machine.cpu" :
+                    return analyOccupy(data, newData, "machine", "cpuPercent");
+                case "machine.memory" :
+                    return analyOccupy(data, newData, "machine", "memoryPercent");
+                default :
+                    return []
+            }
+            function analyOccupy(data, newData, entity, value) {
+                while (data.length >= myPoints)
+                    data = data.slice(1);
+                angular.element.each(newData, function (n, ele) {
+                    /* if newData have 10 rows data have 5 rows and data only need 2 rows
+                     then we should push newData[9] and newData[10]
+                     so 'IF' condition is : newData.length - n == myPoints - data.length - 1
+                     => n == newData.length - (myPoints - data.length - 1)*/
+                    if (n == (newData.length - (myPoints - data.length - 1)))
+                        data.push([ele.gatherDatetime, getValue(ele, value)]);
+                });
+                return data;
+                function getValue (ele, value){
+                    if (value in ele)
+                        if (value.toUpperCase().indexOf("MEM") >= 0 || value == "heapUsed")
+                            return ele[value]/1024;
+                        else
+                            return ele[value];
+                    else
+                        if (value == "memoryPercent")
+                            return (ele["usedMemory"]*100/(ele["usedMemory"]+ele["freeMemory"])).toFixed(2);
+                        else
+                            return "";
+                }
+            }
+        }
         function updateTps(data, newData) {
             var myPoints = $scope.activeCluster.displayMax ? $scope.activeCluster.displayPoints : $scope.activeCluster.displayPoints * 3;
             while (data.length >= myPoints)
@@ -170,6 +284,7 @@ angular.module('myApp.views', ['ngRoute'])
                         ele2.osFreeMemory = ele.osFreeMemory;
                         ele2.cpuPercent = ele.cpuPercent;
                         ele2.heapUsed = ele.heapUsed;
+                        ele2.alarmLevel = ele.alarmLevel;
                     }
                 });
             });
@@ -184,6 +299,7 @@ angular.module('myApp.views', ['ngRoute'])
                                 ele3.osFreeMemory = ele.freeMemory;
                                 ele3.cpuPercent = ele.cpuPercent;
                                 ele3.heapUsed = ele.usedMemory;
+                                ele3.alarmLevel = ele.alarmLevel;
                             }
                         });
                     }
@@ -194,7 +310,7 @@ angular.module('myApp.views', ['ngRoute'])
         $scope.updateQuantities = function(clusterId, i) {
             if (angular.isDefined(i))
                 $scope.activeCluster.tickInterval = i;
-            var uri = "statistics/" + clusterId + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint
+            var uri = "statistics/" + $scope.activeCluster.cluster.id + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint
             var promise2 = myServer.call(uri, {sessionId: $scope.$root.sessionId}, 'GET'); // 同步调用，获得承诺接口
             promise2.then(function(ret) { // 调用承诺API获取数据 .resolve
                 if (ret.status == 200 || ret.status == 201) {
@@ -207,8 +323,24 @@ angular.module('myApp.views', ['ngRoute'])
                     $scope.activeCluster.outbounds = ret.data.groups;
                     $scope.activeCluster.transactions = [ {label: "TPS", data: $scope.activeCluster.exchangeQuantity, lines: { show: true }, points: { show: true }, color: '#5bc0de'} ];
                     $scope.activeCluster.links = [ {label: "连接数", data: $scope.activeCluster.linkQuantity, color: '#8a6d3b', lines: { show: true, steps: true, fill: true }} ];
-                    if ($scope.activeCluster.tickInterval > 0)
-                        $timeout($scope.updateQuantities, $scope.activeCluster.tickInterval * 1000);
+
+                    $scope.activeCluster.hosts.forEach(function(node){
+                        if (node.displayOccupy) {
+                            node.occupys = $scope.getOccupy('node', node.id);
+                        }
+                    });
+                    $scope.activeCluster.groups.forEach(function(group){
+                        group.machines.forEach(function(machine){
+                            if (machine.displayOccupy) {
+                                machine.occupys = $scope.getOccupy('machine', machine.ready.id);
+                            }
+                        });
+                    });
+                    if ($scope.activeCluster.tickInterval > 0) {
+                        if (angular.isDefined($scope.theTimer))
+                            $timeout.cancel($scope.theTimer);
+                        $scope.theTimer = $timeout($scope.updateQuantities, $scope.activeCluster.tickInterval * 1000);
+                    }
                 }
             }, function(ret) { // 处理错误 .reject
                 $scope.showModal(ret)
