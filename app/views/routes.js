@@ -231,25 +231,32 @@ angular.module('myApp.views', ['ngRoute'])
                     return []
             }
             function analyOccupy(data, newData, entity, value) {
-                while (data.length >= myPoints)
-                    data = data.slice(1);
-                angular.element.each(newData, function (n, ele) {
-                    /* if newData have 10 rows data have 5 rows and data only need 2 rows
-                     then we should push newData[9] and newData[10]
-                     so 'IF' condition is : newData.length - n == myPoints - data.length - 1
-                     => n == newData.length - (myPoints - data.length - 1)*/
-                    if (n == (newData.length - (myPoints - data.length - 1)))
-                        data.push([ele.gatherDatetime, getValue(ele, value)]);
-                });
+                if (newData.length < myPoints) {
+                    data.length = 0; // clear data
+                    angular.element.forEach(newData, function (n, ele) {
+                        data.push([ele.gatherDatetime, getValue(ele, entity, value)]);
+                    });
+                } else {
+                    while (data.length >= myPoints)
+                        data = data.slice(1);
+                    angular.element.each(newData, function (n, ele) {
+                        /* if newData have 10 rows data have 5 rows and data only need 2 rows
+                         then we should push newData[9] and newData[10]
+                         so 'IF' condition is : newData.length - n == myPoints - data.length - 1
+                         => n == newData.length - (myPoints - data.length - 1)*/
+                        if (n == (newData.length - (myPoints - data.length - 1)))
+                            data.push([ele.gatherDatetime, getValue(ele, entity, value)]);
+                    });
+                }
                 return data;
-                function getValue (ele, value){
+                function getValue (ele, entity, value){
                     if (value in ele)
                         if (value.toUpperCase().indexOf("MEM") >= 0 || value == "heapUsed")
                             return ele[value]/1024;
                         else
                             return ele[value];
                     else
-                        if (value == "memoryPercent")
+                        if (value == "memoryPercent" && entity == "machine")
                             return (ele["usedMemory"]*100/(ele["usedMemory"]+ele["freeMemory"])).toFixed(2);
                         else
                             return "";
