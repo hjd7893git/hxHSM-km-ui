@@ -167,6 +167,7 @@ angular.module('myApp.views', ['ngRoute'])
         function pieLabelFormatter(label, series) {
             return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
         }
+        // jquery.flot.pie.js: 536行 ... if (options.series.pie.innerRadius > 0) { ... 需要加上options != null条件
         $scope.optionsPie = {
             series: {
                 pie: {

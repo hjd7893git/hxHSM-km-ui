@@ -224,7 +224,7 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrievePartnerList($scope);
                 }
             },
-            {tableId: 'SystemKeyDefine', title: '系统密钥定义', keyInfo: 'keyName',
+            {tableId: 'SystemKeyDefine', title: '系统密钥方案', keyInfo: 'keyName',
                 controller:function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveSystemList($scope);
                     myServer.setKeyAbout($scope);
