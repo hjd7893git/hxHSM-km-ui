@@ -112,14 +112,13 @@ angular.module('myApp.views', ['ngRoute'])
                 ele.displayOccupy = !ele.displayOccupy;
             else {
                 ele.displayOccupy = true;
-                ele.occupys = $scope.getOccupy(object, objectId);
+                $scope.getOccupy(ele.occupys, object, objectId);
             }
         };
-        $scope.getOccupy = function(object, objectId) {
+        $scope.getOccupy = function(occupys, object, objectId) {
             // get occupy
-            var uri = "occupy/" + object + "/" + objectId + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint
+            var uri = "occupy/" + object + "/" + objectId + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint;
             var promise3 = myServer.call(uri, {sessionId: $scope.$root.sessionId}, 'GET'); // 同步调用，获得承诺接口
-            var occupys = [];
 
             promise3.then(function(ret) {
                 if (ret.status == 200 || ret.status == 201) {
@@ -162,7 +161,6 @@ angular.module('myApp.views', ['ngRoute'])
                             }];
                 }
             });
-            return occupys;
         };
         function pieLabelFormatter(label, series) {
             return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
@@ -233,7 +231,7 @@ angular.module('myApp.views', ['ngRoute'])
             function analyOccupy(data, newData, entity, value) {
                 if (newData.length < myPoints) {
                     data.length = 0; // clear data
-                    angular.element.forEach(newData, function (n, ele) {
+                    angular.element.each(newData, function (n, ele) {
                         data.push([ele.gatherDatetime, getValue(ele, entity, value)]);
                     });
                 } else {
@@ -316,7 +314,7 @@ angular.module('myApp.views', ['ngRoute'])
         $scope.updateQuantities = function(clusterId, i) {
             if (angular.isDefined(i))
                 $scope.activeCluster.tickInterval = i;
-            var uri = "statistics/" + $scope.activeCluster.cluster.id + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint
+            var uri = "statistics/" + $scope.activeCluster.cluster.id + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint;
             var promise2 = myServer.call(uri, {sessionId: $scope.$root.sessionId}, 'GET'); // 同步调用，获得承诺接口
             promise2.then(function(ret) { // 调用承诺API获取数据 .resolve
                 if (ret.status == 200 || ret.status == 201) {
@@ -332,13 +330,13 @@ angular.module('myApp.views', ['ngRoute'])
 
                     $scope.activeCluster.hosts.forEach(function(node){
                         if (node.displayOccupy) {
-                            node.occupys = $scope.getOccupy('node', node.id);
+                            $scope.getOccupy(node.occupys, 'node', node.id);
                         }
                     });
                     $scope.activeCluster.groups.forEach(function(group){
                         group.machines.forEach(function(machine){
                             if (machine.displayOccupy) {
-                                machine.occupys = $scope.getOccupy('machine', machine.ready.id);
+                                $scope.getOccupy(machine.occupys, 'machine', machine.ready.id);
                             }
                         });
                     });
