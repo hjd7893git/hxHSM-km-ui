@@ -42,8 +42,10 @@
                         <div class="col-md-12">
                             <div class="panel panel-default" style="margin-bottom: 10px;">
                                 <div class="panel-heading"><span class="badge">节点&nbsp;{{node.nodeName}}</span>
-                                    <a class="bi-display-op2" ng-click="getOccupyAndToggleDetails(node, 'node', node.id)"><i class="fa fa-{{node.displayOccupy|iif:'eye-slash':'eye':'eye-slash'}}"></i></a>
-                                    <a class="bi-display-op" ng-click="toggleDetails(node)"><i class="fa fa-{{node.displayDetails|iif:'minus':'plus':'plus'}}-square-o"></i></a>
+                                    <div class="bi-display-op">
+                                        <a ng-click="getOccupyAndToggleDetails(node, 'node', node.id)"><i class="fa fa-{{node.displayOccupy|iif:'eye-slash':'eye':'eye'}}"></i></a>
+                                        <a ng-click="toggleDetails(node)"><i class="fa fa-{{node.displayDetails|iif:'minus':'plus':'plus'}}-square-o"></i></a>
+                                    </div>
                                 </div>
                                 <div class="panel-body" style="padding: 0 5px 0 10px;">
                                     <table class="table table-hover table-condensed" style="margin: 0;">
@@ -67,7 +69,9 @@
                                         </td><td>
                                             <img ng-show="node.alarmLevel == 1" src="images/alarm1.gif" height="20" width="20"/></td></tr>
                                         <tr ng-show="node.displayOccupy">
-                                            <td>状态图</td><td colspan="2">
+                                            <td colspan="3">状态图</td>
+                                        </tr>
+                                        <tr ng-show="node.displayOccupy"><td colspan="3">
                                             <div class="bi-shadow">
                                                 <flot dataset="node.occupys.cpu" options="options" height="250px" width="100%"></flot>
                                                 <flot dataset="node.occupys.memory" options="options" height="250px" width="100%"></flot>
@@ -125,8 +129,10 @@
                                 <div class="col-md-offset-1 col-md-11" style="border-left: gray dashed 1px;">
                                     <div class="panel panel-default" style="margin-bottom: 10px;">
                                         <div class="panel-heading"><span class="badge">{{m.model.model}}{{m.machine.number}}</span>
-                                            <a class="bi-display-op2" ng-click="getOccupyAndToggleDetails(m, 'machine', m.ready.id)"><i class="fa fa-{{m.displayOccupy|iif:'eye-slash':'eye':'eye-slash'}}"></i></a>
-                                            <a class="bi-display-op" ng-click="toggleDetails(m)"><i class="fa fa-{{m.displayDetails|iif:'minus':'plus':'plus'}}-square-o"></i></a>
+                                            <div class="bi-display-op">
+                                                <a ng-click="getOccupyAndToggleDetails(m, 'machine', m.ready.id)"><i class="fa fa-{{m.displayOccupy|iif:'eye-slash':'eye':'eye'}}"></i></a>
+                                                <a ng-click="toggleDetails(m)"><i class="fa fa-{{m.displayDetails|iif:'minus':'plus':'plus'}}-square-o"></i></a>
+                                            </div>
                                         </div>
                                         <div class="panel-body" style="padding: 0 5px 0 10px;">
                                             <table class="table table-hover table-condensed" style="margin: 0;">
@@ -150,7 +156,9 @@
                                                 </td><td>
                                                     <img ng-show="m.alarmLevel == 1" src="images/alarm1.gif" height="20" width="20"/></td></tr>
                                                 <tr ng-show="m.displayOccupy">
-                                                    <td>状态图</td><td colspan="2">
+                                                    <td colspan="3">状态图</td>
+                                                </tr>
+                                                <tr ng-show="m.displayOccupy"><td colspan="3">
                                                     <div class="bi-shadow">
                                                         <flot dataset="m.occupys.percent" options="options" height="250px" width="100%"></flot>
                                                     </div>

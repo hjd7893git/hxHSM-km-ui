@@ -112,13 +112,12 @@ angular.module('myApp.views', ['ngRoute'])
                 ele.displayOccupy = !ele.displayOccupy;
             else {
                 ele.displayOccupy = true;
-                ele.occupys = {cpu: [], memory: [], percent: []};
                 $scope.getOccupy(ele.occupys, object, objectId);
             }
         };
         $scope.getOccupy = function(occupys, object, objectId) {
             // get occupy
-            var uri = "occupy/" + object + "/" + objectId + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint
+            var uri = "occupy/" + object + "/" + objectId + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint;
             var promise3 = myServer.call(uri, {sessionId: $scope.$root.sessionId}, 'GET'); // 同步调用，获得承诺接口
             promise3.then(function(ret) {
                 if (ret.status == 200 || ret.status == 201) {
@@ -230,28 +229,35 @@ angular.module('myApp.views', ['ngRoute'])
                     return []
             }
             function analyOccupy(data, newData, entity, value) {
-                while (data.length >= myPoints)
-                    data = data.slice(1);
-                angular.element.each(newData, function (n, ele) {
-                    /* if newData have 10 rows data have 5 rows and data only need 2 rows
-                     then we should push newData[9] and newData[10]
-                     so 'IF' condition is : newData.length - n == myPoints - data.length - 1
-                     => n == newData.length - (myPoints - data.length - 1)*/
-                    if (n == (newData.length - (myPoints - data.length - 1)))
-                        data.push([ele.gatherDatetime, getValue(ele, value)]);
-                });
+                if (newData.length < myPoints) {
+                    data.length = 0; // clear data
+                    angular.element.each(newData, function (n, ele) {
+                        data.push([ele.gatherDatetime, getValue(ele, entity, value)]);
+                    });
+                } else {
+                    while (data.length >= myPoints)
+                        data = data.slice(1);
+                    angular.element.each(newData, function (n, ele) {
+                        /* if newData have 10 rows data have 5 rows and data only need 2 rows
+                         then we should push newData[9] and newData[10]
+                         so 'IF' condition is : newData.length - n == myPoints - data.length - 1
+                         => n == newData.length - (myPoints - data.length - 1)*/
+                        if (n == (newData.length - (myPoints - data.length - 1)))
+                            data.push([ele.gatherDatetime, getValue(ele, entity, value)]);
+                    });
+                }
                 return data;
-                function getValue (ele, value){
+                function getValue (ele, entity, value){
                     if (value in ele)
                         if (value.toUpperCase().indexOf("MEM") >= 0 || value == "heapUsed")
                             return ele[value]/1024;
                         else
                             return ele[value];
                     else
-                    if (value == "memoryPercent")
-                        return (ele["usedMemory"]*100/(ele["usedMemory"]+ele["freeMemory"])).toFixed(2);
-                    else
-                        return "";
+                        if (value == "memoryPercent" && entity == "machine")
+                            return (ele["usedMemory"]*100/(ele["usedMemory"]+ele["freeMemory"])).toFixed(2);
+                        else
+                            return "";
                 }
             }
         }
@@ -308,7 +314,7 @@ angular.module('myApp.views', ['ngRoute'])
         $scope.updateQuantities = function(clusterId, i) {
             if (angular.isDefined(i))
                 $scope.activeCluster.tickInterval = i;
-            var uri = "statistics/" + $scope.activeCluster.cluster.id + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint
+            var uri = "statistics/" + $scope.activeCluster.cluster.id + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint;
             var promise2 = myServer.call(uri, {sessionId: $scope.$root.sessionId}, 'GET'); // 同步调用，获得承诺接口
             promise2.then(function(ret) { // 调用承诺API获取数据 .resolve
                 if (ret.status == 200 || ret.status == 201) {
@@ -324,13 +330,13 @@ angular.module('myApp.views', ['ngRoute'])
 
                     $scope.activeCluster.hosts.forEach(function(node){
                         if (node.displayOccupy) {
-                            node.occupys = $scope.getOccupy('node', node.id);
+                            $scope.getOccupy(node.occupys, 'node', node.id);
                         }
                     });
                     $scope.activeCluster.groups.forEach(function(group){
                         group.machines.forEach(function(machine){
                             if (machine.displayOccupy) {
-                                machine.occupys = $scope.getOccupy('machine', machine.ready.id);
+                                $scope.getOccupy(machine.occupys, 'machine', machine.ready.id);
                             }
                         });
                     });
