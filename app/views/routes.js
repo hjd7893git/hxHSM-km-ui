@@ -89,11 +89,11 @@ angular.module('myApp.views', ['ngRoute'])
                         });
                     if ($scope.activeCluster.groups.length > 0)
                         $scope.activeCluster.groups.forEach(function(group){
-                           if (group.machines.length > 0)
-                               group.machines.forEach(function(machine){
-                                   machine.occupys = [];
-                                   machine.occupys.percent = [];
-                               });
+                            if (group.machines.length > 0)
+                                group.machines.forEach(function(machine){
+                                    machine.occupys = [];
+                                    machine.occupys.percent = [];
+                                });
                         });
                 }
             }
@@ -112,15 +112,14 @@ angular.module('myApp.views', ['ngRoute'])
                 ele.displayOccupy = !ele.displayOccupy;
             else {
                 ele.displayOccupy = true;
-                ele.occupys = $scope.getOccupy(object, objectId);
+                ele.occupys = {cpu: [], memory: [], percent: []};
+                $scope.getOccupy(ele.occupys, object, objectId);
             }
         };
-        $scope.getOccupy = function(object, objectId) {
+        $scope.getOccupy = function(occupys, object, objectId) {
             // get occupy
             var uri = "occupy/" + object + "/" + objectId + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint
             var promise3 = myServer.call(uri, {sessionId: $scope.$root.sessionId}, 'GET'); // 同步调用，获得承诺接口
-            var occupys = [];
-
             promise3.then(function(ret) {
                 if (ret.status == 200 || ret.status == 201) {
                     if (object == "node")
@@ -131,20 +130,20 @@ angular.module('myApp.views', ['ngRoute'])
                             points: {show: true},
                             color: '#5bc0de'
                         }];
-                        occupys.memory = [{
-                            label: "系统剩余内存(MB)",
-                            data: updateOccupy([], ret.data.occupys, object + ".osmemory"),
+                    occupys.memory = [{
+                        label: "系统剩余内存(MB)",
+                        data: updateOccupy([], ret.data.occupys, object + ".osmemory"),
+                        lines: {show: true},
+                        points: {show: true},
+                        color: '#5bc0de'
+                    },
+                        {
+                            label: "应用占用内存(MB)",
+                            data: updateOccupy([], ret.data.occupys, object + ".appmemory"),
                             lines: {show: true},
                             points: {show: true},
-                            color: '#5bc0de'
-                        },
-                            {
-                                label: "应用占用内存(MB)",
-                                data: updateOccupy([], ret.data.occupys, object + ".appmemory"),
-                                lines: {show: true},
-                                points: {show: true},
-                                color: '#AAAAAA'
-                            }];
+                            color: '#AAAAAA'
+                        }];
                     if (object == "machine")
                         occupys.percent = [{
                             label: "CPU(%)",
@@ -162,7 +161,6 @@ angular.module('myApp.views', ['ngRoute'])
                             }];
                 }
             });
-            return occupys;
         };
         function pieLabelFormatter(label, series) {
             return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
@@ -250,10 +248,10 @@ angular.module('myApp.views', ['ngRoute'])
                         else
                             return ele[value];
                     else
-                        if (value == "memoryPercent")
-                            return (ele["usedMemory"]*100/(ele["usedMemory"]+ele["freeMemory"])).toFixed(2);
-                        else
-                            return "";
+                    if (value == "memoryPercent")
+                        return (ele["usedMemory"]*100/(ele["usedMemory"]+ele["freeMemory"])).toFixed(2);
+                    else
+                        return "";
                 }
             }
         }
@@ -429,11 +427,9 @@ angular.module('myApp.views', ['ngRoute'])
         };
     }])
     .controller('myDeployCtrl', ['$location', '$scope', '$rootScope', 'myServer', '$log', function($location, $scope, $rootScope, myServer, $log) {
-        $log.info("deploy ...");
         myServer.crud($scope, "Deploy", '部署');
         $scope.rec = {"confCreated": false};
         myServer.errorDialog($scope, "deploy");
-        myServer.confirmDialog($scope, "deploy");
         myServer.retrieveClusterList($scope);
         $scope.doDeploy = function(rqData) {
             var promise = myServer.call("deploy", rqData); // 同步调用，获得承诺接口
