@@ -29,7 +29,7 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th><th>型号</th><th>批次</th><th>编号</th><th>生产商</th><th>生产日期</th><th>供应商</th><th>供应日期</th><th>状态</th>
+                                <th>标识</th><th>型号</th><th>批次</th><th>编号</th><th>生产日期</th><th>供应日期</th><th>状态</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -42,9 +42,7 @@
                                 <td>{{r.rec.modelId | optionName:machineModelList}}</td>
                                 <td>{{r.rec.batch}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.number}}</a></td>
-                                <td>{{r.rec.producer | optionName:companyList}}</td>
                                 <td>{{r.rec.produceDate|biDate}}</td>
-                                <td>{{r.rec.supplier | optionName:companyList}}</td>
                                 <td>{{r.rec.supplyDate|biDate}}</td>
                                 <td>{{r.rec.status}}</td>
                             </tr>

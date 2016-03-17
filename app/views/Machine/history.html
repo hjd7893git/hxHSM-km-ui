@@ -9,7 +9,7 @@
                             <table class="table table-condensed bg-white bi-margin-b0">
                                 <thead><tr>
                                     <th>标识</th>
-                                    <th>型号</th><th>批次</th><th>编号</th><th>生产商</th><th>生产日期</th><th>供应商</th><th>供应日期</th><th>状态</th>
+                                    <th>型号</th><th>批次</th><th>编号</th><th>生产日期</th><th>供应日期</th><th>状态</th>
                                     <th>维护类型</th>
                                     <th class="his-col-id">序号</th>
                                     <th class="his-col-op">操作</th>
@@ -22,9 +22,7 @@
                                     <td>{{his.model}}</td>
                                     <td>{{his.batch}}</td>
                                     <td><a href ng-click="showEditor($index)">{{his.number}}</a></td>
-                                    <td>{{his.producer}}</td>
                                     <td>{{his.produceDate|biDate}}</td>
-                                    <td>{{his.supplier}}</td>
                                     <td>{{his.supplyDate|biDate}}</td>
                                     <td>{{his.status}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
