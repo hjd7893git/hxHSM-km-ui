@@ -9,6 +9,7 @@ angular.module('myApp.services', ['ngResource'])
     .factory('myServer', ['$http', '$log', '$q', '$resource', '$modal', '$timeout', function($http, $log, $q, $resource, $modal, $timeout) {
         var URLPrefix = "http://localhost:8080/service/";
         return {
+            URLPrefix: URLPrefix,
             call: function(uri, data, m) {
                 var method = angular.isDefined(m) ? m : 'POST';
                 var deferred = $q.defer(); // 声明延后执行，表示要去监控后面的执行
@@ -543,7 +544,9 @@ angular.module('myApp.services', ['ngResource'])
                     return changed;
                 };
                 $scope.isKeySet = function(v) {
-                    if (angular.isDefined(v))
+                    if (angular.isArray(v))
+                        return (v.length > 0);
+                    else if (angular.isDefined(v))
                         return v != -1;
                     else
                         return false;
@@ -672,19 +675,6 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.queryBase($resource(URLPrefix + 'MachineModelList'), {}, ok1);
                 }
             },
-            retrieveRsaKeyBatchList: function($scope) {
-                var ok1 = function(ret) {
-                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
-                        $scope.$root.rsaKeyBatchList = angular.element.map(ret, function(obj) {
-                            return {value: obj.id, name: obj.branchId};
-                        });
-                    }
-                };
-                if (angular.isUndefined($scope.$root.rsaKeyBatchList)) {
-                    $scope.$root.rsaKeyBatchList = [];
-                    $scope.queryBase($resource(URLPrefix + 'RsaKeyBatchList'), {}, ok1);
-                }
-            },
             retrieveGroupList: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
@@ -716,13 +706,11 @@ angular.module('myApp.services', ['ngResource'])
                     if (angular.isDefined(rec.createKey) && rec.createKey) {
                         rec.keyBizSeq = -1; // 0会判为false
                         if (angular.isDefined(rec.keys)) {
-                            var chged = angular.element.each(rec.keys, function(n, ele) {
+                            angular.element.each(rec.keys, function(n, ele) {
                                 if (ele.chosen) {
                                     ele.opType = (ele.id != 0) ? 2 : 1;
-                                    return ele;
                                 }
                             });
-                            rec.keys = chged;
                         }
                     }
                 };

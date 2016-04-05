@@ -7,6 +7,12 @@
 // filter也依赖于ngRoute
 angular.module('myApp.filters', ['ngRoute'])
 
+    .filter('more', function () {
+        return function (cond, len) {
+            return angular.isUndefined(cond) ? '' : ((cond.length > len) ? cond.substr(0, len-4) + '...' : cond);
+        };
+    })
+
     .filter('iif', function () {
         return function (cond, vIf, vElse, vUndef) {
             return angular.isUndefined(cond) ? vUndef : (cond ? vIf : vElse);

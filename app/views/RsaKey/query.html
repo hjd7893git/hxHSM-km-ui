@@ -39,7 +39,6 @@
                                 <th>生成时间</th>
                                 <th>使用状态</th>
                             </tr>
-                            </tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">
@@ -49,8 +48,8 @@
                                 </td>
                                 <td>{{r.rec.id}}</td>
                                 <td>{{r.rec.batchId}}</td>
-                                <td><a href ng-click="showEditor($index)">{{r.rec.privateKeyValue}}</a></td>
-                                <td>{{r.rec.publicKeyValue}}</td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.privateKeyValue|more:48}}</a></td>
+                                <td>{{r.rec.publicKeyValue|more:48}}</td>
                                 <td>{{r.rec.createDatetime|biDateTime}}</td>
                                 <td>{{r.rec.useStatus|optionName:"RSAStatus"}}</td>
                             </tr>

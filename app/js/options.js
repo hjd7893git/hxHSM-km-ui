@@ -162,13 +162,11 @@ angular.module('myApp.options', ['ngResource'])
             },
             {tableId: 'RsaKey', title:'制卡数据',
                 controller:function($log, $rootScope, $scope, myServer) {
-                    myServer.retrieveRsaKeyBatchList($scope);
                     $scope.readOnly = true;
                 }
             },
             {tableId: 'RsaKeyBatch', title:'制卡数据生成批次',
                 controller:function($log, $rootScope, $scope, myServer) {
-                    myServer.retrieveBranchList($scope);
                     $scope.preInsert = function(rec) {
                         rec.batchStatus = 0;
                         rec.completeQuantity = 0;
@@ -182,9 +180,9 @@ angular.module('myApp.options', ['ngResource'])
                         angular.element("#"+boxId).show();
                         var dhxConf = {
                             "parent": boxId,
-                            "uploadUrl": "http://localhost:8080/service/upload",
-                            "swfUrl": "http://localhost:8080/service/upload",
-                            "slUrl": "http://localhost:8080/service/upload",
+                            "uploadUrl": myServer.URLPrefix + "upload",
+                            "swfUrl": myServer.URLPrefix + "upload",
+                            "slUrl": myServer.URLPrefix + "upload",
                             "swfPath": "dhxvault.swf",
                             "slXap": "dhxvault.xap",
                             "filesLimit": 1
