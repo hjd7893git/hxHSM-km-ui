@@ -48,7 +48,7 @@ angular.module('myApp.views', ['ngRoute'])
     .controller('monitor.controller', ['$log', '$scope', '$timeout', 'myServer', function($log, $scope, $timeout, myServer) {
         $scope.clusters = []; // 一定要初始化, 否则用代码选择某tab不灵
         myServer.errorDialog($scope, "monitor");
-        var promise = myServer.call("monitor", {sessionId: $scope.$root.sessionId}, 'GET'); // 同步调用，获得承诺接口
+        var promise = myServer.call("monitor?sessionId=" + $scope.$root.sessionId, {}, 'GET'); // 同步调用，获得承诺接口
         promise.then(function(ret) { // 调用承诺API获取数据 .resolve
             if (ret.status == 200 || ret.status == 201) {
                 $scope.clusters = ret.data;

@@ -23,6 +23,7 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'acceptRejectPolicy', names: [{value: 0, name: '只允许集合内的'}, {value: 1, name: '除了集合内的'}]},
             {option: 'keyType', names:[{value: '000', name: 'ZMK'}, {value: '001', name: 'ZPK'}]},
             {option: 'keySchema', names: [{value: 'Y', name: '16 Bits'}, {value: 'X', name: '32 Bits'}, {value: 'Z', name: '48 Bits'}]},
+            {option: 'keyScheme', names: [{value: 'RSA-1024', name: 'RSA 1024 Bits'}, {value: 'RSA-2048', name: 'RSA 2048 Bits'}]},
             {option: 'keyUse', names: [{value: 0, name: '应用模块'}, {value: 1, name: '设备'}, {value: 2, name: '合作伙伴'}]},
             {option: 'keyUseType', names: [{value: 0, name: '不适用'}, {value: 1, name: '全行统一'}, {value: 2, name: '分行统一'}, {value: 3, name: '网点统一'}, {value: 4, name: '一机一密'}]},
             {option: 'keyUseType4Partner', names: [{value: 0, name: '不适用'}, {value: 1, name: '总对总'}, {value: 2, name: '分对分'}]},
@@ -229,7 +230,7 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrievePartnerList($scope);
                 }
             },
-            {tableId: 'User', title: '用户管理', keyInfo: 'name',
+            {tableId: 'Users', title: '用户管理', keyInfo: 'name',
                 controller: function($log, $rootScope, $scope, myServer) {
                     $scope.preInsert = function(rec) {
                         rec.password = '-';

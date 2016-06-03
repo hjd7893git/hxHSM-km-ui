@@ -13,6 +13,9 @@
                                 <bi-select-item item-label="'机构(默认为总行)'" item-options="branchList"
                                               item-value="rec.branchId" item-old-value="bak.branchId"
                                               item-locked="lock"></bi-select-item>
+                                <bi-select-item item-label="'密钥类型'" item-options="'keyScheme'|theOption" item-data-type="'text'"
+                                              item-value="rec.keyScheme" item-old-value="bak.keyScheme" item-required="'true'"
+                                              item-locked="lock"></bi-select-item>
                                 <bi-edit-item item-label="'计划数量'" item-tip="'输入正数'" item-data-type="'number'" item-name="'planQuantity'" item-required="'true'"
                                               item-value="rec.planQuantity" item-old-value="bak.planQuantity"
                                               item-locked="rec.batchStatus == 0|iif:lock:'true':'true'"></bi-edit-item>

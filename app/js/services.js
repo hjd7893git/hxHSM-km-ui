@@ -607,7 +607,7 @@ angular.module('myApp.services', ['ngResource'])
                 };
                 if (angular.isUndefined($scope.$root.clusterList)) {
                     $scope.$root.clusterList = [];
-                    $scope.queryBase($resource(URLPrefix + 'ClusterList'), {}, ok1);
+                    $scope.queryBase($resource(URLPrefix + 'ClustersList'), {}, ok1);
                 }
             },
             retrieveCompanyList: function($scope) {
@@ -692,7 +692,7 @@ angular.module('myApp.services', ['ngResource'])
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
                         $scope.$root.machineList = angular.element.map(ret, function(obj) {
-                            return {value: obj.id, name: obj.number};
+                            return {value: obj.id, name: obj.deviceNumber};
                         });
                     }
                 };

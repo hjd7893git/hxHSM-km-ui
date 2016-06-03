@@ -10,6 +10,7 @@
                                 <thead><tr>
                                     <th>标识</th>
                                     <th>机构</th>
+                                    <th>密钥类型</th>
                                     <th>计划数量</th>
                                     <th>计划时间</th>
                                     <th>开始时间</th>
@@ -22,6 +23,7 @@
                                 <tr ng-repeat="his in histories">
                                     <td>{{his.id}}</td>
                                     <td>{{his.branchId|optionName:branchList}}</td>
+                                    <td>{{his.keyScheme}}</td>
                                     <td>{{his.planQuantity}}</td>
                                     <td>{{his.planDatetime}}</td>
                                     <td>{{his.startDatetime}}</td>
