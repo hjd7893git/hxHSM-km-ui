@@ -157,8 +157,10 @@ angular.module('myApp.services', ['ngResource'])
                 };
             },
             crud: function($scope, tableId, title, myRes) {
+                $scope.batchUpdateKey = {};
+                $scope.selectMod = true;
                 $scope.lock = true;
-                $scope.lockKeyAbout = true;
+                $scope.lockKeyAbout = false;
                 $scope.recStatus = -1; // Inputting
                 $scope.opType = 0;
                 $scope.qry = {};
@@ -240,8 +242,13 @@ angular.module('myApp.services', ['ngResource'])
                     }
                 };
                 $scope.cancelEditing = function() {
+                    if ($scope.tableId == 'Branch')
+                        $scope.backBranch = false;
                     $scope.opType = 0;
-                    $scope.gotoPage('query');
+                    $scope.isClusterExist = true;
+                    $scope.isIndexExist = true;
+                    $scope.isCreateKey = true;
+                    $scope.returnQuery('query');
                 };
                 $scope.isNotInsertUp = function() {
                     if ($scope.opType == 1)
@@ -252,7 +259,88 @@ angular.module('myApp.services', ['ngResource'])
                     else
                         return ($scope.opType == 2 || $scope.rec.opType == 2);
                 };
+                $scope.submitEditedBatch = function(){
+                    while (true) {
+                        var chosenIdx = getChosenIdx();
+                        if (angular.isUndefined(chosenIdx))
+                            break;
+                        $scope.selectedRec = $scope.recs[chosenIdx].rec;
+                        $scope.rec = angular.element.extend(true, {}, $scope.selectedRec);
+                        if (angular.isUndefined($scope.rec.opType))
+                            $scope.rec.opType = 0;
+                        $scope.opType = 2;
+                        if ($scope.rec.opType != 1)
+                            $scope.rec.opType = 2;
+                        $scope.rec.createKey = true;
+                        $scope.rec.keys[0].chosen = true;
+                        $scope.rec.keys[0].keyValue = $scope.batchUpdateKey.keyValue;
+                        $scope.rec.keys[0].checkValue = $scope.batchUpdateKey.checkValue;
+                        $scope.submitEdited();
+                        $scope.selectedRec.chosen = false;
+                    }
+                };
+                var backBranch = function() {
+                    $scope.tableId = 'Branch';
+                    $scope.opType = 0;
+                    $scope.resource = angular.isDefined(myRes) ? myRes : $resource(URLPrefix + 'Branch/:recId', {recId: '@id'});
+                };
                 $scope.submitEdited = function() {
+                    // 表为Branch，并且手工输入密钥模式
+                    if ($scope.tableId == 'Branch' && angular.isDefined($scope.selectMod) && !$scope.selectMod && angular.isDefined($scope.rec) && angular.isDefined($scope.rec.createKey) && $scope.rec.createKey) {
+                        // 改为修改表SecretKey，密钥值为原rec.keys[0]
+                        $scope.tableId = 'SecretKey';
+                        $scope.opType = 2;
+                        $scope.curdPages = ['views/Branch/query.html'];
+                        $scope.resource = angular.isDefined(myRes) ? myRes : $resource(URLPrefix + 'SecretKey/:recId', {recId: '@id'});
+                        var newRec = new $scope.resource($scope.rec.keys[0]);
+                        delete newRec.chosen;
+                        newRec.opType = 2;
+                        newRec.$save({sessionId: sessionId}, function() {
+                            backBranch();
+                            $scope.returnQuery('query');
+                        }, function() {
+                            backBranch();
+                            fail();
+                        });
+                        // alert(JSON.stringify(newRec));
+                        return;
+                    }
+                    //
+                    if ($scope.tableId == 'Branch' && angular.isDefined($scope.selectMod) && !$scope.selectMod && angular.isDefined($scope.batch) && $scope.batch) {
+                        var all = 0;
+                        var success = 0;
+                        while (true) {
+                            var chosenIdx = getChosenIdx();
+                            if (angular.isUndefined(chosenIdx))
+                                break;
+                            $scope.selectedRec = $scope.recs[chosenIdx].rec;
+                            $scope.rec = angular.element.extend(true, {}, $scope.selectedRec);
+                            $scope.tableId = 'SecretKey';
+                            $scope.opType = 2;
+                            $scope.curdPages = ['views/Branch/query.html'];
+                            $scope.resource = angular.isDefined(myRes) ? myRes : $resource(URLPrefix + 'SecretKey/:recId', {recId: '@id'});
+                            var newRec = new $scope.resource($scope.rec.keys[0]);
+                            newRec.opType = 2;
+                            newRec.keyValue = $scope.batchUpdateKey.keyValue;
+                            newRec.checkValue = $scope.batchUpdateKey.checkValue;
+                            newRec.$save({sessionId: sessionId}, function() {
+                                all += 1;
+                                success += 1;
+                            }, function() {
+                                all += 1;
+                            });
+                            $scope.selectedRec.chosen = false;
+                        }
+                        backBranch();
+                        $scope.returnQuery('query');
+                        return;
+                    }
+                    if ($scope.tableId == 'SecretKey') {
+                        if (angular.isDefined($scope.rec.clusterId))
+                            $scope.rec.useStatus = 1;
+                        else
+                            $scope.rec.useStatus = 0;
+                    }
                     if (!isValidForm(this))
                         return;
                     if (angular.isDefined($scope.preCommit))
@@ -271,7 +359,7 @@ angular.module('myApp.services', ['ngResource'])
                             }
                         });
                     }
-                    if ($scope.rec.opType == 1 && $scope.opType == 1) { // Insert
+                    if (($scope.rec.opType == 1 && $scope.opType == 1) || ($scope.rec.keyType == 3)) { // Insert
                         newRec.$save({sessionId: sessionId}, function(rr) { // TODO: 后台应返回新创建的行,改动较大,暂不实现
                             $scope.rec.bizSeq = 1;
                             $scope.rec.id = rr.id;
@@ -295,11 +383,21 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.opType = 2;
                     if ($scope.rec.opType != 1)
                         $scope.rec.opType = 2;
+                    if (angular.isUndefined($scope.rec.serviceIndex))
+                        $scope.isIndexExist = false;
+                    else
+                        $scope.isIndexExist = true;
+                    if (angular.isUndefined($scope.rec.clusterId))
+                        $scope.isClusterExist = false;
+                    else
+                        $scope.isClusterExist = true;
                 };
                 $scope.preCreateKey = function() {
                     $scope.lockKeyAbout = false;
                     $scope.rec.createKey = true;
+                    $scope.selectMod = false;
                     $scope.opType = 2;
+                    $scope.rec.keyType = 3;
                     if ($scope.rec.opType != 1) {
                         $scope.rec.opType = 2;
                         angular.element.each($scope.rec.keys, function(n, ele) {
@@ -307,6 +405,18 @@ angular.module('myApp.services', ['ngResource'])
                                 ele.partnerId = 4;
                             ele.chosen = (ele.partnerId == 4);
                         });
+                    }
+                };
+                $scope.showBatchUpdateX = function(){
+                    var chosenIdx = getChosenIdx();
+                    if (angular.isDefined(chosenIdx)) {
+                        if ($scope.tableId == 'Branch') {
+                            $scope.selectMod = false;
+                            $scope.batch = true;
+                        }
+                        $scope.lockKeyAbout = false;
+                        $scope.opType = 2;
+                        $scope.gotoPage('batch');
                     }
                 };
                 $scope.unlockRefEditor = function() {
@@ -340,9 +450,20 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.unlockRefEditor();
                 };
                 $scope.unlockEditorX = function() {
+                    alert($scope.tableId);
                     var chosenIdx = getChosenIdx();
                     if (angular.isDefined(chosenIdx)) {
                         $scope.showEditor(chosenIdx);
+                        if ($scope.tableId == 'SecretKey') {
+                            if (angular.isUndefined($scope.rec.serviceIndex))
+                                $scope.isIndexExist = false;
+                            else
+                                $scope.isIndexExist = true;
+                            if (angular.isUndefined($scope.rec.clusterId))
+                                $scope.isClusterExist = false;
+                            else
+                                $scope.isClusterExist = true;
+                        }
                         $scope.unlockEditor();
                     }
                 };
@@ -407,6 +528,10 @@ angular.module('myApp.services', ['ngResource'])
                   if (angular.isDefined($scope.hisQry.dateFROM) && angular.isUndefined($scope.hisQry.dateTO))
                       $scope.hisQry.dateTO = $scope.hisQry.dateFROM;
                 };
+                $scope.returnQuery = function(pageId) {
+                    $scope.selectMod = true;
+                    $scope.gotoPage(pageId);
+                };
                 $scope.gotoPage = function(pageId) {
                     if ($scope.tableId == 'JournalBiz') {
                         var panelNo = 0;
@@ -428,11 +553,17 @@ angular.module('myApp.services', ['ngResource'])
                     }
                 };
                 $scope.showEditorX = function() {
+                    if ($scope.tableId == 'SecretKey') {
+                        $scope.isCreateKey = false;
+                        $scope.isIndexExist = false;
+                        $scope.isClusterExist = false;
+                    }
                     $scope.lock = false;
                     $scope.opType = 1;
                     $scope.rec = {opType: 1};
                     if (angular.isDefined($scope.preInsert))
                         $scope.preInsert($scope.rec);
+                    $scope.unlockEditor();
                     $scope.gotoPage('edit');
                 };
                 $scope.copyEditor = function() {
@@ -572,6 +703,9 @@ angular.module('myApp.services', ['ngResource'])
                     });
                     return chged;
                 };
+                $scope.changeInputKey = function() {
+                    $scope.selectMod = !$scope.selectMod;
+                };
             },
             retrieveMenuTree: function($scope) {
                 var ok1 = function(ret) {
@@ -634,6 +768,27 @@ angular.module('myApp.services', ['ngResource'])
                 if (angular.isUndefined($scope.$root.systemList)) {
                     $scope.$root.systemList = [];
                     $scope.queryBase($resource(URLPrefix + 'SystemList'), {}, ok1);
+                }
+            },
+            retrieveSystemKeyDefineList: function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
+                        $scope.$root.keyDefineNameList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.keyName};
+                        });
+                        $scope.$root.keyDefineTypeList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.keyType};
+                        });
+                        $scope.$root.keyDefineSchemaList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.keySchema};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.systemList)) {
+                    $scope.$root.keyDefineNameList = [];
+                    $scope.$root.keyDefineTypeList = [];
+                    $scope.$root.keyDefineSchemaList = [];
+                    $scope.queryBase($resource(URLPrefix + 'SystemKeyDefineList'), {}, ok1);
                 }
             },
             retrievePartnerList: function($scope) {

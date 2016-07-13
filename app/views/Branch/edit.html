@@ -19,18 +19,22 @@
                                                 item-margin="((opType == 0 || rec.createKey) && rec.keys && rec.keys.length > 0)|iif:'':'bi-margin-b0':'bi-margin-b0'"
                                                 item-value="rec.isLeaf" item-old-value="bak.isLeaf" item-locked="'true'"></bi-select-item>
                                 <bi-check-item item-label="'创建/更新密钥'" ng-show="rec.createKey"
-                                               item-value="rec.createKey" item-old-value="bak.createKey" item-locked="lock"></bi-check-item>
+                                               item-value="" item-old-value="" item-locked="false" on-item-changed="changeInputKey"></bi-check-item>
                                 <div class="form-group bi-margin-b0" ng-show="(opType == 0 || rec.createKey) && rec.keys && rec.keys.length > 0">
                                     <label class="col-sm-2 control-label">相关密钥</label>
                                     <div class="col-sm-6">
                                         <table class="table table-condensed bi-margin-b0 crud-r" style="margin-top: -1px;" ng-repeat="op in rec.keys">
                                             <thead><tr>
-                                                <th class="text-center" style="width: 75px;"></th><th>{{op.keyDefineId}} - {{op.keyDefineRemark}}</th>
+                                                <th class="text-center" style="width: 75px;"></th><th>{{op.keyDefineId}} - {{op.serviceIndex}}</th>
                                                 <th class="text-center" style="width: 50px;"><input type="checkbox" ng-model="op.chosen" ng-show="rec.createKey"></th></tr>
                                             </thead>
                                             <tr>
                                                 <td class="text-right">密钥值</td>
-                                                <td colspan="2">{{op.keyValue}}</td>
+                                                <td colspan="2">
+                                                    <!--<input type="text" name="'keyValue'" value="{{op.keyValue}}">-->
+                                                    <bi-edit-item item-name="'keyValue'" item-value="op.keyValue" item-old-value="op.keyValue"
+                                                                  item-locked="selectMod"></bi-edit-item>
+                                                </td>
                                             </tr>
                                             <tr ng-if="rec.opType == 2 && valueChanged('keyDefineId', 'keyValue', op, bak.keys)" class="chosen-true">
                                                 <td class="text-right">旧值</td>
@@ -38,7 +42,10 @@
                                             </tr>
                                             <tr>
                                                 <td class="text-right">校验值</td>
-                                                <td colspan="2">{{op.checkValue}}</td>
+                                                <td colspan="2">
+                                                    <bi-edit-item item-name="'checkValue'" item-value="op.checkValue" item-old-value="op.checkValue"
+                                                                  item-locked="selectMod"></bi-edit-item>
+                                                </td>
                                             </tr>
                                             <tr ng-if="rec.opType == 2 && valueChanged('keyDefineId', 'checkValue', op, bak.keys)" class="chosen-true">
                                                 <td class="text-right">旧值</td>

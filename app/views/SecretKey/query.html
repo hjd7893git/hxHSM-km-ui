@@ -27,7 +27,7 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th><th>密钥方案</th><th>密钥值</th><th>校验值</th></tr>
+                                <th>标识</th><th>加密服务索引</th><th>密钥值</th><th>校验值</th><th>设备类型</th><th>使用状态</th></tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">
@@ -36,9 +36,11 @@
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.id}}</td>
-                                <td>{{r.rec.keyDefineRemark}}</td>
+                                <td>{{r.rec.serviceIndex}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.keyValue}}</a></td>
                                 <td>{{r.rec.checkValue}}</td>
+                                <td>{{r.rec.equipmentType}}</td>
+                                <td>{{r.rec.useStatus | optionName:'keyUseStatus'}}</td>
                             </tr>
                             </tbody>
                         </table>
