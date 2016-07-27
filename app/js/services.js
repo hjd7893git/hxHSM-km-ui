@@ -150,7 +150,7 @@ angular.module('myApp.services', ['ngResource'])
                         findChosenMenus(ele.items, chosens);
                     });
                 };
-                $scope.confirm = function(rec) {
+                $scope.confirmMenu = function(rec) {
                     rec.menus = [];
                     findChosenMenus($scope.$root.menuTree, rec.menus);
                     menuModal.$promise.then(menuModal.hide);

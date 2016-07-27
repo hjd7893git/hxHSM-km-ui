@@ -19,7 +19,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <bi-query-select item-label="'型号'" item-value="qry.modelId" item-options="machineModelList"></bi-query-select>
-                                        <bi-query-item item-label="'编号'" item-value="qry.number"></bi-query-item>
+                                        <bi-query-item item-label="'编号'" item-value="qry.deviceNumber"></bi-query-item>
                                     </div>
                                 </form>
                             </div>
@@ -41,10 +41,10 @@
                                 <td>{{r.rec.id}}</td>
                                 <td>{{r.rec.modelId | optionName:machineModelList}}</td>
                                 <td>{{r.rec.batch}}</td>
-                                <td><a href ng-click="showEditor($index)">{{r.rec.number}}</a></td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.deviceNumber}}</a></td>
                                 <td>{{r.rec.produceDate|biDate}}</td>
                                 <td>{{r.rec.supplyDate|biDate}}</td>
-                                <td>{{r.rec.status}}</td>
+                                <td>{{r.rec.readies[0].rec.status | optionName:'machineStatus'}}</td>
                             </tr>
                             </tbody>
                         </table>

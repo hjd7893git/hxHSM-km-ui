@@ -91,7 +91,7 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveBranchList($scope);
                 }
             },
-            {tableId: 'Cluster', title: '集群管理'},
+            {tableId: 'Clusters', title: '集群管理'},
             {tableId: 'Company', title: '厂商管理', keyInfo: 'name'},
             {tableId: 'Equipment', title: '设备管理', keyInfo: 'equipmentNo',
                 controller: function($log, $rootScope, $scope, myServer) {

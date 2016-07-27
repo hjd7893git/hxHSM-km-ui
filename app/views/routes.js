@@ -299,7 +299,7 @@ angular.module('myApp.views', ['ngRoute'])
                 angular.element.each(groups, function (n2, ele2) {
                     if (ele.groupId == ele2.group.id) {
                         angular.element.each(ele2.machines, function (n3, ele3) {
-                            if (ele.machineId == ele3.machine.id) {
+                            if (ele.machineId == ele3.ready.id) {
                                 ele3.osFreeMemory = ele.freeMemory;
                                 ele3.cpuPercent = ele.cpuPercent;
                                 ele3.heapUsed = ele.usedMemory;
@@ -315,7 +315,7 @@ angular.module('myApp.views', ['ngRoute'])
             if (angular.isDefined(i))
                 $scope.activeCluster.tickInterval = i;
             var uri = "statistics/" + $scope.activeCluster.cluster.id + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint;
-            var promise2 = myServer.call(uri, {sessionId: $scope.$root.sessionId}, 'GET'); // 同步调用，获得承诺接口
+            var promise2 = myServer.call(uri + "?sessionId=" + $scope.$root.sessionId, {}, 'GET'); // 同步调用，获得承诺接口
             promise2.then(function(ret) { // 调用承诺API获取数据 .resolve
                 if (ret.status == 200 || ret.status == 201) {
                     $scope.activeCluster.exchangeQuantity = updateTps($scope.activeCluster.exchangeQuantity, ret.data.exchanges);
