@@ -391,6 +391,7 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.isClusterExist = false;
                     else
                         $scope.isClusterExist = true;
+                    $scope.isCreateKey = false;
                 };
                 $scope.preCreateKey = function() {
                     $scope.lockKeyAbout = false;
