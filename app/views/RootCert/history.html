@@ -1,0 +1,47 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;证书<code>【&nbsp;{{rec.id}}&nbsp;】</code>的维护记录</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item bi-ptb0">
+                        <div class="panel-body bi-pad0">
+                            <table class="table table-condensed bg-white bi-margin-b0">
+                                <thead><tr>
+                                    <th>标识</th>
+                                    <th>卡BIN</th>
+                                    <th>证书序列号</th>
+                                    <th>失效日期</th>
+                                    <th>请求文件名</th>
+                                    <th>下载次数</th>
+                                    <th>根公钥文件</th>
+                                    <th>证书文件名</th>
+                                    <th>证书状态</th>
+                                    <th>维护类型</th><th class="his-col-id">序号</th><th class="his-col-op">操作</th><th class="his-col-ts">时间戳</th><th class="his-col-uid">操作员</th></tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="his in histories">
+                                    <td>{{his.id}}</td>
+                                    <td>{{his.cardBin}}</td>
+                                    <td>{{his.serialNo}}</td>
+                                    <td>{{his.invalidDate}}</td>
+                                    <td>{{his.requestFileName}}</td>
+                                    <td>{{his.downloadTimes}}</td>
+                                    <td>{{his.rootPublicKeyFile}}</td>
+                                    <td>{{his.certFileName}}</td>
+                                    <td>{{his.certStatus|optionName:'certStatus'}}</td>
+                                    <td>{{his.opType|optionName:'opType'}}</td>
+                                    <td colspan="5" style="padding: 0;">
+                                        <bi-history-columns row-operations="his.operations"></bi-history-columns>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+                <ng-include src="'components/crud/biHistoryButtonsTemplate.html'"></ng-include>
+            </div>
+        </div>
+    </div>
+</div>

@@ -20,7 +20,11 @@
                                                 item-value="rec.isLeaf" item-old-value="bak.isLeaf" item-locked="'true'"></bi-select-item>
                                 <bi-check-item item-label="'创建/更新密钥'" ng-show="rec.createKey"
                                                item-value="" item-old-value="" item-locked="false" on-item-changed="changeInputKey"></bi-check-item>
-                                <div class="form-group bi-margin-b0" ng-show="(opType == 0 || rec.createKey) && rec.keys && rec.keys.length > 0">
+                                <div ng-show="rec.createKey && selectMod">
+                                <bi-select-item item-label="'密钥定义'" item-options="keyDefineNameList"
+                                                item-value="rec.keys[0].keyDefineId" item-old-value="rec.key[0].keyDefineId" item-locked="!selectMod"></bi-select-item>
+                                </div>
+                                <div class="form-group bi-margin-b0" ng-show="(opType == 0 || rec.createKey) && rec.keys && rec.keys.length > 0 && rec.keys[0].keyValue">
                                     <label class="col-sm-2 control-label">相关密钥</label>
                                     <div class="col-sm-6">
                                         <table class="table table-condensed bi-margin-b0 crud-r" style="margin-top: -1px;" ng-repeat="op in rec.keys">

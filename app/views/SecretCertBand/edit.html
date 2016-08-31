@@ -1,0 +1,42 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{opType|optionName:'opType'}}</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="panel-body bi-pad0">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
+                                <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
+                                              item-value="rec.id" item-old-value="bak.id"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'发卡行证书id'" item-name="'secretCertId'" item-required="'true'" item-data-type="'number'"
+                                              item-value="rec.secretCertId" item-old-value="bak.secretCertId"
+                                              item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
+                                <bi-edit-item item-label="'UDK-AC'" item-name="'udkAc'" item-required="'true'" item-data-type="'number'"
+                                              item-value="rec.udkAc" item-old-value="bak.udkAc"
+                                              item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
+                                <bi-edit-item item-label="'UDK-ENC'" item-name="'udkEnc'" item-required="'true'" item-data-type="'number'"
+                                              item-value="rec.udkEnc" item-old-value="bak.udkEnc"
+                                              item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
+                                <bi-edit-item item-label="'UDK-MAC'" item-name="'udkMac'" item-required="'true'" item-data-type="'number'"
+                                              item-value="rec.udkMac" item-old-value="bak.udkMac"
+                                              item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
+                                <bi-edit-item item-label="'KMC'" item-name="'kmc'" item-required="'true'" item-data-type="'number'"
+                                              item-value="rec.kmc" item-old-value="bak.kmc"
+                                              item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
+                                <bi-edit-item item-label="'KEK-UDK'" item-name="'kekUdk'" item-required="'true'" item-data-type="'number'"
+                                              item-value="rec.kekUdk" item-old-value="bak.kekUdk"
+                                              item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
+                                <bi-edit-item item-label="'KEK-KMC'" item-name="'kekKmc'" item-required="'true'" item-data-type="'number'"
+                                              item-value="rec.kekKmc" item-old-value="bak.kekKmc"
+                                              item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <bi-edit-buttons></bi-edit-buttons>
+            </div>
+        </div>
+    </div>
+</div>

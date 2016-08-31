@@ -1,0 +1,43 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;证书<code>【&nbsp;{{rec.id}}&nbsp;】</code>的维护记录</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item bi-ptb0">
+                        <div class="panel-body bi-pad0">
+                            <table class="table table-condensed bg-white bi-margin-b0">
+                                <thead><tr>
+                                    <th>标识</th>
+                                    <th>发卡行证书id</th>
+                                    <th>UDK-AC</th>
+                                    <th>UDK-ENC</th>
+                                    <th>UDK-MAC</th>
+                                    <th>KMC</th>
+                                    <th>KEK-UDK</th>
+                                    <th>KEK-KMC</th></tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="his in histories">
+                                    <td>{{his.id}}</td>
+                                    <td>{{his.secretCertId}}</td>
+                                    <td>{{his.udkAc}}</td>
+                                    <td>{{his.udkEnc}}</td>
+                                    <td>{{his.udkMac}}</a></td>
+                                    <td>{{his.kmc}}</td>
+                                    <td>{{his.kekUdk}}</td>
+                                    <td>{{his.kekKmc}}</td>
+                                    <td colspan="5" style="padding: 0;">
+                                        <bi-history-columns row-operations="his.operations"></bi-history-columns>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+                <ng-include src="'components/crud/biHistoryButtonsTemplate.html'"></ng-include>
+            </div>
+        </div>
+    </div>
+</div>

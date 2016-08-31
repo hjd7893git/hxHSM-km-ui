@@ -36,6 +36,8 @@
                                 <th>批次</th>
                                 <th>私钥</th>
                                 <th>公钥</th>
+                                <th>公钥模长</th>
+                                <th>公钥指数</th>
                                 <th>生成时间</th>
                                 <th>使用状态</th>
                             </tr>
@@ -48,8 +50,10 @@
                                 </td>
                                 <td>{{r.rec.id}}</td>
                                 <td>{{r.rec.batchId}}</td>
-                                <td><a href ng-click="showEditor($index)">{{r.rec.privateKeyValue|more:48}}</a></td>
-                                <td>{{r.rec.publicKeyValue|more:48}}</td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.privateKeyValue|more:32}}</a></td>
+                                <td>{{r.rec.publicKeyValue|more:32}}</td>
+                                <td>{{r.rec.keyMode}}</td>
+                                <td>{{r.rec.keyExponential}}</td>
                                 <td>{{r.rec.createDatetime|biDateTime}}</td>
                                 <td>{{r.rec.useStatus|optionName:"RSAStatus"}}</td>
                             </tr>

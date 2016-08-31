@@ -177,6 +177,7 @@ angular.module('myApp.services', ['ngResource'])
                 $scope.curdPages = ['views/' + tableId + '/query.html'];
                 $scope.resource = angular.isDefined(myRes) ? myRes : $resource(URLPrefix + tableId + '/:recId', {recId: '@id'});
                 $scope.showEditor = function(idx) {
+                    $scope.opType = 0;
                     $scope.selectedRec = $scope.recs[idx].rec;
                     $scope.selectedIndex = idx;
                     $scope.lock = true;
@@ -285,25 +286,30 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.resource = angular.isDefined(myRes) ? myRes : $resource(URLPrefix + 'Branch/:recId', {recId: '@id'});
                 };
                 $scope.submitEdited = function() {
-                    // 表为Branch，并且手工输入密钥模式
-                    if ($scope.tableId == 'Branch' && angular.isDefined($scope.selectMod) && !$scope.selectMod && angular.isDefined($scope.rec) && angular.isDefined($scope.rec.createKey) && $scope.rec.createKey) {
-                        // 改为修改表SecretKey，密钥值为原rec.keys[0]
-                        $scope.tableId = 'SecretKey';
-                        $scope.opType = 2;
-                        $scope.curdPages = ['views/Branch/query.html'];
-                        $scope.resource = angular.isDefined(myRes) ? myRes : $resource(URLPrefix + 'SecretKey/:recId', {recId: '@id'});
-                        var newRec = new $scope.resource($scope.rec.keys[0]);
-                        delete newRec.chosen;
-                        newRec.opType = 2;
-                        newRec.$save({sessionId: sessionId}, function() {
-                            backBranch();
-                            $scope.returnQuery('query');
-                        }, function() {
-                            backBranch();
-                            fail();
-                        });
-                        // alert(JSON.stringify(newRec));
-                        return;
+                    // 表为Branch
+                    if ($scope.tableId == 'Branch') {
+                        // 手工输入密钥模式
+                        if(angular.isDefined($scope.selectMod) && !$scope.selectMod && angular.isDefined($scope.rec) && angular.isDefined($scope.rec.createKey) && $scope.rec.createKey) {
+                            // 改为修改表SecretKey，密钥值为原rec.keys[0]
+                            $scope.tableId = 'SecretKey';
+                            $scope.opType = 2;
+                            $scope.curdPages = ['views/Branch/query.html'];
+                            $scope.resource = angular.isDefined(myRes) ? myRes : $resource(URLPrefix + 'SecretKey/:recId', {recId: '@id'});
+                            var newRec = new $scope.resource($scope.rec.keys[0]);
+                            delete newRec.chosen;
+                            newRec.opType = 2;
+                            newRec.$save({sessionId: sessionId}, function () {
+                                backBranch();
+                                $scope.returnQuery('query');
+                            }, function () {
+                                backBranch();
+                                fail();
+                            });
+                            // alert(JSON.stringify(newRec));
+                            return;
+                        } else if (angular.isDefined($scope.rec.keys)) {
+                            $scope.rec.keys[0].opType = 1;
+                        }
                     }
                     //
                     if ($scope.tableId == 'Branch' && angular.isDefined($scope.selectMod) && !$scope.selectMod && angular.isDefined($scope.batch) && $scope.batch) {
@@ -335,14 +341,25 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.returnQuery('query');
                         return;
                     }
+                    if ($scope.tableId == 'Host') {
+                        if ($scope.rec.opType == 1) {
+                            $scope.rec.os = '-';
+                            $scope.rec.osUser = '-';
+                            $scope.rec.program = '-';
+                            $scope.rec.programMemory = '-';
+                        }
+                    }
+
                     if ($scope.tableId == 'SecretKey') {
                         if (angular.isDefined($scope.rec.clusterId))
                             $scope.rec.useStatus = 1;
                         else
                             $scope.rec.useStatus = 0;
                     }
-                    if (!isValidForm(this))
-                        return;
+                    if ($scope.tableId != 'SecretCert'){ //看不懂valid，更新上传文件时跳出方法，暂时先把SecretCert排除
+                        if (!isValidForm(this))
+                            return;
+                    }
                     if (angular.isDefined($scope.preCommit))
                         $scope.preCommit($scope.rec);
                     var newRec = new $scope.resource($scope.rec);
@@ -380,7 +397,6 @@ angular.module('myApp.services', ['ngResource'])
                     if (angular.isDefined($scope.preUpdate))
                         $scope.preUpdate($scope.rec);
                     $scope.lock = false;
-                    $scope.opType = 2;
                     if ($scope.rec.opType != 1)
                         $scope.rec.opType = 2;
                     if (angular.isUndefined($scope.rec.serviceIndex))
@@ -451,7 +467,6 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.unlockRefEditor();
                 };
                 $scope.unlockEditorX = function() {
-                    alert($scope.tableId);
                     var chosenIdx = getChosenIdx();
                     if (angular.isDefined(chosenIdx)) {
                         $scope.showEditor(chosenIdx);
@@ -855,6 +870,48 @@ angular.module('myApp.services', ['ngResource'])
                 if (angular.isUndefined($scope.$root.machineList)) {
                     $scope.$root.machineList = [];
                     $scope.queryBase($resource(URLPrefix + 'MachineList'), {}, ok1);
+                }
+            },
+            retrieveRsaKeyBatchList :  function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 | ret.status == 201) {
+                        $scope.$root.rsaKeyBatchList = angular.element.map(ret, function(obj) {
+                           return {value: obj.id, name: obj.info};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.rsaKeyBatchList)) {
+                    $scope.$root.rsaKeyBatchList = [];
+                    $scope.queryBase($resource(URLPrefix + 'RsaKeyBatchList/0'), {}, ok1);
+                }
+            },
+            retrieveRootCertList :  function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 | ret.status == 201) {
+                        $scope.$root.rootCertList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.certFile};
+                        });
+                        $scope.$root.rootCertRidList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.rid};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.rootCertList)) {
+                    $scope.$root.rootCertList = [];
+                    $scope.queryBase($resource(URLPrefix + 'RootCertList'), {}, ok1);
+                }
+            },
+            retrieveSecretCertList :  function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 | ret.status == 201) {
+                        $scope.$root.secretCertList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.serialNo};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.secretCertList)) {
+                    $scope.$root.secretCertList = [];
+                    $scope.queryBase($resource(URLPrefix + 'SecretCertList'), {}, ok1);
                 }
             },
             setKeyAbout: function($scope) {

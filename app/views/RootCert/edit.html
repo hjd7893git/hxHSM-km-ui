@@ -1,0 +1,40 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{opType|optionName:'opType'}}</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="panel-body bi-pad0">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
+                                <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
+                                              item-value="rec.id" item-old-value="bak.id"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-select-item item-label="'算法标识'" item-options="'algorithmSign'|theOption" item-data-type="'text'"
+                                                item-value="rec.algorithmSign" item-old-value="bak.algorithmSign" item-required="'true'"
+                                                item-locked="lock"></bi-select-item>
+                                <div class="form-group bi-margin-b10" ng-show="opType == 1">
+                                    <label class="col-sm-2 control-label trimR">根证书文件</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" ng-model="rec.certFile" ng-disabled="true">
+                                        <button ng-click="showUploadX(rec, 'certFile', 'dhxDivKey')" class="btn btn-sm btn-default bi-btn-inner-right"
+                                                ng-show="opType == 1 && !lock">
+                                            <i class="fa fa-upload"></i> 导入 ...</button>
+                                        <div id="dhxDivKey" style="display: none; height: 58px; margin-top: 5px; margin-right: -2px;"></div>
+                                    </div>
+                                    <div ng-if="isNotInsertUp()" class="col-sm-4 trimL bi-old-val has-success">
+                                        <div class='weixin right' ng-if="rec.certFile != bak.certFile">
+                                            <div class='weixin-content'>{{bak.certFile}}</div>
+                                            <div class="arrow"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <bi-edit-buttons></bi-edit-buttons>
+            </div>
+        </div>
+    </div>
+</div>

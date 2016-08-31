@@ -21,21 +21,26 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'equipmentType', names: [{value: 0, name: '自助设备'}, {value: 1, name: 'POS机'}, {value: 2, name: '网银U盾'}, {value: 3, name: '密码键盘'}]},
             {option: 'env', names: [{value: 0, name: '开发'}, {value: 1, name: '测试'}, {value: 2, name: '集成'}, {value: 3, name: '验收'}, {value: 4, name: '演练'}, {value: 5, name: '灾备'}, {value: 6, name: '生产'}]},
             {option: 'acceptRejectPolicy', names: [{value: 0, name: '只允许集合内的'}, {value: 1, name: '除了集合内的'}]},
-            {option: 'keyType', names:[{value: '000', name: 'ZMK'}, {value: '001', name: 'ZPK'}]},
+            {option: 'keyExponential', names: [{value: '3', name: '3 - 03'}, {value: '65537', name: '65537 - 010001'}]},
+            {option: 'keyType', names: [{value: '000', name: 'ZMK'}, {value: '001', name: 'ZPK'}, {value: '109', name: 'UDK'}]},
             {option: 'keySchema', names: [{value: 'Y', name: 'Y-192 Bits'}, {value: 'X', name: 'X-128 Bits'}, {value: 'Z', name: 'Z-64 Bits'}, {value: 'S', name: 'S-128 Bits'}]},
-            {option: 'keyScheme', names: [{value: 'RSA-1024', name: 'RSA 1024 Bits'}, {value: 'RSA-2048', name: 'RSA 2048 Bits'}]},
+            {option: 'keyMode', names: [{value: 'RSA-1024', name: 'RSA 1024 Bits'}, {value: 'RSA-1152', name: 'RSA 1152 Bits'}, {value: 'RSA-1408', name: 'RSA 1408 Bits'}, {value: 'SM2-256', name: 'SM2 256 Bits'}]},
             {option: 'keyUse', names: [{value: 0, name: '应用模块'}, {value: 1, name: '设备'}, {value: 2, name: '合作伙伴'}]},
+            {option: 'keyUseFor', names: [{value: 0, name: '发卡行密钥'}, {value: 1, name: 'IC卡密钥'}]},
             {option: 'keyUseType', names: [{value: 0, name: '不适用'}, {value: 1, name: '全行统一'}, {value: 2, name: '分行统一'}, {value: 3, name: '网点统一'}, {value: 4, name: '一机一密'}]},
             {option: 'keyUseType4Partner', names: [{value: 0, name: '不适用'}, {value: 1, name: '总对总'}, {value: 2, name: '分对分'}]},
             {option: 'keyUseALL', names: [{value: '0', name: '-'}, {value: '11', name: '全行统一'}, {value: '12', name: '分行统一'}, {value: '13', name: '网点统一'}, {value: '14', name: '一机一密'}, {value: '21', name: '总对总'}, {value: '22', name: '分对分'}]},
             {option: 'keyUseStatus', names: [{value: 0, name: '正常（仅密管）'}, {value: 1, name: '正常（同步）'}, {value: 2, name: '弃用（仅密管）'}, {value: 3, name: '弃用（同步）'}, {value: 4, name: '过期'}]},
             {option: 'machineStatus', names: [{value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}, {value:3, name: '预备'}]},
-            {option: 'PartnerType', names:[{value: 0, name: '政府机构'}, {value: 1, name: '商业企业'}]},
-            {option: 'certStatus', names:[{value: 0, name: '密钥已生成'}, {value: 1, name: '申请中 ...'}, {value: 2, name: '已导入'}, {value: 3, name: '过期作废'}]},
-            {option: 'batchStatus', names:[{value: 0, name: '预备'}, {value: 1, name: '进行中 ...'}, {value: 2, name: '失败结束'}, {value: 3, name: '成功完成'}]},
-            {option: 'pubKeyLength', names:[{value: 0, name: '1024 Bits'}, {value: 1, name: '1152 Bits'}, {value: 2, name: '1408 Bits'}, {value: 3, name: '1984 Bits'}]},
-            {option: 'RSAStatus' , names:[{value: 0, name: '未用'}, {value: 1, name: '已用'}, {value: 2, name: '过期'}]},
-            {option: 'packType' , names:[{value: 0, name: 'HSM'}, {value: 1, name: 'HxHSM'}, {value: 2, name: 'HxJSON'}, {value: 3, name: 'HxHSM+HxJSON'}]}
+            {option: 'PartnerType', names: [{value: 0, name: '政府机构'}, {value: 1, name: '商业企业'}]},
+            {option: 'algorithmSign', names: [{value: 'RSA', name: 'RSA'}, {value: 'SM2', name: 'SM2'}]},
+            {option: 'serviceSign', names: [{value: 0, name: '01010000 - 借、贷记'}, {value: 1, name: '01010100 - 借记'}, {value: 2, name: '01010200 - 贷记'}, {value: 3, name: '01010300 - 准贷记'}]},
+            {option: 'rootCertStatus', names: [{value: 0, name: '已导入'}, {value: 1, name: '证书格式错误'}, {value: 2, name: '已过期'}]},
+            {option: 'certStatus', names: [{value: 0, name: '申请证书中'}, {value: 1, name: '证书已导入'}, {value: 2, name: '证书已过期'}, {value: 3, name: '请求文件生成错误'}]},
+            {option: 'batchStatus', names: [{value: 0, name: '预备'}, {value: 1, name: '进行中 ...'}, {value: 2, name: '失败结束'}, {value: 3, name: '成功完成'}]},
+            {option: 'pubKeyLength', names: [{value: 0, name: '1024 Bits'}, {value: 1, name: '1152 Bits'}, {value: 2, name: '1408 Bits'}, {value: 3, name: '1984 Bits'}]},
+            {option: 'RSAStatus' , names: [{value: 0, name: '未用'}, {value: 1, name: '已用'}, {value: 2, name: '过期'}]},
+            {option: 'packType' , names: [{value: 0, name: 'HSM'}, {value: 1, name: 'HxHSM'}, {value: 2, name: 'HxJSON'}, {value: 3, name: 'HxHSM+HxJSON'}]}
         ];
         var tableControllers = [
             {tableId: 'Application', title: '应用管理', keyInfo: 'name',
@@ -77,6 +82,7 @@ angular.module('myApp.options', ['ngResource'])
             {tableId: 'Branch', title: '分支行机构管理', keyInfo: 'branchName',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveBranchList($scope);
+                    myServer.retrieveSystemKeyDefineList($scope);
                     myServer.setKeyAbout($scope);
                     $scope.preInsert = function(rec) {
                         rec.isLeaf = 1;
@@ -162,6 +168,37 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveMenuTree($scope);
                 }
             },
+            {tableId: 'RootCert', title: '根CA证书',
+                controller:function($log, $rootScope, $scope, myServer) {
+                    var myVaults = [];
+                    $scope.showUploadX = function(rec, fieldId, boxId) {
+                        angular.element("#"+boxId).show();
+                        var dhxConf = {
+                            "parent": boxId,
+                            "uploadUrl": myServer.URLPrefix + "upload",
+                            "swfUrl": myServer.URLPrefix + "upload",
+                            "slUrl": myServer.URLPrefix + "upload",
+                            "swfPath": "dhxvault.swf",
+                            "slXap": "dhxvault.xap",
+                            "filesLimit": 1
+                        };
+                        if (angular.isUndefined(myVaults[boxId])) {
+                            myVaults[boxId] = new dhtmlXVaultObject(dhxConf);
+                            myVaults[boxId].attachEvent("onFileAdd", function(file) {
+                                $scope.$apply(function () {
+                                    rec[fieldId] = file.name; // TODO: UI不能立即刷新, 需解决(加上$apply就OK了)
+                                    if (rec.rootPublicKeyFile && rec.certFileName)
+                                        rec.certStatus = 2;
+                                });
+                            });
+                        }
+                        myVaults[boxId].f.click();
+                    };
+                    $scope.downloaded = function(rec) {
+                        rec.certStatus = 1;
+                    };
+                }
+            },
             {tableId: 'RsaKey', title:'制卡数据',
                 controller:function($log, $rootScope, $scope, myServer) {
                     $scope.readOnly = true;
@@ -169,14 +206,17 @@ angular.module('myApp.options', ['ngResource'])
             },
             {tableId: 'RsaKeyBatch', title:'制卡数据生成批次',
                 controller:function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveBranchList($scope);
                     $scope.preInsert = function(rec) {
                         rec.batchStatus = 0;
                         rec.completeQuantity = 0;
                     };
                 }
             },
-            {tableId: 'SecretCert', title:'证书',
+            {tableId: 'SecretCert', title:'发卡行证书',
                 controller:function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveRsaKeyBatchList($scope);
+                    myServer.retrieveRootCertList($scope);
                     var myVaults = [];
                     $scope.showUploadX = function(rec, fieldId, boxId) {
                         angular.element("#"+boxId).show();
@@ -205,6 +245,11 @@ angular.module('myApp.options', ['ngResource'])
                         rec.downloadTimes = rec.downloadTimes + 1;
                         rec.certStatus = 1;
                     };
+                }
+            },
+            {tableId: 'SecretCertBand', title: '发卡行证书绑定',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveSecretCertList($scope);
                 }
             },
             {tableId: 'SecretKey', title: '密钥管理',

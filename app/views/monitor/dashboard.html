@@ -150,7 +150,7 @@
                                                     {{m.ready.status|optionName:"machineStatus"}}。连接数: {{m.ready.connectionPoolSize}}
                                                 </td><td>
                                                     <img ng-show="m.alarmLevel == 0" src="images/alarm0.png" height="20" width="20"/>
-                                                    <img ng-show="m.alarmLevel == 2 || m.alarmLevel == null" src="images/alarm2.gif" height="20" width="20"/></td></tr>
+                                                    <img ng-show="m.alarmLevel == 2 || m.alarmLevel == null || m.status == '--CL'" src="images/alarm2.gif" height="20" width="20"/></td></tr>
                                                 <tr><td></td><td>
                                                     <code>CPU: {{m.cpuPercent}}%，占用内存: {{(m.heapUsed/1024).toFixed(2)+" MB"}}（剩余内存: {{(m.osFreeMemory/1024).toFixed(2)+" MB"}}）</code>
                                                 </td><td>

@@ -34,16 +34,13 @@
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
                                 <th>标识</th>
-                                <th>发卡行标识</th>
-                                <th>证书序列号</th>
-                                <th>密钥对</th>
-                                <th>失效日期</th>
-                                <th>请求文件</th>
-                                <th>发卡机构</th>
-                                <th>服务标识</th>
-                                <th>发卡次数</th>
-                                <th>证书文件</th>
-                                <th>证书状态</th>
+                                <th>发卡行证书</th>
+                                <th>UDK-AC</th>
+                                <th>UDK-ENC</th>
+                                <th>UDK-MAC</th>
+                                <th>KMC</th>
+                                <th>KEK-UDK</th>
+                                <th>KEK-KMC</th>
                             </tr>
                             </tr>
                             </thead>
@@ -54,16 +51,13 @@
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.id}}</td>
-                                <td>{{r.rec.cardBin}}</td>
-                                <td>{{r.rec.serialNo}}</td>
-                                <td>{{r.rec.rsaKeyId}}</td>
-                                <td>{{r.rec.invalidDate}}</td>
-                                <td><a href ng-click="showEditor($index)">{{r.rec.requestFile}}</a></td>
-                                <td>{{r.rec.rootCertId | optionName: rootCertRidList}}</td>
-                                <td>{{r.rec.serviceSign | optionName: "serviceSign"}}</td>
-                                <td>{{r.rec.issuingNumber}}</td>
-                                <td>{{r.rec.certFile}}</td>
-                                <td>{{r.rec.certStatus|optionName:"certStatus"}}</td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.secretCertId | optionName: secretCertList}}</a></td>
+                                <td>{{r.rec.udkAc}}</td>
+                                <td>{{r.rec.udkEnc}}</td>
+                                <td>{{r.rec.udkMac}}</a></td>
+                                <td>{{r.rec.kmc}}</td>
+                                <td>{{r.rec.kekUdk}}</td>
+                                <td>{{r.rec.kekKmc}}</td>
                             </tr>
                             </tbody>
                         </table>
