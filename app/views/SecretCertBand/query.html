@@ -52,12 +52,12 @@
                                 </td>
                                 <td>{{r.rec.id}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.secretCertId | optionName: secretCertList}}</a></td>
-                                <td>{{r.rec.udkAc}}</td>
-                                <td>{{r.rec.udkEnc}}</td>
-                                <td>{{r.rec.udkMac}}</a></td>
-                                <td>{{r.rec.kmc}}</td>
-                                <td>{{r.rec.kekUdk}}</td>
-                                <td>{{r.rec.kekKmc}}</td>
+                                <td>{{r.rec.udkAcKeyValue|more:16}}</td>
+                                <td>{{r.rec.udkEncKeyValue|more:16}}</td>
+                                <td>{{r.rec.udkMacKeyValue|more:16}}</td>
+                                <td>{{r.rec.kmcKeyValue|more:16}}</td>
+                                <td>{{r.rec.kekUdkKeyValue|more:16}}</td>
+                                <td>{{r.rec.kekKmcKeyValue|more:16}}</td>
                             </tr>
                             </tbody>
                         </table>

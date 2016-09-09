@@ -207,6 +207,7 @@ angular.module('myApp.options', ['ngResource'])
             {tableId: 'RsaKeyBatch', title:'制卡数据生成批次',
                 controller:function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveBranchList($scope);
+                    myServer.retrieveSecretCertList($scope);
                     $scope.preInsert = function(rec) {
                         rec.batchStatus = 0;
                         rec.completeQuantity = 0;

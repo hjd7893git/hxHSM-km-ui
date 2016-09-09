@@ -307,7 +307,7 @@ angular.module('myApp.services', ['ngResource'])
                             });
                             // alert(JSON.stringify(newRec));
                             return;
-                        } else if (angular.isDefined($scope.rec.keys)) {
+                        } else if (angular.isDefined($scope.rec.keys) && $scope.opType != 2) {
                             $scope.rec.keys[0].opType = 1;
                         }
                     }
@@ -397,6 +397,8 @@ angular.module('myApp.services', ['ngResource'])
                     if (angular.isDefined($scope.preUpdate))
                         $scope.preUpdate($scope.rec);
                     $scope.lock = false;
+                    if ($scope.opType != 1)
+                        $scope.opType = 2;
                     if ($scope.rec.opType != 1)
                         $scope.rec.opType = 2;
                     if (angular.isUndefined($scope.rec.serviceIndex))
@@ -889,7 +891,7 @@ angular.module('myApp.services', ['ngResource'])
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 | ret.status == 201) {
                         $scope.$root.rootCertList = angular.element.map(ret, function(obj) {
-                            return {value: obj.id, name: obj.certFile};
+                            return {value: obj.id, name: obj.algorithmSign + "-" + obj.publicKeyModLen + "-" + obj.publicKeyIndex};
                         });
                         $scope.$root.rootCertRidList = angular.element.map(ret, function(obj) {
                             return {value: obj.id, name: obj.rid};
