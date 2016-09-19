@@ -118,7 +118,7 @@ angular.module('myApp.views', ['ngRoute'])
         $scope.getOccupy = function(occupys, object, objectId) {
             // get occupy
             var uri = "occupy/" + object + "/" + objectId + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint;
-            var promise3 = myServer.call(uri, {sessionId: $scope.$root.sessionId}, 'GET'); // 同步调用，获得承诺接口
+            var promise3 = myServer.call(uri + "?sessionId=" + $scope.$root.sessionId, {}, 'GET'); // 同步调用，获得承诺接口
             promise3.then(function(ret) {
                 if (ret.status == 200 || ret.status == 201) {
                     if (object == "node")

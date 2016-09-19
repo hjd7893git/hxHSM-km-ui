@@ -724,6 +724,21 @@ angular.module('myApp.services', ['ngResource'])
                 $scope.changeInputKey = function() {
                     $scope.selectMod = !$scope.selectMod;
                 };
+                $scope.synchroKeys = function() {
+                    var uri = URLPrefix + "CheckSymKeys";
+                    $http({
+                        method: "POST",
+                        url: uri,
+                        data: {sessionId: $scope.$root.sessionId}
+                    }).success(function(ret) {
+                        if (ret.b == "OK") {
+                            alert("同步完成")
+                        } else {
+                            ret.data = ret.b;
+                            fail(ret);
+                        }
+                    });
+                }
             },
             retrieveMenuTree: function($scope) {
                 var ok1 = function(ret) {
