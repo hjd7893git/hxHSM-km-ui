@@ -11,7 +11,7 @@
                 <i class="fa fa-copy"></i>&nbsp;复制</button>
             <button class="btn btn-default" ng-click="showHistoryX()" ng-show="!browseOnly">
                 <i class="fa fa-history"></i>&nbsp;历史</button>
-            <button class="btn btn-default" ng-click="deleteRecX()" ng-show="!browseOnly">
+            <button class="btn btn-default" ng-click="deleteRecX()" ng-show="!browseOnly && tableId != 'SecretKey'">
                 <i class="fa fa-print"></i>&nbsp;打印</button>
             <button class="btn btn-danger" ng-click="synchroKeys()" ng-if="tableId == 'SecretKey'">
                 <i class="fa fa-key"></i>&nbsp;同步</button>

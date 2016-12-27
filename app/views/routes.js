@@ -407,12 +407,12 @@ angular.module('myApp.views', ['ngRoute'])
             }
             $scope.crudPanels.activePanel = chosenPanel;
         };
-        $scope.authorize = function(action, status) {
+        $scope.authorize = function(ele, action, status) {
             var uri = "authorize/" + $scope.selectedRec.seq + "/" + action + "?sessionId=" + $rootScope.sessionId;
             var promise = myServer.call(uri, {}); // 同步调用，获得承诺接口
             promise.then(function (ret) {  // 调用承诺API获取数据 .resolve
                 if (ret.status == 200 || ret.status == 201) {
-                    $scope.selectedRec.status = status;
+                    ele.status = status;
                     $scope.crudPanels.activePanel = 0;
                     var ctrl = myOptions.findController($scope.selectedRec.table);
                     if (angular.isDefined(ctrl) && angular.isDefined(ctrl.postChecked)) {
@@ -420,16 +420,19 @@ angular.module('myApp.views', ['ngRoute'])
                     }
                 }
             }, function (ret) {  // 处理错误 .reject
+                $scope.authorizeState = false;
                 $scope.showModal(ret);
             });
         };
         $scope.authorizeX = function(action, status) {
+            $scope.authorizeState = true;
             angular.element.each($scope.recs, function(n, ele) {
                 if (angular.isDefined(ele.chosen) && ele.chosen) {
                     $scope.selectedRec = ele;
-                    $scope.authorize(action, status);
+                    $scope.authorize(ele, action, status);
                 }
             });
+            if ($scope.authorizeState) { $scope.showTips('复核操作成功') }
         };
     }])
     .controller('myDeployCtrl', ['$location', '$scope', '$rootScope', 'myServer', '$log', function($location, $scope, $rootScope, myServer, $log) {

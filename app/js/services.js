@@ -45,6 +45,12 @@ angular.module('myApp.services', ['ngResource'])
                     }
                     errorModal.$promise.then(errorModal.show);
                 };
+                $scope.showTips = function(msg) {
+                    $scope.title = '提示';
+                    $scope.errorCode = 'Success';
+                    $scope.errorMsg = msg;
+                    errorModal.$promise.then(errorModal.show);
+                };
                 $scope.confirm = function() {
                     errorModal.$promise.then(errorModal.hide);
                     if (angular.isDefined(jumpTo))
@@ -725,7 +731,7 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.selectMod = !$scope.selectMod;
                 };
                 $scope.synchroKeys = function() {
-                    var uri = URLPrefix + "CheckSymKeys";
+                    var uri = URLPrefix + "CheckSymKeys" + "?sessionId=" + $scope.$root.sessionId;
                     $http({
                         method: "POST",
                         url: uri,
