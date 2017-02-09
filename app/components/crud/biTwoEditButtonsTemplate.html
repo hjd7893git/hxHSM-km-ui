@@ -3,9 +3,9 @@
         <div class="col-sm-offset-2 col-sm-4 bi-pl8">
             <div class="btn-group" role="group" ng-show="recStatus == 0">
                 <button class="btn btn-success" disabled>复核</button>
-                <button class="btn btn-default" ng-click="authorize('check', 2)">
+                <button class="btn btn-default" ng-click="authorizeX(this, 'check', 2)">
                     <i class="fa fa-edit"></i>&nbsp;通过</button>
-                <button class="btn btn-default" ng-click="authorize('reject', 3)">
+                <button class="btn btn-default" ng-click="authorizeX(this, 'reject', 3)">
                     <i class="fa fa-edit"></i>&nbsp;拒绝</button>
             </div>
             <!--div class="btn-group" role="group" ng-show="recStatus == 2">

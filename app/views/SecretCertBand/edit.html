@@ -14,19 +14,19 @@
                                               item-value="rec.secretCertId" item-old-value="bak.secretCertId"
                                               item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
                                 <div ng-show="opType == 1">
-                                    <bi-edit-item item-label="'UDK-AC'" item-name="'udkAc'" item-required="'true'" item-data-type="'number'"
+                                    <bi-edit-item item-label="'MDK-AC'" item-name="'udkAc'" item-required="'true'" item-data-type="'number'"
                                                   item-value="rec.udkAc" item-old-value="bak.udkAc"
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
-                                    <bi-edit-item item-label="'UDK-ENC'" item-name="'udkEnc'" item-required="'true'" item-data-type="'number'"
+                                    <bi-edit-item item-label="'MDK-ENC'" item-name="'udkEnc'" item-required="'true'" item-data-type="'number'"
                                                   item-value="rec.udkEnc" item-old-value="bak.udkEnc"
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
-                                    <bi-edit-item item-label="'UDK-MAC'" item-name="'udkMac'" item-required="'true'" item-data-type="'number'"
+                                    <bi-edit-item item-label="'MDK-MAC'" item-name="'udkMac'" item-required="'true'" item-data-type="'number'"
                                                   item-value="rec.udkMac" item-old-value="bak.udkMac"
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
                                     <bi-edit-item item-label="'KMC'" item-name="'kmc'" item-required="'true'" item-data-type="'number'"
                                                   item-value="rec.kmc" item-old-value="bak.kmc"
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
-                                    <bi-edit-item item-label="'KEK-UDK'" item-name="'kekUdk'" item-required="'true'" item-data-type="'number'"
+                                    <bi-edit-item item-label="'KEK-MDK'" item-name="'kekUdk'" item-required="'true'" item-data-type="'number'"
                                                   item-value="rec.kekUdk" item-old-value="bak.kekUdk"
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
                                     <bi-edit-item item-label="'KEK-KMC'" item-name="'kekKmc'" item-required="'true'" item-data-type="'number'"
@@ -34,22 +34,22 @@
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
                                 </div>
                                 <div ng-show="opType != 1">
-                                    <bi-edit-item item-label="'UDK-AC'" item-name="'udkAc'" item-data-type="'text'"
+                                    <bi-edit-item item-label="'MDK-AC'" item-name="'udkAc'" item-data-type="'text'"
                                                   item-value="rec.udkAcKeyValue" item-old-value="bak.udkAcKeyValue"
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
-                                    <bi-edit-item item-label="'UDK-AC-CHECK'" item-name="'udkAcCheck'" item-data-type="'text'"
+                                    <bi-edit-item item-label="'MDK-AC-CHECK'" item-name="'udkAcCheck'" item-data-type="'text'"
                                                   item-value="rec.udkAcCheckValue" item-old-value="bak.udkAcCheckValue"
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
-                                    <bi-edit-item item-label="'UDK-ENC'" item-name="'udkEnc'" item-data-type="'text'"
+                                    <bi-edit-item item-label="'MDK-ENC'" item-name="'udkEnc'" item-data-type="'text'"
                                                   item-value="rec.udkEncKeyValue" item-old-value="bak.udkEncKeyValue"
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
-                                    <bi-edit-item item-label="'UDK-ENC-CHECK'" item-name="'udkEncCheck'" item-data-type="'text'"
+                                    <bi-edit-item item-label="'MDK-ENC-CHECK'" item-name="'udkEncCheck'" item-data-type="'text'"
                                                   item-value="rec.udkEncCheckValue" item-old-value="bak.udkEncCheckValue"
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
-                                    <bi-edit-item item-label="'UDK-MAC'" item-name="'udkMac'" item-data-type="'text'"
+                                    <bi-edit-item item-label="'MDK-MAC'" item-name="'udkMac'" item-data-type="'text'"
                                                   item-value="rec.udkMacKeyValue" item-old-value="bak.udkMacKeyValue"
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
-                                    <bi-edit-item item-label="'UDK-MAC-CHECK'" item-name="'udkMacCheck'" item-data-type="'text'"
+                                    <bi-edit-item item-label="'MDK-MAC-CHECK'" item-name="'udkMacCheck'" item-data-type="'text'"
                                                   item-value="rec.udkMacCheckValue" item-old-value="bak.udkMacCheckValue"
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
                                     <bi-edit-item item-label="'KMC'" item-name="'kmc'" item-data-type="'text'"
@@ -58,10 +58,10 @@
                                     <bi-edit-item item-label="'KMC-CHECK'" item-name="'kmcCheck'" item-data-type="'text'"
                                                   item-value="rec.kmcCheckValue" item-old-value="bak.kmcCheckValue"
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
-                                    <bi-edit-item item-label="'KEK-UDK'" item-name="'kekUdk'" item-data-type="'text'"
+                                    <bi-edit-item item-label="'KEK-MDK'" item-name="'kekUdk'" item-data-type="'text'"
                                                   item-value="rec.kekUdkKeyValue" item-old-value="bak.kekUdkKeyValue"
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
-                                    <bi-edit-item item-label="'KEK-UDK-CHECK'" item-name="'kekUdkCheck'" item-data-type="'text'"
+                                    <bi-edit-item item-label="'KEK-MDK-CHECK'" item-name="'kekUdkCheck'" item-data-type="'text'"
                                                   item-value="rec.kekUdkCheckValue" item-old-value="bak.kekUdkCheckValue"
                                                   item-locked="opType != 1 || recStatus != -1"></bi-edit-item>
                                     <bi-edit-item item-label="'KEK-KMC'" item-name="'kekKmc'" item-data-type="'text'"

@@ -33,6 +33,7 @@
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
                                 <th>标识</th>
+                                <th>索引</th>
                                 <th>批次</th>
                                 <th>私钥</th>
                                 <th>公钥</th>
@@ -49,6 +50,7 @@
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.id}}</td>
+                                <td>{{r.rec.serviceIndex}}</td>
                                 <td>{{r.rec.batchId}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.privateKeyValue|more:32}}</a></td>
                                 <td>{{r.rec.publicKeyValue|more:32}}</td>

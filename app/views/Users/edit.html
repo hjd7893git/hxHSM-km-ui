@@ -13,11 +13,11 @@
                                               item-value="rec.mobile" item-old-value="bak.mobile" item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'姓名'" item-name="'name'" item-required="'true'"
                                               item-value="rec.name" item-old-value="bak.name" item-locked="lock"></bi-edit-item>
-                                <bi-select-item item-label="'性别'"
+                                <bi-select-item item-label="'性别'" item-required="'true'"
                                                 item-value="rec.sex" item-old-value="bak.sex" item-locked="lock" item-options="'sex'|theOption"></bi-select-item>
                                 <bi-edit-item item-label="'所属部门'" item-tip="'如：总行-资讯科技部-系统管理团队'"
-                                              item-value="rec.departmentName" item-old-value="bak.departmentName" item-locked="lock"></bi-edit-item>
-                                <bi-select-item item-label="'角色'" is-option-field="'true'" item-margin="'bi-margin-b0'"
+                                              item-value="rec.departmentName" item-old-value="bak.departmentName" item-locked="lock" item-required="'true'"></bi-edit-item>
+                                <bi-select-item item-label="'角色'" is-option-field="'true'" item-margin="'bi-margin-b0'" item-required="'true'"
                                                 item-value="rec.roles[0].roleId" item-old-value="bak.roles[0].roleId" item-locked="lock" item-options="roleList"></bi-select-item>
                             </form>
                         </div>
