@@ -16,6 +16,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <bi-query-item item-label="'标识'" item-tip="'大于0的整数'" item-value="qry.id"></bi-query-item>
+                                            <bi-query-select item-label="'应用'" item-value="qry.applicationId" item-options="applicationList"></bi-query-select>
                                             <bi-query-action></bi-query-action>
                                         </div>
                                         <div class="col-md-6">
@@ -34,6 +35,7 @@
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
                                 <th>标识</th>
                                 <th>索引</th>
+                                <th>应用</th>
                                 <th>批次</th>
                                 <th>私钥</th>
                                 <th>公钥</th>
@@ -51,13 +53,14 @@
                                 </td>
                                 <td>{{r.rec.id}}</td>
                                 <td>{{r.rec.serviceIndex}}</td>
+                                <td>{{r.rec.applicationId|optionName:applicationList}}</td>
                                 <td>{{r.rec.batchId}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.privateKeyValue|more:32}}</a></td>
                                 <td>{{r.rec.publicKeyValue|more:32}}</td>
                                 <td>{{r.rec.keyMode}}</td>
                                 <td>{{r.rec.keyExponential}}</td>
                                 <td>{{r.rec.createDatetime|biDateTime}}</td>
-                                <td>{{r.rec.useStatus|optionName:"RSAStatus"}}</td>
+                                <td>{{r.rec.useStatus|optionName:'RSAStatus'}}</td>
                             </tr>
                             </tbody>
                         </table>

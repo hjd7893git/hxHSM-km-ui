@@ -22,7 +22,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <bi-query-item item-label="'名称'" item-tip="'文本,可模糊匹配'" item-value="qry.name"></bi-query-item>
-                                            <bi-query-select item-label="'是否短连接'" item-value="qry.shortConnection" item-options="'YesNo'|theOption"></bi-query-select>
+                                            <bi-query-select item-label="'连接类型'" item-value="qry.shortConnection" item-options="'shortConnection'|theOption"></bi-query-select>
                                             <bi-query-select item-label="'密码机分组'" item-value="qry.groupId" item-options="groupList"></bi-query-select>
                                         </div>
                                     </div>
@@ -41,11 +41,9 @@
                                 <th><a ng-click="sortOn('name')">名称</a>&nbsp;<i
                                         class="fa fa-sort{{sortByname|iif:'-alpha-asc':'-alpha-desc':''}}"></i></th>
                                 <th>英文名称</th>
-                                <th>IP地址列表</th>
-                                <th>API列表</th>
-                                <th>是否短连接</th>
-                                <th>头长</th>
-                                <th>同步请求应答</th>
+                                <th>客户端编码</th>
+                                <th>连接类型</th>
+                                <th>应答类型</th>
                                 <th>可接收报文类型</th>
                                 <th>密码机分组</th>
                             </tr>
@@ -60,11 +58,9 @@
                                 <td>{{r.rec.symbol}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.name}}</a></td>
                                 <td>{{r.rec.nameEn}}</td>
-                                <td>{{r.rec.ipList}}</td>
-                                <td>{{r.rec.apiList}}</td>
-                                <td>{{r.rec.shortConnection|optionName:'YesNo'}}</td>
-                                <td>{{r.rec.headLength}}</td>
-                                <td>{{r.rec.syncRqRs|optionName:'YesNo'}}</td>
+                                <td>{{r.rec.encode|optionName:'appEncode'}}</td>
+                                <td>{{r.rec.shortConnection|optionName:'shortConnection'}}</td>
+                                <td>{{r.rec.syncRqRs|optionName:'syncRqRs'}}</td>
                                 <td>{{r.rec.packType|optionName:'packType'}}</td>
                                 <td>{{r.rec.groupId|optionName:groupList}}</td>
                             </tr>

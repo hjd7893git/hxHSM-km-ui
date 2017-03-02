@@ -14,7 +14,7 @@
                                 <form class="form-horizontal">
                                     <div class="col-md-6">
                                         <bi-query-item item-label="'标识'" item-tip="'大于0的整数'" item-value="qry.id"></bi-query-item>
-                                        <bi-query-item item-label="'手机号'" item-value="qry.mobile"></bi-query-item>
+                                        <bi-query-item item-label="'用户名'" item-value="qry.mobile"></bi-query-item>
                                         <bi-query-action></bi-query-action>
                                     </div>
                                     <div class="col-md-6">
@@ -29,7 +29,7 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th><th>手机号</th><th>姓名</th><th>性别</th><th>所属部门</th></tr>
+                                <th>标识</th><th>用户名</th><th>姓名</th><th>性别</th><th>所属部门</th></tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">

@@ -42,7 +42,7 @@
                                 </td>
                                 <td>{{r.rec.id}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.hardware}}</a></td>
-                                <td>{{r.rec.os}}</td>
+                                <td>{{r.rec.os|more:32}}</td>
                                 <td>{{r.rec.performance}}</td>
                                 <td>{{r.rec.nodeName}}</td>
                                 <td>{{r.rec.ip}}</td>

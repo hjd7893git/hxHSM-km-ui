@@ -45,8 +45,7 @@
                         <li><a href="#/views/MachineReady">密码机上架</a></li>
                         <li><a href="#/views/GroupDefine">密码机分组</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#/views/Global">全局配置</a></li>
-                        <li><a href="#/views/deploy">部署</a></li>
+                        <li><a href="#/views/Task">任务</a></li>
                     </ul>
                 </li>
                 <li><a href="#/views/monitor">运维监控</a></li>
@@ -60,6 +59,15 @@
                         <li><a href="#/views/Menu">菜单</a></li>
                     </ul>
                 </li>
+                <li role="presentation" class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">
+                        操作审计 <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/views/Journal.All">我的操作历史</a></li>
+                        <li><a href="#/views/Journal">全员的操作历史</a></li>
+                    </ul>
+                </li>
                 <li><a href="#/views/check">待办事项</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -68,9 +76,6 @@
                         <span class="glyphicon glyphicon-user"></span>，{{user.name}} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#/views/Journal.All">我的操作历史</a></li>
-                        <li><a href="#/views/Journal">全员的操作历史</a></li>
-                        <li role="separator" class="divider"></li>
                         <li><a href="#/views/change">修改密码</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="javascript:void(0)" ng-click="doLogout()">退出</a></li>

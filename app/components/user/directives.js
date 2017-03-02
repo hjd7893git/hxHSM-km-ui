@@ -26,8 +26,12 @@ angular.module('myApp.components.user', [])
             $location.path("views/change").replace();
         };
         myServer.errorDialog($scope, "user", jumpTo);
+
         $scope.doLogin = function(user) {
             user.password = angular.element.md5(user.password);
+
+            //sendNativeMessage(user.mobile);
+
             var promise = myServer.call("login", user); // 同步调用，获得承诺接口
             promise.then(function(ret) { // 调用承诺API获取数据 .resolve
                 if (ret.status == 200 || ret.status == 201) {

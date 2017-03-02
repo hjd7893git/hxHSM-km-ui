@@ -34,13 +34,20 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'machineStatus', names: [{value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}, {value:3, name: '预备'}]},
             {option: 'PartnerType', names: [{value: 0, name: '政府机构'}, {value: 1, name: '商业企业'}]},
             {option: 'algorithmSign', names: [{value: 'RSA', name: 'RSA'}, {value: 'SM2', name: 'SM2'}]},
+            {option: 'appEncode', names: [{value: 'utf8', name: 'UTF8'}, {value: 'gbk', name: 'GBK'}, {value: 'ibm935', name: 'IBM935'}]},
             {option: 'serviceSign', names: [{value: 0, name: '01010000 - 借、贷记'}, {value: 1, name: '01010100 - 借记'}, {value: 2, name: '01010200 - 贷记'}, {value: 3, name: '01010300 - 准贷记'}]},
+            {option: 'taskType', names: [{value: 0, name: '对称密钥'}, {value: 1, name: '非对称密钥'}, {value: 2, name: '密码机组'}, {value: 3, name: '加密应用'}]},
+            {option: 'addReason', names: [{value: 0, name: '被动同步失败'}, {value: 1, name: '主动同步失败'}]},
+            {option: 'taskStatus', names: [{value: 0, name: '未完成'}, {value: 1, name: '已完成'}]},
             {option: 'rootCertStatus', names: [{value: 0, name: '已导入'}, {value: 1, name: '证书格式错误'}, {value: 2, name: '已过期'}]},
             {option: 'certStatus', names: [{value: 0, name: '申请证书中'}, {value: 1, name: '证书已导入'}, {value: 2, name: '证书已过期'}, {value: 3, name: '请求文件生成错误'}]},
             {option: 'batchStatus', names: [{value: 0, name: '预备'}, {value: 1, name: '进行中 ...'}, {value: 2, name: '失败结束'}, {value: 3, name: '成功完成'}]},
             {option: 'pubKeyLength', names: [{value: 0, name: '1024 Bits'}, {value: 1, name: '1152 Bits'}, {value: 2, name: '1408 Bits'}, {value: 3, name: '1984 Bits'}]},
             {option: 'RSAStatus' , names: [{value: 0, name: '未用'}, {value: 1, name: '已用'}, {value: 2, name: '过期'}]},
-            {option: 'packType' , names: [{value: 0, name: 'HSM'}, {value: 1, name: 'HxHSM'}, {value: 2, name: 'HxJSON'}, {value: 3, name: 'HxHSM+HxJSON'}]}
+            {option: 'packType' , names: [{value: 0, name: 'HSM'}, {value: 1, name: 'HxHSM'}, {value: 2, name: 'HxJSON'}, {value: 3, name: 'HxHSM+HxJSON'}]},
+            {option: 'shortConnection', names: [{value: 0, name: '长连接'}, {value: 1, name: '短连接'}]},
+            {option: 'syncRqRs', names: [{value: 0, name: '异步'}, {value: 1, name: '同步'}]},
+            {option: 'hsmEncode', names: [{value: 0, name: 'ASCII'}, {value: 1, name: 'EBCDIC'}, {value: 2, name: 'BINARY'}]}
         ];
         var tableControllers = [
             {tableId: 'Application', title: '应用管理', keyInfo: 'name',
@@ -105,7 +112,6 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.setKeyAbout($scope);
                 }
             },
-            {tableId: 'Global', title: '全局配置'},
             {tableId: 'GroupDefine', title: '分组管理', keyInfo: 'name',
                 controller: function($log,$rootScope,$scope,myServer) {
                     myServer.retrieveClusterList($scope)
@@ -118,6 +124,7 @@ angular.module('myApp.options', ['ngResource'])
             },
             {tableId: 'Journal', title: '操作历史',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                     $scope.readOnly = true;
                     $scope.browseOnly = true;
                 },
@@ -201,10 +208,13 @@ angular.module('myApp.options', ['ngResource'])
             },
             {tableId: 'RsaKey', title:'制卡数据',
                 controller:function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveApplicationList($scope);
+                    myServer.retrieveRsaKeyBatchList($scope);
                 }
             },
             {tableId: 'RsaKeyBatch', title:'制卡数据生成批次',
                 controller:function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveApplicationList($scope);
                     myServer.retrieveBranchList($scope);
                     myServer.retrieveSecretCertList($scope);
                     $scope.preInsert = function(rec) {
@@ -254,11 +264,10 @@ angular.module('myApp.options', ['ngResource'])
             },
             {tableId: 'SecretKey', title: '密钥管理',
                 controller: function($log, $rootScope, $scope, myServer) {
-                    myServer.retrieveClusterList($scope);
+                    myServer.retrieveApplicationList($scope);
                     myServer.retrieveSystemKeyDefineList($scope);
                     $scope.isCreateKey = true;
                     $scope.isIndexExist = true;
-                    $scope.isClusterExist = true;
                 }
             },
             {tableId: 'System', title: '系统管理', keyInfo: 'name',
@@ -278,6 +287,13 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveSystemList($scope);
                     myServer.setKeyAbout($scope);
                     myServer.retrievePartnerList($scope);
+                }
+            },
+            {tableId: 'Task', title: '任务',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveClusterList($scope);
+                    myServer.retrieveHostList($scope);
+                    $scope.readOnly = true;
                 }
             },
             {tableId: 'Users', title: '用户管理', keyInfo: 'name',

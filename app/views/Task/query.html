@@ -16,10 +16,14 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <bi-query-item item-label="'标识'" item-tip="'大于0的整数'" item-value="qry.id"></bi-query-item>
+                                            <bi-query-select item-label="'任务类型'" item-value="qry.taskType" item-options="'taskType'|theOption"></bi-query-select>
+                                            <bi-query-select item-label="'添加原因'" item-value="qry.addReason" item-options="'addReason'|theOption"></bi-query-select>
                                             <bi-query-action></bi-query-action>
                                         </div>
                                         <div class="col-md-6">
-                                            <bi-query-item item-label="'假活错误码'" item-tip="'文本,可模糊匹配'" item-value="qry.fadeAliveCodes"></bi-query-item>
+                                            <bi-query-select item-label="'集群'" item-value="qry.clustersId" item-options="clusterList"></bi-query-select>
+                                            <bi-query-select item-label="'节点'" item-value="qry.hostId" item-options="hostList"></bi-query-select>
+                                            <bi-query-select item-label="'任务状态'" item-value="qry.taskStatus" item-options="'taskStatus'|theOption"></bi-query-select>
                                         </div>
                                     </div>
                                 </form>
@@ -32,18 +36,27 @@
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
                                 <th>标识</th>
-                                <th>假活错误码</th>
-                            </tr>
+                                <th>任务类型</th>
+                                <th>集群</th>
+                                <th>节点</th>
+                                <th>密钥索引</th>
+                                <th>添加原因</th>
+                                <th>任务状态</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="r in recs" class="chosen-{{r.rec.fadeAliveCodes}}">
+                            <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">
                                 <td class="text-center">
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.id}}</td>
-                                <td><a href ng-click="showEditor($index)">{{r.rec.fadeAliveCodes}}</a></td>
+                                <td>{{r.rec.taskType|optionName:'taskType'}}</td>
+                                <td>{{r.rec.clustersId|optionName:clusterList}}</td>
+                                <td>{{r.rec.hostId|optionName:hostList}}</td>
+                                <td>{{r.rec.keyIndex}}</td>
+                                <td>{{r.rec.addReason|optionName:'addReason'}}</td>
+                                <td>{{r.rec.taskStatus|optionName:'taskStatus'}}</td>
                             </tr>
                             </tbody>
                         </table>

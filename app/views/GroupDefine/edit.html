@@ -16,9 +16,15 @@
                                 <bi-select-item item-label="'所属集群'" item-options="clusterList" item-name="'clusterId'" item-required="'true'"
                                                 item-value="rec.clusterId" item-old-value="bak.clusterId"
                                                 item-locked="lock"></bi-select-item>
-                                <bi-edit-item item-label="'描述'" item-margin="'bi-margin-b0'"
+                                <bi-edit-item item-label="'描述'"
                                               item-value="rec.description" item-old-value="bak.description"
                                               item-locked="lock"></bi-edit-item>
+                                <bi-edit-item item-label="'失败重试码'" item-tip="'使用‘,’分隔'"
+                                              item-value="rec.fadeAliveCodes" item-old-value="bak.fadeAliveCodes"
+                                              item-locked="lock"></bi-edit-item>
+                                <bi-select-item item-label="'密码机编码'" item-options="'hsmEncode'|theOption" item-name="'hsmEncode'" item-required="'true'"
+                                                item-value="rec.hsmEncode" item-old-value="bak.hsmEncode"
+                                                item-locked="lock"></bi-select-item>
                             </form>
                         </div>
                     </li>

@@ -22,6 +22,9 @@
                                 <bi-edit-item item-label="'公钥'"
                                               item-value="rec.publicKeyValue" item-old-value="bak.publicKeyValue"
                                               item-locked="lock"></bi-edit-item>
+                                <bi-select-item item-label="'应用'" item-options="applicationList"
+                                                item-value="rec.applicationId" item-old-value="bak.applicationId"
+                                                item-locked="lock"></bi-select-item>
                                 <bi-date-item item-label="'生成时间'" item-data-type="'datetime-local'"
                                               item-value="rec.createDatetime" item-old-value="bak.createDatetime"
                                               item-locked="lock"></bi-date-item>

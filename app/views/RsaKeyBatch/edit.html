@@ -24,6 +24,9 @@
                                 <bi-select-item item-label="'密钥用途'" item-options="'keyUseFor'|theOption"
                                                 item-value="rec.keyUseFor" item-old-value="bak.keyUseFor" item-required="'true'"
                                                 item-locked="lock"></bi-select-item>
+                                <bi-select-item item-label="'应用'" item-options="applicationList"
+                                                item-value="rec.applicationId" item-old-value="bak.applicationId" item-required="'true'"
+                                                item-locked="lock"></bi-select-item>
                                 <bi-edit-item item-label="'计划数量'" item-tip="'输入正数'" item-data-type="'number'" item-name="'planQuantity'" item-required="'true'"
                                               item-value="rec.planQuantity" item-old-value="bak.planQuantity"
                                               item-locked="rec.batchStatus == 0|iif:lock:'true':'true'"></bi-edit-item>

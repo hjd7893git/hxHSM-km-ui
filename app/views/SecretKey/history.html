@@ -12,6 +12,7 @@
                                     <th>密钥类型</th>
                                     <th>密钥值</th>
                                     <th>校验值</th>
+                                    <th>应用</th>
                                     <th class="his-col-id">序号</th>
                                     <th class="his-col-op">操作</th>
                                     <th class="his-col-ts">操作时间戳</th>
@@ -23,6 +24,7 @@
                                     <td>{{his.keyType}}</td>
                                     <td>{{his.keyValue}}</td>
                                     <td>{{his.checkValue}}</td>
+                                    <td>{{his.applicationId|optionName:applicationList}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">
                                         <bi-history-columns row-operations="his.operations"></bi-history-columns>

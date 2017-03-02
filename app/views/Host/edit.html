@@ -12,7 +12,7 @@
                                               item-locked="'true'"></bi-edit-item>
                                 <bi-edit-item item-label="'节点名'" item-name="'nodeName'" item-required="'true'"
                                               item-value="rec.nodeName" item-old-value="bak.nodeName"
-                                              item-locked="lock"></bi-edit-item>
+                                              item-locked="lock || opType == 2"></bi-edit-item>
                                 <bi-edit-item item-label="'机器硬件'" item-name="'hardware'" item-required="'true'"
                                               item-value="rec.hardware" item-old-value="bak.hardware"
                                               item-locked="lock"></bi-edit-item>
@@ -25,12 +25,9 @@
                                 <bi-edit-item item-label="'HTTP端口'" item-tip="'如不需要HTTP监听则设为0'" item-data-type="'number'" item-name="'httpPort'" item-required="'true'"
                                               item-value="rec.httpPort" item-old-value="bak.httpPort"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'内存数据库同步端口'" item-tip="'如不需要监听则设为0'" item-data-type="'number'"
-                                              item-value="rec.dbSyncPort" item-old-value="bak.dbSyncPort"
-                                              item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'集群'" item-name="'clusterId'" item-required="'true'"
                                                 item-value="rec.clusterId" item-old-value="bak.clusterId"
-                                                item-locked="lock" item-options="clusterList"></bi-select-item>
+                                                item-locked="lock || opType == 2" item-options="clusterList"></bi-select-item>
                                 <bi-select-item item-label="'状态'" item-options="'machineStatus'|theOption" item-name="'status'" item-required="'true'"
                                                 item-value="rec.status" item-old-value="bak.status" item-margin="(opType == 0)|iif:'':'bi-margin-b0':'bi-margin-b0'"
                                                 item-locked="lock"></bi-select-item>

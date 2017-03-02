@@ -7,7 +7,7 @@
 angular.module('myApp.services', ['ngResource'])
 
     .factory('myServer', ['$http', '$log', '$q', '$resource', '$modal', '$timeout', function($http, $log, $q, $resource, $modal, $timeout) {
-        var URLPrefix = "http://localhost:8080/service/";
+        var URLPrefix = "http://192.168.0.200:8088/service/";
         return {
             URLPrefix: URLPrefix,
             call: function(uri, data, m) {
@@ -149,7 +149,7 @@ angular.module('myApp.services', ['ngResource'])
                         else if (chosen != 0 && bakChosen != 0 && chosen == bakChosen)
                             rm = {"menuId": ele.id, "chosen": chosen, "opType": 0};
                         if (angular.isDefined(rm)) {
-                            if (angular.isDefined(ele['rmId']) && ele['rmId'] >= 0)
+                            if (angular.isDefined(ele['rmId']) && ele['rmId'] >= 0 && (rm.opType == 3 || rm.opType == 2))
                                 rm.id = ele['rmId'];
                             chosens.push(rm);
                         }
@@ -411,10 +411,6 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.isIndexExist = false;
                     else
                         $scope.isIndexExist = true;
-                    if (angular.isUndefined($scope.rec.clusterId))
-                        $scope.isClusterExist = false;
-                    else
-                        $scope.isClusterExist = true;
                     $scope.isCreateKey = false;
                 };
                 $scope.preCreateKey = function() {
@@ -729,21 +725,22 @@ angular.module('myApp.services', ['ngResource'])
                 };
                 $scope.changeInputKey = function() {
                     $scope.selectMod = !$scope.selectMod;
+                    if (angular.isUndefined($scope.rec.keys)) {
+                        $scope.rec.keys = [];
+                    }
                 };
-                $scope.synchroKeys = function() {
-                    var uri = URLPrefix + "CheckSymKeys" + "?sessionId=" + $scope.$root.sessionId;
-                    $http({
-                        method: "POST",
-                        url: uri,
-                        data: {sessionId: $scope.$root.sessionId}
-                    }).success(function(ret) {
-                        if (ret.b == "OK") {
-                            alert("同步完成")
-                        } else {
-                            ret.data = ret.b;
-                            fail(ret);
-                        }
-                    });
+            },
+            retrieveApplicationList: function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
+                        $scope.$root.applicationList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.name};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.roleList)) {
+                    $scope.$root.applicationList = [];
+                    $scope.queryBase($resource(URLPrefix + 'ApplicationList'), {}, ok1);
                 }
             },
             retrieveMenuTree: function($scope) {
@@ -794,6 +791,19 @@ angular.module('myApp.services', ['ngResource'])
                 if (angular.isUndefined($scope.$root.companyList)) {
                     $scope.$root.companyList = [];
                     $scope.queryBase($resource(URLPrefix + 'CompanyList'), {}, ok1);
+                }
+            },
+            retrieveHostList: function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
+                        $scope.$root.hostList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.nodeName};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.hostList)) {
+                    $scope.$root.hostList = [];
+                    $scope.queryBase($resource(URLPrefix + 'HostList'), {}, ok1);
                 }
             },
             retrieveSystemList: function($scope) {
@@ -935,6 +945,19 @@ angular.module('myApp.services', ['ngResource'])
                 if (angular.isUndefined($scope.$root.secretCertList)) {
                     $scope.$root.secretCertList = [];
                     $scope.queryBase($resource(URLPrefix + 'SecretCertList'), {}, ok1);
+                }
+            },
+            retrieveUsersList :  function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 | ret.status == 201) {
+                        $scope.$root.userList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.name};
+                        });
+                    }
+                };
+                if (angular.isUndefined($scope.$root.userList)) {
+                    $scope.$root.userList = [];
+                    $scope.queryBase($resource(URLPrefix + 'UsersList'), {}, ok1);
                 }
             },
             setKeyAbout: function($scope) {

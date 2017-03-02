@@ -31,21 +31,24 @@
                                 <bi-edit-item item-label="'API列表'"
                                               item-value="rec.apiList" item-old-value="bak.apiList"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-select-item item-label="'是否A码报文'" item-options="'YesNo'|theOption" item-name="'ascEncode'" item-required="'true'"
-                                                item-value="rec.ascEncode" item-old-value="bak.ascEncode"
+                                <bi-select-item item-label="'客户端编码'" item-data-type="'text'" item-options="'appEncode'|theOption" item-name="'encode'" item-required="'true'"
+                                                item-value="rec.encode" item-old-value="bak.encode"
                                                 item-locked="lock"></bi-select-item>
-                                <bi-select-item item-label="'是否短连接'" item-options="'YesNo'|theOption" item-name="'shortConnection'" item-required="'true'"
+                                <bi-select-item item-label="'连接类型'" item-options="'shortConnection'|theOption" item-name="'shortConnection'" item-required="'true'"
                                                 item-value="rec.shortConnection" item-old-value="bak.shortConnection"
                                                 item-locked="lock"></bi-select-item>
-                                <bi-edit-item item-label="'头长'" item-tip="'如：8'" item-data-type="'number'"
-                                              item-value="rec.headLength" item-old-value="bak.headLength"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-select-item item-label="'同步请求应答'" item-options="'YesNo'|theOption" item-name="'syncRqRs'" item-required="'true'"
+                                <bi-select-item item-label="'应答类型'" item-options="'syncRqRs'|theOption" item-name="'syncRqRs'" item-required="'true'"
                                                 item-value="rec.syncRqRs" item-old-value="bak.syncRqRs"
                                                 item-locked="lock"></bi-select-item>
-                                <bi-select-item item-label="'可接收的报文类型'" item-options="'packType'|theOption" item-name="'packType'" item-required="'true'"
+                                <bi-select-item item-label="'报文类型'" item-options="'packType'|theOption" item-name="'packType'" item-required="'true'"
                                                 item-value="rec.packType" item-old-value="bak.packType"
                                                 item-locked="lock"></bi-select-item>
+                                <div ng-if="rec.packType == 0 && !lock">
+                                    <bi-edit-item item-label="'报文头长'" item-data-type="'number'" item-name="'headLength'"
+                                                  item-value="rec.headLength" item-required="'true'"
+                                                  item-old-value="bak.headLength"
+                                                  item-locked="lock && rec.packType == 0"></bi-edit-item>
+                                </div>
                                 <bi-select-item item-label="'密码机分组'" is-option-field="'true'"
                                                 item-margin="'bi-margin-b0'"
                                                 item-value="rec.groupId" item-old-value="bak.groupId" item-locked="lock"

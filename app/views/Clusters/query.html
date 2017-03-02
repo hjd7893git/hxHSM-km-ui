@@ -34,6 +34,12 @@
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
                                 <th>标识</th>
                                 <th>名称</th>
+                                <th>密钥窗口期</th>
+                                <th>密码机检测周期</th>
+                                <th>TCP心跳</th>
+                                <th>故障恢复检测</th>
+                                <th>配置刷新周期</th>
+                                <th>缓存刷新周期</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -45,6 +51,12 @@
                                 </td>
                                 <td>{{r.rec.id}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.name}}</a></td>
+                                <td>{{r.rec.windowPeriod}}秒</td>
+                                <td>{{r.rec.hsmDetection}}分钟</td>
+                                <td>{{r.rec.tcpHeartBeat}}分钟</td>
+                                <td>{{r.rec.faultRecovery}}分钟</td>
+                                <td>{{r.rec.configFlush}}分钟</td>
+                                <td>{{r.rec.cacheFlush}}分钟</td>
                             </tr>
                             </tbody>
                         </table>

@@ -35,6 +35,8 @@
                                 <th>名称</th>
                                 <th>集群</th>
                                 <th>描述</th>
+                                <th>失败重试码</th>
+                                <th>密码机编码</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -48,6 +50,8 @@
                                 <td><a href ng-click="showEditor($index)">{{r.rec.name}}</a></td>
                                 <td>{{r.rec.clusterId | optionName: clusterList}}</td>
                                 <td>{{r.rec.description}}</td>
+                                <td>{{r.rec.fadeAliveCodes}}</td>
+                                <td>{{r.rec.hsmEncode|optionName:'hsmEncode'}}</td>
                             </tr>
                             </tbody>
                         </table>
