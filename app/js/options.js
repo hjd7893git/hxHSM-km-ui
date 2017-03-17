@@ -164,7 +164,7 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveCompanyList($scope);
                 }
             },
-            {tableId: 'MachineReady', title: '密码机设备上架管理',
+            {tableId: 'MachineReady', title: '密码机设备上架管理', keyInfo: 'ip',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveUsersList($scope);
                     myServer.retrieveGroupList($scope);
@@ -179,7 +179,7 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.setKeyAbout($scope);
                 }
             },
-            {tableId: 'Role', title: '角色管理',
+            {tableId: 'Role', title: '角色管理', keyInfo: 'name',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveUsersList($scope);
                     myServer.roleMenuDialog($scope, "Role");
@@ -218,7 +218,7 @@ angular.module('myApp.options', ['ngResource'])
                     };
                 }
             },
-            {tableId: 'RsaKey', title:'非对称密钥管理',
+            {tableId: 'RsaKey', title:'非对称密钥管理', keyInfo: 'serviceIndex',
                 controller:function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveUsersList($scope);
                     myServer.retrieveSystemList($scope);
@@ -279,7 +279,7 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveSecretCertList($scope);
                 }
             },
-            {tableId: 'SecretKey', title: '对称密钥管理',
+            {tableId: 'SecretKey', title: '对称密钥管理', keyInfo: 'serviceIndex',
                 controller: function($log, $rootScope, $scope, myServer) {
                     $scope.sysdrop = false;
                     $scope.appdrop = false;

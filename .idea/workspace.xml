@@ -2,72 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26bd0643-2936-467a-843a-cf6fa679cf27" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/crud/biTwoRefCheckButtonsTemplate.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/SecretKey/editApplication.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/SecretKey/editSystem.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/Application/chart.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/System/editKeyDefine.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/SystemKeyDefine/edit.html" afterPath="$PROJECT_DIR$/app/views/KeyDefine/edit.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/SystemKeyDefine/history.html" afterPath="$PROJECT_DIR$/app/views/KeyDefine/history.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/SystemKeyDefine/query.html" afterPath="$PROJECT_DIR$/app/views/KeyDefine/query.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/crud/biHistoryColumnsTemplate.html" afterPath="$PROJECT_DIR$/app/components/crud/biHistoryColumnsTemplate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/crud/directives.js" afterPath="$PROJECT_DIR$/app/components/crud/directives.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/header/biFooterTemplate.html" afterPath="$PROJECT_DIR$/app/components/header/biFooterTemplate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/header/biHeaderTemplate.html" afterPath="$PROJECT_DIR$/app/components/header/biHeaderTemplate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/user/biChangePasswordTemplate.html" afterPath="$PROJECT_DIR$/app/components/user/biChangePasswordTemplate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/user/biLoginTemplate.html" afterPath="$PROJECT_DIR$/app/components/user/biLoginTemplate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/user/directives.js" afterPath="$PROJECT_DIR$/app/components/user/directives.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/hxHSM-km.css" afterPath="$PROJECT_DIR$/app/css/hxHSM-km.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/crud/biQueryButtonsTemplate.html" afterPath="$PROJECT_DIR$/app/components/crud/biQueryButtonsTemplate.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/options.js" afterPath="$PROJECT_DIR$/app/js/options.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/services.js" afterPath="$PROJECT_DIR$/app/js/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Application/edit.html" afterPath="$PROJECT_DIR$/app/views/Application/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Application/history.html" afterPath="$PROJECT_DIR$/app/views/Application/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Application/query.html" afterPath="$PROJECT_DIR$/app/views/Application/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Branch/history.html" afterPath="$PROJECT_DIR$/app/views/Branch/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/CardDataApply/history.html" afterPath="$PROJECT_DIR$/app/views/CardDataApply/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Clusters/edit.html" afterPath="$PROJECT_DIR$/app/views/Clusters/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Clusters/history.html" afterPath="$PROJECT_DIR$/app/views/Clusters/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Clusters/query.html" afterPath="$PROJECT_DIR$/app/views/Clusters/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Company/history.html" afterPath="$PROJECT_DIR$/app/views/Company/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Company/query.html" afterPath="$PROJECT_DIR$/app/views/Company/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Equipment/history.html" afterPath="$PROJECT_DIR$/app/views/Equipment/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/GroupDefine/history.html" afterPath="$PROJECT_DIR$/app/views/GroupDefine/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/GroupDefine/query.html" afterPath="$PROJECT_DIR$/app/views/GroupDefine/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Host/edit.html" afterPath="$PROJECT_DIR$/app/views/Host/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Host/history.html" afterPath="$PROJECT_DIR$/app/views/Host/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Host/query.html" afterPath="$PROJECT_DIR$/app/views/Host/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Journal/query.html" afterPath="$PROJECT_DIR$/app/views/Journal/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Machine/history.html" afterPath="$PROJECT_DIR$/app/views/Machine/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Machine/query.html" afterPath="$PROJECT_DIR$/app/views/Machine/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/MachineModel/history.html" afterPath="$PROJECT_DIR$/app/views/MachineModel/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/MachineModel/query.html" afterPath="$PROJECT_DIR$/app/views/MachineModel/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/MachineReady/edit.html" afterPath="$PROJECT_DIR$/app/views/MachineReady/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/MachineReady/history.html" afterPath="$PROJECT_DIR$/app/views/MachineReady/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/MachineReady/query.html" afterPath="$PROJECT_DIR$/app/views/MachineReady/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Partner/history.html" afterPath="$PROJECT_DIR$/app/views/Partner/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/PartnerBranch/history.html" afterPath="$PROJECT_DIR$/app/views/PartnerBranch/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Role/edit.html" afterPath="$PROJECT_DIR$/app/views/Role/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Role/history.html" afterPath="$PROJECT_DIR$/app/views/Role/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Role/query.html" afterPath="$PROJECT_DIR$/app/views/Role/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/RootCert/history.html" afterPath="$PROJECT_DIR$/app/views/RootCert/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/RsaKey/edit.html" afterPath="$PROJECT_DIR$/app/views/RsaKey/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/RsaKey/history.html" afterPath="$PROJECT_DIR$/app/views/RsaKey/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/RsaKey/query.html" afterPath="$PROJECT_DIR$/app/views/RsaKey/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/RsaKeyBatch/history.html" afterPath="$PROJECT_DIR$/app/views/RsaKeyBatch/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/SecretCert/history.html" afterPath="$PROJECT_DIR$/app/views/SecretCert/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/SecretCertBand/history.html" afterPath="$PROJECT_DIR$/app/views/SecretCertBand/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/SecretKey/edit.html" afterPath="$PROJECT_DIR$/app/views/SecretKey/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/SecretKey/history.html" afterPath="$PROJECT_DIR$/app/views/SecretKey/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/SecretKey/query.html" afterPath="$PROJECT_DIR$/app/views/SecretKey/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/System/edit.html" afterPath="$PROJECT_DIR$/app/views/System/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/System/history.html" afterPath="$PROJECT_DIR$/app/views/System/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/System/query.html" afterPath="$PROJECT_DIR$/app/views/System/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Task/query.html" afterPath="$PROJECT_DIR$/app/views/Task/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Todo/check.html" afterPath="$PROJECT_DIR$/app/views/Todo/check.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Users/edit.html" afterPath="$PROJECT_DIR$/app/views/Users/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Users/history.html" afterPath="$PROJECT_DIR$/app/views/Users/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Users/query.html" afterPath="$PROJECT_DIR$/app/views/Users/query.html" />
     </list>
     <list id="3e56f354-01c0-4da0-9add-508dc819a1df" name="Rejected commit: Default" comment="tests" />
     <ignored path="hxHSM-km-ui.iws" />
@@ -89,11 +31,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="edit.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="services.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/js/services.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="biQueryButtonsTemplate.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/components/crud/biQueryButtonsTemplate.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/SecretKey/edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="21" column="77" lean-forward="true" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="77" />
+            <state relative-caret-position="414">
+              <caret line="89" column="89" lean-forward="false" selection-start-line="89" selection-start-column="89" selection-end-line="89" selection-end-column="89" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="options.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/js/options.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-18">
+              <caret line="281" column="76" lean-forward="false" selection-start-line="281" selection-start-column="76" selection-end-line="281" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/RsaKey/edit.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="12" column="65" lean-forward="false" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="query.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/RsaKey/query.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="486">
+              <caret line="36" column="42" lean-forward="false" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -102,8 +94,8 @@
       <file leaf-file-name="query.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/SecretKey/query.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="42" column="61" lean-forward="false" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
+            <state relative-caret-position="558">
+              <caret line="31" column="55" lean-forward="false" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -163,8 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/views/Machine/query.html" />
-        <option value="$PROJECT_DIR$/app/views/Todo/check.html" />
         <option value="$PROJECT_DIR$/app/views/GroupDefine/query.html" />
         <option value="$PROJECT_DIR$/app/components/crud/biHistoryColumnsTemplate.html" />
         <option value="$PROJECT_DIR$/app/views/Users/edit.html" />
@@ -196,7 +186,6 @@
         <option value="$PROJECT_DIR$/app/views/Branch/history.html" />
         <option value="$PROJECT_DIR$/app/views/Application/history.html" />
         <option value="$PROJECT_DIR$/app/views/RsaKeyBatch/edit.html" />
-        <option value="$PROJECT_DIR$/app/views/RsaKey/edit.html" />
         <option value="$PROJECT_DIR$/app/components/header/biHeaderTemplate.html" />
         <option value="$PROJECT_DIR$/app/views/KeyDefine/edit.html" />
         <option value="$PROJECT_DIR$/app/views/KeyDefine/query.html" />
@@ -208,12 +197,15 @@
         <option value="$PROJECT_DIR$/app/css/hxHSM-km.css" />
         <option value="$PROJECT_DIR$/app/views/Application/edit.html" />
         <option value="$PROJECT_DIR$/app/views/System/edit.html" />
-        <option value="$PROJECT_DIR$/app/js/services.js" />
-        <option value="$PROJECT_DIR$/app/views/SecretKey/edit.html" />
         <option value="$PROJECT_DIR$/app/views/SecretKey/editSystem.html" />
         <option value="$PROJECT_DIR$/app/views/SecretKey/editApplication.html" />
+        <option value="$PROJECT_DIR$/app/components/crud/biQueryButtonsTemplate.html" />
         <option value="$PROJECT_DIR$/app/js/options.js" />
+        <option value="$PROJECT_DIR$/app/views/RsaKey/edit.html" />
+        <option value="$PROJECT_DIR$/app/views/RsaKey/query.html" />
+        <option value="$PROJECT_DIR$/app/views/SecretKey/edit.html" />
         <option value="$PROJECT_DIR$/app/views/SecretKey/query.html" />
+        <option value="$PROJECT_DIR$/app/js/services.js" />
       </list>
     </option>
   </component>
@@ -359,6 +351,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="RsaKey" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hxHSM-km-ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hxHSM-km-ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Role" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1090,7 +1104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488447086424</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="1.0.7&#10;&#10;茫茫多修改(尽量自己review)&#10;1. 页面显示优化&#10;2. 密钥逻辑变更">
+      <created>1489723303377</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1489723303377</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1123,7 +1144,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23504274" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23504274" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1187,7 +1208,8 @@
     <MESSAGE value="0.5.9&#10;&#10;1. 现在复核操作若全部成功, 则弹出提示框提示操作成功. &#10;2. 修复了复核状态修改时仅修改最后一个的bug" />
     <MESSAGE value="1. 修改了密钥类型定义&#10;2. 优化了复核操作提示&#10;3. 非对称密钥增加加密服务索引属性&#10;4. 修复用户操作出错bug" />
     <MESSAGE value="0.6.0&#10;&#10;1. 删除了旧的同步密钥按钮&#10;2. 删除了部署相关页面&#10;3. 增加了任务（未完成的同步任务）查询页面&#10;4. 将操作审计内容单独划分成一个下拉栏&#10;5. 页面（操作历史、密钥、制卡数据）关联显示优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.6.0&#10;&#10;1. 删除了旧的同步密钥按钮&#10;2. 删除了部署相关页面&#10;3. 增加了任务（未完成的同步任务）查询页面&#10;4. 将操作审计内容单独划分成一个下拉栏&#10;5. 页面（操作历史、密钥、制卡数据）关联显示优化" />
+    <MESSAGE value="1.0.7&#10;&#10;茫茫多修改(尽量自己review)&#10;1. 页面显示优化&#10;2. 密钥逻辑变更" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.0.7&#10;&#10;茫茫多修改(尽量自己review)&#10;1. 页面显示优化&#10;2. 密钥逻辑变更" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1198,27 +1220,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/CardDataApply/history.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="65" lean-forward="false" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Branch/history.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="65" lean-forward="false" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Application/history.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="40" lean-forward="true" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/SecretCertBand/edit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1294,6 +1295,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="990">
           <caret line="55" column="64" lean-forward="false" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1301,6 +1303,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="10" column="126" lean-forward="false" selection-start-line="10" selection-start-column="126" selection-end-line="10" selection-end-column="126" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1308,6 +1311,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="46" column="37" lean-forward="false" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1315,6 +1319,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="20" column="65" lean-forward="false" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1322,14 +1327,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/RsaKey/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="35" column="92" lean-forward="false" selection-start-line="35" selection-start-column="83" selection-end-line="35" selection-end-column="92" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1366,14 +1363,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/crud/biHistoryButtonsTemplate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/crud/biQueryButtonsTemplate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1525,14 +1514,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="425" column="20" lean-forward="false" selection-start-line="425" selection-start-column="20" selection-end-line="425" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/System/edit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -1549,14 +1530,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/options.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="285" column="42" lean-forward="false" selection-start-line="285" selection-start-column="42" selection-end-line="285" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/SecretKey/editSystem.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -1565,18 +1538,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/crud/biQueryButtonsTemplate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Role/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/MachineReady/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="28" column="64" lean-forward="false" selection-start-line="28" selection-start-column="62" selection-end-line="28" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/options.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-18">
+          <caret line="281" column="76" lean-forward="false" selection-start-line="281" selection-start-column="76" selection-end-line="281" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/RsaKey/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="12" column="65" lean-forward="false" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/RsaKey/query.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="36" column="42" lean-forward="false" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/SecretKey/query.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="42" column="61" lean-forward="false" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
+        <state relative-caret-position="558">
+          <caret line="31" column="55" lean-forward="false" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/SecretKey/edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="21" column="77" lean-forward="true" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="77" />
+        <state relative-caret-position="414">
+          <caret line="89" column="89" lean-forward="false" selection-start-line="89" selection-start-column="89" selection-end-line="89" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
           <folding />
         </state>
       </provider>

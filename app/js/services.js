@@ -7,7 +7,7 @@
 angular.module('myApp.services', ['ngResource'])
 
     .factory('myServer', ['$http', '$log', '$q', '$resource', '$modal', '$timeout', function($http, $log, $q, $resource, $modal, $timeout) {
-        var URLPrefix = "http://192.168.0.200:8088/service/";
+        var URLPrefix = "service/";
         return {
             URLPrefix: URLPrefix,
             call: function(uri, data, m) {
@@ -231,7 +231,7 @@ angular.module('myApp.services', ['ngResource'])
                     return valid;
                 };
                 $scope.addRefRow = function(refRecs, recs, id) {
-
+                    if (!angular.isDefined(refRecs)) refRecs = [];
                     refRecs.forEach(function(ref){
                         if (ref.rec.id == id) {
                             $scope.showTips('该内容已存在，未重复添加');
@@ -245,8 +245,6 @@ angular.module('myApp.services', ['ngResource'])
                             refRecs.push({rec: recbuf});
                         }
                     })
-
-
                 };
                 $scope.submitRefEdited = function() {
                     if (!isValidForm(this))
@@ -591,14 +589,16 @@ angular.module('myApp.services', ['ngResource'])
                     }
                 };
                 $scope.showEditorX = function() {
+                    $scope.lock = false;
+                    $scope.opType = 1;
+                    $scope.rec = {opType: 1};
                     if ($scope.tableId == 'SecretKey') {
                         $scope.isCreateKey = false;
                         $scope.isIndexExist = false;
                         $scope.isClusterExist = false;
+                        $scope.rec.systems = [];
+                        $scope.rec.applications = [];
                     }
-                    $scope.lock = false;
-                    $scope.opType = 1;
-                    $scope.rec = {opType: 1};
                     if (angular.isDefined($scope.preInsert))
                         $scope.preInsert($scope.rec);
                     $scope.unlockEditor();
