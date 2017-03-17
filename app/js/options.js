@@ -13,7 +13,7 @@ angular.module('myApp.options', ['ngResource'])
         var optionNames = [
             {option: 'opType', names: [{value: 0, name: '详情'}, {value: 1, name: '增加'}, {value: 2, name: '修改'}, {value: 3, name: '删除'}]},
             {option: 'opTypeIcon', names: [{value: 0, name: 'flag'}, {value: 1, name: 'plus'}, {value: 2, name: 'edit'}, {value: 3, name: 'trash-o'}]},
-            {option: 'status', names: [{value: 0, name: '待复核'}, {value: 1, name: '拒绝'}, {value: 2, name: '已复核'}]},
+            {option: 'status', names: [{value: 0, name: '待复核'}, {value: 3, name: '拒绝'}, {value: 2, name: '已复核'}]},
             {option: 'sex', names: [{value: 0, name: '女'}, {value: 1, name: '男'}]},
             {option: 'companyType', names: [{value: 0, name: '生产商'}, {value: 1, name: '供应商'}, {value:2, name: '运维商'}]},
             {option: 'YesNo', names: [{value: 0, name: '否'}, {value: 1, name: '是'}]},
@@ -23,20 +23,20 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'acceptRejectPolicy', names: [{value: 0, name: '只允许集合内的'}, {value: 1, name: '除了集合内的'}]},
             {option: 'keyExponential', names: [{value: '3', name: '3 - 03'}, {value: '65537', name: '65537 - 010001'}]},
             {option: 'keyType', names: [{value: '000', name: '000(ZMK/BMK)'}, {value: '001', name: '001(ZPK)'}, {value: '002', name: '002(PVK/TPK/TMK/CVK)'}, {value: '402', name: '402(CVK)'}, {value: '003', name: '003(TAK)'}, {value: '008', name: '008(ZAK)'}, {value: '109', name: '109(MDK-AC/MDK-ENC/MDK-MAC/KMC)'}, {value: '00A', name: '00A(ZEK/SEK/LK/LK2/TK)'}, {value: '00B', name: '00B(TEK)'}, {value: '00C', name: '00C(RSA-SK)'}]},
-            {option: 'keySchema', names: [{value: 'Y', name: 'Y-192 Bits'}, {value: 'X', name: 'X-128 Bits'}, {value: 'Z', name: 'Z-64 Bits'}, {value: 'S', name: 'S-128 Bits'}]},
+            {option: 'keySchema', names: [{value: 'Y', name: '3DES-192 Bits'}, {value: 'X', name: '3DES-128 Bits'}, {value: 'Z', name: 'DES-64 Bits'}, {value: 'S', name: 'SM4-128 Bits'}]},
             {option: 'keyMode', names: [{value: 'RSA-1024', name: 'RSA 1024 Bits'}, {value: 'RSA-1152', name: 'RSA 1152 Bits'}, {value: 'RSA-1408', name: 'RSA 1408 Bits'}, {value: 'SM2-256', name: 'SM2 256 Bits'}]},
             {option: 'keyUse', names: [{value: 0, name: '应用模块'}, {value: 1, name: '设备'}, {value: 2, name: '合作伙伴'}]},
             {option: 'keyUseFor', names: [{value: 0, name: '发卡行密钥'}, {value: 1, name: 'IC卡密钥'}]},
             {option: 'keyUseType', names: [{value: 0, name: '不适用'}, {value: 1, name: '全行统一'}, {value: 2, name: '分行统一'}, {value: 3, name: '网点统一'}, {value: 4, name: '一机一密'}]},
             {option: 'keyUseType4Partner', names: [{value: 0, name: '不适用'}, {value: 1, name: '总对总'}, {value: 2, name: '分对分'}]},
             {option: 'keyUseALL', names: [{value: '0', name: '-'}, {value: '11', name: '全行统一'}, {value: '12', name: '分行统一'}, {value: '13', name: '网点统一'}, {value: '14', name: '一机一密'}, {value: '21', name: '总对总'}, {value: '22', name: '分对分'}]},
-            {option: 'keyUseStatus', names: [{value: 0, name: '正常（仅密管）'}, {value: 1, name: '正常（同步）'}, {value: 2, name: '弃用（仅密管）'}, {value: 3, name: '弃用（同步）'}, {value: 4, name: '过期'}]},
-            {option: 'machineStatus', names: [{value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}, {value:3, name: '预备'}]},
+            {option: 'keyUseStatus', names: [{value: 0, name: '正常'}, {value: 1, name: '弃用'}, {value: 2, name: '过期'}]},
+            {option: 'machineStatus', names: [{value: undefined, name: '未上架'}, {value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}, {value:3, name: '预备'}]},
             {option: 'PartnerType', names: [{value: 0, name: '政府机构'}, {value: 1, name: '商业企业'}]},
             {option: 'algorithmSign', names: [{value: 'RSA', name: 'RSA'}, {value: 'SM2', name: 'SM2'}]},
-            {option: 'appEncode', names: [{value: 'utf8', name: 'UTF8'}, {value: 'gbk', name: 'GBK'}, {value: 'ibm935', name: 'IBM935'}]},
+            {option: 'appEncode', names: [{value: 'utf8', name: 'UTF8'}, {value: 'gbk', name: 'GBK'}, {value: 'ibm935', name: 'IBM935'}, {value: 'binary', name: 'Binary'}, {value: 'iso88591', name: 'ISO-8859-1'}]},
             {option: 'serviceSign', names: [{value: 0, name: '01010000 - 借、贷记'}, {value: 1, name: '01010100 - 借记'}, {value: 2, name: '01010200 - 贷记'}, {value: 3, name: '01010300 - 准贷记'}]},
-            {option: 'taskType', names: [{value: 0, name: '对称密钥'}, {value: 1, name: '非对称密钥'}, {value: 2, name: '密码机组'}, {value: 3, name: '加密应用'}]},
+            {option: 'taskType', names: [{value: 0, name: '对称密钥'}, {value: 1, name: '非对称密钥'}, {value: 2, name: '密码机组'}, {value: 3, name: '加密应用'}, {value: 4, name: '节点信息'}, {value: 5, name: '集群信息'}]},
             {option: 'addReason', names: [{value: 0, name: '被动同步失败'}, {value: 1, name: '主动同步失败'}]},
             {option: 'taskStatus', names: [{value: 0, name: '未完成'}, {value: 1, name: '已完成'}]},
             {option: 'rootCertStatus', names: [{value: 0, name: '已导入'}, {value: 1, name: '证书格式错误'}, {value: 2, name: '已过期'}]},
@@ -50,9 +50,12 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'hsmEncode', names: [{value: 0, name: 'ASCII'}, {value: 1, name: 'EBCDIC'}, {value: 2, name: 'BINARY'}]}
         ];
         var tableControllers = [
-            {tableId: 'Application', title: '应用管理', keyInfo: 'name',
+            {tableId: 'Application', title: '渠道接入管理', keyInfo: 'name',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    $scope.drop = false;
+                    myServer.retrieveUsersList($scope);
                     myServer.retrieveGroupList($scope);
+                    myServer.retrieveKeyDefineList($scope);
                     $scope.displayChart = function(appId) {
                         $scope.gotoPage('chart');
                         $scope.dataset = [];//[['January', 10], ['February', 8], ['March', 4], ['April', 13], ['May', 12], ['June', 9]]];
@@ -84,10 +87,12 @@ angular.module('myApp.options', ['ngResource'])
                         };
                         $scope.queryBase(myServer.statistics, {tableId: 'Application', appId: appId}, ok);
                     };
+                    $scope.refFields = ['keys'];
                 }
             },
             {tableId: 'Branch', title: '分支行机构管理', keyInfo: 'branchName',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                     myServer.retrieveBranchList($scope);
                     myServer.retrieveSystemKeyDefineList($scope);
                     myServer.setKeyAbout($scope);
@@ -99,30 +104,36 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveBranchList($scope, true); // 刷新列表
                 }
             },
-            {tableId: 'CardDataApply', title: '制卡数据申请',
-                controller:function($log,$rootScope,$scope,myServer) {
-                    myServer.retrieveBranchList($scope);
+            {tableId: 'Clusters', title: '安全服务集群管理', keyInfo: 'name',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                 }
             },
-            {tableId: 'Clusters', title: '集群管理'},
-            {tableId: 'Company', title: '厂商管理', keyInfo: 'name'},
+            {tableId: 'Company', title: '密码机厂商信息维护', keyInfo: 'name',
+                controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
+                }
+            },
             {tableId: 'Equipment', title: '设备管理', keyInfo: 'equipmentNo',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                     myServer.retrieveBranchList($scope);
                     myServer.setKeyAbout($scope);
                 }
             },
-            {tableId: 'GroupDefine', title: '分组管理', keyInfo: 'name',
+            {tableId: 'GroupDefine', title: '密码机设备分组管理', keyInfo: 'name',
                 controller: function($log,$rootScope,$scope,myServer) {
+                    myServer.retrieveUsersList($scope);
                     myServer.retrieveClusterList($scope)
                 }
             },
-            {tableId: 'Host', title: '主机管理', keyInfo: 'hardware',
+            {tableId: 'Host', title: '安全服务节点管理', keyInfo: 'nodeName',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                     myServer.retrieveClusterList($scope);
                 }
             },
-            {tableId: 'Journal', title: '操作历史',
+            {tableId: 'Journal', title: '操作历史查询',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveUsersList($scope);
                     $scope.readOnly = true;
@@ -132,9 +143,12 @@ angular.module('myApp.options', ['ngResource'])
                     params.userId = $rootScope.user.id;
                 }
             },
-            {tableId: 'Machine', title: '密码机信息管理', keyInfo: 'number',
+            {tableId: 'Machine', title: '密码机设备信息维护', keyInfo: 'deviceNumber',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                     myServer.retrieveGroupList($scope);
+                    myServer.retrieveCompanyList($scope);
+                    myServer.retrieveMachineModelList($scope);
                     $scope.preInsert = function(rec) {
                         rec.readies = [];
                     };
@@ -142,41 +156,39 @@ angular.module('myApp.options', ['ngResource'])
                         rec.readies = rec.readies || [];
                     };
                     $scope.refFields = ['readies']; // 只有1类Entity-Relation需要
-                    myServer.retrieveCompanyList($scope);
-                    myServer.retrieveMachineModelList($scope);
                 }
             },
-            {tableId: 'MachineModel', title: '密码机型号管理', keyInfo: 'model',
+            {tableId: 'MachineModel', title: '密码机设备型号维护', keyInfo: 'model',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                     myServer.retrieveCompanyList($scope);
                 }
             },
-            {tableId: 'MachineReady', title: '密码机上架管理',
+            {tableId: 'MachineReady', title: '密码机设备上架管理',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                     myServer.retrieveGroupList($scope);
                     myServer.retrieveMachineList($scope);
-                }
-            },
-            {tableId: 'Menu', title: '菜单管理',
-                controller: function($log, $rootScope, $scope, myServer) {
-                    $scope.readOnly = true;
                 }
             },
             {tableId: 'Partner', title: '合作伙伴管理', keyInfo: 'partnerName'},
             {tableId: 'PartnerBranch', title: '合作伙伴分支机构管理', keyInfo: 'branchName',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                     myServer.retrievePartnerList($scope);
                     myServer.setKeyAbout($scope);
                 }
             },
             {tableId: 'Role', title: '角色管理',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                     myServer.roleMenuDialog($scope, "Role");
                     myServer.retrieveMenuTree($scope);
                 }
             },
-            {tableId: 'RootCert', title: '根CA证书',
+            {tableId: 'RootCert', title: '根CA证书管理',
                 controller:function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                     var myVaults = [];
                     $scope.showUploadX = function(rec, fieldId, boxId) {
                         angular.element("#"+boxId).show();
@@ -206,14 +218,17 @@ angular.module('myApp.options', ['ngResource'])
                     };
                 }
             },
-            {tableId: 'RsaKey', title:'制卡数据',
+            {tableId: 'RsaKey', title:'非对称密钥管理',
                 controller:function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
+                    myServer.retrieveSystemList($scope);
                     myServer.retrieveApplicationList($scope);
                     myServer.retrieveRsaKeyBatchList($scope);
                 }
             },
-            {tableId: 'RsaKeyBatch', title:'制卡数据生成批次',
+            {tableId: 'RsaKeyBatch', title:'非对称密钥批次管理',
                 controller:function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                     myServer.retrieveApplicationList($scope);
                     myServer.retrieveBranchList($scope);
                     myServer.retrieveSecretCertList($scope);
@@ -223,8 +238,9 @@ angular.module('myApp.options', ['ngResource'])
                     };
                 }
             },
-            {tableId: 'SecretCert', title:'发卡行证书',
+            {tableId: 'SecretCert', title:'发卡行证书管理',
                 controller:function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                     myServer.retrieveRsaKeyBatchList($scope);
                     myServer.retrieveRootCertList($scope);
                     var myVaults = [];
@@ -259,38 +275,44 @@ angular.module('myApp.options', ['ngResource'])
             },
             {tableId: 'SecretCertBand', title: '发卡行证书绑定',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                     myServer.retrieveSecretCertList($scope);
                 }
             },
-            {tableId: 'SecretKey', title: '密钥管理',
+            {tableId: 'SecretKey', title: '对称密钥管理',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    $scope.sysdrop = false;
+                    $scope.appdrop = false;
+                    myServer.retrieveGroupList($scope);
+                    myServer.retrieveUsersList($scope);
                     myServer.retrieveApplicationList($scope);
-                    myServer.retrieveSystemKeyDefineList($scope);
+                    myServer.retrieveSystemList($scope);
+                    myServer.retrieveKeyDefineList($scope);
                     $scope.isCreateKey = true;
                     $scope.isIndexExist = true;
+                    $scope.refFields = ['applications', 'systems'];
                 }
             },
-            {tableId: 'System', title: '系统管理', keyInfo: 'name',
+            {tableId: 'System', title: '行内系统信息维护', keyInfo: 'name',
                 controller: function($log, $rootScope, $scope, myServer) {
-                    $scope.preInsert = function(rec) {
-                        rec.keyDefines = [];
-                    };
-                    $scope.preUpdate = function(rec) {
-                        rec.keyDefines = rec.keyDefines || [];
-                    };
-                    $scope.refFields = ['keyDefines'];
+                    $scope.symdrop = false;
+                    $scope.asymdrop = false;
+                    myServer.retrieveKeyDefineList($scope);
+                    myServer.retrieveUsersList($scope);
                     myServer.retrievePartnerList($scope);
+                    $scope.refFields = ['syms', 'asyms'];
                 }
             },
-            {tableId: 'SystemKeyDefine', title: '系统密钥方案', keyInfo: 'keyName',
+            {tableId: 'KeyDefine', title: '密钥方案管理', keyInfo: 'keyName',
                 controller:function($log, $rootScope, $scope, myServer) {
-                    myServer.retrieveSystemList($scope);
+                    myServer.retrieveUsersList($scope);
                     myServer.setKeyAbout($scope);
                     myServer.retrievePartnerList($scope);
                 }
             },
-            {tableId: 'Task', title: '任务',
+            {tableId: 'Task', title: '变更状态查询',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
                     myServer.retrieveClusterList($scope);
                     myServer.retrieveHostList($scope);
                     $scope.readOnly = true;
@@ -298,6 +320,8 @@ angular.module('myApp.options', ['ngResource'])
             },
             {tableId: 'Users', title: '用户管理', keyInfo: 'name',
                 controller: function($log, $rootScope, $scope, myServer) {
+                    myServer.retrieveUsersList($scope);
+                    myServer.retrieveRoleList($scope);
                     $scope.preInsert = function(rec) {
                         rec.password = '-';
                         rec.roles = [{}];
@@ -306,7 +330,6 @@ angular.module('myApp.options', ['ngResource'])
                         if (angular.isUndefined(rec.roles) || rec.roles.length == 0)
                             rec.roles = [{}];
                     };
-                    myServer.retrieveRoleList($scope);
                 }
             }
         ];

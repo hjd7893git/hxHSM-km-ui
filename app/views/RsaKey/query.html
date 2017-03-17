@@ -15,13 +15,13 @@
                                 <form class="form-horizontal">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <bi-query-item item-label="'标识'" item-tip="'大于0的整数'" item-value="qry.id"></bi-query-item>
-                                            <bi-query-select item-label="'应用'" item-value="qry.applicationId" item-options="applicationList"></bi-query-select>
+                                            <bi-query-select item-label="'行内系统'" item-value="qry.systemId" item-options="systemList"></bi-query-select>
+                                            <bi-query-select item-label="'渠道接入'" item-value="qry.applicationId" item-options="applicationList"></bi-query-select>
                                             <bi-query-action></bi-query-action>
                                         </div>
                                         <div class="col-md-6">
-                                            <bi-query-select item-label="'批次'" item-value="qry.batchId" item-options="rsaKeyBatchList"></bi-query-select>
-                                            <bi-query-select item-label="'使用状态'" item-value="useStatus" item-options="'RSAStatus'|theOption"></bi-query-select>
+                                            <bi-query-select item-label="'密钥类型'" item-value="qry.keyMode" item-options="'keyMode'|theOption"></bi-query-select>
+                                            <bi-query-select item-label="'使用状态'" item-value="qry.useStatus" item-options="'RSAStatus'|theOption"></bi-query-select>
                                         </div>
                                     </div>
                                 </form>
@@ -33,15 +33,14 @@
                             <thead>
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th>
+                                <th>行内系统</th>
                                 <th>索引</th>
-                                <th>应用</th>
-                                <th>批次</th>
+                                <th>接入渠道</th>
                                 <th>私钥</th>
                                 <th>公钥</th>
                                 <th>公钥模长</th>
                                 <th>公钥指数</th>
-                                <th>生成时间</th>
+                                <th>创建时间</th>
                                 <th>使用状态</th>
                             </tr>
                             </thead>
@@ -51,10 +50,9 @@
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
-                                <td>{{r.rec.id}}</td>
+                                <td>{{r.rec.systemId|optionName:systemList}}</td>
                                 <td>{{r.rec.serviceIndex}}</td>
                                 <td>{{r.rec.applicationId|optionName:applicationList}}</td>
-                                <td>{{r.rec.batchId}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.privateKeyValue|more:32}}</a></td>
                                 <td>{{r.rec.publicKeyValue|more:32}}</td>
                                 <td>{{r.rec.keyMode}}</td>

@@ -1,7 +1,7 @@
 <div class="panel-collapse" role="tabpanel" bs-collapse-target>
     <div class="panel-group" role="tablist">
         <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;密码机<code>【&nbsp;{{his.name}}&nbsp;】</code>的维护记录</div>
+            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;密码机<code>【&nbsp;{{his.deviceNumber}}&nbsp;】</code>的维护记录</div>
             <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
                 <ul class="list-group">
                     <li class="list-group-item bi-ptb0">
@@ -9,9 +9,8 @@
                             <table class="table table-condensed bg-white bi-margin-b0">
                                 <thead><tr>
                                     <th>标识</th>
-                                    <th>型号</th><th>批次</th><th>编号</th><th>生产日期</th><th>供应日期</th><th>状态</th>
+                                    <th>批次</th><th>编号</th><th>生产日期</th><th>供应日期</th>
                                     <th>维护类型</th>
-                                    <th class="his-col-id">序号</th>
                                     <th class="his-col-op">操作</th>
                                     <th class="his-col-ts">操作时间戳</th>
                                     <th class="his-col-uid">操作员</th></tr>
@@ -19,15 +18,19 @@
                                 <tbody>
                                 <tr ng-repeat="his in histories">
                                     <td>{{his.id}}</td>
-                                    <td>{{his.model}}</td>
                                     <td>{{his.batch}}</td>
-                                    <td><a href ng-click="showEditor($index)">{{his.number}}</a></td>
+                                    <td><a href ng-click="showEditor($index)">{{his.deviceNumber}}</a></td>
                                     <td>{{his.produceDate|biDate}}</td>
                                     <td>{{his.supplyDate|biDate}}</td>
-                                    <td>{{his.status}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">
-                                        <bi-history-columns row-operations="his.operations"></bi-history-columns>
+                                        <table class="table table-condensed bi-margin-b0" style="margin-top: -1px;">
+                                            <tr ng-repeat="op in his.operations">
+                                                <td class="his-col-op">{{op.action|optionName:'action'}}</td>
+                                                <td class="his-col-ts">{{op.journalDate|biDate}}&nbsp;{{op.time|biTime}}</td>
+                                                <td class="his-col-uid">{{op.userId|optionName:userList}}</td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                                 </tbody>

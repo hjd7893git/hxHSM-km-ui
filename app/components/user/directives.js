@@ -21,18 +21,16 @@ angular.module('myApp.components.user', [])
         };
     })
     .controller('biLoginFormCtrl', ['$location', '$scope', '$rootScope', 'myServer', '$log', function($location, $scope, $rootScope, myServer, $log) {
+        $scope.auth = false;
         var jumpTo = function(scope) {
             $scope.user.password = '';
+            $scope.user.sign = '';
             $location.path("views/change").replace();
         };
         myServer.errorDialog($scope, "user", jumpTo);
 
-        $scope.doLogin = function(user) {
-            user.password = angular.element.md5(user.password);
-
-            //sendNativeMessage(user.mobile);
-
-            var promise = myServer.call("login", user); // 同步调用，获得承诺接口
+        document.getElementById("userSign").addEventListener('change', function() {
+            var promise = myServer.call("login", $scope.user); // 同步调用，获得承诺接口
             promise.then(function(ret) { // 调用承诺API获取数据 .resolve
                 if (ret.status == 200 || ret.status == 201) {
                     $rootScope.signedUp = true;
@@ -46,6 +44,37 @@ angular.module('myApp.components.user', [])
             }, function(ret) { // 处理错误 .reject
                 $scope.showModal(ret);
             });
+        });
+
+        document.getElementById("userSign").addEventListener('input', function() {
+            $scope.auth = true;
+        });
+
+        /* UKey认证 */
+        $scope.ukeyLogin = function(password) {
+            try{
+                var evt = document.createEvent("CustomEvent");
+                evt.initCustomEvent('ukeyLogin', true, false, password);
+                document.dispatchEvent(evt);
+            } catch (er) {
+                if (er.name == "NotSupportedError") {
+                    document.getElementById("HxUKeyInfo").innerHTML = "未安装/未启用 UKey浏览器插件";
+                } else alert(er)
+            }
+        }
+
+        $scope.doLogin = function(user, password) {
+            user.password = angular.element.md5(user.password);
+            try{
+                var evt = document.createEvent("CustomEvent");
+                evt.initCustomEvent('ukeySign', true, false, {data: user.mobile, password: password});
+                document.dispatchEvent(evt);
+            } catch (er) {
+                if (er.name == "NotSupportedError") {
+                    document.getElementById("HxUKeyInfo").innerHTML = "未安装/未启用 UKey浏览器插件";
+                } else alert(er)
+            }
+
         };
     }])
     .controller('biChangePasswordFormCtrl', ['$location', '$scope', '$rootScope', 'myServer', '$log', function($location, $scope, $rootScope, myServer, $log) {

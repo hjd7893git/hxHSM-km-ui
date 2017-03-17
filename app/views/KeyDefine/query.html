@@ -15,13 +15,12 @@
                                 <form class="form-horizontal">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <bi-query-item item-label="'标识'" item-tip="'大于0的整数'" item-value="qry.id"></bi-query-item>
-                                            <bi-query-select item-label="'系统'" item-value="qry.systemId" item-options="systemList"></bi-query-select>
+                                            <bi-query-item item-label="'密钥名称'" item-tip="'文本,可模糊匹配'" item-value="qry.keyName"></bi-query-item>
                                             <bi-query-action></bi-query-action>
                                         </div>
                                         <div class="col-md-6">
-                                            <bi-query-item item-label="'密钥名称'" item-tip="'文本,可模糊匹配'" item-value="qry.keyName"></bi-query-item>
                                             <bi-query-select item-label="'密钥类型'" item-value="qry.keyType" item-options="'keyType'|theOption"></bi-query-select>
+                                            <bi-query-select item-label="'密钥算法'" item-value="qry.keySchema" item-options="'keySchema'|theOption"></bi-query-select>
                                         </div>
                                     </div>
                                 </form>
@@ -34,12 +33,10 @@
                             <thead>
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th>
-                                <th>系统</th>
-                                <th>密钥名称</th>
+                                <th>密钥方案名称</th>
+                                <th>密钥类型</th>
+                                <th>密钥算法</th>
                                 <th>密钥用于</th>
-                                <th>密钥用法</th>
-                                <th>状态</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -48,12 +45,10 @@
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
                                     <i class="fa fa-fw fa-{{r.rec.opType|optionName:'opTypeIcon'}} text-danger" ng-show="r.rec.bizSeq"></i>
                                 </td>
-                                <td>{{r.rec.id}}</td>
-                                <td>{{r.rec.systemId | optionName:systemList}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.keyName}}</a></td>
+                                <td>{{r.rec.keyType | optionName:'keyType'}}</td>
+                                <td>{{r.rec.keySchema | optionName:'keySchema'}}</td>
                                 <td>{{r.rec.keyUseFor | optionName:'keyUse'}}</td>
-                                <td>{{(r.rec.keyUseFor+''+r.rec.keyUseType) | optionName:'keyUseALL'}}</td>
-                                <td>{{r.rec.keyBizSeq | ifdef:'已创建':'-'}}</td>
                             </tr>
                             </tbody>
                         </table>

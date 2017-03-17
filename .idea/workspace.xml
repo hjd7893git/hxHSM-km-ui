@@ -1,41 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="26bd0643-2936-467a-843a-cf6fa679cf27" name="Default" comment="1. 修改了密钥类型定义&#10;2. 优化了复核操作提示&#10;3. 非对称密钥增加加密服务索引属性&#10;4. 修复用户操作出错bug">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/Equipment/batch.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/PartnerBranch/batch.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/Task/query.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/Global/edit.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/Global/history.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/Global/query.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/deploy.html" afterPath="" />
+    <list default="true" id="26bd0643-2936-467a-843a-cf6fa679cf27" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/crud/biTwoRefCheckButtonsTemplate.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/SecretKey/editApplication.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/SecretKey/editSystem.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/Application/chart.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/System/editKeyDefine.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/SystemKeyDefine/edit.html" afterPath="$PROJECT_DIR$/app/views/KeyDefine/edit.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/SystemKeyDefine/history.html" afterPath="$PROJECT_DIR$/app/views/KeyDefine/history.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/SystemKeyDefine/query.html" afterPath="$PROJECT_DIR$/app/views/KeyDefine/query.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/crud/biQueryButtonsTemplate.html" afterPath="$PROJECT_DIR$/app/components/crud/biQueryButtonsTemplate.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/crud/biHistoryColumnsTemplate.html" afterPath="$PROJECT_DIR$/app/components/crud/biHistoryColumnsTemplate.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/crud/directives.js" afterPath="$PROJECT_DIR$/app/components/crud/directives.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/header/biFooterTemplate.html" afterPath="$PROJECT_DIR$/app/components/header/biFooterTemplate.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/header/biHeaderTemplate.html" afterPath="$PROJECT_DIR$/app/components/header/biHeaderTemplate.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/user/biChangePasswordTemplate.html" afterPath="$PROJECT_DIR$/app/components/user/biChangePasswordTemplate.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/user/biLoginTemplate.html" afterPath="$PROJECT_DIR$/app/components/user/biLoginTemplate.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/user/directives.js" afterPath="$PROJECT_DIR$/app/components/user/directives.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/hxHSM-km.css" afterPath="$PROJECT_DIR$/app/css/hxHSM-km.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/options.js" afterPath="$PROJECT_DIR$/app/js/options.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/services.js" afterPath="$PROJECT_DIR$/app/js/services.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Application/edit.html" afterPath="$PROJECT_DIR$/app/views/Application/edit.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Application/history.html" afterPath="$PROJECT_DIR$/app/views/Application/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Application/query.html" afterPath="$PROJECT_DIR$/app/views/Application/query.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Branch/history.html" afterPath="$PROJECT_DIR$/app/views/Branch/history.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/CardDataApply/history.html" afterPath="$PROJECT_DIR$/app/views/CardDataApply/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Clusters/edit.html" afterPath="$PROJECT_DIR$/app/views/Clusters/edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Clusters/history.html" afterPath="$PROJECT_DIR$/app/views/Clusters/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Clusters/query.html" afterPath="$PROJECT_DIR$/app/views/Clusters/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/GroupDefine/edit.html" afterPath="$PROJECT_DIR$/app/views/GroupDefine/edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Company/history.html" afterPath="$PROJECT_DIR$/app/views/Company/history.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Company/query.html" afterPath="$PROJECT_DIR$/app/views/Company/query.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Equipment/history.html" afterPath="$PROJECT_DIR$/app/views/Equipment/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/GroupDefine/history.html" afterPath="$PROJECT_DIR$/app/views/GroupDefine/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/GroupDefine/query.html" afterPath="$PROJECT_DIR$/app/views/GroupDefine/query.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Host/edit.html" afterPath="$PROJECT_DIR$/app/views/Host/edit.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Host/history.html" afterPath="$PROJECT_DIR$/app/views/Host/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Host/query.html" afterPath="$PROJECT_DIR$/app/views/Host/query.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Journal/query.html" afterPath="$PROJECT_DIR$/app/views/Journal/query.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Machine/history.html" afterPath="$PROJECT_DIR$/app/views/Machine/history.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Machine/query.html" afterPath="$PROJECT_DIR$/app/views/Machine/query.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/MachineModel/history.html" afterPath="$PROJECT_DIR$/app/views/MachineModel/history.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/MachineModel/query.html" afterPath="$PROJECT_DIR$/app/views/MachineModel/query.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/MachineReady/edit.html" afterPath="$PROJECT_DIR$/app/views/MachineReady/edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/MachineReady/history.html" afterPath="$PROJECT_DIR$/app/views/MachineReady/history.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/MachineReady/query.html" afterPath="$PROJECT_DIR$/app/views/MachineReady/query.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Partner/history.html" afterPath="$PROJECT_DIR$/app/views/Partner/history.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/PartnerBranch/history.html" afterPath="$PROJECT_DIR$/app/views/PartnerBranch/history.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Role/edit.html" afterPath="$PROJECT_DIR$/app/views/Role/edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Role/history.html" afterPath="$PROJECT_DIR$/app/views/Role/history.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Role/query.html" afterPath="$PROJECT_DIR$/app/views/Role/query.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/RootCert/history.html" afterPath="$PROJECT_DIR$/app/views/RootCert/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/RsaKey/edit.html" afterPath="$PROJECT_DIR$/app/views/RsaKey/edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/RsaKey/history.html" afterPath="$PROJECT_DIR$/app/views/RsaKey/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/RsaKey/query.html" afterPath="$PROJECT_DIR$/app/views/RsaKey/query.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/RsaKeyBatch/edit.html" afterPath="$PROJECT_DIR$/app/views/RsaKeyBatch/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/RsaKeyBatch/query.html" afterPath="$PROJECT_DIR$/app/views/RsaKeyBatch/query.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/RsaKeyBatch/history.html" afterPath="$PROJECT_DIR$/app/views/RsaKeyBatch/history.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/SecretCert/history.html" afterPath="$PROJECT_DIR$/app/views/SecretCert/history.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/SecretCertBand/history.html" afterPath="$PROJECT_DIR$/app/views/SecretCertBand/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/SecretKey/edit.html" afterPath="$PROJECT_DIR$/app/views/SecretKey/edit.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/SecretKey/history.html" afterPath="$PROJECT_DIR$/app/views/SecretKey/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/SecretKey/query.html" afterPath="$PROJECT_DIR$/app/views/SecretKey/query.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/System/edit.html" afterPath="$PROJECT_DIR$/app/views/System/edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/System/history.html" afterPath="$PROJECT_DIR$/app/views/System/history.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/System/query.html" afterPath="$PROJECT_DIR$/app/views/System/query.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Task/query.html" afterPath="$PROJECT_DIR$/app/views/Task/query.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Todo/check.html" afterPath="$PROJECT_DIR$/app/views/Todo/check.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Users/edit.html" afterPath="$PROJECT_DIR$/app/views/Users/edit.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Users/history.html" afterPath="$PROJECT_DIR$/app/views/Users/history.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/Users/query.html" afterPath="$PROJECT_DIR$/app/views/Users/query.html" />
@@ -60,91 +89,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/index.html">
+      <file leaf-file-name="edit.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/SecretKey/edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="72" lean-forward="true" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
+            <state relative-caret-position="239">
+              <caret line="21" column="77" lean-forward="true" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="77" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="biLoginTemplate.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/user/biLoginTemplate.html">
+      <file leaf-file-name="query.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/SecretKey/query.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="32" column="41" lean-forward="false" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="options.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/js/options.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3438">
-              <caret line="191" column="58" lean-forward="true" selection-start-line="191" selection-start-column="58" selection-end-line="191" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/js/services.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="441" column="18" lean-forward="true" selection-start-line="441" selection-start-column="18" selection-end-line="441" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="biQueryButtonsTemplate.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/components/crud/biQueryButtonsTemplate.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="97" lean-forward="false" selection-start-line="13" selection-start-column="97" selection-end-line="13" selection-end-column="97" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="batch.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/Branch/batch.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="batch.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/Equipment/batch.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="batch.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/PartnerBranch/batch.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="directives.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/user/directives.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="32" column="14" lean-forward="false" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
+            <state relative-caret-position="432">
+              <caret line="42" column="61" lean-forward="false" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -161,24 +120,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>auth</find>
-      <find>changePassword</find>
-      <find>find-password</find>
-      <find>author</find>
-      <find>showModal</find>
-      <find>authorize</find>
-      <find>showRowDetails</find>
-      <find>conditionQuery</find>
-      <find>qry</find>
-      <find>retrieveA</find>
+      <find>retrieveUsersList</find>
+      <find>showRefEdi</find>
+      <find>his-col-uid</find>
+      <find>pageQuery</find>
+      <find>=4</find>
+      <find>&lt;th class=&quot;his-col-id&quot;&gt;序号&lt;/th&gt;</find>
+      <find>bi-margin-b0</find>
+      <find>col-sm-2</find>
+      <find>KeyDefineList</find>
+      <find>fa-square-o</find>
+      <find>curs</find>
+      <find>showEditor</find>
+      <find>submitEdited</find>
+      <find>drop</find>
       <find>unlockEditor</find>
-      <find>retrieveSystemKeyDefineList</find>
+      <find>retrieveKeyDefineList</find>
+      <find>无任何</find>
+      <find>unlockRefEditor()</find>
+      <find>unlockRefEditor</find>
+      <find>做</find>
+      <find>submitRef</find>
+      <find>showRefEditorX</find>
       <find>retrieveApplicationList</find>
-      <find>changeInputKey</find>
-      <find>submit</find>
-      <find>submitEdit</find>
-      <find>findChosenMenus</find>
-      <find>showBatchUpdateX</find>
+      <find>showRefEditor</find>
+      <find>submitRefEdited</find>
+      <find>authorize</find>
+      <find>showModal</find>
+      <find>submitEdite</find>
+      <find>deleteRefRecX</find>
+      <find>showEditorX</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -192,55 +163,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/views/Company/query.html" />
-        <option value="$PROJECT_DIR$/app/views/MachineReady/edit.html" />
-        <option value="$PROJECT_DIR$/app/views/RsaKeyBatch/history.html" />
-        <option value="$PROJECT_DIR$/app/index.html" />
-        <option value="$PROJECT_DIR$/app/views/Branch/query.html" />
-        <option value="$PROJECT_DIR$/app/views/RootCert/query.html" />
-        <option value="$PROJECT_DIR$/app/views/RootCert/edit.html" />
-        <option value="$PROJECT_DIR$/app/views/monitor/dashboard.html" />
-        <option value="$PROJECT_DIR$/app/views/SecretCert/query.html" />
-        <option value="$PROJECT_DIR$/app/views/Branch/edit.html" />
-        <option value="$PROJECT_DIR$/app/views/SecretCert/edit.html" />
-        <option value="$PROJECT_DIR$/app/views/Company/edit.html" />
-        <option value="$PROJECT_DIR$/app/views/routes.js" />
-        <option value="$PROJECT_DIR$/app/components/crud/biTwoEditButtonsTemplate.html" />
-        <option value="$PROJECT_DIR$/app/components/crud/biEditButtonsTemplate.html" />
-        <option value="$PROJECT_DIR$/app/views/SecretCertBand/query.html" />
-        <option value="$PROJECT_DIR$/app/views/SecretCertBand/edit.html" />
-        <option value="$PROJECT_DIR$/app/views/SecretCertBand/history.html" />
-        <option value="$PROJECT_DIR$/app/views/RsaKey/history.html" />
-        <option value="$PROJECT_DIR$/app/views/GroupDefine/history.html" />
-        <option value="$PROJECT_DIR$/app/views/Task/query.html" />
-        <option value="$PROJECT_DIR$/app/views/Host/history.html" />
-        <option value="$PROJECT_DIR$/app/views/Host/edit.html" />
-        <option value="$PROJECT_DIR$/app/components/header/biFooterTemplate.html" />
-        <option value="$PROJECT_DIR$/app/views/Application/history.html" />
-        <option value="$PROJECT_DIR$/app/views/SecretKey/edit.html" />
-        <option value="$PROJECT_DIR$/app/views/SecretKey/history.html" />
-        <option value="$PROJECT_DIR$/app/views/SecretKey/query.html" />
-        <option value="$PROJECT_DIR$/app/views/RsaKeyBatch/query.html" />
+        <option value="$PROJECT_DIR$/app/views/Machine/query.html" />
+        <option value="$PROJECT_DIR$/app/views/Todo/check.html" />
         <option value="$PROJECT_DIR$/app/views/GroupDefine/query.html" />
-        <option value="$PROJECT_DIR$/app/views/GroupDefine/edit.html" />
-        <option value="$PROJECT_DIR$/app/views/RsaKey/query.html" />
-        <option value="$PROJECT_DIR$/app/views/Application/query.html" />
-        <option value="$PROJECT_DIR$/app/views/Application/edit.html" />
-        <option value="$PROJECT_DIR$/app/views/Host/query.html" />
+        <option value="$PROJECT_DIR$/app/components/crud/biHistoryColumnsTemplate.html" />
+        <option value="$PROJECT_DIR$/app/views/Users/edit.html" />
+        <option value="$PROJECT_DIR$/app/views/Machine/history.html" />
+        <option value="$PROJECT_DIR$/app/views/MachineReady/query.html" />
+        <option value="$PROJECT_DIR$/app/views/Company/query.html" />
+        <option value="$PROJECT_DIR$/app/views/SystemKeyDefine/query.html" />
+        <option value="$PROJECT_DIR$/app/views/SystemKeyDefine/edit.html" />
+        <option value="$PROJECT_DIR$/app/views/SystemKeyDefine/history.html" />
+        <option value="$PROJECT_DIR$/app/views/Users/history.html" />
+        <option value="$PROJECT_DIR$/app/views/System/history.html" />
+        <option value="$PROJECT_DIR$/app/views/SecretKey/history.html" />
+        <option value="$PROJECT_DIR$/app/views/SecretCertBand/history.html" />
+        <option value="$PROJECT_DIR$/app/views/SecretCert/history.html" />
+        <option value="$PROJECT_DIR$/app/views/RsaKeyBatch/history.html" />
+        <option value="$PROJECT_DIR$/app/views/RsaKey/history.html" />
+        <option value="$PROJECT_DIR$/app/views/RootCert/history.html" />
+        <option value="$PROJECT_DIR$/app/views/Role/history.html" />
+        <option value="$PROJECT_DIR$/app/views/PartnerBranch/history.html" />
+        <option value="$PROJECT_DIR$/app/views/Partner/history.html" />
+        <option value="$PROJECT_DIR$/app/views/MachineReady/history.html" />
+        <option value="$PROJECT_DIR$/app/views/MachineModel/history.html" />
+        <option value="$PROJECT_DIR$/app/views/Host/history.html" />
+        <option value="$PROJECT_DIR$/app/views/GroupDefine/history.html" />
+        <option value="$PROJECT_DIR$/app/views/Equipment/history.html" />
+        <option value="$PROJECT_DIR$/app/views/Company/history.html" />
+        <option value="$PROJECT_DIR$/app/views/Clusters/history.html" />
+        <option value="$PROJECT_DIR$/app/views/CardDataApply/history.html" />
+        <option value="$PROJECT_DIR$/app/views/Branch/history.html" />
+        <option value="$PROJECT_DIR$/app/views/Application/history.html" />
         <option value="$PROJECT_DIR$/app/views/RsaKeyBatch/edit.html" />
         <option value="$PROJECT_DIR$/app/views/RsaKey/edit.html" />
-        <option value="$PROJECT_DIR$/app/views/Clusters/query.html" />
-        <option value="$PROJECT_DIR$/app/views/Clusters/edit.html" />
         <option value="$PROJECT_DIR$/app/components/header/biHeaderTemplate.html" />
-        <option value="$PROJECT_DIR$/app/views/Users/edit.html" />
-        <option value="$PROJECT_DIR$/app/views/Users/history.html" />
-        <option value="$PROJECT_DIR$/app/views/Users/query.html" />
-        <option value="$PROJECT_DIR$/app/js/options.js" />
-        <option value="$PROJECT_DIR$/app/views/Journal/query.html" />
-        <option value="$PROJECT_DIR$/app/components/user/directives.js" />
+        <option value="$PROJECT_DIR$/app/views/KeyDefine/edit.html" />
+        <option value="$PROJECT_DIR$/app/views/KeyDefine/query.html" />
+        <option value="$PROJECT_DIR$/app/views/System/editRsaKey.html" />
+        <option value="$PROJECT_DIR$/app/views/System/editSecretKey.html" />
+        <option value="$PROJECT_DIR$/app/components/crud/biTwoRefCheckButtonsTemplate.html" />
+        <option value="$PROJECT_DIR$/app/components/crud/directives.js" />
+        <option value="$PROJECT_DIR$/app/views/Application/editSecretKey.html" />
+        <option value="$PROJECT_DIR$/app/css/hxHSM-km.css" />
+        <option value="$PROJECT_DIR$/app/views/Application/edit.html" />
+        <option value="$PROJECT_DIR$/app/views/System/edit.html" />
         <option value="$PROJECT_DIR$/app/js/services.js" />
-        <option value="$PROJECT_DIR$/app/components/crud/biQueryButtonsTemplate.html" />
-        <option value="$PROJECT_DIR$/app/components/user/biLoginTemplate.html" />
+        <option value="$PROJECT_DIR$/app/views/SecretKey/edit.html" />
+        <option value="$PROJECT_DIR$/app/views/SecretKey/editSystem.html" />
+        <option value="$PROJECT_DIR$/app/views/SecretKey/editApplication.html" />
+        <option value="$PROJECT_DIR$/app/js/options.js" />
+        <option value="$PROJECT_DIR$/app/views/SecretKey/query.html" />
       </list>
     </option>
   </component>
@@ -279,7 +252,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -342,7 +314,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="PartnerBranch" />
+              <option name="myItemId" value="System" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -364,7 +336,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Equipment" />
+              <option name="myItemId" value="SecretKey" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -386,7 +358,95 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Branch" />
+              <option name="myItemId" value="RsaKey" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hxHSM-km-ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hxHSM-km-ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MachineReady" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hxHSM-km-ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hxHSM-km-ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Machine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hxHSM-km-ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hxHSM-km-ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KeyDefine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hxHSM-km-ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hxHSM-km-ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -422,11 +482,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hxHSM-km-ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hxHSM-km-ui" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -448,25 +522,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hxHSM-km-ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hxHSM-km-ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
+              <option name="myItemId" value="form" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -494,8 +550,9 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -506,8 +563,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.other" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
@@ -516,11 +572,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/views/PartnerBranch" />
-      <recent name="$PROJECT_DIR$/app/views/Equipment" />
-      <recent name="$PROJECT_DIR$/app/views" />
-      <recent name="$PROJECT_DIR$/app/views/RootCert" />
-      <recent name="$PROJECT_DIR$/app/views/Branch" />
+      <recent name="$PROJECT_DIR$/app/views/SecretKey" />
+      <recent name="$PROJECT_DIR$/app/components/crud" />
+      <recent name="$PROJECT_DIR$/app/views/Application" />
+      <recent name="$PROJECT_DIR$/app/views/System" />
+      <recent name="$PROJECT_DIR$/app/components/user" />
     </key>
   </component>
   <component name="RunManager">
@@ -1027,7 +1083,14 @@
       <option name="project" value="LOCAL" />
       <updated>1486610225874</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="0.6.0&#10;&#10;1. 删除了旧的同步密钥按钮&#10;2. 删除了部署相关页面&#10;3. 增加了任务（未完成的同步任务）查询页面&#10;4. 将操作审计内容单独划分成一个下拉栏&#10;5. 页面（操作历史、密钥、制卡数据）关联显示优化">
+      <created>1488447086424</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1488447086424</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1049,34 +1112,34 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.4978701" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20175439" sideWeight="0.5657051" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20175439" sideWeight="0.5657051" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20175439" sideWeight="0.43429488" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20285088" sideWeight="0.43429488" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22649573" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23504274" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="SBT Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="JE" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="JE" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -1123,7 +1186,8 @@
     <MESSAGE value="0.5.9&#10;1. 现在复核操作若全部成功, 则弹出提示框提示操作成功. &#10;2. 修复了复核状态修改时仅修改最后一个的bug" />
     <MESSAGE value="0.5.9&#10;&#10;1. 现在复核操作若全部成功, 则弹出提示框提示操作成功. &#10;2. 修复了复核状态修改时仅修改最后一个的bug" />
     <MESSAGE value="1. 修改了密钥类型定义&#10;2. 优化了复核操作提示&#10;3. 非对称密钥增加加密服务索引属性&#10;4. 修复用户操作出错bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. 修改了密钥类型定义&#10;2. 优化了复核操作提示&#10;3. 非对称密钥增加加密服务索引属性&#10;4. 修复用户操作出错bug" />
+    <MESSAGE value="0.6.0&#10;&#10;1. 删除了旧的同步密钥按钮&#10;2. 删除了部署相关页面&#10;3. 增加了任务（未完成的同步任务）查询页面&#10;4. 将操作审计内容单独划分成一个下拉栏&#10;5. 页面（操作历史、密钥、制卡数据）关联显示优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.6.0&#10;&#10;1. 删除了旧的同步密钥按钮&#10;2. 删除了部署相关页面&#10;3. 增加了任务（未完成的同步任务）查询页面&#10;4. 将操作审计内容单独划分成一个下拉栏&#10;5. 页面（操作历史、密钥、制卡数据）关联显示优化" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1134,115 +1198,162 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/views/CardDataApply/history.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="65" lean-forward="false" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Branch/history.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="65" lean-forward="false" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/Application/history.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="32" column="56" lean-forward="false" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
+        <state relative-caret-position="324">
+          <caret line="18" column="40" lean-forward="true" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/SecretKey/history.html">
+    <entry file="file://$PROJECT_DIR$/app/views/SecretCertBand/edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="86" lean-forward="false" selection-start-line="26" selection-start-column="86" selection-end-line="26" selection-end-column="86" />
+        <state relative-caret-position="216">
+          <caret line="12" column="118" lean-forward="true" selection-start-line="12" selection-start-column="96" selection-end-line="12" selection-end-column="118" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/RsaKeyBatch/history.html">
+    <entry file="file://$PROJECT_DIR$/app/views/RsaKeyBatch/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="32" lean-forward="false" selection-start-line="15" selection-start-column="32" selection-end-line="22" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="51" lean-forward="false" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Application/chart.html" />
+    <entry file="file://$PROJECT_DIR$/app/components/header/biHeaderTemplate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="71" lean-forward="true" selection-start-line="21" selection-start-column="71" selection-end-line="21" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Host/edit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/SecretCert/edit.html">
+    <entry file="file://$PROJECT_DIR$/app/bower_components/font-awesome/css/font-awesome.css.map">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="36" column="128" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="128" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/SystemKeyDefine/edit.html">
+    <entry file="file://$PROJECT_DIR$/app/bower_components/font-awesome/fonts/fontawesome-webfont.svg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="18" column="91" lean-forward="true" selection-start-line="18" selection-start-column="68" selection-end-line="18" selection-end-column="91" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/GroupDefine/edit.html">
+    <entry file="file://$PROJECT_DIR$/app/bower_components/font-awesome/HELP-US-OUT.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="63" lean-forward="false" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="63" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/GroupDefine/query.html">
+    <entry file="file://$PROJECT_DIR$/app/bower_components/font-awesome/bower.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="53" column="75" lean-forward="false" selection-start-line="53" selection-start-column="75" selection-end-line="53" selection-end-column="75" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/RsaKey/query.html">
+    <entry file="file://$PROJECT_DIR$/app/bower_components/font-awesome/css/font-awesome.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="62" column="76" lean-forward="false" selection-start-line="62" selection-start-column="76" selection-end-line="62" selection-end-column="76" />
+        <state relative-caret-position="162">
+          <caret line="57" column="1" lean-forward="true" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/Application/query.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="45" column="40" lean-forward="false" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="40" />
+        <state relative-caret-position="990">
+          <caret line="55" column="64" lean-forward="false" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Application/edit.html">
+    <entry file="file://$PROJECT_DIR$/app/views/KeyDefine/edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="42" column="61" lean-forward="false" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
+        <state relative-caret-position="180">
+          <caret line="10" column="126" lean-forward="false" selection-start-line="10" selection-start-column="126" selection-end-line="10" selection-end-column="126" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Application/chart.html">
+    <entry file="file://$PROJECT_DIR$/app/views/KeyDefine/query.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="450">
+          <caret line="46" column="37" lean-forward="false" selection-start-line="46" selection-start-column="37" selection-end-line="46" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/crud/biEditButtonsTemplate.html">
+    <entry file="file://$PROJECT_DIR$/app/views/SecretKey/history.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="32" selection-end-column="58" />
+        <state relative-caret-position="360">
+          <caret line="20" column="65" lean-forward="false" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/crud/biRefEditButtonsTemplate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/crud/biTwoEditButtonsTemplate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="85" lean-forward="false" selection-start-line="12" selection-start-column="85" selection-end-line="12" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/crud/biTwoRefEditButtonsTemplate.html">
+    <entry file="file://$PROJECT_DIR$/app/views/MachineModel/query.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/crud/biQueryActionTemplate.html">
+    <entry file="file://$PROJECT_DIR$/app/views/RsaKey/edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="576">
+          <caret line="35" column="92" lean-forward="false" selection-start-line="35" selection-start-column="83" selection-end-line="35" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/System/editRsaKey.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="42" column="67" lean-forward="false" selection-start-line="42" selection-start-column="67" selection-end-line="42" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/RsaKey/history.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="3" column="110" lean-forward="false" selection-start-line="3" selection-start-column="110" selection-end-line="3" selection-end-column="110" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/System/editSecretKey.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="24" column="110" lean-forward="false" selection-start-line="24" selection-start-column="110" selection-end-line="24" selection-end-column="110" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1250,6 +1361,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/crud/biHistoryButtonsTemplate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/crud/biQueryButtonsTemplate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1257,138 +1385,59 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/RsaKeyBatch/query.html">
+    <entry file="file://$PROJECT_DIR$/app/components/crud/biQueryActionTemplate.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="46" column="84" lean-forward="false" selection-start-line="46" selection-start-column="84" selection-end-line="46" selection-end-column="84" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/RsaKeyBatch/edit.html">
+    <entry file="file://$PROJECT_DIR$/app/components/crud/biRefEditButtonsTemplate.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="95" lean-forward="false" selection-start-line="26" selection-start-column="95" selection-end-line="26" selection-end-column="95" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Branch/edit.html">
+    <entry file="file://$PROJECT_DIR$/app/components/crud/biTwoEditButtonsTemplate.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="130" lean-forward="false" selection-start-line="21" selection-start-column="116" selection-end-line="21" selection-end-column="130" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/SecretKey/edit.html">
+    <entry file="file://$PROJECT_DIR$/app/components/crud/biTwoRefCheckButtonsTemplate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="65" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="4" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/form/biSelectItemTemplate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="17" column="101" lean-forward="false" selection-start-line="17" selection-start-column="82" selection-end-line="17" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/RsaKey/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="58" lean-forward="false" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/SecretKey/query.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="45" column="42" lean-forward="false" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/MachineReady/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="30" column="32" lean-forward="false" selection-start-line="30" selection-start-column="32" selection-end-line="32" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Clusters/query.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="492">
-          <caret line="58" column="54" lean-forward="false" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Clusters/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="30" column="93" lean-forward="false" selection-start-line="30" selection-start-column="93" selection-end-line="30" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/form/biAreaItemTemplate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Users/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="83" lean-forward="false" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Users/history.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="43" lean-forward="false" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Users/query.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="50" lean-forward="false" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/MachineReady/query.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-126">
-          <caret line="23" column="49" lean-forward="false" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Host/query.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="51" column="78" lean-forward="true" selection-start-line="51" selection-start-column="56" selection-end-line="51" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Journal/query.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="18" column="58" lean-forward="true" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/header/biHeaderTemplate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1062">
-          <caret line="59" column="25" lean-forward="false" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
+          <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/login.html">
+    <entry file="file://$PROJECT_DIR$/app/components/crud/biTwoRefEditButtonsTemplate.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="42" lean-forward="false" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
+        <state relative-caret-position="90">
+          <caret line="5" column="73" lean-forward="false" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="73" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Role/edit.html">
+    <entry file="file://$PROJECT_DIR$/app/components/form/biCheckItemTemplate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1396,7 +1445,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Role/query.html">
+    <entry file="file://$PROJECT_DIR$/app/components/crud/biEditButtonsTemplate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="63" lean-forward="false" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/crud/directives.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="19" column="26" lean-forward="true" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1404,17 +1469,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/utils/directives.js">
+    <entry file="file://$PROJECT_DIR$/app/js/filters.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/Math.uuid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-1310">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1422,88 +1479,104 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="362" column="30" lean-forward="false" selection-start-line="362" selection-start-column="30" selection-end-line="362" selection-end-column="30" />
+        <state relative-caret-position="411">
+          <caret line="423" column="38" lean-forward="true" selection-start-line="423" selection-start-column="16" selection-end-line="423" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/app.js">
+    <entry file="file://$PROJECT_DIR$/app/views/Application/editSecretKey.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        <state relative-caret-position="414">
+          <caret line="23" column="97" lean-forward="false" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="97" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/js/options.js">
+    <entry file="file://$PROJECT_DIR$/app/css/hxHSM-km.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3438">
-          <caret line="191" column="58" lean-forward="true" selection-start-line="191" selection-start-column="58" selection-end-line="191" selection-end-column="58" />
+        <state relative-caret-position="564">
+          <caret line="790" column="9" lean-forward="true" selection-start-line="790" selection-start-column="9" selection-end-line="790" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Machine/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="33" column="53" lean-forward="true" selection-start-line="31" selection-start-column="48" selection-end-line="33" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Application/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="28" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="54" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/Machine/editUp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="53" column="67" lean-forward="true" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="67" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/js/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="441" column="18" lean-forward="true" selection-start-line="441" selection-start-column="18" selection-end-line="441" selection-end-column="18" />
+        <state relative-caret-position="393">
+          <caret line="425" column="20" lean-forward="false" selection-start-line="425" selection-start-column="20" selection-end-line="425" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
+    <entry file="file://$PROJECT_DIR$/app/views/System/edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="72" lean-forward="true" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
+        <state relative-caret-position="342">
+          <caret line="19" column="35" lean-forward="true" selection-start-line="8" selection-start-column="28" selection-end-line="19" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Branch/batch.html">
+    <entry file="file://$PROJECT_DIR$/app/views/SecretKey/editApplication.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="522">
+          <caret line="53" column="71" lean-forward="false" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="71" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/Equipment/batch.html">
+    <entry file="file://$PROJECT_DIR$/app/js/options.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="240">
+          <caret line="285" column="42" lean-forward="false" selection-start-line="285" selection-start-column="42" selection-end-line="285" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/PartnerBranch/batch.html">
+    <entry file="file://$PROJECT_DIR$/app/views/SecretKey/editSystem.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+        <state relative-caret-position="324">
+          <caret line="18" column="127" lean-forward="false" selection-start-line="18" selection-start-column="127" selection-end-line="18" selection-end-column="127" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/user/directives.js">
+    <entry file="file://$PROJECT_DIR$/app/views/SecretKey/query.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="32" column="14" lean-forward="false" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
+        <state relative-caret-position="432">
+          <caret line="42" column="61" lean-forward="false" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/user/biLoginTemplate.html">
+    <entry file="file://$PROJECT_DIR$/app/views/SecretKey/edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="32" column="41" lean-forward="false" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/crud/biQueryButtonsTemplate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="97" lean-forward="false" selection-start-line="13" selection-start-column="97" selection-end-line="13" selection-end-column="97" />
+        <state relative-caret-position="239">
+          <caret line="21" column="77" lean-forward="true" selection-start-line="21" selection-start-column="77" selection-end-line="21" selection-end-column="77" />
           <folding />
         </state>
       </provider>

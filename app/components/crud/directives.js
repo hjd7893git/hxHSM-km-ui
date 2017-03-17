@@ -34,6 +34,13 @@ angular.module('myApp.components.crud', [])
             replace : true
         };
     })
+    .directive('biTwoRefCheckButtons', function($templateCache) {
+            return {
+                restrict : 'E',
+                templateUrl : 'components/crud/biTwoRefCheckButtonsTemplate.html',
+                replace : true
+            };
+        })
     .directive('biQueryButtons', function($templateCache) {
         return {
             restrict : 'E',

@@ -1,27 +1,27 @@
 <div class="panel-collapse" role="tabpanel" bs-collapse-target>
     <div class="panel-group" role="tablist">
         <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{opType|optionName:'opType'}}</div>
+            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{ref.opType|optionName:'opType'}}&nbsp;-&nbsp;密码机<code>【&nbsp;{{rec.deviceNumber}}&nbsp;】</code>上架信息</div>
             <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
                 <ul class="list-group">
                     <li class="list-group-item">
                         <div class="panel-body bi-pad0">
                             <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
-                                              item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
+                                              item-value="ref.rec.id" item-old-value="ref.bak.id" item-locked="'true'"></bi-edit-item>
                                 <bi-edit-item item-label="'系统代号'" item-tip="'大写英文字母'" item-name="'symbol'" item-required="'true'" item-max-length="'16'"
-                                              item-value="rec.symbol" item-old-value="bak.symbol" item-locked="lock"></bi-edit-item>
+                                              item-value="ref.rec.symbol" item-old-value="ref.bak.symbol" item-locked="'true'"></bi-edit-item>
                                 <bi-edit-item item-label="'名称'" item-tip="'中文名称'"
-                                              item-value="rec.name" item-old-value="bak.name" item-locked="lock"></bi-edit-item>
+                                              item-value="ref.rec.name" item-old-value="ref.bak.name" item-locked="'true'"></bi-edit-item>
                                 <bi-edit-item item-label="'英文名称'"
-                                              item-value="rec.nameEn" item-old-value="bak.nameEn" item-locked="lock"></bi-edit-item>
+                                              item-value="ref.rec.nameEn" item-old-value="ref.bak.nameEn" item-locked="'true'"></bi-edit-item>
                                 <bi-text-item item-label="'简介'"
-                                              item-value="rec.summary" item-old-value="bak.summary" item-locked="lock"></bi-text-item>
+                                              item-value="ref.rec.summary" item-old-value="ref.bak.summary" item-locked="'true'"></bi-text-item>
                             </form>
                         </div>
                     </li>
                 </ul>
-                <bi-edit-buttons></bi-edit-buttons>
+                <bi-two-ref-check-buttons></bi-two-ref-check-buttons>
             </div>
         </div>
     </div>

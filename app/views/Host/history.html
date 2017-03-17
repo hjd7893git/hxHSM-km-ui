@@ -1,42 +1,40 @@
 <div class="panel-collapse" role="tabpanel" bs-collapse-target>
     <div class="panel-group" role="tablist">
         <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;主机<code>【&nbsp;{{rec.hardware}}&nbsp;】</code>的维护记录</div>
+            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;主机<code>【&nbsp;{{rec.nodeName}}&nbsp;】</code>的维护记录</div>
             <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
                 <ul class="list-group">
                     <li class="list-group-item bi-ptb0">
                         <div class="panel-body bi-pad0">
                             <table class="table table-condensed bg-white bi-margin-b0">
                                 <thead><tr>
-                                    <th>标识</th>
                                     <th>硬件</th>
-                                    <th>操作系统</th>
-                                    <th>性能</th>
                                     <th>节点名</th>
                                     <th>IP地址</th>
                                     <th>TCP端口</th>
                                     <th>HTTP端口</th>
-                                    <th>操作系统用户</th>
                                     <th>集群</th>
                                     <th>状态</th>
-                                    <th>维护类型</th><th class="his-col-id">序号</th><th class="his-col-op">操作</th><th class="his-col-ts">时间戳</th><th class="his-col-uid">操作员</th></tr>
+                                    <th>维护类型</th><th class="his-col-op">操作</th><th class="his-col-ts">时间戳</th><th class="his-col-uid">操作员</th></tr>
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="his in histories">
-                                    <td>{{his.id}}</td>
                                     <td>{{his.hardware}}</td>
-                                    <td>{{his.os}}</td>
-                                    <td>{{his.performance}}</td>
                                     <td>{{his.nodeName}}</td>
                                     <td>{{his.ip}}</td>
                                     <td>{{his.tcpPort}}</td>
                                     <td>{{his.httpPort}}</td>
-                                    <td>{{his.osUser}}</td>
                                     <td>{{his.clusterId|optionName:clusterList}}</td>
-                                    <td>{{his.status}}</td>
+                                    <td>{{his.status|optionName:'machineStatus'}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">
-                                        <bi-history-columns row-operations="his.operations"></bi-history-columns>
+                                        <table class="table table-condensed bi-margin-b0" style="margin-top: -1px;">
+                                            <tr ng-repeat="op in his.operations">
+                                                <td class="his-col-op">{{op.action|optionName:'action'}}</td>
+                                                <td class="his-col-ts">{{op.journalDate|biDate}}&nbsp;{{op.time|biTime}}</td>
+                                                <td class="his-col-uid">{{op.userId|optionName:userList}}</td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                                 </tbody>

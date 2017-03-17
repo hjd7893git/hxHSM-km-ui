@@ -11,6 +11,8 @@
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
                                 <bi-edit-item item-label="'名称'" item-tip="'输入中文'" item-name="'name'" item-required="'true'"
                                               item-value="rec.name" item-old-value="bak.name" item-locked="lock"></bi-edit-item>
+                                <bi-edit-item item-label="'描述'" item-tip="'输入中文'" item-name="'description'" item-required="'true'"
+                                              item-value="rec.description" item-old-value="bak.description" item-locked="lock"></bi-edit-item>
                                 <bi-area-item item-label="'菜单权限'" item-margin="bi-margin-b0" item-eq="!isEq(rec.menus, bak.menus)" item-margin="'bi-margin-b0'"
                                               item-value="rec.menus|treeStringify:menuTree" item-old-value="bak.menus|treeStringify:menuTree"
                                               item-setting="chooseMenus" item-locked="lock">

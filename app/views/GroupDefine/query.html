@@ -14,13 +14,12 @@
                             <div class="panel-body bi-pad0">
                                 <form class="form-horizontal">
                                     <div class="col-md-6">
-                                        <bi-query-item item-label="'标识'" item-tip="'大于0的整数'"
-                                                       item-value="qry.id"></bi-query-item>
+                                        <bi-query-item item-label="'名称'" item-tip="'文本,可模糊匹配'" item-value="qry.name"></bi-query-item>
                                         <bi-query-action></bi-query-action>
                                     </div>
                                     <div class="col-md-6">
-                                        <bi-query-item item-label="'名称'" item-tip="'文本,可模糊匹配'"
-                                                       item-value="qry.name"></bi-query-item>
+                                        <bi-query-select item-label="'集群'" item-value="qry.clusterId" item-options="clusterList"></bi-query-select>
+                                        <bi-query-select item-label="'密码机编码'" item-value="qry.hsmEncode" item-options="'hsmEncode'| theOption"></bi-query-select>
                                     </div>
                                 </form>
                             </div>
@@ -31,7 +30,6 @@
                             <thead>
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th>
                                 <th>名称</th>
                                 <th>集群</th>
                                 <th>描述</th>
@@ -46,7 +44,6 @@
                                     <i class="fa fa-{{r.rec.opType|optionName:'opTypeIcon'}} text-danger"
                                        ng-show="r.rec.bizSeq"></i>
                                 </td>
-                                <td>{{r.rec.id}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.name}}</a></td>
                                 <td>{{r.rec.clusterId | optionName: clusterList}}</td>
                                 <td>{{r.rec.description}}</td>

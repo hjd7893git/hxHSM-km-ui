@@ -202,6 +202,10 @@ angular.module('myApp.services', ['ngResource'])
                         selectedRec: refRecs[idx].rec, selectedIndex: idx, pageId: refPageId,
                         rec: angular.element.extend(true, {}, refRecs[idx].rec)
                     };
+                    if (refTableId == "System") {
+                        $scope.isIndexExist = true;
+                    }
+
                     if (angular.isUndefined($scope.ref.recs[idx].bak))
                         $scope.ref.recs[idx].bak = angular.element.extend(true, {opType: 2}, $scope.ref.selectedRec);
                     $scope.ref.bak = $scope.ref.recs[idx].bak;
@@ -225,6 +229,24 @@ angular.module('myApp.services', ['ngResource'])
                     if (!valid)
                         form.showError = !valid;
                     return valid;
+                };
+                $scope.addRefRow = function(refRecs, recs, id) {
+
+                    refRecs.forEach(function(ref){
+                        if (ref.rec.id == id) {
+                            $scope.showTips('该内容已存在，未重复添加');
+                            return;
+                        }
+                    })
+                    recs.forEach(function(rec){
+                        if (rec.id == id) {
+                            var recbuf = rec;
+                            recbuf.opType = 1;
+                            refRecs.push({rec: recbuf});
+                        }
+                    })
+
+
                 };
                 $scope.submitRefEdited = function() {
                     if (!isValidForm(this))
@@ -356,12 +378,6 @@ angular.module('myApp.services', ['ngResource'])
                         }
                     }
 
-                    if ($scope.tableId == 'SecretKey') {
-                        if (angular.isDefined($scope.rec.clusterId))
-                            $scope.rec.useStatus = 1;
-                        else
-                            $scope.rec.useStatus = 0;
-                    }
                     if ($scope.tableId != 'SecretCert'){ //看不懂valid，更新上传文件时跳出方法，暂时先把SecretCert排除
                         if (!isValidForm(this))
                             return;
@@ -522,7 +538,9 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.allChosen = false;
                 };
                 $scope.deleteRefRecX = function(refRecs, idx) {
-                    refRecs.splice(idx, 1);
+                    refRecs[idx].rec.opType = 3;
+                    //refRecs[idx].rec = null;
+                    //refRecs.splice(idx, 1);
                 };
                 $scope.showHistory = function(chosenIdx) {
                     $scope.rec = angular.isDefined(chosenIdx) ? $scope.recs[chosenIdx].rec : $scope.selectedRec;
@@ -604,7 +622,7 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.copyEditor();
                     }
                 };
-                $scope.showRefEditorX = function(refRecs, pageId) {
+                $scope.showRefEditorX = function(refRecs, pageId, id) {
                     $scope.ref = {recs: refRecs, lock: false, opType: 1, rec: {opType: 1}};
                     if (angular.isDefined($scope.preRefInsert))
                         $scope.preRefInsert($scope.ref.rec);
@@ -730,29 +748,29 @@ angular.module('myApp.services', ['ngResource'])
                     }
                 };
             },
-            retrieveApplicationList: function($scope) {
-                var ok1 = function(ret) {
-                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
-                        $scope.$root.applicationList = angular.element.map(ret, function(obj) {
-                            return {value: obj.id, name: obj.name};
-                        });
-                    }
-                };
-                if (angular.isUndefined($scope.$root.roleList)) {
-                    $scope.$root.applicationList = [];
-                    $scope.queryBase($resource(URLPrefix + 'ApplicationList'), {}, ok1);
-                }
-            },
             retrieveMenuTree: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
                         $scope.$root.menuTree = ret;
                     }
                 };
-                if (angular.isUndefined($scope.$root.menuTree)) {
-                    $scope.$root.menuTree = [];
-                    $scope.queryBase($resource(URLPrefix + 'MenuTree'), {}, ok1);
-                }
+                $scope.$root.menuTree = [];
+                $scope.queryBase($resource(URLPrefix + 'MenuTree'), {}, ok1);
+            },
+            retrieveApplicationList: function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
+                        $scope.$root.applicationList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.name};
+                        });
+                        $scope.$root.applicationRows = angular.element.map(ret, function(obj) {
+                            return obj;
+                        });
+                    }
+                };
+                $scope.$root.applicationList = [];
+                $scope.$root.applicationRows = [];
+                $scope.queryBase($resource(URLPrefix + 'ApplicationList'), {}, ok1);
             },
             retrieveRoleList: function($scope) {
                 var ok1 = function(ret) {
@@ -762,10 +780,8 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.roleList)) {
-                    $scope.$root.roleList = [];
-                    $scope.queryBase($resource(URLPrefix + 'RoleList'), {}, ok1);
-                }
+                $scope.$root.roleList = [];
+                $scope.queryBase($resource(URLPrefix + 'RoleList'), {}, ok1);
             },
             retrieveClusterList: function($scope) {
                 var ok1 = function(ret) {
@@ -775,10 +791,8 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.clusterList)) {
-                    $scope.$root.clusterList = [];
-                    $scope.queryBase($resource(URLPrefix + 'ClustersList'), {}, ok1);
-                }
+                $scope.$root.clusterList = [];
+                $scope.queryBase($resource(URLPrefix + 'ClustersList'), {}, ok1);
             },
             retrieveCompanyList: function($scope) {
                 var ok1 = function(ret) {
@@ -788,10 +802,8 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.companyList)) {
-                    $scope.$root.companyList = [];
-                    $scope.queryBase($resource(URLPrefix + 'CompanyList'), {}, ok1);
-                }
+                $scope.$root.companyList = [];
+                $scope.queryBase($resource(URLPrefix + 'CompanyList'), {}, ok1);
             },
             retrieveHostList: function($scope) {
                 var ok1 = function(ret) {
@@ -801,10 +813,8 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.hostList)) {
-                    $scope.$root.hostList = [];
-                    $scope.queryBase($resource(URLPrefix + 'HostList'), {}, ok1);
-                }
+                $scope.$root.hostList = [];
+                $scope.queryBase($resource(URLPrefix + 'HostList'), {}, ok1);
             },
             retrieveSystemList: function($scope) {
                 var ok1 = function(ret) {
@@ -812,14 +822,16 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.$root.systemList = angular.element.map(ret, function(obj) {
                             return {value: obj.id, name: obj.name};
                         });
+                        $scope.$root.systemRows = angular.element.map(ret, function(obj) {
+                            return obj;
+                        });
                     }
                 };
-                if (angular.isUndefined($scope.$root.systemList)) {
-                    $scope.$root.systemList = [];
-                    $scope.queryBase($resource(URLPrefix + 'SystemList'), {}, ok1);
-                }
+                $scope.$root.systemList = [];
+                $scope.$root.systemRows = [];
+                $scope.queryBase($resource(URLPrefix + 'SystemList'), {}, ok1);
             },
-            retrieveSystemKeyDefineList: function($scope) {
+            retrieveKeyDefineList: function($scope) {
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 || ret.status == 201) {
                         $scope.$root.keyDefineNameList = angular.element.map(ret, function(obj) {
@@ -833,12 +845,10 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.systemList)) {
-                    $scope.$root.keyDefineNameList = [];
-                    $scope.$root.keyDefineTypeList = [];
-                    $scope.$root.keyDefineSchemaList = [];
-                    $scope.queryBase($resource(URLPrefix + 'SystemKeyDefineList'), {}, ok1);
-                }
+                $scope.$root.keyDefineNameList = [];
+                $scope.$root.keyDefineTypeList = [];
+                $scope.$root.keyDefineSchemaList = [];
+                $scope.queryBase($resource(URLPrefix + 'KeyDefineList'), {}, ok1);
             },
             retrievePartnerList: function($scope) {
                 var ok1 = function(ret) {
@@ -848,10 +858,8 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.partnerList)) {
-                    $scope.$root.partnerList = [];
-                    $scope.queryBase($resource(URLPrefix + 'PartnerList'), {}, ok1);
-                }
+                $scope.$root.partnerList = [];
+                $scope.queryBase($resource(URLPrefix + 'PartnerList'), {}, ok1);
             },
             retrieveBranchList: function($scope, flush) {
                 var ok1 = function(ret) {
@@ -861,10 +869,8 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.branchList) || flush) {
-                    $scope.$root.branchList = [];
-                    $scope.queryBase($resource(URLPrefix + 'BranchList'), {}, ok1);
-                }
+                $scope.$root.branchList = [];
+                $scope.queryBase($resource(URLPrefix + 'BranchList'), {}, ok1);
             },
             retrieveMachineModelList: function($scope) {
                 var ok1 = function(ret) {
@@ -874,10 +880,8 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.machineModelList)) {
-                    $scope.$root.machineModelList = [];
-                    $scope.queryBase($resource(URLPrefix + 'MachineModelList'), {}, ok1);
-                }
+                $scope.$root.machineModelList = [];
+                $scope.queryBase($resource(URLPrefix + 'MachineModelList'), {}, ok1);
             },
             retrieveGroupList: function($scope) {
                 var ok1 = function(ret) {
@@ -887,10 +891,8 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.groupList)) {
-                    $scope.$root.groupList = [];
-                    $scope.queryBase($resource(URLPrefix + 'GroupDefineList'), {}, ok1);
-                }
+                $scope.$root.groupList = [];
+                $scope.queryBase($resource(URLPrefix + 'GroupDefineList'), {}, ok1);
             },
             retrieveMachineList :  function($scope) {
                 var ok1 = function(ret) {
@@ -900,10 +902,8 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.machineList)) {
-                    $scope.$root.machineList = [];
-                    $scope.queryBase($resource(URLPrefix + 'MachineList'), {}, ok1);
-                }
+                $scope.$root.machineList = [];
+                $scope.queryBase($resource(URLPrefix + 'MachineList'), {}, ok1);
             },
             retrieveRsaKeyBatchList :  function($scope) {
                 var ok1 = function(ret) {
@@ -913,10 +913,8 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.rsaKeyBatchList)) {
-                    $scope.$root.rsaKeyBatchList = [];
-                    $scope.queryBase($resource(URLPrefix + 'RsaKeyBatchList/0'), {}, ok1);
-                }
+                $scope.$root.rsaKeyBatchList = [];
+                $scope.queryBase($resource(URLPrefix + 'RsaKeyBatchList/0'), {}, ok1);
             },
             retrieveRootCertList :  function($scope) {
                 var ok1 = function(ret) {
@@ -929,10 +927,8 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.rootCertList)) {
-                    $scope.$root.rootCertList = [];
-                    $scope.queryBase($resource(URLPrefix + 'RootCertList'), {}, ok1);
-                }
+                $scope.$root.rootCertList = [];
+                $scope.queryBase($resource(URLPrefix + 'RootCertList'), {}, ok1);
             },
             retrieveSecretCertList :  function($scope) {
                 var ok1 = function(ret) {
@@ -942,10 +938,8 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.secretCertList)) {
-                    $scope.$root.secretCertList = [];
-                    $scope.queryBase($resource(URLPrefix + 'SecretCertList'), {}, ok1);
-                }
+                $scope.$root.secretCertList = [];
+                $scope.queryBase($resource(URLPrefix + 'SecretCertList'), {}, ok1);
             },
             retrieveUsersList :  function($scope) {
                 var ok1 = function(ret) {
@@ -955,10 +949,8 @@ angular.module('myApp.services', ['ngResource'])
                         });
                     }
                 };
-                if (angular.isUndefined($scope.$root.userList)) {
-                    $scope.$root.userList = [];
-                    $scope.queryBase($resource(URLPrefix + 'UsersList'), {}, ok1);
-                }
+                $scope.$root.userList = [];
+                $scope.queryBase($resource(URLPrefix + 'UsersList'), {}, ok1);
             },
             setKeyAbout: function($scope) {
                 $scope.preCommit = function(rec) {

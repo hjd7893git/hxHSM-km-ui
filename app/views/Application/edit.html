@@ -25,7 +25,7 @@
                                 <bi-edit-item item-label="'IP地址列表'" item-tip="'如：192.168.1.1-4, 192.168.2.1'"
                                               item-value="rec.ipList" item-old-value="bak.ipList"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'管控指令集'" item-tip="'如：NC, #3'"
+                                <bi-edit-item item-label="'允许的指令集列表'" item-tip="'如：NC, #3 (为空默认为不限制指令)'"
                                               item-value="rec.commandList" item-old-value="bak.commandList"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'API列表'"
@@ -50,7 +50,6 @@
                                                   item-locked="lock && rec.packType == 0"></bi-edit-item>
                                 </div>
                                 <bi-select-item item-label="'密码机分组'" is-option-field="'true'"
-                                                item-margin="'bi-margin-b0'"
                                                 item-value="rec.groupId" item-old-value="bak.groupId" item-locked="lock"
                                                 item-options="groupList"></bi-select-item>
                             </form>

@@ -1,9 +1,8 @@
 <div>
     <table class="table table-condensed bi-margin-b0" style="margin-top: -1px;">
         <tr ng-repeat="op in rowOperations">
-            <td class="his-col-id">{{op.seq}}</td>
             <td class="his-col-op">{{op.action|optionName:'action'}}</td>
-            <td class="his-col-ts">{{op.date|biDate}}&nbsp;{{op.time|biTime}}</td>
+            <td class="his-col-ts">{{op.journalDate|biDate}}&nbsp;{{op.time|biTime}}</td>
             <td class="his-col-uid">{{op.userId}}</td>
         </tr>
     </table>

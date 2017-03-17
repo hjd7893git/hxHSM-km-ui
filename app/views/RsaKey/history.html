@@ -1,34 +1,38 @@
 <div class="panel-collapse" role="tabpanel" bs-collapse-target>
     <div class="panel-group" role="tablist">
         <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;RSA密钥<code>【&nbsp;{{rec.id}}&nbsp;】</code>的维护记录</div>
+            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;RSA密钥<code>【&nbsp;{{rec.serviceIndex}}&nbsp;】</code>的维护记录</div>
             <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
                 <ul class="list-group">
                     <li class="list-group-item bi-ptb0">
                         <div class="panel-body bi-pad0">
                             <table class="table table-condensed bg-white bi-margin-b0">
                                 <thead><tr>
-                                    <th>标识</th>
+                                    <th>行内系统</th>
                                     <th>索引</th>
-                                    <th>批次</th>
                                     <th>私钥</th>
                                     <th>公钥</th>
                                     <th>生成时间</th>
                                     <th>使用状态</th>
-                                    <th>维护类型</th><th class="his-col-id">序号</th><th class="his-col-op">操作</th><th class="his-col-ts">时间戳</th><th class="his-col-uid">操作员</th></tr>
+                                    <th>维护类型</th><th class="his-col-op">操作</th><th class="his-col-ts">时间戳</th><th class="his-col-uid">操作员</th></tr>
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="his in histories">
-                                    <td>{{his.id}}</td>
+                                    <td>{{r.rec.systemId|optionName:systemList}}</td>
                                     <td>{{his.serviceIndex}}</td>
-                                    <td>{{his.batchId}}</td>
                                     <td>{{his.privateKeyValue|more:32}}</td>
                                     <td>{{his.publicKeyValue|more:32}}</td>
                                     <td>{{his.createDatetime}}</td>
                                     <td>{{his.useStatus}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">
-                                        <bi-history-columns row-operations="his.operations"></bi-history-columns>
+                                        <table class="table table-condensed bi-margin-b0" style="margin-top: -1px;">
+                                            <tr ng-repeat="op in his.operations">
+                                                <td class="his-col-op">{{op.action|optionName:'action'}}</td>
+                                                <td class="his-col-ts">{{op.journalDate|biDate}}&nbsp;{{op.time|biTime}}</td>
+                                                <td class="his-col-uid">{{op.userId|optionName:userList}}</td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                                 </tbody>

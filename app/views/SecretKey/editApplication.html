@@ -1,0 +1,63 @@
+<div class="panel-collapse" role="tabpanel" bs-collapse-target>
+    <div class="panel-group" role="tablist">
+        <div class="panel panel-default">
+            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{ref.opType|optionName:'opType'}}&nbsp;-&nbsp;密码机<code>【&nbsp;{{rec.deviceNumber}}&nbsp;】</code>上架信息</div>
+            <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="panel-body bi-pad0">
+                            <form class="form-horizontal" name="{{::thePageId}}Form">
+                                <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
+                                              item-value="ref.rec.id" item-old-value="ref.bak.id"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'渠道'" item-tip="'为3-8位的大写字母'" item-name="'symbol'" item-required="'true'"
+                                              item-value="ref.rec.symbol" item-old-value="ref.bak.symbol"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'名称'" item-tip="'中文名称'"
+                                              item-value="ref.rec.name" item-old-value="ref.bak.name"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'英文名称'"
+                                              item-value="ref.rec.nameEn" item-old-value="ref.bak.nameEn"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-text-item item-label="'简介'"
+                                              item-value="ref.rec.summary" item-old-value="ref.bak.summary"
+                                              item-locked="'true'"></bi-text-item>
+                                <bi-edit-item item-label="'IP地址列表'" item-tip="'如：192.168.1.1-4, 192.168.2.1'"
+                                              item-value="ref.rec.ipList" item-old-value="ref.bak.ipList"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'允许的指令集列表'" item-tip="'如：NC, #3 (为空默认为不限制指令)'"
+                                              item-value="ref.rec.commandList" item-old-value="ref.bak.commandList"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-edit-item item-label="'API列表'"
+                                              item-value="ref.rec.apiList" item-old-value="ref.bak.apiList"
+                                              item-locked="'true'"></bi-edit-item>
+                                <bi-select-item item-label="'客户端编码'" item-data-type="'text'" item-options="'appEncode'|theOption" item-name="'encode'" item-required="'true'"
+                                                item-value="ref.rec.encode" item-old-value="ref.bak.encode"
+                                                item-locked="'true'"></bi-select-item>
+                                <bi-select-item item-label="'连接类型'" item-options="'shortConnection'|theOption" item-name="'shortConnection'" item-required="'true'"
+                                                item-value="ref.rec.shortConnection" item-old-value="ref.bak.shortConnection"
+                                                item-locked="'true'"></bi-select-item>
+                                <bi-select-item item-label="'应答类型'" item-options="'syncRqRs'|theOption" item-name="'syncRqRs'" item-required="'true'"
+                                                item-value="ref.rec.syncRqRs" item-old-value="ref.bak.syncRqRs"
+                                                item-locked="'true'"></bi-select-item>
+                                <bi-select-item item-label="'报文类型'" item-options="'packType'|theOption" item-name="'packType'" item-required="'true'"
+                                                item-value="ref.rec.packType" item-old-value="ref.bak.packType"
+                                                item-locked="'true'"></bi-select-item>
+                                <div ng-if="rec.packType == 0 && !lock">
+                                    <bi-edit-item item-label="'报文头长'" item-data-type="'number'" item-name="'headLength'"
+                                                  item-value="ref.rec.headLength" item-required="'true'"
+                                                  item-old-value="ref.bak.headLength"
+                                                  item-locked="'true'"></bi-edit-item>
+                                </div>
+                                <bi-select-item item-label="'密码机分组'" is-option-field="'true'"
+                                                item-value="ref.rec.groupId" item-old-value="ref.bak.groupId" item-locked="'true'"
+                                                item-options="groupList"></bi-select-item>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <bi-two-ref-check-buttons></bi-two-ref-check-buttons>
+            </div>
+        </div>
+    </div>
+</div>

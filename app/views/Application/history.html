@@ -8,33 +8,33 @@
                         <div class="panel-body bi-pad0">
                             <table class="table table-condensed bg-white bi-margin-b0">
                                 <thead><tr>
-                                    <th>标识</th>
                                     <th>渠道</th>
                                     <th>名称</th>
-                                    <th>英文名称</th>
                                     <th>客户端编码</th>
                                     <th>是否短连接</th>
-                                    <th>同步请求应答</th>
                                     <th>可接收报文类型</th>
                                     <th>报文头长</th>
                                     <th>密码机分组</th>
-                                    <th>维护类型</th><th class="his-col-id">序号</th><th class="his-col-op">操作</th><th class="his-col-ts">时间戳</th><th class="his-col-uid">操作员</th></tr>
+                                    <th>维护类型</th><th class="his-col-op">操作</th><th class="his-col-ts">时间戳</th><th class="his-col-uid">操作员</th></tr>
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="his in histories">
-                                    <td>{{his.id}}</td>
                                     <td>{{his.symbol}}</td>
                                     <td>{{his.name}}</td>
-                                    <td>{{his.nameEn}}</td>
-                                    <td>{{his.appEncode|optionName:'appEncode'}}</td>
+                                    <td>{{his.encode|optionName:'appEncode'}}</td>
                                     <td>{{his.shortConnection|optionName:'YesNo'}}</td>
-                                    <td>{{his.syncRqRs|optionName:'YesNo'}}</td>
                                     <td>{{his.packType|optionName:'packType'}}</td>
                                     <td>{{his.headLength}}</td>
                                     <td>{{his.groupId|optionName:groupList}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">
-                                        <bi-history-columns row-operations="his.operations"></bi-history-columns>
+                                        <table class="table table-condensed bi-margin-b0" style="margin-top: -1px;">
+                                            <tr ng-repeat="op in his.operations">
+                                                <td class="his-col-op">{{op.action|optionName:'action'}}</td>
+                                                <td class="his-col-ts">{{op.journalDate|biDate}}&nbsp;{{op.time|biTime}}</td>
+                                                <td class="his-col-uid">{{op.userId|optionName:userList}}</td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                                 </tbody>

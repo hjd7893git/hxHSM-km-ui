@@ -10,25 +10,30 @@
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'索引'" item-tip="'加密服务使用'"
+                                <bi-edit-item item-label="'索引'" item-tip="'加密服务使用'" item-required="'true'"
                                               item-value="rec.serviceIndex" item-old-value="bak.serviceIndex"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'批次'"
-                                              item-value="rec.batchId" item-old-value="bak.batchId"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'私钥'"
-                                              item-value="rec.privateKeyValue" item-old-value="bak.privateKeyValue"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'公钥'"
-                                              item-value="rec.publicKeyValue" item-old-value="bak.publicKeyValue"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-select-item item-label="'应用'" item-options="applicationList"
+                                <bi-select-item item-label="'密钥模长'" item-options="'keyMode'|theOption" item-data-type="'text'"
+                                                item-value="rec.keyMode" item-old-value="bak.keyMode" item-required="'true'"
+                                                item-locked="lock"></bi-select-item>
+                                <div ng-show="rec.keyMode != 'SM2-256'">
+                                    <bi-select-item item-label="'密钥指数'" item-options="'keyExponential'|theOption" item-data-type="'text'"
+                                                    item-value="rec.keyExponential" item-old-value="bak.keyExponential" item-required="'true'"
+                                                    item-locked="lock"></bi-select-item>
+                                </div>
+                                <bi-edit-item item-label="'私钥'" item-value="rec.privateKeyValue" item-old-value="bak.privateKeyValue"
+                                              item-required="'true'" item-locked="lock"></bi-edit-item>
+                                <bi-edit-item item-label="'公钥'" item-value="rec.publicKeyValue" item-old-value="bak.publicKeyValue"
+                                              item-required="'true'" item-locked="lock"></bi-edit-item>
+                                <bi-select-item item-label="'行内系统'" item-options="systemList" item-required="'true'"
+                                                item-value="rec.systemId" item-old-value="bak.systemId" item-locked="lock"></bi-select-item>
+                                <bi-select-item item-label="'接入渠道'" item-options="applicationList" item-required="'true'"
                                                 item-value="rec.applicationId" item-old-value="bak.applicationId"
                                                 item-locked="lock"></bi-select-item>
-                                <bi-date-item item-label="'生成时间'" item-data-type="'datetime-local'"
+                                <bi-date-item item-label="'创建时间'" item-data-type="'datetime-local'" item-required="'true'"
                                               item-value="rec.createDatetime" item-old-value="bak.createDatetime"
                                               item-locked="lock"></bi-date-item>
-                                <bi-select-item item-label="'使用状态'" item-options="'RSAStatus'|theOption"
+                                <bi-select-item item-label="'使用状态'" item-options="'RSAStatus'|theOption" item-required="'true'"
                                               item-value="rec.useStatus" item-old-value="bak.useStatus" item-margin="'bi-margin-b0'"
                                               item-locked="lock"></bi-select-item>
                             </form>

@@ -8,7 +8,6 @@
                         <div class="panel-body bi-pad0">
                             <table class="table table-condensed bg-white bi-margin-b0">
                                 <thead><tr>
-                                    <th>标识</th>
                                     <th>机构</th>
                                     <th>密钥类型</th>
                                     <th>计划数量</th>
@@ -17,11 +16,10 @@
                                     <th>结束时间</th>
                                     <th>完成数量</th>
                                     <th>批次状态</th>
-                                    <th>维护类型</th><th class="his-col-id">序号</th><th class="his-col-op">操作</th><th class="his-col-ts">时间戳</th><th class="his-col-uid">操作员</th></tr>
+                                    <th>维护类型</th><th class="his-col-op">操作</th><th class="his-col-ts">时间戳</th><th class="his-col-uid">操作员</th></tr>
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="his in histories">
-                                    <td>{{his.id}}</td>
                                     <td>{{his.branchId|optionName:branchList}}</td>
                                     <td>{{his.keyScheme}}</td>
                                     <td>{{his.planQuantity}}</td>
@@ -32,7 +30,13 @@
                                     <td>{{his.batchStatus|optionName:'batchStatus'}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">
-                                        <bi-history-columns row-operations="his.operations"></bi-history-columns>
+                                        <table class="table table-condensed bi-margin-b0" style="margin-top: -1px;">
+                                            <tr ng-repeat="op in his.operations">
+                                                <td class="his-col-op">{{op.action|optionName:'action'}}</td>
+                                                <td class="his-col-ts">{{op.journalDate|biDate}}&nbsp;{{op.time|biTime}}</td>
+                                                <td class="his-col-uid">{{op.userId|optionName:userList}}</td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                                 </tbody>

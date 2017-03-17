@@ -14,12 +14,11 @@
                                 <form class="form-horizontal">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <bi-query-item item-label="'标识'" item-tip="'大于0的整数'" item-value="qry.id"></bi-query-item>
-                                            <bi-query-select item-label="'生产商'" item-value="qry.producerId" item-options="companyList"></bi-query-select>
+                                            <bi-query-item item-label="'型号'" item-tip="'文本,可模糊匹配'" item-value="qry.model"></bi-query-item>
                                             <bi-query-action></bi-query-action>
                                         </div>
                                         <div class="col-md-6">
-                                            <bi-query-item item-label="'型号'" item-value="qry.model"></bi-query-item>
+                                            <bi-query-select item-label="'生产商'" item-value="qry.producerId" item-options="companyList"></bi-query-select>
                                             <bi-query-select item-label="'供应商'" item-value="qry.supplierId" item-options="companyList"></bi-query-select>
                                         </div>
                                     </div>
@@ -31,7 +30,7 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th><th>型号</th><th>生产商</th><th>供应商</th><th>备注</th>
+                                <th>型号</th><th>生产商</th><th>供应商</th><th>备注</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -40,7 +39,6 @@
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
-                                <td>{{r.rec.id}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.model}}</a></td>
                                 <td>{{r.rec.producerId|optionName:companyList}}</td>
                                 <td>{{r.rec.supplierId|optionName:companyList}}</td>

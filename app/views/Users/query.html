@@ -13,13 +13,12 @@
                             <div class="panel-body bi-pad0">
                                 <form class="form-horizontal">
                                     <div class="col-md-6">
-                                        <bi-query-item item-label="'标识'" item-tip="'大于0的整数'" item-value="qry.id"></bi-query-item>
-                                        <bi-query-item item-label="'用户名'" item-value="qry.mobile"></bi-query-item>
+                                        <bi-query-item item-label="'用户名'" item-tip="'文本,可模糊匹配'" item-value="qry.mobile"></bi-query-item>
+                                        <bi-query-select item-label="'角色'" item-value="qry.roleId" item-options="roleList"></bi-query-select>
                                         <bi-query-action></bi-query-action>
                                     </div>
                                     <div class="col-md-6">
                                         <bi-query-item item-label="'姓名'" item-tip="'文本,可模糊匹配'" item-value="qry.name"></bi-query-item>
-                                        <bi-query-select item-label="'性别'" item-value="qry.sex" item-options="'sex'|theOption"></bi-query-select>
                                     </div>
                                 </form>
                             </div>
@@ -29,7 +28,7 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th><th>用户名</th><th>姓名</th><th>性别</th><th>所属部门</th></tr>
+                                <th>用户名</th><th>姓名</th><th>角色</th><th>所属部门</th></tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">
@@ -37,10 +36,9 @@
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
                                     <i class="fa fa-fw fa-{{r.rec.opType|optionName:'opTypeIcon'}} text-danger" ng-show="r.rec.bizSeq"></i>
                                 </td>
-                                <td>{{r.rec.id}}</td>
                                 <td>{{r.rec.mobile}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.name}}</a></td>
-                                <td>{{r.rec.sex | optionName:'sex'}}</td>
+                                <td>{{r.rec.roleId | optionName:roleList}}</td>
                                 <td>{{r.rec.departmentName}}</td>
                             </tr>
                             </tbody>

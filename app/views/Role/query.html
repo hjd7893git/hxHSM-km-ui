@@ -13,11 +13,8 @@
                             <div class="panel-body bi-pad0">
                                 <form class="form-horizontal">
                                     <div class="col-md-6">
-                                        <bi-query-item item-label="'标识'" item-tip="'大于0的整数'" item-value="qry.id"></bi-query-item>
-                                        <bi-query-action></bi-query-action>
-                                    </div>
-                                    <div class="col-md-6">
                                         <bi-query-item item-label="'名称'" item-tip="'文本,可模糊匹配'" item-value="qry.name"></bi-query-item>
+                                        <bi-query-action></bi-query-action>
                                     </div>
                                 </form>
                             </div>
@@ -27,7 +24,7 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th><th>名称</th></tr>
+                                <th>名称</th><th>描述</th></tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">
@@ -35,8 +32,8 @@
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
                                     <i class="fa fa-{{r.rec.opType|optionName:'opTypeIcon'}} text-danger" ng-show="r.rec.bizSeq"></i>
                                 </td>
-                                <td>{{r.rec.id}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.name}}</a></td>
+                                <td>{{r.rec.description}}</td>
                             </tr>
                             </tbody>
                         </table>

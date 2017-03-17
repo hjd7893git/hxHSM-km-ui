@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-header">
             <div style="padding-top: 1px;">
-                <a href="#/views/login"><img src="images/logo-corp.png" class="bLogo" alt="logo"/></a>
+                <img onclick="window.location.href='/';" src="images/logo-corp.png" class="bLogo" alt="logo"/>
             </div>
         </div>
         <div ng-model="signedUp" ng-init="signedUp = false" ng-if="signedUp" class="collapse navbar-collapse" role="navigation" style="margin-top: 7px;">
@@ -12,40 +12,44 @@
                         密钥管理 <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#/views/System">系统</a></li>
-                        <li><a href="#/views/SystemKeyDefine">系统密钥方案</a></li>
+                        <li><a href="#/views/System">行内系统信息维护</a></li>
+                        <li><a href="#/views/KeyDefine">密钥方案管理</a></li>
+                        <li><a href="#/views/SecretKey">对称密钥管理</a></li>
+                        <li><a href="#/views/RsaKey">非对称密钥管理</a></li>
+                        <!--<li role="separator" class="divider"></li>
+                        <li><a href="#/views/Branch">分支行机构维护</a></li>
+                        <li><a href="#/views/Equipment">设备信息维护</a></li>
+                        <li><a href="#/views/Partner">合作伙伴信息维护</a></li>
+                        <li><a href="#/views/PartnerBranch">合作伙伴分支机构维护</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#/views/Branch">分支行</a></li>
-                        <li><a href="#/views/Equipment">设备</a></li>
-                        <li><a href="#/views/Partner">合作伙伴</a></li>
-                        <li><a href="#/views/PartnerBranch">合作伙伴分支</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#/views/SecretKey">密钥</a></li>
-                        <li><a href="#/views/SecretCert">发卡行证书</a></li>
-                        <li><a href="#/views/SecretCertBand">发卡行证书绑定</a></li>
-                        <li><a href="#/views/RootCert">根CA证书</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#/views/RsaKeyBatch">制卡数据批次</a></li>
-                        <li><a href="#/views/RsaKey">制卡数据</a></li>
+                        <li><a href="#/views/System">卡系统信息维护</a></li>
+                        <li><a href="#/views/Branch">分支行机构维护</a></li>
+                        <li><a href="#/views/SystemKeyDefine">卡系统密钥方案管理</a></li>
+                        <li><a href="#/views/SecretKey">卡密钥管理</a></li>
+                        <li><a href="#/views/SecretCert">发卡行证书管理</a></li>
+                        <li><a href="#/views/SecretCertBand">发卡行证书绑定管理</a></li>
+                        <li><a href="#/views/RootCert">根CA证书管理</a></li>
+                        <li><a href="#/views/RsaKeyBatch">制卡数据批次管理</a></li>
+                        <li><a href="#/views/RsaKey">制卡数据管理</a></li>-->
                     </ul>
                 </li>
                 <li role="presentation" class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false">
-                        加密服务 <span class="caret"></span>
+                        安全服务管理 <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#/views/Application">加密应用</a></li>
+                        <li><a href="#/views/Application">渠道接入管理</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#/views/Host">主机</a></li>
-                        <li><a href="#/views/Clusters">主机集群</a></li>
+                        <li><a href="#/views/Clusters">安全服务集群管理</a></li>
+                        <li><a href="#/views/Host">安全服务节点管理</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#/views/Company">厂商</a></li>
-                        <li><a href="#/views/MachineModel">密码机型号</a></li>
-                        <li><a href="#/views/Machine">密码机信息</a></li>
-                        <li><a href="#/views/MachineReady">密码机上架</a></li>
-                        <li><a href="#/views/GroupDefine">密码机分组</a></li>
+                        <li><a href="#/views/Company">密码机厂商信息维护</a></li>
+                        <li><a href="#/views/MachineModel">密码机设备型号信息维护</a></li>
+                        <li><a href="#/views/Machine">密码机设备信息维护</a></li>
+                        <li><a href="#/views/GroupDefine">密码机设备分组管理</a></li>
+                        <li><a href="#/views/MachineReady">密码机设备上架管理</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#/views/Task">任务</a></li>
+                        <li><a href="#/views/Task">变更状态查询</a></li>
                     </ul>
                 </li>
                 <li><a href="#/views/monitor">运维监控</a></li>
@@ -54,9 +58,8 @@
                         权限管理 <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#/views/Users">用户</a></li>
-                        <li><a href="#/views/Role">角色</a></li>
-                        <li><a href="#/views/Menu">菜单</a></li>
+                        <li><a href="#/views/Role">角色管理</a></li>
+                        <li><a href="#/views/Users">用户管理</a></li>
                     </ul>
                 </li>
                 <li role="presentation" class="dropdown">

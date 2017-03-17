@@ -8,7 +8,6 @@
                         <div class="panel-body bi-pad0">
                             <table class="table table-condensed bg-white bi-margin-b0">
                                 <thead><tr>
-                                    <th>标识</th>
                                     <th>发卡行证书id</th>
                                     <th>MDK-AC</th>
                                     <th>MDK-ENC</th>
@@ -19,7 +18,6 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="his in histories">
-                                    <td>{{his.id}}</td>
                                     <td>{{his.secretCertId}}</td>
                                     <td>{{his.udkAc}}</td>
                                     <td>{{his.udkEnc}}</td>
@@ -28,7 +26,13 @@
                                     <td>{{his.kekUdk}}</td>
                                     <td>{{his.kekKmc}}</td>
                                     <td colspan="5" style="padding: 0;">
-                                        <bi-history-columns row-operations="his.operations"></bi-history-columns>
+                                        <table class="table table-condensed bi-margin-b0" style="margin-top: -1px;">
+                                            <tr ng-repeat="op in his.operations">
+                                                <td class="his-col-op">{{op.action|optionName:'action'}}</td>
+                                                <td class="his-col-ts">{{op.journalDate|biDate}}&nbsp;{{op.time|biTime}}</td>
+                                                <td class="his-col-uid">{{op.userId|optionName:userList}}</td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                                 </tbody>
