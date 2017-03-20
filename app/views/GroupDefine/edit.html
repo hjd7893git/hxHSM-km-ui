@@ -25,6 +25,38 @@
                                 <bi-select-item item-label="'密码机编码'" item-options="'hsmEncode'|theOption" item-name="'hsmEncode'" item-required="'true'"
                                                 item-value="rec.hsmEncode" item-old-value="bak.hsmEncode"
                                                 item-locked="lock"></bi-select-item>
+                                <div class="form-group bi-margin-b0">
+                                    <label class="col-sm-2 control-label">上架状态</label>
+                                    <div class="col-sm-6">
+                                        <table class="table table-condensed bi-margin-b0 crud-r" style="margin-top: -1px;">
+                                            <thead><tr>
+                                                <th><i class="fa fa-square-o"></i></th>
+                                                <th>IP</th><th style="width: 150px; text-align: left;">机房</th><th>机位</th><th>状态</th>
+                                                <th style="width: 50px;">
+                                                    <a ng-show="rdydrop"><i ng-click="rdydrop=false" class="fa fa-chevron-up pointer"></i></a>
+                                                    <a ng-show="!rdydrop"><i ng-click="rdydrop=true" class="fa fa-chevron-down pointer"></i></a></th></tr>
+                                            </thead>
+                                            <tr ng-repeat="op in rec.readies" ng-show="rdydrop">
+                                                <td class="text-center">
+                                                    <i class="fa fa-{{op.rec.opType|optionName:'opTypeIcon'}} text-danger"></i>
+                                                </td>
+                                                <td><a href ng-click="showRefEditor(rec.readies, $index, 'editUp', 'Machine')">{{op.rec.ip}}</a></td>
+                                                <td>{{op.rec.room}}</td>
+                                                <td>{{op.rec.position}}</td>
+                                                <td>{{op.rec.status|optionName:'machineStatus'}}</td>
+                                                <td>
+                                                    <a ng-click="showRefEditor(rec.readies, $index, 'editSystem')"><i class="fa fa-search"></i></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div ng-if="rec.opType == 2" class="col-sm-4 trimL bi-old-val" style="padding-top: 12px;">
+                                        <div class='weixin right' ng-if="refChanged(rec.readies)">
+                                            <div class='weixin-content'>做过关联维护</div>
+                                            <div class="arrow" style="margin-top: 0;"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </li>

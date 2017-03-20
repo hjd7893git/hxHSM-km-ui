@@ -1,14 +1,13 @@
 <div class="panel-collapse" role="tabpanel" bs-collapse-target>
     <div class="panel-group" role="tablist">
         <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;系统密钥定义<code>【&nbsp;{{rec.keyName}}&nbsp;】</code>的维护记录</div>
+            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;密钥方案<code>【&nbsp;{{rec.keyName}}&nbsp;】</code>的维护记录</div>
             <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
                 <ul class="list-group">
                     <li class="list-group-item bi-ptb0">
                         <div class="panel-body bi-pad0">
                             <table class="table table-condensed bg-white bi-margin-b0">
                                 <thead><tr>
-                                    <th>系统</th>
                                     <th>密钥定义名称</th>
                                     <th>是否ZMK加密</th>
                                     <th>密钥类型</th>
@@ -21,7 +20,6 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="his in histories">
-                                    <td>{{his.systemId|optionName: systemList}}</td>
                                     <td>{{his.keyName}}</td>
                                     <td>{{his.createMode|optionName:'YesNo'}}</td>
                                     <td>{{his.keyType}}</td>

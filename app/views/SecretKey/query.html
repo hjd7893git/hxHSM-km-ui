@@ -19,7 +19,6 @@
                                     </div>
                                     <div class="col-md-6">
                                         <bi-query-select item-label="'密钥定义'" item-value="qry.keyDefineId" item-options="keyDefineNameList"></bi-query-select>
-                                        <bi-query-select item-label="'接入渠道'" item-value="qry.applicationId" item-options="applicationList"></bi-query-select>
                                     </div>
                                 </form>
                             </div>
@@ -29,7 +28,7 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>密钥定义</th><th>安全服务索引</th><th>密钥值</th><th>校验值</th><th>使用状态</th></tr>
+                                <th>密钥定义</th><th>安全服务索引</th><th>密钥值</th><th>校验值</th><th>修改时间</th><th>使用状态</th></tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">
@@ -41,6 +40,7 @@
                                 <td><a href ng-click="showEditor($index)">{{r.rec.serviceIndex}}</a></td>
                                 <td>{{r.rec.keyValue}}</td>
                                 <td>{{r.rec.checkValue}}</td>
+                                <td>{{r.rec.createDatetime|biDateTime}}</td>
                                 <td>{{r.rec.useStatus | optionName:'keyUseStatus'}}</td>
                             </tr>
                             </tbody>
