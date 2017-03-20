@@ -9,24 +9,26 @@
                             <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'名称'" item-name="'name'" item-required="'true'"
+                                <bi-edit-item item-label="'名称'" item-name="'name'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9-_]+$'"
                                               item-value="rec.name" item-old-value="bak.name" item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'描述'" item-tip="'集群描述'"
-                                              item-value="rec.description" item-old-value="bak.description" item-locked="lock"></bi-edit-item>
+                                              item-value="rec.description" item-old-value="bak.description" item-locked="lock" item-required="'true'"
+                                                item-name="'description'"
+                                ></bi-edit-item>
                                 <bi-edit-item item-label="'密钥窗口期(秒)'" item-tip="'密钥更新后，旧密钥保留时长'"
-                                              item-data-type="'number'" item-required="'true'"
+                                              item-data-type="'number'" item-required="'true'"   item-name="'windowPeriod'"
                                               item-value="rec.windowPeriod" item-old-value="bak.windowPeriod" item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'网络检测周期(分钟)'" item-tip="'防止长连接意外断开，一般为1分钟一次'"
-                                              item-data-type="'number'" item-required="'true'"
+                                              item-data-type="'number'" item-required="'true'" item-required="'true'"   item-name="'tcpHeartBeat'"
                                               item-value="rec.tcpHeartBeat" item-old-value="bak.tcpHeartBeat" item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'故障恢复检测(分钟)'" item-tip="'密码机故障恢复检查周期'"
-                                              item-data-type="'number'" item-required="'true'"
+                                              item-data-type="'number'" item-required="'true'" item-required="'true'"   item-name="'faultRecovery'"
                                               item-value="rec.faultRecovery" item-old-value="bak.faultRecovery" item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'配置刷新周期(分钟)'" item-tip="'安全服务配置自主检查周期'"
-                                              item-data-type="'number'" item-required="'true'"
+                                              item-data-type="'number'" item-required="'true'" item-required="'true'"   item-name="'configFlush'"
                                               item-value="rec.configFlush" item-old-value="bak.configFlush" item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'缓存刷新周期(分钟)'" item-tip="'安全服务密钥自主检查周期'"
-                                              item-data-type="'number'" item-required="'true'"
+                                              item-data-type="'number'" item-required="'true'" item-required="'true'"   item-name="'cacheFlush'"
                                               item-value="rec.cacheFlush" item-old-value="bak.cacheFlush" item-locked="lock"></bi-edit-item>
                             </form>
                         </div>

@@ -10,7 +10,7 @@
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'安全服务索引'" item-tip="'安全服务使用'" item-required="'true'"
+                                <bi-edit-item item-label="'安全服务索引'" item-tip="'安全服务使用'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9-_]+$'" item-name="'serviceIndex'"
                                               item-value="rec.serviceIndex" item-old-value="bak.serviceIndex"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'密钥模长'" item-options="'keyMode'|theOption" item-data-type="'text'"
@@ -21,9 +21,9 @@
                                                     item-value="rec.keyExponential" item-old-value="bak.keyExponential" item-required="'true'"
                                                     item-locked="lock"></bi-select-item>
                                 </div>
-                                <bi-edit-item item-label="'私钥'" item-value="rec.privateKeyValue" item-old-value="bak.privateKeyValue"
+                                <bi-edit-item item-label="'私钥'" item-value="rec.privateKeyValue" item-old-value="bak.privateKeyValue" item-reg-expr="'^[A-F0-9]+$'" item-name="'privateKeyValue'"
                                               item-required="'true'" item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'公钥'" item-value="rec.publicKeyValue" item-old-value="bak.publicKeyValue"
+                                <bi-edit-item item-label="'公钥'" item-value="rec.publicKeyValue" item-old-value="bak.publicKeyValue"  item-reg-expr="'^[A-F0-9]+$'" item-name="'publicKeyValue'"
                                               item-required="'true'" item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'行内系统'" item-options="systemList" item-required="'true'"
                                                 item-value="rec.systemId" item-old-value="bak.systemId" item-locked="lock"></bi-select-item>

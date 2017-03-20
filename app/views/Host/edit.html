@@ -10,10 +10,10 @@
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'节点名'" item-name="'nodeName'" item-required="'true'"
+                                <bi-edit-item item-label="'节点名'" item-name="'nodeName'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9.]+$'"
                                               item-value="rec.nodeName" item-old-value="bak.nodeName"
                                               item-locked="lock || opType == 2"></bi-edit-item>
-                                <bi-edit-item item-label="'机器硬件'" item-name="'hardware'" item-required="'true'"
+                                <bi-edit-item item-label="'机器硬件'" item-name="'hardware'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9 ]+$'"
                                               item-value="rec.hardware" item-old-value="bak.hardware"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'IP地址'" item-tip="'如：192.168.2.1'" item-name="'ip'" item-required="'true'"  item-reg-expr="'[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}'"

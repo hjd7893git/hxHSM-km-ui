@@ -281,6 +281,7 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.isIndexExist = true;
                     $scope.isCreateKey = true;
                     $scope.returnQuery('query');
+
                 };
                 $scope.isNotInsertUp = function() {
                     if ($scope.opType == 1)
@@ -603,6 +604,14 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.isClusterExist = false;
                         $scope.rec.systems = [];
                         $scope.rec.applications = [];
+                    }if($scope.tableId == 'Machine'||$scope.tableId =='RsaKey'||$scope.tableId =='MachineReady'){
+                        $scope.rec.supplyDate="";
+                        $scope.rec.produceDate="";
+
+                        $scope.rec.createDatetime="";
+
+                        $scope.rec.issueDate="";
+                        $scope.rec.readyDate="";
                     }
                     if (angular.isDefined($scope.preInsert))
                         $scope.preInsert($scope.rec);

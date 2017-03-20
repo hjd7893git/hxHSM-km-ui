@@ -19,13 +19,13 @@
                                 <bi-select-item item-label="'环境'" item-options="'env'|theOption" item-name="'env'" item-required="'true'"
                                                 item-value="rec.env" item-old-value="bak.env"
                                                 item-locked="lock"></bi-select-item>
-                                <bi-edit-item item-label="'机房'" item-name="'room'" item-required="'true'"
+                                <bi-edit-item item-label="'机房'" item-name="'room'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9-_ ]+$'"
                                               item-value="rec.room" item-old-value="bak.room"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'机位'" item-name="'position'" item-required="'true'"
+                                <bi-edit-item item-label="'机位'" item-name="'position'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9-_ ]+$'"
                                               item-value="rec.position" item-old-value="bak.position"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'IP:端口'" item-name="'ip'" item-required="'true'"
+                                <bi-edit-item item-label="'IP:端口'" item-name="'ip'" item-required="'true'" item-reg-expr="'^[0-9]+$'"
                                               item-value="rec.ip" item-old-value="bak.ip"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'连接池大小'" item-data-type="'number'" item-name="'connectionPoolSize'" item-required="'true'"

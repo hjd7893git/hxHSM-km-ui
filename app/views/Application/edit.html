@@ -28,7 +28,7 @@
                                 <bi-edit-item item-label="'允许的指令集列表'" item-tip="'如：NC, #3'"  item-reg-expr="'^([A-Z0-9#]{2},)*[A-Z0-9#]{2}'" item-name="'commandList'"
                                               item-value="rec.commandList" item-old-value="bak.commandList"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'API列表'"
+                                <bi-edit-item item-label="'API列表'" item-reg-expr="'^([A-Za-z0-9-_]+,)*[A-Za-z0-9-_]+'" item-name="'apiList'"
                                               item-value="rec.apiList" item-old-value="bak.apiList"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'客户端编码'" item-data-type="'text'" item-options="'appEncode'|theOption" item-name="'encode'" item-required="'true'"

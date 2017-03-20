@@ -9,7 +9,7 @@
                             <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'安全服务索引'" item-tip="'一旦设置将无法更改'" item-required="'true'"
+                                <bi-edit-item item-label="'安全服务索引'" item-tip="'一旦设置将无法更改'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9-_]+$'" item-name="'serviceIndex'"
                                               item-value="rec.serviceIndex" item-old-value="bak.serviceIndex" item-locked="isIndexExist"></bi-edit-item>
                                 <bi-select-item item-label="'密钥定义'" item-options="keyDefineNameList" item-required="'true'"
                                                 item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="isCreateKey"></bi-select-item>
@@ -17,9 +17,9 @@
                                                 item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="'true'"></bi-select-item>
                                 <bi-select-item item-label="'密钥标识'" item-options="keyDefineSchemaList"
                                                 item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="'true'"></bi-select-item>
-                                <bi-edit-item item-label="'密钥值'" item-required="'true'"
+                                <bi-edit-item item-label="'密钥值'" item-required="'true'" item-reg-expr="'^([A-F0-9]{16})*[A-F0-9]{16}'" item-name="'keyValue'"
                                               item-value="rec.keyValue" item-old-value="bak.keyValue" item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'校验值'" item-required="'true'"
+                                <bi-edit-item item-label="'校验值'" item-required="'true'" item-reg-expr="'^([A-F0-9]{16})*[A-F0-9]{16}'" item-name="'checkValue'"
                                               item-value="rec.checkValue" item-old-value="bak.checkValue" item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'使用状态'" item-required="'true'" item-options="'keyUseStatus'|theOption"
                                               item-value="rec.useStatus" item-old-value="bak.useStatus" item-locked="lock"></bi-select-item>

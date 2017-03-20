@@ -9,7 +9,7 @@
                             <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'型号'" item-name="'model'" item-required="'true'"
+                                <bi-edit-item item-label="'型号'" item-name="'model'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9 ]+$'"
                                               item-value="rec.model" item-old-value="bak.model" item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'生产商'" item-options="companyList" item-name="'producerId'" item-required="'true'"
                                               item-value="rec.producerId" item-old-value="bak.producerId" item-locked="lock"></bi-select-item>
