@@ -1,7 +1,7 @@
 <div class="panel-collapse" role="tabpanel" bs-collapse-target>
     <div class="panel-group" role="tablist">
         <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{ref.opType|optionName:'opType'}}&nbsp;-&nbsp;密码机<code>【&nbsp;{{rec.deviceNumber}}&nbsp;】</code>上架信息</div>
+            <div class="panel-heading"><i class="fa fa-edit"></i>&nbsp;{{ref.opType|optionName:'opType'}}&nbsp;-&nbsp;密码机<code>【&nbsp;{{ref.rec.ip}}&nbsp;】</code>上架信息</div>
             <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
                 <ul class="list-group">
                     <li class="list-group-item">
@@ -13,9 +13,9 @@
                                                       item-value="ref.rec.id" item-old-value="ref.bak.id" item-locked="'true'"></bi-edit-item>
                                         <bi-date-item item-label="'上架日期'" item-name="'readyDate'" item-required="'true'"
                                                       item-value="ref.rec.readyDate" item-old-value="ref.bak.readyDate" item-locked="ref.lock"></bi-date-item>
-                                        <bi-edit-item item-label="'机房'" item-tip="'输入中文'" item-name="'room'" item-required="'true'" item-reg-expr="'^[\u4e00-\u9fa5]+$'"
+                                        <bi-edit-item item-label="'机房'" item-tip="'输入中文'" item-name="'room'" item-required="'true'"
                                                       item-value="ref.rec.room" item-old-value="ref.bak.room" item-locked="ref.lock"></bi-edit-item>
-                                        <bi-edit-item item-label="'IP:端口'" item-name="'ip'" item-required="'true'" item-reg-expr="'[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}:[0-9]+'"
+                                        <bi-edit-item item-label="'IP:端口'" item-name="'ip'" item-required="'true'"
                                                       item-value="ref.rec.ip" item-old-value="ref.bak.ip" item-locked="ref.lock"></bi-edit-item>
                                         <bi-edit-item item-label="'长连接数'" item-tip="'输入正数'" item-data-type="'number'" item-name="'connectionPoolSize'" item-required="'true'"
                                                       item-value="ref.rec.connectionPoolSize" item-old-value="ref.bak.connectionPoolSize" item-locked="ref.lock"></bi-edit-item>
@@ -34,7 +34,7 @@
                                         <div style="height: 45px;"></div>
                                         <bi-select-item item-label="'环境'" item-options="'env'|theOption" item-name="'env'" item-required="'true'"
                                                         item-value="ref.rec.env" item-old-value="ref.bak.env" item-locked="ref.lock"></bi-select-item>
-                                        <bi-edit-item item-label="'机位'" item-name="'number'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9]+$'"
+                                        <bi-edit-item item-label="'机位'" item-name="'number'" item-required="'true'"
                                                       item-value="ref.rec.position" item-old-value="ref.bak.receiveTimeOut" item-locked="ref.lock"></bi-edit-item>
                                         <bi-edit-item item-label="'超时时间(ms)'" item-tip="'输入正数'" item-data-type="'number'" item-name="'receiveTimeOut'" item-required="'true'"
                                                       item-value="ref.rec.receiveTimeOut" item-old-value="ref.bak.receiveTimeOut" item-locked="ref.lock"></bi-edit-item>
@@ -51,7 +51,7 @@
                         </div>
                     </li>
                 </ul>
-                <bi-two-ref-edit-buttons></bi-two-ref-edit-buttons>
+                <bi-two-ref-check-buttons></bi-two-ref-check-buttons>
             </div>
         </div>
     </div>

@@ -1,17 +1,17 @@
 <div class="panel-collapse" role="tabpanel" bs-collapse-target>
     <div class="panel-group" role="tablist">
         <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;密钥<code>【&nbsp;{{rec.id}}&nbsp;】</code>的维护记录</div>
+            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;密钥<code>【&nbsp;{{rec.serviceIndex}}&nbsp;】</code>的维护记录</div>
             <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
                 <ul class="list-group">
                     <li class="list-group-item bi-ptb0">
                         <div class="panel-body bi-pad0">
                             <table class="table table-condensed bg-white bi-margin-b0">
                                 <thead><tr>
+                                    <th>安全服务索引</th>
                                     <th>密钥定义</th>
                                     <th>密钥值</th>
                                     <th>校验值</th>
-                                    <th>渠道接入</th>
                                     <th>维护类型</th>
                                     <th class="his-col-op">操作</th>
                                     <th class="his-col-ts">操作时间戳</th>
@@ -19,10 +19,10 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="his in histories">
+                                    <td>{{his.serviceIndex}}</td>
                                     <td>{{his.keyDefineId|optionName:keyDefineNameList}}</td>
                                     <td>{{his.keyValue}}</td>
                                     <td>{{his.checkValue}}</td>
-                                    <td>{{his.applicationId|optionName:applicationList}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">
                                         <table class="table table-condensed bi-margin-b0" style="margin-top: -1px;">

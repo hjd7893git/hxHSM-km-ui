@@ -123,6 +123,8 @@ angular.module('myApp.options', ['ngResource'])
             },
             {tableId: 'GroupDefine', title: '密码机设备分组管理', keyInfo: 'name',
                 controller: function($log,$rootScope,$scope,myServer) {
+                    $scope.rdydrop = false;
+                    myServer.retrieveGroupList($scope);
                     myServer.retrieveUsersList($scope);
                     myServer.retrieveClusterList($scope)
                 }
