@@ -175,7 +175,7 @@ angular.module('myApp.components.form', [])
         };
         // 输入域检查, 汉字长度算1, 但没关系, MySQL里也是算1, 都不是按Byte字节算的.
         // 输入域需定义name(封装后定义item-name)才能生效
-        $scope.isValidated = function(n, rqr, min, max) {
+        $scope.isValidated = function(n, rqr, min, max,reg) {
             if (angular.isUndefined(n))
                 return false;
             var p = this.$parent;
@@ -195,6 +195,10 @@ angular.module('myApp.components.form', [])
                 }
                 else if (angular.isDefined(max) && form[n].$error.maxlength) {
                     $scope.inputError = '输入太长';
+                    return true;
+                }
+                else if (angular.isDefined(reg) && form[n].$error.pattern) {
+                    $scope.inputError = '输入不合法';
                     return true;
                 }
             }

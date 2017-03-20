@@ -430,9 +430,9 @@ angular.module('myApp.views', ['ngRoute'])
                 if (angular.isDefined(ele.chosen) && ele.chosen) {
                     $scope.selectedRec = ele;
                     $scope.authorize(ele, action, status);
+                    if ($scope.authorizeState) { $scope.showTips('复核操作成功') }
                 }
             });
-            if ($scope.authorizeState) { $scope.showTips('复核操作成功') }
         };
     }])
     .controller('myDeployCtrl', ['$location', '$scope', '$rootScope', 'myServer', '$log', function($location, $scope, $rootScope, myServer, $log) {

@@ -7,7 +7,8 @@
 angular.module('myApp.services', ['ngResource'])
 
     .factory('myServer', ['$http', '$log', '$q', '$resource', '$modal', '$timeout', function($http, $log, $q, $resource, $modal, $timeout) {
-        var URLPrefix = "service/";
+        var URLPrefix = "http://192.168.0.200:8080/service/";
+//        var URLPrefix = "http://localhost:8088/service/";
         return {
             URLPrefix: URLPrefix,
             call: function(uri, data, m) {
@@ -231,20 +232,24 @@ angular.module('myApp.services', ['ngResource'])
                     return valid;
                 };
                 $scope.addRefRow = function(refRecs, recs, id) {
+                var flag = 0;
                     if (!angular.isDefined(refRecs)) refRecs = [];
                     refRecs.forEach(function(ref){
                         if (ref.rec.id == id) {
                             $scope.showTips('该内容已存在，未重复添加');
+                            flag=1
                             return;
                         }
                     })
-                    recs.forEach(function(rec){
-                        if (rec.id == id) {
-                            var recbuf = rec;
-                            recbuf.opType = 1;
-                            refRecs.push({rec: recbuf});
-                        }
-                    })
+                    if(flag==0){
+                        recs.forEach(function(rec){
+                            if (rec.id == id) {
+                                var recbuf = rec;
+                                recbuf.opType = 1;
+                                refRecs.push({rec: recbuf});
+                            }
+                        })
+                    }
                 };
                 $scope.submitRefEdited = function() {
                     if (!isValidForm(this))

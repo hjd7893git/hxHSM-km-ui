@@ -11,7 +11,7 @@
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
                                 <bi-select-item item-label="'设备类型'" item-options="'equipmentType'|theOption" item-required="'true'" item-name="'equipmentType'"
                                                 item-value="rec.equipmentType" item-old-value="bak.equipmentType" item-locked="lock"></bi-select-item>
-                                <bi-edit-item item-label="'设备编号'" item-tip="'输入中文'" item-required="'true'" item-name="'equipmentNo'"
+                                <bi-edit-item item-label="'设备编号'" item-tip="'输入中文'" item-required="'true'" item-name="'equipmentNo'" item-reg-expr="'^[\u4e00-\u9fa5]+$'"
                                               item-value="rec.equipmentNo" item-old-value="bak.equipmentNo" item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'所属分支行'" item-options="branchList"
                                                 item-margin="((opType == 0 || rec.createKey) && rec.keys && rec.keys.length > 0)|iif:'':'bi-margin-b0':'bi-margin-b0'"

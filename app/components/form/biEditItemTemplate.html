@@ -5,11 +5,14 @@
         <input type="{{itemDataType|ifdef:itemDataType:'text'}}" class="form-control" placeholder="{{itemTip}}"
                ng-model="itemValue"
                ng-disabled="itemLocked" ng-required="itemRequired" ng-minlength="itemMinLength"
-               ng-maxlength="itemMaxLength" name="{{::itemName}}">
+               ng-maxlength="itemMaxLength" name="{{::itemName}}"
+               ng-pattern="itemRegExpr"
+        >
+
 
         <div class="bi-required-inner text-warning" ng-if="::itemRequired" style="font-size: 20px;">*</div>
         <div class="form-control-feedback" aria-hidden="true"
-             ng-show="isValidated(itemName, itemRequired, itemMinLength, itemMaxLength)">
+             ng-show="isValidated(itemName, itemRequired, itemMinLength, itemMaxLength, itemRegExpr)">
             <span class="bi-feedback">{{inputError}}</span>
         </div>
     </div>

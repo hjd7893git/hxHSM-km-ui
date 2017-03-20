@@ -11,7 +11,7 @@
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
                                 <bi-select-item item-label="'型号'" item-options="machineModelList" item-name="'modelId'" item-required="'true'"
                                               item-value="rec.modelId" item-old-value="bak.modelId" item-locked="lock"></bi-select-item>
-                                <bi-edit-item item-label="'批次'" item-tip="'如：AN'" item-name="'batch'" item-required="'true'"
+                                <bi-edit-item item-label="'批次'" item-tip="'如：AN'" item-name="'batch'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9]{2}$'"
                                               item-value="rec.batch" item-old-value="bak.batch" item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'编号'" item-tip="'SJJ1309AN084'" item-name="'number'" item-required="'true'"
                                               item-value="rec.deviceNumber" item-old-value="bak.deviceNumber" item-locked="lock"></bi-edit-item>

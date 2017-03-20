@@ -791,7 +791,13 @@ a:focus {
 .bi-wd400 {
     width: 400px;
 }
+.motu{
+   position: absolute;
+       bottom: 20px;
+       left: 300px;
+       width: 75px;
 
+}
 .rating {
     float:left;
 }
@@ -915,9 +921,9 @@ a:focus {
 }
 /* 改的bootstrap的 */
 .form-control-feedback {
-    right: 16px;
-    width: 100px;
-    text-align: right;
+      right: -105px;
+       width: 120px;
+       text-align: left;
 }
 .bi-feedback {
     height: 34px;
