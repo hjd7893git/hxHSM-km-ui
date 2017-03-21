@@ -14,12 +14,14 @@
                                               item-value="rec.branchId" item-old-value="bak.branchId"
                                               item-locked="lock"></bi-select-item>
                                 <bi-edit-item item-label="'卡数据文件'"
+                                              item-reg-expr="'^[A-Za-z0-9]+$'" item-name="'cardDataFile'"
                                               item-value="rec.cardDataFile" item-old-value="bak.cardDataFile"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'卡数量'" item-tip="'输入正数'" item-data-type="'number'" item-name="'cardQuantity'" item-required="'true'"
                                               item-value="rec.cardQuantity" item-old-value="bak.cardQuantity"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'RSA密钥文件'" item-margin="'bi-margin-b0'"
+                                              item-reg-expr="'^[A-Za-z0-9]+$'" item-name="'rsaKeyFile'"
                                               item-value="rec.rsaKeyFile" item-old-value="bak.rsaKeyFile"
                                               item-locked="lock"></bi-edit-item>
                             </form>
