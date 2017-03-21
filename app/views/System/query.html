@@ -14,11 +14,11 @@
                             <form class="form-horizontal">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <bi-query-item item-label="'代号'" item-value="qry.symbol"></bi-query-item>
+                                        <bi-query-item item-label="'系统代号'" item-value="qry.symbol"></bi-query-item>
                                         <bi-query-action></bi-query-action>
                                     </div>
                                     <div class="col-md-6">
-                                        <bi-query-item item-label="'名称'" item-tip="'文本,可模糊匹配'" item-value="qry.name"></bi-query-item>
+                                        <bi-query-item item-label="'系统名称'" item-tip="'文本,可模糊匹配'" item-value="qry.name"></bi-query-item>
                                     </div>
                                 </div>
                             </form>
@@ -29,7 +29,7 @@
                     <table class="table table-hover table-condensed bg-white crud-r">
                         <thead><tr>
                             <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                            <th>代号</th><th><a ng-click="sortOn('name')">名称</a>&nbsp;<i class="fa fa-sort{{sortByname|iif:'-alpha-asc':'-alpha-desc':''}}"></i></th><th>英文名称</th><th>简介</th></tr>
+                            <th>系统代号</th><th><a ng-click="sortOn('name')">系统名称</a>&nbsp;<i class="fa fa-sort{{sortByname|iif:'-alpha-asc':'-alpha-desc':''}}"></i></th><th>英文名称</th><th>系统简介</th></tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">

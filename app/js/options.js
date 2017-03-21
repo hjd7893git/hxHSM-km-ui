@@ -133,6 +133,7 @@ angular.module('myApp.options', ['ngResource'])
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveUsersList($scope);
                     myServer.retrieveClusterList($scope);
+                    $scope.isNameExist = true;
                 }
             },
             {tableId: 'Journal', title: '操作历史查询',
@@ -226,6 +227,7 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveSystemList($scope);
                     myServer.retrieveApplicationList($scope);
                     myServer.retrieveRsaKeyBatchList($scope);
+                    $scope.isIndexExist = true;
                 }
             },
             {tableId: 'RsaKeyBatch', title:'非对称密钥批次管理',

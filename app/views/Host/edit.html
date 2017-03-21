@@ -12,7 +12,7 @@
                                               item-locked="'true'"></bi-edit-item>
                                 <bi-edit-item item-label="'节点名'" item-name="'nodeName'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9.]+$'"
                                               item-value="rec.nodeName" item-old-value="bak.nodeName"
-                                              item-locked="lock || opType == 2"></bi-edit-item>
+                                              item-locked="opType != 1 && isNameExist"></bi-edit-item>
                                 <bi-edit-item item-label="'机器硬件'" item-name="'hardware'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9-_ ]+$'"
                                               item-value="rec.hardware" item-old-value="bak.hardware"
                                               item-locked="lock"></bi-edit-item>

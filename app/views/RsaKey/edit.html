@@ -12,7 +12,7 @@
                                               item-locked="'true'"></bi-edit-item>
                                 <bi-edit-item item-label="'安全服务索引'" item-tip="'安全服务使用'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9-_]+$'" item-name="'serviceIndex'"
                                               item-value="rec.serviceIndex" item-old-value="bak.serviceIndex"
-                                              item-locked="lock"></bi-edit-item>
+                                              item-locked="opType != 1 && isIndexExist"></bi-edit-item>
                                 <bi-select-item item-label="'密钥模长'" item-options="'keyMode'|theOption" item-data-type="'text'"
                                                 item-value="rec.keyMode" item-old-value="bak.keyMode" item-required="'true'"
                                                 item-locked="lock"></bi-select-item>

@@ -7,7 +7,7 @@
 angular.module('myApp.services', ['ngResource'])
 
     .factory('myServer', ['$http', '$log', '$q', '$resource', '$modal', '$timeout', function($http, $log, $q, $resource, $modal, $timeout) {
-        var URLPrefix = "http://192.168.0.200:8080/service/";
+        var URLPrefix = "service/";
 //        var URLPrefix = "http://localhost:8088/service/";
         return {
             URLPrefix: URLPrefix,
@@ -279,6 +279,7 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.opType = 0;
                     $scope.isClusterExist = true;
                     $scope.isIndexExist = true;
+                    $scope.isNameExist = true;
                     $scope.isCreateKey = true;
                     $scope.returnQuery('query');
 
@@ -431,6 +432,10 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.isIndexExist = false;
                     else
                         $scope.isIndexExist = true;
+                    if (angular.isUndefined($scope.rec.nodeName))
+                        $scope.isNameExist = false;
+                    else
+                        $scope.isNameExist = true;
                     $scope.isCreateKey = false;
                 };
                 $scope.preCreateKey = function() {
@@ -598,7 +603,9 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.lock = false;
                     $scope.opType = 1;
                     $scope.rec = {opType: 1};
-                    if ($scope.tableId == 'SecretKey') {
+                    if ($scope.tableId == 'Host') {
+                        $scope.isNameExist = false;
+                    }if ($scope.tableId == 'SecretKey') {
                         $scope.isCreateKey = false;
                         $scope.isIndexExist = false;
                         $scope.isClusterExist = false;
@@ -607,9 +614,7 @@ angular.module('myApp.services', ['ngResource'])
                     }if($scope.tableId == 'Machine'||$scope.tableId =='RsaKey'||$scope.tableId =='MachineReady'){
                         $scope.rec.supplyDate="";
                         $scope.rec.produceDate="";
-
                         $scope.rec.createDatetime="";
-
                         $scope.rec.issueDate="";
                         $scope.rec.readyDate="";
                     }
@@ -627,6 +632,12 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.rec.opType = 1;
                     if (angular.isDefined($scope.preUpdate))
                         $scope.preUpdate($scope.rec);
+
+                    if ($scope.tableId == "Machine") {
+                        $scope.rec.readies.forEach(function(ready){
+                            delete ready.rec.id;
+                        });
+                    }
                     $scope.gotoPage('edit');
                 };
                 $scope.copyEditorX = function() {
