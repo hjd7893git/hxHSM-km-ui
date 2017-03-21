@@ -611,12 +611,15 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.isClusterExist = false;
                         $scope.rec.systems = [];
                         $scope.rec.applications = [];
-                    }if($scope.tableId == 'Machine'||$scope.tableId =='RsaKey'||$scope.tableId =='MachineReady'){
+                    }if($scope.tableId == 'Machine'||$scope.tableId =='RsaKey'||$scope.tableId =='MachineReady'||$scope.tableId =='RsaKeyBatch'||$scope.tableId =='SecretCert'){
                         $scope.rec.supplyDate="";
                         $scope.rec.produceDate="";
                         $scope.rec.createDatetime="";
                         $scope.rec.issueDate="";
                         $scope.rec.readyDate="";
+                        $scope.rec.startDatetime="";
+                        $scope.rec.invalidDate="";
+
                     }
                     if (angular.isDefined($scope.preInsert))
                         $scope.preInsert($scope.rec);

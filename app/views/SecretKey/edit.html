@@ -17,9 +17,9 @@
                                                 item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="'true'"></bi-select-item>
                                 <bi-select-item item-label="'密钥标识'" item-options="keyDefineSchemaList"
                                                 item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="'true'"></bi-select-item>
-                                <bi-edit-item item-label="'密钥值'" item-required="'true'" item-reg-expr="'^([A-F0-9]{16})*[A-F0-9]{16}'" item-name="'keyValue'"
+                                <bi-edit-item item-label="'密钥值'" item-required="'true'" item-reg-expr="'^([A-F0-9]{16}){1,3}'" item-name="'keyValue'"
                                               item-value="rec.keyValue" item-old-value="bak.keyValue" item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'校验值'" item-required="'true'" item-reg-expr="'^([A-F0-9]{16})*[A-F0-9]{16}'" item-name="'checkValue'"
+                                <bi-edit-item item-label="'校验值'" item-required="'true'" item-reg-expr="'^([A-F0-9]{8}){1,2}'" item-name="'checkValue'"
                                               item-value="rec.checkValue" item-old-value="bak.checkValue" item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'使用状态'" item-required="'true'" item-options="'keyUseStatus'|theOption"
                                               item-value="rec.useStatus" item-old-value="bak.useStatus" item-locked="lock"></bi-select-item>
