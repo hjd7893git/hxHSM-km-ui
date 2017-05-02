@@ -15,7 +15,7 @@
                                                       item-value="ref.rec.readyDate" item-old-value="ref.bak.readyDate" item-locked="ref.lock"></bi-date-item>
                                         <bi-edit-item item-label="'机房'" item-tip="'输入中文'" item-name="'room'" item-required="'true'" item-reg-expr="'^[\u4e00-\u9fa5]+$'"
                                                       item-value="ref.rec.room" item-old-value="ref.bak.room" item-locked="ref.lock"></bi-edit-item>
-                                        <bi-edit-item item-label="'IP:端口'" item-name="'ip'" item-required="'true'" item-reg-expr="'[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}:[0-9]+'"
+                                        <bi-edit-item item-label="'IP:端口'" item-name="'ip'" item-required="'true'" item-reg-expr="'(((\\d{1,2})|(1\\d{2})|(2[0-4]\\d)|(25[0-5]))\\.){3}((\\d{1,2})|(1\\d{2})|(2[0-4]\\d)|(25[0-5])):((\\d{1,4})|([1-5]\\d{4})|(6[0-4]\\d{3})|(65[0-4]\\d{2})|(655[0-2]\\d)|(6553[0-5]))'"
                                                       item-value="ref.rec.ip" item-old-value="ref.bak.ip" item-locked="ref.lock"></bi-edit-item>
                                         <bi-edit-item item-label="'长连接数'" item-tip="'输入正数'" item-data-type="'number'" item-name="'connectionPoolSize'" item-required="'true'"
                                                       item-value="ref.rec.connectionPoolSize" item-old-value="ref.bak.connectionPoolSize" item-locked="ref.lock"></bi-edit-item>

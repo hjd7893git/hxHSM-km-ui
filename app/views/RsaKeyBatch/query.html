@@ -30,7 +30,7 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th><th>机构</th><th>密钥模长</th><th>密钥指数</th><th>密钥用途</th><th>应用</th><th>开始时间</th><th>计划数量</th><th>完成数量</th><th>批次状态</th></tr>
+                                <th>批次备注</th><th>密钥模长</th><th>密钥指数</th><th>密钥用途</th><th>完成时间</th><th>可用数量</th><th>已完成数量&nbsp;/&nbsp;计划总数</th><th>批次状态</th></tr>
                             </tr>
                             </thead>
                             <tbody>
@@ -39,15 +39,13 @@
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
-                                <td>{{r.rec.id}}</td>
-                                <td><a href ng-click="showEditor($index)">{{r.rec.branchId|optionName:branchList}}</a></td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.summary}}</a></td>
                                 <td>{{r.rec.keyMode|optionName:'keyMode'}}</td>
-                                <td>{{r.rec.keyExponential|optionName:'keyExponential'}}</td>
+                                <td><p ng-show="r.rec.keyExponential">{{r.rec.keyExponential|optionName:'keyExponential'}}</p></td>
                                 <td>{{r.rec.keyUseFor|optionName:'keyUseFor'}}</td>
-                                <td>{{r.rec.applicationId|optionName:applicationList}}</td>
-                                <td>{{r.rec.startDatetime}}</td>
-                                <td>{{r.rec.planQuantity}}</td>
-                                <td>{{r.rec.completeQuantity}}</td>
+                                <td><p ng-show="r.rec.endDatetime">{{r.rec.endDatetime|biDateTime}}</p></td>
+                                <td>{{r.rec.info}}</td>
+                                <td>{{r.rec.completeQuantity}}&nbsp;/&nbsp;{{r.rec.planQuantity}}</td>
                                 <td>{{r.rec.batchStatus|optionName:'batchStatus'}}</td>
                             </tr>
                             </tbody>

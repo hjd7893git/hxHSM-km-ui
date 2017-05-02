@@ -10,20 +10,17 @@
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'节点名'" item-name="'nodeName'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9.]+$'"
+                                <bi-edit-item item-label="'节点名'" tiem-tip="'如：BII.1'" item-name="'nodeName'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9.]+$'"
                                               item-value="rec.nodeName" item-old-value="bak.nodeName"
                                               item-locked="opType != 1 && isNameExist"></bi-edit-item>
-                                <bi-edit-item item-label="'机器硬件'" item-name="'hardware'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9-_ ]+$'"
+                                <bi-edit-item item-label="'机器硬件'" item-name="'hardware'" item-required="'true'"
                                               item-value="rec.hardware" item-old-value="bak.hardware"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'IP地址'" item-tip="'如：192.168.2.1'" item-name="'ip'" item-required="'true'"  item-reg-expr="'[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}'"
+                                <bi-edit-item item-label="'IP地址'" item-tip="'如：192.168.2.1'" item-name="'ip'" item-required="'true'"  item-reg-expr="'((((\\d{1,2})|(1\\d{2})|(2[0-4]\\d)|(25[0-5]))\\.){3}((\\d{1,2})|(1\\d{2})|(2[0-4]\\d)|(25[0-5]))(-((\\d{1,2})|(1\\d{2})|(2[0-4]\\d)|(25[0-5])))?,)*(((\\d{1,2})|(1\\d{2})|(2[0-4]\\d)|(25[0-5]))\\.){3}((\\d{1,2})|(1\\d{2})|(2[0-4]\\d)|(25[0-5]))(-((\\d{1,2})|(1\\d{2})|(2[0-4]\\d)|(25[0-5])))?'"
                                               item-value="rec.ip" item-old-value="bak.ip"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'TCP端口'" item-tip="'须与安全服务实际配置一致'" item-data-type="'number'" item-name="'tcpPort'" item-required="'true'"
                                               item-value="rec.tcpPort" item-old-value="bak.tcpPort"
-                                              item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'HTTP端口'" item-tip="'如不需要HTTP监听则设为0'" item-data-type="'number'" item-name="'httpPort'" item-required="'true'"
-                                              item-value="rec.httpPort" item-old-value="bak.httpPort"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'集群'" item-name="'clusterId'" item-required="'true'"
                                                 item-value="rec.clusterId" item-old-value="bak.clusterId"

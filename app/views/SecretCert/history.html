@@ -11,22 +11,17 @@
                                     <th>卡BIN</th>
                                     <th>证书序列号</th>
                                     <th>失效日期</th>
-                                    <th>请求文件名</th>
-                                    <th>下载次数</th>
-                                    <th>根公钥文件</th>
-                                    <th>证书文件名</th>
                                     <th>证书状态</th>
-                                    <th>维护类型</th><th class="his-col-op">操作</th><th class="his-col-ts">时间戳</th><th class="his-col-uid">操作员</th></tr>
+                                    <th>维护类型</th>
+                                    <th class="his-col-op">操作</th>
+                                    <th class="his-col-ts">时间戳</th>
+                                    <th class="his-col-uid">操作员</th></tr>
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="his in histories">
                                     <td>{{his.cardBin}}</td>
                                     <td>{{his.serialNo}}</td>
                                     <td>{{his.invalidDate}}</td>
-                                    <td>{{his.requestFileName}}</td>
-                                    <td>{{his.downloadTimes}}</td>
-                                    <td>{{his.rootPublicKeyFile}}</td>
-                                    <td>{{his.certFileName}}</td>
                                     <td>{{his.certStatus|optionName:'certStatus'}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">

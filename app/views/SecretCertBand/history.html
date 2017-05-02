@@ -13,8 +13,10 @@
                                     <th>MDK-ENC</th>
                                     <th>MDK-MAC</th>
                                     <th>KMC</th>
-                                    <th>KEK-MDK</th>
-                                    <th>KEK-KMC</th></tr>
+                                    <th>维护类型</th>
+                                    <th class="his-col-op">操作</th>
+                                    <th class="his-col-ts">时间戳</th>
+                                    <th class="his-col-uid">操作员</th></tr>
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="his in histories">
@@ -23,8 +25,7 @@
                                     <td>{{his.udkEnc}}</td>
                                     <td>{{his.udkMac}}</a></td>
                                     <td>{{his.kmc}}</td>
-                                    <td>{{his.kekUdk}}</td>
-                                    <td>{{his.kekKmc}}</td>
+                                    <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">
                                         <table class="table table-condensed bi-margin-b0" style="margin-top: -1px;">
                                             <tr ng-repeat="op in his.operations">

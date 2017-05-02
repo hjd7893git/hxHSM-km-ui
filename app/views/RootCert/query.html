@@ -33,7 +33,7 @@
                             <thead>
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th>
+                                <th>名称</th>
                                 <th>供应商标识</th>
                                 <th>算法</th>
                                 <th>失效日期</th>
@@ -50,7 +50,7 @@
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
-                                <td>{{r.rec.id}}</td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.summary}}</a></td>
                                 <td>{{r.rec.rid}}</td>
                                 <td>{{r.rec.algorithmSign}}</td>
                                 <td>{{r.rec.invalidDate}}</td>

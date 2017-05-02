@@ -10,22 +10,22 @@
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'渠道'" item-tip="'为3-8位的大写字母'" item-name="'symbol'" item-required="'true'" item-reg-expr="'^[A-Z]{3,8}$'"
+                                <bi-edit-item item-label="'渠道'" item-tip="'为3-8位的字母或数字（首字母不能为数字）'" item-name="'symbol'" item-required="'true'" item-reg-expr="'^[A-Za-z]{1}[A-Za-z0-9]{2,7}$'"
                                               item-value="rec.symbol" item-old-value="bak.symbol"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'名称'" item-tip="'中文名称'" item-reg-expr="'^[\u4e00-\u9fa5]+$'"  item-name="'name'"
+                                <bi-edit-item item-label="'名称'" item-name="'name'"
                                               item-value="rec.name" item-old-value="bak.name"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'英文名称'" item-reg-expr="'^[A-Za-z ]+$'"  item-name="'nameEn'"
+                                <bi-edit-item item-label="'英文名称'" item-reg-expr="'^[A-Za-z0-9 ]+$'"  item-name="'nameEn'"
                                               item-value="rec.nameEn" item-old-value="bak.nameEn"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-text-item item-label="'简介'"
                                               item-value="rec.summary" item-old-value="bak.summary"
                                               item-locked="lock"></bi-text-item>
                                 <bi-edit-item item-label="'IP地址列表'" item-tip="'如：192.168.1.1-4, 192.168.2.1'" item-reg-expr="'([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}[-[0-9]{0,4}]{0,4},)*([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}[-[0-9]{0,4}]{0,4})'" item-name="'ipList'"
-                                              item-value="rec.ipList" item-old-value="bak.ipList"
+                                              item-value="rec.ipList" item-old-value="bak.ipList" item-required="'true'"
                                               item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'允许的指令集列表'" item-tip="'如：NC, #3'"  item-reg-expr="'^([A-Z0-9#]{2},)*[A-Z0-9#]{2}'" item-name="'commandList'"
+                                <bi-edit-item item-label="'允许的指令集列表'" item-tip="'如：NC, #3'" item-reg-expr="'^([A-Z0-9#]{2},)*[A-Z0-9#]{2}'" item-name="'commandList'"
                                               item-value="rec.commandList" item-old-value="bak.commandList"
                                               item-locked="lock"></bi-edit-item>
                                 <bi-edit-item item-label="'API列表'" item-reg-expr="'^([A-Za-z0-9-_]+,)*[A-Za-z0-9-_]+'" item-name="'apiList'"

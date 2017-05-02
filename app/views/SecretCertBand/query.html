@@ -33,14 +33,11 @@
                             <thead>
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th>
                                 <th>发卡行证书</th>
                                 <th>MDK-AC</th>
                                 <th>MDK-ENC</th>
                                 <th>MDK-MAC</th>
                                 <th>KMC</th>
-                                <th>KEK-MDK</th>
-                                <th>KEK-KMC</th>
                             </tr>
                             </tr>
                             </thead>
@@ -50,14 +47,11 @@
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
-                                <td>{{r.rec.id}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.secretCertId | optionName: secretCertList}}</a></td>
-                                <td>{{r.rec.udkAcKeyValue|more:16}}</td>
-                                <td>{{r.rec.udkEncKeyValue|more:16}}</td>
-                                <td>{{r.rec.udkMacKeyValue|more:16}}</td>
+                                <td>{{r.rec.mdkAcKeyValue|more:16}}</td>
+                                <td>{{r.rec.mdkEncKeyValue|more:16}}</td>
+                                <td>{{r.rec.mdkMacKeyValue|more:16}}</td>
                                 <td>{{r.rec.kmcKeyValue|more:16}}</td>
-                                <td>{{r.rec.kekUdkKeyValue|more:16}}</td>
-                                <td>{{r.rec.kekKmcKeyValue|more:16}}</td>
                             </tr>
                             </tbody>
                         </table>

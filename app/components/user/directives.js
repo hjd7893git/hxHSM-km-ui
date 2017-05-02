@@ -64,17 +64,27 @@ angular.module('myApp.components.user', [])
         }
 
         $scope.doLogin = function(user, password) {
-            user.password = angular.element.md5(user.password);
-            try{
-                var evt = document.createEvent("CustomEvent");
-                evt.initCustomEvent('ukeySign', true, false, {data: user.mobile, password: password});
-                document.dispatchEvent(evt);
-            } catch (er) {
-                if (er.name == "NotSupportedError") {
-                    document.getElementById("HxUKeyInfo").innerHTML = "未安装/未启用 UKey浏览器插件";
-                } else alert(er)
-            }
-
+            var promise = myServer.call("login", null, 'GET'); // 同步调用，获得承诺接口
+            promise.then(function(ret) { // 调用承诺API获取数据 .resolve
+                if (ret.status == 200 || ret.status == 201) {
+                    user.time = ret.data.time;
+                    user.data = ret.data.data;
+                }
+                user.password = angular.element.md5(user.password);
+                try{
+                    var evt = document.createEvent("CustomEvent");
+                    var sm3res = sm3(user.mobile + user.time + user.data);
+                    console.log(sm3res);
+                    evt.initCustomEvent('ukeySign', true, false, {data: sm3res, password: password});
+                    document.dispatchEvent(evt);
+                } catch (er) {
+                    if (er.name == "NotSupportedError") {
+                        document.getElementById("HxUKeyInfo").innerHTML = "未安装/未启用 UKey浏览器插件";
+                    } else alert(er)
+                }
+            }, function(ret) { // 处理错误 .reject
+                $scope.showModal(ret);
+            });
         };
     }])
     .controller('biChangePasswordFormCtrl', ['$location', '$scope', '$rootScope', 'myServer', '$log', function($location, $scope, $rootScope, myServer, $log) {

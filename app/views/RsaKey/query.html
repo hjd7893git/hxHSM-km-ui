@@ -51,9 +51,9 @@
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.systemId|optionName:systemList}}</td>
-                                <td>{{r.rec.serviceIndex}}</td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.serviceIndex}}</a></td>
                                 <td>{{r.rec.applicationId|optionName:applicationList}}</td>
-                                <td><a href ng-click="showEditor($index)">{{r.rec.privateKeyValue|more:32}}</a></td>
+                                <td>{{r.rec.privateKeyValue|more:32}}</td>
                                 <td>{{r.rec.publicKeyValue|more:32}}</td>
                                 <td>{{r.rec.keyMode}}</td>
                                 <td>{{r.rec.keyExponential}}</td>

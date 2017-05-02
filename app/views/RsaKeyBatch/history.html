@@ -1,32 +1,27 @@
 <div class="panel-collapse" role="tabpanel" bs-collapse-target>
     <div class="panel-group" role="tablist">
         <div class="panel panel-default">
-            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;RSA密钥批次<code>【&nbsp;{{rec.id}}&nbsp;】</code>的维护记录</div>
+            <div class="panel-heading"><i class="fa fa-history"></i>&nbsp;RSA密钥批次<code>【&nbsp;{{rec.summary}}&nbsp;】</code>的维护记录</div>
             <div id="collapseListGroup1" class="panel-collapse collapse in" role="tabpanel">
                 <ul class="list-group">
                     <li class="list-group-item bi-ptb0">
                         <div class="panel-body bi-pad0">
                             <table class="table table-condensed bg-white bi-margin-b0">
                                 <thead><tr>
-                                    <th>机构</th>
                                     <th>密钥类型</th>
                                     <th>计划数量</th>
-                                    <th>计划时间</th>
-                                    <th>开始时间</th>
-                                    <th>结束时间</th>
-                                    <th>完成数量</th>
+                                    <th>计划开始时间</th>
                                     <th>批次状态</th>
-                                    <th>维护类型</th><th class="his-col-op">操作</th><th class="his-col-ts">时间戳</th><th class="his-col-uid">操作员</th></tr>
+                                    <th>维护类型</th>
+                                    <th class="his-col-op">操作</th>
+                                    <th class="his-col-ts">时间戳</th>
+                                    <th class="his-col-uid">操作员</th></tr>
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="his in histories">
-                                    <td>{{his.branchId|optionName:branchList}}</td>
-                                    <td>{{his.keyScheme}}</td>
+                                    <td>{{his.keyMode}}</td>
                                     <td>{{his.planQuantity}}</td>
-                                    <td>{{his.planDatetime}}</td>
                                     <td>{{his.startDatetime}}</td>
-                                    <td>{{his.endDatetime}}</td>
-                                    <td>{{his.completeQuantity}}</td>
                                     <td>{{his.batchStatus|optionName:'batchStatus'}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">

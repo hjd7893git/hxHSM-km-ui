@@ -35,6 +35,18 @@
                                         <input id="userSign" type="text" class="form-control" ng-model="user.sign" placeholder="用户签名" />
                                     </div>
                                 </div>
+                                <div class="form-group" ng-show="false">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                        <input id="loginTime" type="text" class="form-control" ng-model="user.time" placeholder="后台时间" />
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-show="false">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                        <input id="loginData" type="text" class="form-control" ng-model="user.data" placeholder="后台随机数" />
+                                    </div>
+                                </div>
                                 <div class="form-group text-right" style="margin-top: -8px;" ng-show="auth">
                                     <a href="#/find-password">忘记登录密码？</a>
                                 </div>

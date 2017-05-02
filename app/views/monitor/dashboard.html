@@ -12,13 +12,12 @@
                                     <a class="bi-display-op" ng-click="toggleDetails(app)"><i class="fa fa-{{app.displayDetails|iif:'minus':'plus':'plus'}}-square-o"></i></a>
                                 </div>
                                 <div class="panel-body" style="padding: 0 5px 0 10px;">
-                                    <table class="table table-hover table-condensed" style="margin: 0;">
+                                    <table class="table table-hover table-condensed" style="margin: 0;table-layout:fixed;">
                                         <thead>
-                                        <tr><th>IPs</th><th>{{app.ipList}}</th></tr>
+                                        <tr><th>IPs</th><th style="width: 80%;word-wrap: break-word;word-break: normal;">{{app.ipList}}</th></tr>
                                         </thead>
                                         <tbody>
-                                        <tr ng-show="app.displayDetails"><td>简介</td><td>{{app.summary}}</td></tr>
-                                        <tr><td>状态</td><td>{{app.status}}</td></tr>
+                                        <tr ng-show="app.displayDetails"><td>简介</td><td style="word-wrap: break-word;word-break: normal;">{{app.summary}}</td></tr>
                                         </tbody>
                                     </table>
                                 </div>

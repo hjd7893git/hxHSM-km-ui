@@ -9,10 +9,10 @@
                             <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'安全服务索引'" item-tip="'一旦设置将无法更改'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9-_]+$'" item-name="'serviceIndex'"
-                                              item-value="rec.serviceIndex" item-old-value="bak.serviceIndex" item-locked="opType != 1 && isIndexExist"></bi-edit-item>
-                                <bi-select-item item-label="'密钥定义'" item-options="keyDefineNameList" item-required="'true'"
+                                <bi-select-item item-label="'密钥方案'" item-options="keyDefineNameList" item-required="'true'"
                                                 item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="isCreateKey"></bi-select-item>
+                                <bi-edit-item item-label="'安全服务索引'" item-tip="'如：CORE-BOC-ZMK-01(一旦设置将无法更改)'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9-_]+$'" item-name="'serviceIndex'"
+                                              item-value="rec.serviceIndex" item-old-value="bak.serviceIndex" item-locked="opType != 1 && isIndexExist"></bi-edit-item>
                                 <bi-select-item item-label="'密钥类型'" item-options="keyDefineTypeList"
                                                 item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="'true'"></bi-select-item>
                                 <bi-select-item item-label="'密钥标识'" item-options="keyDefineSchemaList"
@@ -23,6 +23,8 @@
                                               item-value="rec.checkValue" item-old-value="bak.checkValue" item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'使用状态'" item-required="'true'" item-options="'keyUseStatus'|theOption"
                                               item-value="rec.useStatus" item-old-value="bak.useStatus" item-locked="lock"></bi-select-item>
+                                <bi-text-item item-label="'说明'" item-value="rec.summary" item-old-value="bak.summary" item-required="'true'"
+                                              item-locked="lock"></bi-text-item>
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label bi-pr0">系统</label>
                                     <div class="col-sm-6">

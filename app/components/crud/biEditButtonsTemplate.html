@@ -29,8 +29,6 @@
                 <i class="fa fa-trash-o"></i>&nbsp;删除</button>
             <button class="btn btn-default" ng-click="copyEditor()" ng-if="!rec.bizSeq && !readOnly">
                 <i class="fa fa-copy"></i>&nbsp;拷贝</button>&nbsp;
-            <button class="btn btn-danger" ng-click="preCreateKey()" ng-if="!rec.bizSeq && !readOnly && keyAbout">
-                <i class="fa fa-key"></i>&nbsp;密钥</button>
         </div>
     </div>
     <div class="col-sm-1 text-right bi-pr10" ng-show="lock && lockKeyAbout">

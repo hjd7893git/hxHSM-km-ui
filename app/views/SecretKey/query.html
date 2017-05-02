@@ -18,7 +18,7 @@
                                         <bi-query-action></bi-query-action>
                                     </div>
                                     <div class="col-md-6">
-                                        <bi-query-select item-label="'密钥定义'" item-value="qry.keyDefineId" item-options="keyDefineNameList"></bi-query-select>
+                                        <bi-query-select item-label="'密钥方案'" item-value="qry.keyDefineId" item-options="keyDefineNameList"></bi-query-select>
                                     </div>
                                 </form>
                             </div>
@@ -28,7 +28,7 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>密钥定义</th><th>安全服务索引</th><th>密钥值</th><th>校验值</th><th>修改时间</th><th>使用状态</th></tr>
+                                <th>安全服务索引</th><th>密钥方案</th><th>密钥值</th><th>校验值</th><th>修改时间</th><th>使用状态</th></tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">
@@ -36,8 +36,8 @@
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
-                                <td>{{r.rec.keyDefineId | optionName: keyDefineNameList}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.serviceIndex}}</a></td>
+                                <td>{{r.rec.keyDefineId | optionName: keyDefineNameList}}</td>
                                 <td>{{r.rec.keyValue}}</td>
                                 <td>{{r.rec.checkValue}}</td>
                                 <td>{{r.rec.createDatetime|biDateTime}}</td>

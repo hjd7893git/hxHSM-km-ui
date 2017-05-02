@@ -33,10 +33,8 @@
                             <thead>
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>标识</th>
                                 <th>发卡行标识</th>
                                 <th>证书序列号</th>
-                                <th>密钥对</th>
                                 <th>失效日期</th>
                                 <th>请求文件</th>
                                 <th>发卡机构</th>
@@ -53,13 +51,11 @@
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
-                                <td>{{r.rec.id}}</td>
                                 <td>{{r.rec.cardBin}}</td>
-                                <td>{{r.rec.serialNo}}</td>
-                                <td>{{r.rec.rsaKeyId}}</td>
+                                <td><a href ng-click="showEditor($index)">{{r.rec.serialNo}}</a></td>
                                 <td>{{r.rec.invalidDate}}</td>
-                                <td><a href ng-click="showEditor($index)">{{r.rec.requestFile}}</a></td>
-                                <td>{{r.rec.rootCertId | optionName: rootCertRidList}}</td>
+                                <td>{{r.rec.requestFile}}</td>
+                                <td><p ng-show="r.rec.rootCertId">{{r.rec.rootCertId | optionName: rootCertRidList}}</p></td>
                                 <td>{{r.rec.serviceSign | optionName: "serviceSign"}}</td>
                                 <td>{{r.rec.issuingNumber}}</td>
                                 <td>{{r.rec.certFile}}</td>
