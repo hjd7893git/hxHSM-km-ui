@@ -20,6 +20,7 @@ angular.module('myApp.components.user', [])
             replace : true
         };
     })
+
     .controller('biLoginFormCtrl', ['$location', '$scope', '$rootScope', 'myServer', '$log', function($location, $scope, $rootScope, myServer, $log) {
         $scope.auth = false;
         var jumpTo = function(scope) {
@@ -33,6 +34,7 @@ angular.module('myApp.components.user', [])
             var promise = myServer.call("login", $scope.user); // 同步调用，获得承诺接口
             promise.then(function(ret) { // 调用承诺API获取数据 .resolve
                 if (ret.status == 200 || ret.status == 201) {
+                    $rootScope.sys = $scope.user.sys;
                     $rootScope.signedUp = true;
                     $rootScope.user = ret.data.user;
                     $rootScope.sessionId = ret.data.sessionId;
