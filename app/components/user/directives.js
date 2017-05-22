@@ -52,16 +52,29 @@ angular.module('myApp.components.user', [])
             $scope.auth = true;
         });
 
+        /* 获取设备信息 */
+        $scope.checkDev = function() {
+            try{
+                var evt = document.createEvent("CustomEvent");
+                evt.initCustomEvent('ukeyCheckDev', true, false, null);
+                document.dispatchEvent(evt);
+            } catch (er) {
+                if (er.name == "NotSupportedError") {
+                    document.getElementById("HxUKeyDevInfo").innerHTML = "未安装/未启用 UKey浏览器插件";
+                }
+            }
+        }
+
         /* UKey认证 */
         $scope.ukeyLogin = function(password) {
             try{
                 var evt = document.createEvent("CustomEvent");
-                evt.initCustomEvent('ukeyLogin', true, false, password);
+                evt.initCustomEvent('ukeyLogin', true, false, {password: password});
                 document.dispatchEvent(evt);
             } catch (er) {
                 if (er.name == "NotSupportedError") {
-                    document.getElementById("HxUKeyInfo").innerHTML = "未安装/未启用 UKey浏览器插件";
-                } else alert(er)
+                    document.getElementById("HxUKeyDevInfo").innerHTML = "未安装/未启用 UKey浏览器插件";
+                }
             }
         }
 
@@ -81,8 +94,8 @@ angular.module('myApp.components.user', [])
                     document.dispatchEvent(evt);
                 } catch (er) {
                     if (er.name == "NotSupportedError") {
-                        document.getElementById("HxUKeyInfo").innerHTML = "未安装/未启用 UKey浏览器插件";
-                    } else alert(er)
+                        document.getElementById("HxUKeyDevInfo").innerHTML = "未安装/未启用 UKey浏览器插件";
+                    }
                 }
             }, function(ret) { // 处理错误 .reject
                 $scope.showModal(ret);
