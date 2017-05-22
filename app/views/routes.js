@@ -4,6 +4,8 @@
  */
 'use strict';
 
+var sys = "KM";
+
 angular.module('myApp.views', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {

@@ -31,7 +31,7 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'keyUseType4Partner', names: [{value: 0, name: '不适用'}, {value: 1, name: '总对总'}, {value: 2, name: '分对分'}]},
             {option: 'keyUseALL', names: [{value: '0', name: '-'}, {value: '11', name: '全行统一'}, {value: '12', name: '分行统一'}, {value: '13', name: '网点统一'}, {value: '14', name: '一机一密'}, {value: '21', name: '总对总'}, {value: '22', name: '分对分'}]},
             {option: 'keyUseStatus', names: [{value: 0, name: '正常'}, {value: 1, name: '弃用'}, {value: 2, name: '过期'}]},
-            {option: 'machineStatus', names: [{value: undefined, name: '未上架'}, {value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}, {value:3, name: '预备'}]},
+            {option: 'machineStatus', names: [{value: 4, name: '未上架'}, {value: 0, name: '在线'}, {value: 1, name: '离线'}, {value: 2, name: '故障'}, {value:3, name: '预备'}]},
             {option: 'PartnerType', names: [{value: 0, name: '政府机构'}, {value: 1, name: '商业企业'}]},
             {option: 'algorithmSign', names: [{value: 'RSA', name: 'RSA'}, {value: 'SM2', name: 'SM2'}]},
             {option: 'appEncode', names: [{value: 'UTF-8', name: 'UTF8'}, {value: 'GBK', name: 'GBK'}, {value: 'IBM935', name: 'IBM935'}, {value: 'Binary', name: 'Binary'}, {value: 'ISO-8859-1', name: 'ISO-8859-1'}]},
