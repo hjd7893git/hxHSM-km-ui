@@ -9,7 +9,7 @@
                 <i class="fa fa-trash-o"></i>&nbsp;删除</button>
             <button class="btn btn-default bi-bar-lt" ng-click="copyEditorX()" ng-show="!readOnly">
                 <i class="fa fa-copy"></i>&nbsp;复制</button>
-            <button class="btn btn-default" ng-click="showHistoryX()" ng-show="!browseOnly">
+            <button class="btn btn-default" ng-click="showHistoryX()" ng-show="!browseOnly && tableId == Task">
                 <i class="fa fa-history"></i>&nbsp;历史</button>
             <button class="btn btn-danger" ng-click="deleteRecX()" ng-show="!browseOnly && false">
                 <i class="fa fa-print"></i>&nbsp;打印</button>

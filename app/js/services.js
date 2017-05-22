@@ -7,8 +7,8 @@
 angular.module('myApp.services', ['ngResource'])
 
     .factory('myServer', ['$http', '$log', '$q', '$resource', '$modal', '$timeout', function($http, $log, $q, $resource, $modal, $timeout) {
-        var URLPrefix = "http://192.168.0.200:8100/service/";
-//        var URLPrefix = "http://localhost:8088/service/";
+        // var URLPrefix = "http://192.168.0.200:8100/service/";
+       var URLPrefix = "http://localhost:8100/service/";
         return {
             URLPrefix: URLPrefix,
             call: function(uri, data, m) {
@@ -101,8 +101,8 @@ angular.module('myApp.services', ['ngResource'])
                                 setChosenMenus(ele, 'chosen', $scope.$root.menuTree, 'rmId');
                             });
                         }
-                        if (angular.isDefined($scope.bak.menus)) {
-                            angular.element.each($scope.bak.menus, function(n, ele) {
+                        if (angular.isDefined($scope.rec.menus)) {
+                            angular.element.each($scope.rec.menus, function(n, ele) {
                                 setChosenMenus(ele, 'bakChosen', $scope.$root.menuTree, 'rmId');
                             });
                         }
@@ -235,15 +235,19 @@ angular.module('myApp.services', ['ngResource'])
                 var flag = 0;
                     if (!angular.isDefined(refRecs)) refRecs = [];
                     refRecs.forEach(function(ref){
-                        if (ref.rec.id == id) {
+                        if (ref.rec.id == id && ref.rec.opType!=3 ) {    //
                             $scope.showTips('该内容已存在，未重复添加');
                             flag=1
+                            return;
+                        }else if(ref.rec.id == id){
+                            ref.rec.opType=1;
+                            flag=1;
                             return;
                         }
                     })
                     if(flag==0){
                         recs.forEach(function(rec){
-                            if (rec.id == id) {
+                            if (rec.id == id && rec.opType!=3) {
                                 var recbuf = rec;
                                 recbuf.opType = 1;
                                 refRecs.push({rec: recbuf});
@@ -481,8 +485,8 @@ angular.module('myApp.services', ['ngResource'])
                 };
                 $scope.deleteRefRecX = function(refRecs, idx) {
                     refRecs[idx].rec.opType = 3;
-                    //refRecs[idx].rec = null;
-                    //refRecs.splice(idx, 1);
+                    //     refRecs[idx].rec = null;
+                    //     refRecs.splice(idx, 1);
                 };
                 $scope.showHistory = function(chosenIdx) {
                     $scope.rec = angular.isDefined(chosenIdx) ? $scope.recs[chosenIdx].rec : $scope.selectedRec;
@@ -568,10 +572,15 @@ angular.module('myApp.services', ['ngResource'])
                     if (angular.isDefined($scope.preUpdate))
                         $scope.preUpdate($scope.rec);
 
-                    if ($scope.tableId == "Machine") {
-                        $scope.rec.readies.forEach(function(ready){
-                            delete ready.rec.id;
-                        });
+                    if ($scope.tableId == "Machine"||$scope.tableId =="GroupDefine") {
+                        // $scope.rec.readies.forEach(function(ready){
+                        //     delete ready.rec.id;
+                        // });
+                        delete $scope.rec.readies;
+                    }
+                    if($scope.tableId=="SecretKey"){
+                        delete $scope.rec.systems;
+                        delete $scope.rec.applications;
                     }
                     if ($scope.tableId == "RsaKeyBatch") {
                         $scope.rec.completeQuantity = 0;
