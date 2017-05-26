@@ -10,7 +10,7 @@
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'安全服务索引'" item-tip="'如：CORE-BOC-ZMK-01(一旦设置将无法更改)'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9-_]+$'" item-name="'serviceIndex'"
+                                <bi-edit-item item-label="'安全服务索引'" item-tip="'如：CORE-BOC-ZMK-01(一旦设置将无法更改)'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9-]+[A-Za-z0-9-\.]+[A-Za-z0-9]+$'" item-name="'serviceIndex'"
                                               item-value="rec.serviceIndex" item-old-value="bak.serviceIndex"
                                               item-locked="opType != 1 && isIndexExist"></bi-edit-item>
                                 <bi-select-item item-label="'密钥模长'" item-options="'keyMode'|theOption" item-data-type="'text'"
@@ -21,16 +21,21 @@
                                                     item-value="rec.keyExponential" item-old-value="bak.keyExponential" item-required="'true'"
                                                     item-locked="lock"></bi-select-item>
                                 </div>
-                                <bi-edit-item item-label="'私钥'" item-value="rec.privateKeyValue" item-old-value="bak.privateKeyValue" item-reg-expr="'^[A-F0-9]+$'" item-name="'privateKeyValue'"
-                                              item-required="'true'" item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'公钥'" item-value="rec.publicKeyValue" item-old-value="bak.publicKeyValue"  item-reg-expr="'^[A-F0-9]+$'" item-name="'publicKeyValue'"
-                                              item-required="'true'" item-locked="lock"></bi-edit-item>
+                                <bi-select-item item-label="'随机产生'" item-options="'YesNo'|theOption" item-data-type="'text'"
+                                                item-value="rec.isRandKey" item-old-value="bak.keyExponential" item-required="'true'"
+                                                item-locked="lock"></bi-select-item>
+                                <div ng-show="rec.isRandKey == '0'">
+                                    <bi-edit-item item-label="'私钥'" item-tip="'请输入LMK加密的私钥密文'" item-value="rec.privateKeyValue" item-old-value="bak.privateKeyValue" item-reg-expr="'^[A-F0-9]+$'" item-name="'privateKeyValue'"
+                                                item-required="rec.isRandKey == '0'" item-locked="lock"></bi-edit-item>
+                                    <bi-edit-item item-label="'公钥'" item-tip="'请输入公钥明文'" item-value="rec.publicKeyValue" item-old-value="bak.publicKeyValue" item-reg-expr="'^[A-F0-9]+$'" item-name="'publicKeyValue'"
+                                                item-required="rec.isRandKey == '0'" item-locked="lock"></bi-edit-item>
+                                </div>
                                 <bi-select-item item-label="'行内系统'" item-options="systemList" item-required="'true'"
                                                 item-value="rec.systemId" item-old-value="bak.systemId" item-locked="lock"></bi-select-item>
                                 <bi-select-item item-label="'接入渠道'" item-options="applicationList" item-required="'true'"
                                                 item-value="rec.applicationId" item-old-value="bak.applicationId"
                                                 item-locked="lock"></bi-select-item>
-                                <bi-select-item item-label="'使用状态'" item-options="'RSAStatus'|theOption" item-required="'true'"
+                                <bi-select-item item-label="'使用状态'" item-options="'keyUseStatus'|theOption" item-required="'true'"
                                               item-value="rec.useStatus" item-old-value="bak.useStatus" item-margin="'bi-margin-b0'"
                                               item-locked="lock"></bi-select-item>
                             </form>

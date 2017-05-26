@@ -21,7 +21,7 @@ angular.module('myApp.components.user', [])
         };
     })
 
-    .controller('biLoginFormCtrl', ['$location', '$scope', '$rootScope', 'myServer', '$log', function($location, $scope, $rootScope, myServer, $log) {
+    .controller('biLoginFormCtrl', ['$location', '$scope', '$rootScope', '$interval', 'myServer', '$log', function($location, $scope, $rootScope, $interval, myServer, $log) {
         $scope.auth = false;
         var jumpTo = function(scope) {
             $scope.user.password = '';
@@ -53,23 +53,23 @@ angular.module('myApp.components.user', [])
         });
 
         /* 获取设备信息 */
-        $scope.checkDev = function() {
+        $scope.checkDev = function(){
             try{
                 var evt = document.createEvent("CustomEvent");
-                evt.initCustomEvent('ukeyCheckDev', true, false, null);
+                evt.initCustomEvent("ukeyCheckDev", true, false, {isManager: "false"});
                 document.dispatchEvent(evt);
             } catch (er) {
                 if (er.name == "NotSupportedError") {
-                    document.getElementById("HxUKeyDevInfo").innerHTML = "未安装/未启用 UKey浏览器插件";
+                    document.getElementById("HxUKeyDevInfo").innerHTML = "<font color=\"red\">未安装/未启用 UKey浏览器插件</font>";
                 }
             }
-        }
+        };
 
         /* UKey认证 */
         $scope.ukeyLogin = function(password) {
             try{
                 var evt = document.createEvent("CustomEvent");
-                evt.initCustomEvent('ukeyLogin', true, false, {password: password});
+                evt.initCustomEvent('ukeyLogin', true, false, {isManager: "false", password: password});
                 document.dispatchEvent(evt);
             } catch (er) {
                 if (er.name == "NotSupportedError") {
@@ -90,7 +90,7 @@ angular.module('myApp.components.user', [])
                     var evt = document.createEvent("CustomEvent");
                     var sm3res = sm3(user.mobile + user.time + user.data);
                     console.log(sm3res);
-                    evt.initCustomEvent('ukeySign', true, false, {data: sm3res, password: password});
+                    evt.initCustomEvent('ukeySignData', true, false, {isManager: "false", data: sm3res, password: password});
                     document.dispatchEvent(evt);
                 } catch (er) {
                     if (er.name == "NotSupportedError") {
@@ -101,6 +101,7 @@ angular.module('myApp.components.user', [])
                 $scope.showModal(ret);
             });
         };
+        $scope.checkDev();
     }])
     .controller('biChangePasswordFormCtrl', ['$location', '$scope', '$rootScope', 'myServer', '$log', function($location, $scope, $rootScope, myServer, $log) {
         myServer.errorDialog($scope, "change");
