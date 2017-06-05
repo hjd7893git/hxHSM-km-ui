@@ -21,10 +21,12 @@
                                                     item-value="rec.keyExponential" item-old-value="bak.keyExponential" item-required="'true'"
                                                     item-locked="lock"></bi-select-item>
                                 </div>
-                                <bi-select-item item-label="'随机产生'" item-options="'YesNo'|theOption" item-data-type="'text'"
-                                                item-value="rec.isRandKey" item-old-value="bak.keyExponential" item-required="'true'"
-                                                item-locked="lock"></bi-select-item>
-                                <div ng-show="rec.isRandKey == '0'">
+                                <div ng-show="!lock">
+                                    <bi-select-item item-label="'是否随机产生'" item-options="'YesNo'|theOption" item-data-type="'text'"
+                                                     item-value="rec.isRandKey" item-old-value="bak.keyExponential" item-required="'true'"
+                                                     item-locked="lock"></bi-select-item>
+                                </div>
+                                <div ng-show="rec.isRandKey == '0' || lock">
                                     <bi-edit-item item-label="'私钥'" item-tip="'请输入LMK加密的私钥密文'" item-value="rec.privateKeyValue" item-old-value="bak.privateKeyValue" item-reg-expr="'^[A-F0-9]+$'" item-name="'privateKeyValue'"
                                                 item-required="rec.isRandKey == '0'" item-locked="lock"></bi-edit-item>
                                     <bi-edit-item item-label="'公钥'" item-tip="'请输入公钥明文'" item-value="rec.publicKeyValue" item-old-value="bak.publicKeyValue" item-reg-expr="'^[A-F0-9]+$'" item-name="'publicKeyValue'"
