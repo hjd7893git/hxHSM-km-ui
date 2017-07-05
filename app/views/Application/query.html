@@ -39,7 +39,6 @@
                                         class="fa fa-sort{{sortByname|iif:'-alpha-asc':'-alpha-desc':''}}"></i></th>
                                 <th><a ng-click="sortOn('name')">名称</a>&nbsp;<i
                                         class="fa fa-sort{{sortByname|iif:'-alpha-asc':'-alpha-desc':''}}"></i></th>
-                                <th>英文名称</th>
                                 <th>客户端编码</th>
                                 <th>连接类型</th>
                                 <th>应答类型</th>
@@ -55,7 +54,6 @@
                                 </td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.symbol}}</a></td>
                                 <td>{{r.rec.name}}</td>
-                                <td>{{r.rec.nameEn}}</td>
                                 <td>{{r.rec.encode|optionName:'appEncode'}}</td>
                                 <td>{{r.rec.shortConnection|optionName:'shortConnection'}}</td>
                                 <td>{{r.rec.syncRqRs|optionName:'syncRqRs'}}</td>

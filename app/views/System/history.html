@@ -10,7 +10,6 @@
                                 <thead><tr>
                                     <th>系统代号</th>
                                     <th>系统名称</th>
-                                    <th>英文名称</th>
                                     <th>维护类型</th>
                                     <th class="his-col-op">操作</th>
                                     <th class="his-col-ts">操作时间戳</th>
@@ -20,7 +19,6 @@
                                 <tr ng-repeat="his in histories">
                                     <td>{{his.symbol}}</td>
                                     <td>{{his.name}}</td>
-                                    <td>{{his.nameEn}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">
                                         <table class="table table-condensed bi-margin-b0" style="margin-top: -1px;">

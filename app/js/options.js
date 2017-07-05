@@ -55,7 +55,6 @@ angular.module('myApp.options', ['ngResource'])
                     $scope.drop = false;
                     myServer.retrieveUsersList($scope);
                     myServer.retrieveGroupList($scope);
-                    myServer.retrieveKeyDefineList($scope);
                     $scope.displayChart = function(appId) {
                         $scope.gotoPage('chart');
                         $scope.dataset = [];//[['January', 10], ['February', 8], ['March', 4], ['April', 13], ['May', 12], ['June', 9]]];
