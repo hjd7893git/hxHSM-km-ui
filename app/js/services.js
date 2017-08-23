@@ -7,7 +7,7 @@
 angular.module('myApp.services', ['ngResource'])
 
     .factory('myServer', ['$http', '$log', '$q', '$resource', '$modal', '$timeout', function($http, $log, $q, $resource, $modal, $timeout) {
-        var URLPrefix = "http://192.168.0.200:8100/service/";
+        var URLPrefix = "http://192.168.0.200:8080/service/";
         //var URLPrefix = "service/";
         return {
             URLPrefix: URLPrefix,

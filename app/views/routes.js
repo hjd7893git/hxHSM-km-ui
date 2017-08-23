@@ -346,12 +346,25 @@ angular.module('myApp.views', ['ngRoute'])
                         if (angular.isDefined($scope.theTimer))
                             $timeout.cancel($scope.theTimer);
                         $scope.theTimer = $timeout($scope.updateQuantities, $scope.activeCluster.tickInterval * 1000);
+                        if (!angular.isDefined($scope.aliveTimer))
+                            $scope.aliveTimer = $timeout($scope.keepAlive, 60000);
                     }
                 }
             }, function(ret) { // 处理错误 .reject
                 $scope.showModal(ret)
             });
         };
+        $scope.keepAlive = function (i) {
+            var uri = "keepAlive/";
+            var promise2 = myServer.call(uri + "?sessionId=" + $scope.$root.sessionId, {}, 'GET'); // 同步调用，获得承诺接口
+            promise2.then(function(ret) { // 调用承诺API获取数据 .resolve
+                if (ret.status == 200 || ret.status == 201){
+                    $scope.aliveTimer = $timeout($scope.keepAlive, 60000);
+                }
+            }, function(ret) { // 处理错误 .reject
+                $scope.showModal(ret)
+            });
+        }
         // jquery.flot.pie.js里536行: if (options.series.pie.innerRadius > 0) {
         // 改为: if (options && options.series.pie.innerRadius > 0) { 免得老提示错(虽然无影响) -- 新版本已修复该问题, 勿需修改了.
         // TODO: 图 - 失败率, 失败分布, 内存/CPU(已取数)

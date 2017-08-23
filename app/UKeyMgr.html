@@ -1,0 +1,294 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<style type="text/css">
+div,p{
+	margin: 10px 20px;
+	width: 120px;
+	float: left;
+	word-wrap: break-word;
+  word-break: normal;
+}
+.html,.head,.body,.tail,.page,.devStatus,.actionInfo,.pageBody,.pageTail,.devStatus,.actionInfo{
+	width: 500px;
+	margin: 10px auto;
+}
+.html{
+	float: none;
+}
+h2,#HxUKeyPk{
+	text-align: center;
+}
+.button{
+	width: 200px;
+	height: 30px;
+	margin: 10px 20px;
+}
+input{
+	width: 285px;
+	height: 30px;
+	margin-top: 8px;
+	margin-right: 35px;
+	float: right;
+}
+#HxUKeyDevInfo,#HxUKeyPk{
+	width: 300px;
+}
+body{
+	background-color: #F0F0F0;
+}
+		</style>
+	</head>
+	<body>
+		<div class="html">
+			<div class="head"><h2>HxUKey管理界面</h2></div>
+			<div class="body">
+				<div class="devStatus">
+					<p>当前设备状态:</p>
+					<div id="HxUKeyDev"></div>
+				</div>
+				<div class="actionInfo">
+					<p>当前操作结果:</p>
+					<div id="HxUKeyDevInfo"></div>
+				</div>
+				<div id="page1" class="page">
+					<div class="pageBody">
+					</div>
+					<div class="pageTail">
+						<button id="checkDev" class="button" onclick="checkDev();">检查设备</button>
+						<button id="checkApp" class="button" onclick="checkApp();">检查是否初始化</button>
+						<!--<button id="resetDev" class="button" onclick="toPage7();">重置设备</button>-->
+					</div>
+				</div>
+
+				<div id="page2" class="page">
+					<div class="pageBody">
+						<p>请输入设备密码:</p>
+						<input id="password1" type="text" name="PASSWORD" value="PASSWORD" onfocus="javascript:this.type='password';this.value=''" />
+					</div>
+					<div class="pageTail">
+						<button class="button" onclick="login();">验证</button>
+						<button class="button" onclick="toPage1();">返回首页</button>
+					</div>
+				</div>
+				<div id="page3" class="page">
+					<div class="pageBody">
+					</div>
+					<div class="pageTail">
+						<button class="button" onclick="toPage6();">初始化</button>
+						<button class="button" onclick="toPage1();">返回首页</button>
+					</div>
+				</div>
+				<div id="page4" class="page">
+					<div class="pageBody">
+						<p>设备公钥:</p>
+						<div id="HxUKeyPk"></div>
+					</div>
+					<div class="pageTail">
+						<button class="button" onclick="toPage5();">修改密码</button>
+						<button class="button" onclick="toPage1();">返回首页</button>
+					</div>
+				</div>
+				<div id="page5" class="page">
+					<div class="pageBody">
+						<p>修改密码</p>
+						<input id="password2" type="text" name="PASSWORD" value="PASSWORD" onfocus="javascript:this.type='password';this.value=''" />
+						<input id="password3" type="text" name="CONFIRM" value="CONFIRM" onfocus="javascript:this.type='password';this.value=''" />
+					</div>
+					<div class="pageTail">
+						<button class="button" onclick="changePwd();">修改</button>
+						<button class="button" onclick="toPage1();">返回首页</button>
+					</div>
+				</div>
+				<div id="page6" class="page">
+					<div class="pageBody">
+						<p>设备初始化</p>
+						<input id="password4" type="text" name="PASSWORD" value="PASSWORD" onfocus="javascript:this.type='password';this.value=''" />
+						<input id="password5" type="text" name="CONFIRM" value="CONFIRM" onfocus="javascript:this.type='password';this.value=''" />
+					</div>
+					<div class="pageTail">
+						<button class="button" onclick="initDev();">初始化</button>
+						<button class="button" onclick="toPage1();">返回首页</button>
+					</div>
+				</div>
+				<div id="page7" class="page">
+					<div class="pageBody">
+						<p>设备重置</p>
+						<input id="password6" type="text" name="PASSWORD" value="PASSWORD" onfocus="javascript:this.value=''" />
+						<input id="password7" type="text" name="CONFIRM" value="CONFIRM" onfocus="javascript:this.value=''" />
+					</div>
+					<div class="pageTail">
+						<button class="button" onclick="resetDev();">重置</button>
+						<button class="button" onclick="toPage1();">返回首页</button>
+					</div>
+				</div>
+			</div>
+			<div class="tail">Ver 1.0</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function toPage1(){
+			document.getElementById("HxUKeyDev").innerHTML="";
+			document.getElementById("HxUKeyDevInfo").innerHTML="";
+			document.getElementById("HxUKeyPk").innerHTML="";
+			document.getElementById("page1").style.display="";
+			document.getElementById("page2").style.display="none";
+			document.getElementById("page3").style.display="none";
+			document.getElementById("page4").style.display="none";
+			document.getElementById("page5").style.display="none";
+			document.getElementById("page6").style.display="none";
+			document.getElementById("page7").style.display="none";
+			document.getElementById("checkDev").style.display="";
+			document.getElementById("checkApp").style.display="none";
+			//document.getElementById("resetDev").style.display="none";
+		};
+		function toPage2(){
+			document.getElementById("page1").style.display="none";
+			document.getElementById("page2").style.display="";
+			document.getElementById("page3").style.display="none";
+			document.getElementById("page4").style.display="none";
+			document.getElementById("page5").style.display="none";
+			document.getElementById("page6").style.display="none";
+			document.getElementById("page7").style.display="none";
+		}
+		function toPage3(){
+			document.getElementById("page1").style.display="none";
+			document.getElementById("page2").style.display="none";
+			document.getElementById("page3").style.display="";
+			document.getElementById("page4").style.display="none";
+			document.getElementById("page5").style.display="none";
+			document.getElementById("page6").style.display="none";
+			document.getElementById("page7").style.display="none";
+		}
+		function toPage4(){
+			document.getElementById("page1").style.display="none";
+			document.getElementById("page2").style.display="none";
+			document.getElementById("page3").style.display="none";
+			document.getElementById("page4").style.display="";
+			document.getElementById("page5").style.display="none";
+			document.getElementById("page6").style.display="none";
+			document.getElementById("page7").style.display="none";
+		}
+		function toPage5(){
+			document.getElementById("page1").style.display="none";
+			document.getElementById("page2").style.display="none";
+			document.getElementById("page3").style.display="none";
+			document.getElementById("page4").style.display="none";
+			document.getElementById("page5").style.display="";
+			document.getElementById("page6").style.display="none";
+			document.getElementById("page7").style.display="none";
+		};
+		function toPage6(){
+			document.getElementById("page1").style.display="none";
+			document.getElementById("page2").style.display="none";
+			document.getElementById("page3").style.display="none";
+			document.getElementById("page4").style.display="none";
+			document.getElementById("page5").style.display="none";
+			document.getElementById("page6").style.display="";
+			document.getElementById("page7").style.display="none";
+		};
+		function toPage7(){
+			document.getElementById("page1").style.display="none";
+			document.getElementById("page2").style.display="none";
+			document.getElementById("page3").style.display="none";
+			document.getElementById("page4").style.display="none";
+			document.getElementById("page5").style.display="none";
+			document.getElementById("page6").style.display="none";
+			document.getElementById("page7").style.display="";
+		};
+		function showCheckButton(){
+			document.getElementById("checkDev").style.display="none";
+			document.getElementById("checkApp").style.display="";
+			//document.getElementById("resetDev").style.display="";
+		}
+		function checkDev(){
+			try{
+				var evt = document.createEvent("CustomEvent");
+				evt.initCustomEvent("ukeyCheckDev", true, false, {isManager: "true"});
+				document.dispatchEvent(evt);
+			} catch (er) {
+				if (er.name == "NotSupportedError") {
+					document.getElementById("HxUKeyDevInfo").innerHTML = "<font color=\"red\">未安装/未启用 UKey浏览器插件</font>";
+				}
+			}
+		};
+		function checkApp(){
+			try{
+				var evt = document.createEvent("CustomEvent");
+				evt.initCustomEvent("ukeyCheckApp", true, false, {isManager: "true"});
+				document.dispatchEvent(evt);
+			} catch (er) {
+				if (er.name == "NotSupportedError") {
+					document.getElementById("HxUKeyDevInfo").innerHTML = "<font color=\"red\">未安装/未启用 UKey浏览器插件</font>";
+				}
+			}
+		};
+		function login(){
+			var pwd = document.getElementById("password1").value;
+			try{
+				var evt = document.createEvent("CustomEvent");
+				evt.initCustomEvent("ukeyLogin", true, false, {isManager: "true", password: pwd});
+				document.dispatchEvent(evt);
+			} catch (er) {
+				if (er.name == "NotSupportedError") {
+					document.getElementById("HxUKeyDevInfo").innerHTML = "<font color=\"red\">未安装/未启用 UKey浏览器插件</font>";
+				}
+			}
+		};
+		function changePwd(){
+			var pwd1 = document.getElementById("password1").value;
+			var pwd2 = document.getElementById("password2").value;
+			var pwd3 = document.getElementById("password3").value;
+			if (pwd2 == pwd3) {
+				try{
+					var evt = document.createEvent("CustomEvent");
+					evt.initCustomEvent("ukeyChangePwd", true, false, {isManager: "true", passwordOld: pwd1, passwordNew: pwd2});
+					document.dispatchEvent(evt);
+				} catch (er) {
+					if (er.name == "NotSupportedError") {
+						document.getElementById("HxUKeyDevInfo").innerHTML = "<font color=\"red\">未安装/未启用 UKey浏览器插件</font>";
+					}
+				}
+			} else {
+				document.getElementById("HxUKeyDevInfo").innerHTML = "<font color=\"red\">两次输入的密码不一致</font>";
+			}
+		};
+		function initDev(){
+			var pwd = document.getElementById("password4").value;
+			var pwd1 = document.getElementById("password5").value;
+			if (pwd == pwd1) {
+				try{
+					var evt = document.createEvent("CustomEvent");
+					evt.initCustomEvent("ukeyInit", true, false, {isManager: "true", password: pwd});
+					document.dispatchEvent(evt);
+				} catch (er) {
+					if (er.name == "NotSupportedError") {
+						document.getElementById("HxUKeyDevInfo").innerHTML = "<font color=\"red\">未安装/未启用 UKey浏览器插件</font>";
+					}
+				}
+			} else {
+				document.getElementById("HxUKeyDevInfo").innerHTML = "<font color=\"red\">两次输入的密码不一致</font>";
+			}
+		};
+		function resetDev(){
+			var pwd = document.getElementById("password6").value;
+			var pwd1 = document.getElementById("password7").value;
+			if (pwd == pwd1) {
+				try{
+					var evt = document.createEvent("CustomEvent");
+					evt.initCustomEvent("ukeyReset", true, false, {isManager: "true", password: pwd});
+					document.dispatchEvent(evt);
+				} catch (er) {
+					if (er.name == "NotSupportedError") {
+						document.getElementById("HxUKeyDevInfo").innerHTML = "<font color=\"red\">未安装/未启用 UKey浏览器插件</font>";
+					}
+				}
+			} else {
+				document.getElementById("HxUKeyDevInfo").innerHTML = "<font color=\"red\">两次输入的密码不一致</font>";
+			}
+		};
+		window.onload= function(){
+			toPage1();
+		}
+	</script>
+</html>
