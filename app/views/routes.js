@@ -313,6 +313,15 @@ angular.module('myApp.views', ['ngRoute'])
             });
             return groups;
         }
+        $scope.updateSwitch = function (clusterId) {
+            var uri ="switch"
+            var promiseSwitch = myServer.call(uri + "?sessionId=" + $scope.$root.sessionId, {}, 'POST'); // 同步调用，获得承诺接口
+            promiseSwitch.then(function (ret) {
+                if (ret.status == 200 || ret.status == 201){
+                    $scope.switche = ret.data;
+                }
+            })
+        }
         $scope.updateQuantities = function(clusterId, i) {
             if (angular.isDefined(i))
                 $scope.activeCluster.tickInterval = i;

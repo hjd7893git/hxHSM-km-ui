@@ -1,4 +1,9 @@
 <bi-header></bi-header>
+<div class="switch-box is-primary"  ng-repeat="tab in clusters" ng-if = "$index == 0">
+    <input id="primary" class="switch-box-input" type="checkbox" ng-checked="tab.switch" ng-click="updateSwitch(tab.id);" />
+    <label for="primary" class="switch-box-slider"></label>
+    <label for="primary" class="switch-box-label">短信预警开关</label>
+</div>
 <div id="dashboard" style="margin: 15px;">
     <div bs-active-pane="clusters.activeTab" bs-tabs>
         <div ng-repeat="tab in clusters" title="{{ tab.cluster.name }}（{{tab.cluster.description}}）" name="{{ tab.cluster.name }}" bs-pane style="padding-top: 15px;">
