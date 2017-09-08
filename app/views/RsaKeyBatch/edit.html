@@ -35,7 +35,7 @@
                                 <bi-edit-item item-label="'完成数量'" item-tip="'输入正数'" item-data-type="'number'" ng-show="rec.batchStatus > 0"
                                               item-value="rec.completeQuantity" item-old-value="bak.completeQuantity"
                                               item-locked="'true'"></bi-edit-item>
-                                <bi-date-item item-label="'结束时间'" item-data-type="'datetime-local'" ng-show="rec.batchStatus > 1"
+                                <bi-date-item item-label="'结束时间'" item-name="'endDatetime'"  item-data-type="'datetime-local'" ng-if="rec.batchStatus > 1"
                                               item-value="rec.endDatetime" item-old-value="bak.endDatetime"
                                               item-locked="'true'"></bi-date-item>
                                 <bi-select-item item-label="'批次状态'" item-options="'batchStatus'|theOption" item-margin="'bi-margin-b0'"

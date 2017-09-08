@@ -53,7 +53,7 @@
                                 </td>
                                 <td>{{r.rec.cardBin}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.serialNo}}</a></td>
-                                <td>{{r.rec.invalidDate}}</td>
+                                <td>{{r.rec.invalidDate|biDate}}</td>
                                 <td>{{r.rec.requestFile}}</td>
                                 <td><p ng-show="r.rec.rootCertId">{{r.rec.rootCertId | optionName: rootCertRidList}}</p></td>
                                 <td>{{r.rec.serviceSign | optionName: "serviceSign"}}</td>

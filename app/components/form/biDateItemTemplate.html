@@ -1,12 +1,13 @@
 <div class="form-group {{itemMargin|iif:itemMargin:'bi-margin-b10':'bi-margin-b10'}}">
     <label class="col-sm-2 control-label bi-pad0">{{itemLabel}}</label>
     <div class="col-sm-6"  >
-        <input type="{{itemDataType|ifdef:itemDataType:'date'}}" class="form-control" ng-model="itemValue" model-format="date"
+        <input type="{{itemDataType|ifdef:itemDataType:'date'}}" class="form-control" ng-model="itemValue" model-format="datetime-local"
                ng-disabled="itemLocked" ng-required="itemRequired" ng-minlength="itemMinLength" ng-maxlength="itemMaxLength" name="{{::itemName}}"
                ng-pattern="itemRegExpr">
         <div class="form-control-feedback" aria-hidden="false" ng-if="itemValue==null">
             <span class="bi-feedback">请输入正确日期</span>
         </div>
+        <!--<h1>{{itemValue}}</h1>-->
         <!--<span class="bi-feedback" ng-if="itemValue==null">请输入正确日期</span>-->
         <div class="bi-required-inner text-warning" ng-if="::itemRequired" style="font-size: 20px;">*</div>
         <div class="form-control-feedback" aria-hidden="true" ng-show="isValidated(itemName, itemRequired, itemMinLength, itemMaxLength)">

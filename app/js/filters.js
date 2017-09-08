@@ -27,7 +27,8 @@ angular.module('myApp.filters', ['ngRoute'])
     }])
 
     .filter('biDate', function () {
-        return function (x) {
+        return function (y) {
+            var x = y.substr(0, 8);
             return x.substr(0, 4) + '-' + x.substr(4, 2) + '-' + x.substr(6);
         };
     })
@@ -46,6 +47,7 @@ angular.module('myApp.filters', ['ngRoute'])
             return d + ' ' + x.substr(0, 2) + ':' + x.substr(2, 2) + ':' + x.substr(4);
         };
     })
+
 
     .filter('treeStringify', ['$log', '$rootScope', function ($log, $rootScope) {
         var stringify = function (tree, chosens, tab) {
