@@ -28,13 +28,31 @@ angular.module('myApp.components.user', [])
             $scope.user.sign = '';
             $location.path("views/change").replace();
         };
-        myServer.errorDialog($scope, "user", jumpTo);
 
+        myServer.errorDialog($scope, "user", jumpTo);
         document.getElementById("userSign").addEventListener('change', function() {
             var promise = myServer.call("login", $scope.user); // 同步调用，获得承诺接口
             promise.then(function(ret) { // 调用承诺API获取数据 .resolve
                 if (ret.status == 200 || ret.status == 201) {
+                    $scope.user.sys='IC'
                     $rootScope.sys = $scope.user.sys;
+                    //
+                    // if($scope.user.sys==null){
+                    //     $rootScope.sys='KM';
+                    //     document.title="密钥统一管理系统"
+                    // }
+                    // else{
+                    //     $rootScope.sys = $scope.user.sys;
+                    //     if($rootScope.sys=='KM'){
+                    //         document.title="密钥统一管理系统"
+                    //     }
+                    //     if($rootScope.sys=='IC'){
+                    //         document.title="金融IC卡密钥管理系统"
+                    //     }
+                    //     if($rootScope.sys=='ATM'){
+                    //         document.title="ATM管理系统"
+                    //     }
+                    // }
                     $rootScope.signedUp = true;
                     $rootScope.user = ret.data.user;
                     $rootScope.sessionId = ret.data.sessionId;
@@ -44,10 +62,12 @@ angular.module('myApp.components.user', [])
                     $scope.showModal(ret);
                 }
             }, function(ret) { // 处理错误 .reject
-                $scope.showModal(ret);
+                // if (ret.status == 401)
+                //     $scope.showModalPower(ret)
+                // else
+                    $scope.showModal(ret);
             });
         });
-
         document.getElementById("userSign").addEventListener('input', function() {
             $scope.auth = true;
         });
@@ -77,7 +97,14 @@ angular.module('myApp.components.user', [])
                 }
             }
         }
-
+        $scope.doChangePower = function (sn) {
+            var promise = myServer.call("power?sn=" + sn, {}, 'GET')
+            promise.then(function (ret) {
+                if (ret.status == 200 || ret.status == 201){
+                  // if(ret.status)
+                }
+            })
+        }
         $scope.doLogin = function(user, password) {
             var promise = myServer.call("login", null, 'GET'); // 同步调用，获得承诺接口
             promise.then(function(ret) { // 调用承诺API获取数据 .resolve
@@ -88,7 +115,7 @@ angular.module('myApp.components.user', [])
                 user.password = angular.element.md5(user.password);
                 try{
                     var evt = document.createEvent("CustomEvent");
-                    var sm3res = sm3(user.mobile + user.time + user.data);
+                    var sm3res = sm3(user.mobile + user.time + user.data); //对用户名，时间，随机数进行哈希计算
                     console.log(sm3res);
                     evt.initCustomEvent('ukeySignData', true, false, {isManager: "false", data: sm3res, password: password});
                     document.dispatchEvent(evt);

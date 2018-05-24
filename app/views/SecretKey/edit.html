@@ -44,7 +44,7 @@
                                                 <td>{{op.rec.name}}</td>
                                                 <td>
                                                     <a ng-click="deleteRefRecX(rec.systems, $index)" ng-show="!lock"><i class="fa fa-minus-circle"></i></a>&nbsp;
-                                                    <a ng-click="showRefEditor(rec.systems, $index, 'editSystem')"><i class="fa fa-search"></i></a>
+                                                    <a ng-click="showRefEditor(rec.systems, $index, 'editSystem','SecretKey')"><i class="fa fa-search"></i></a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -83,7 +83,7 @@
                                                 <td>{{op.rec.encode|optionName:'appEncode'}}</td>
                                                 <td>
                                                     <a ng-click="deleteRefRecX(rec.applications, $index)" ng-show="!lock"><i class="fa fa-minus-circle"></i></a>&nbsp;
-                                                    <a ng-click="showRefEditor(rec.applications, $index, 'editApplication')"><i class="fa fa-search"></i></a>
+                                                    <a ng-click="showRefEditor(rec.applications, $index, 'editApplication','SecretKey')"><i class="fa fa-search"></i></a>
                                                 </td>
                                             </tr>
                                         </table>

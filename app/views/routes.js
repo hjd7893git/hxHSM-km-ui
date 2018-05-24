@@ -425,7 +425,7 @@ angular.module('myApp.views', ['ngRoute'])
             $scope.bak = rec.bak;
             var chosenPanel = $rootScope.detailPageIDs[rec.table];
             if (angular.isUndefined(chosenPanel)) {
-                var page = 'views/' + rec.table + '/edit.html';
+                // var page = 'views/' + rec.table + '/edit.html';
                 $rootScope.detailPanels.push('views/' + rec.table + '/edit.html');
                 $rootScope.detailPageIDs[rec.table] = chosenPanel = $rootScope.detailPanels.length;
             }

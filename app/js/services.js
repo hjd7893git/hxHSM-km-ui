@@ -7,8 +7,8 @@
 angular.module('myApp.services', ['ngResource'])
 
     .factory('myServer', ['$http', '$log', '$q', '$resource', '$modal', '$timeout', function($http, $log, $q, $resource, $modal, $timeout) {
-        var URLPrefix = "http://192.168.0.200:8080/service/";
-        //var URLPrefix = "service/";
+        // var URLPrefix = "http://192.168.0.64:8080/service/";
+        var URLPrefix = "http://localhost:8100/service/";
         return {
             URLPrefix: URLPrefix,
             call: function(uri, data, m) {
@@ -30,6 +30,7 @@ angular.module('myApp.services', ['ngResource'])
             },
             errorDialog: function($scope, who, jumpTo) {
                 var errorModal = $modal({scope: $scope, templateUrl: 'views/dialog/error.html', show: false});
+                var powerModal = $modal({scope: $scope, templateUrl: 'views/dialog/power.html', show: false});
                 $scope.showModal = function(ret) {
                     if (angular.isDefined(ret)) {
                         $scope.title = '服务错误';
@@ -46,6 +47,10 @@ angular.module('myApp.services', ['ngResource'])
                     }
                     errorModal.$promise.then(errorModal.show);
                 };
+                $scope.showModalPower = function (ret) {
+                    $scope.title = '系统未授权';
+                    powerModal.$promise.then(powerModal.show);
+                }
                 $scope.showTips = function(msg) {
                     $scope.title = '提示';
                     $scope.errorCode = 'Success';
@@ -213,6 +218,8 @@ angular.module('myApp.services', ['ngResource'])
                     if (angular.isUndefined($scope.ref.rec.opType))
                         $scope.ref.rec.opType = 0;
                     if ($scope.recStatus != -1) { // checking
+                        // if(angular.isUndefined(refTableId))
+                        //     refTableId = 'SecretKey'
                         var field = refTableId + refPageId;
                         var refPanelNo = $scope.$root.detailPageIDs[field];
                         if (angular.isUndefined(refPanelNo)) {
@@ -578,6 +585,22 @@ angular.module('myApp.services', ['ngResource'])
                         // });
                         delete $scope.rec.readies;
                     }
+                    if($scope.tableId == "SecretCert"){
+                        delete $scope.rec.certStatus;
+                        delete $scope.rec.rsaKey;
+                        delete $scope.rec.rsaKeyId;
+                        delete $scope.rec.requestFile;
+                        delete $scope.rec.certFile;
+                        delete $scope.rec.rsaKeyId;
+                        delete $scope.rec.rsaKeyBatchList;
+                        delete $scope.rec.rootCertList;
+                        delete $scope.rec.rootCertId;
+                        delete $scope.rec.rootPrivateIndex;
+                        delete $scope.rec.issuingNumber;
+                        delete $scope.rec.publicKeySurplus;
+                        delete $scope.rec.publicKeyExponential;
+                        delete $scope.rec.publicKeyCert;
+                    }
                     if($scope.tableId=="SecretKey"){
                         delete $scope.rec.systems;
                         delete $scope.rec.applications;
@@ -590,6 +613,7 @@ angular.module('myApp.services', ['ngResource'])
                     }
                     $scope.gotoPage('edit');
                 };
+
                 $scope.copyEditorX = function() {
                     var chosenIdx = getChosenIdx();
                     if (angular.isDefined(chosenIdx)) {

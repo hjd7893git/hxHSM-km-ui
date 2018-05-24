@@ -55,7 +55,7 @@
                                 <td>{{r.rec.position}}</td>
                                 <td>{{r.rec.ip}}</td>
                                 <td>{{r.rec.commandSetVersion}}</td>
-                                <td>{{r.rec.issueDate}}</td>
+                                <td>{{r.rec.issueDate|biDate}}</td>
                                 <td>{{r.rec.groupId | optionName : groupList}}</td>
                                 <td>{{r.rec.status | optionName:"machineStatus"}}</td>
                             </tr>

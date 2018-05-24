@@ -1,0 +1,25 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" ng-show="title">
+                <button type="button" class="close" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><i class="fa fa-warning"></i>&nbsp;{{title}}</h4>
+            </div>
+            <div class="modal-body" style="background-color: #FFFFCC">{{errorCode}}&nbsp;:&nbsp;{{errorMsg}}</div>
+                <form class="form-horizontal" name="{{::thePageId}}Form">
+                    <div class="col-sm-6">
+                        <input type="text" aria-label="SN:" class="form-control" placeholder="{{itemTip}}"
+                               ng-model="sn">
+                               <!--ng-disabled="itemLocked" ng-required="itemRequired" ng-minlength="itemMinLength"-->
+                               <!--ng-maxlength="itemMaxLength" name="{{::itemName}}"-->
+                               <!--ng-pattern="itemRegExpr"-->
+                        <!--&gt;-->
+                    </div>
+                </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="doChangePower(sn)">Ã·Ωª</button>
+                <button type="button" class="btn btn-default" ng-click="$hide()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

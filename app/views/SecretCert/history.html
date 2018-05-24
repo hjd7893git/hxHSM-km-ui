@@ -21,7 +21,7 @@
                                 <tr ng-repeat="his in histories">
                                     <td>{{his.cardBin}}</td>
                                     <td>{{his.serialNo}}</td>
-                                    <td>{{his.invalidDate}}</td>
+                                    <td>{{his.invalidDate|biDate}}</td>
                                     <td>{{his.certStatus|optionName:'certStatus'}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">

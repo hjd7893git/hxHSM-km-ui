@@ -44,7 +44,7 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'batchStatus', names: [{value: 0, name: '预备'}, {value: 1, name: '进行中 ...'}, {value: 2, name: '失败结束'}, {value: 3, name: '成功完成'}]},
             {option: 'pubKeyLength', names: [{value: 0, name: '1024 Bits'}, {value: 1, name: '1152 Bits'}, {value: 2, name: '1408 Bits'}, {value: 3, name: '1984 Bits'}]},
             {option: 'RSAStatus' , names: [{value: 0, name: '未用'}, {value: 1, name: '已用'}, {value: 2, name: '过期'}]},
-            {option: 'packType' , names: [{value: 0, name: 'HSM'}, {value: 1, name: 'HxHSM'}, {value: 2, name: 'HxJSON'}, {value: 3, name: 'HxHSM+HxJSON'}]},
+            {option: 'packType' , names: [{value: 0, name: 'HSM'}, {value: 1, name: 'HxHSM'}, {value: 2, name: 'HxJSON'}, {value: 3, name: 'HxHSM+HxJSON'},{value: 4, name: 'HxHSM+HxJSON+INTER'}]},
             {option: 'shortConnection', names: [{value: 0, name: '长连接'}, {value: 1, name: '短连接'}]},
             {option: 'syncRqRs', names: [{value: 0, name: '异步'}, {value: 1, name: '同步'}]},
             {option: 'hsmEncode', names: [{value: 0, name: 'ASCII'}, {value: 1, name: 'EBCDIC'}, {value: 2, name: 'BINARY'}]}
@@ -159,6 +159,7 @@ angular.module('myApp.options', ['ngResource'])
                 }
             },
             {tableId: 'Partner', title: '合作伙伴管理', keyInfo: 'partnerName'},
+
             {tableId: 'Role', title: '角色管理', keyInfo: 'name',
                 controller: function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveUsersList($scope);
