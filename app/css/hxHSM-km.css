@@ -3,6 +3,23 @@ body {
     padding-top: 64px; /* 留出固定在顶部的导航条空间 */
     background-color: #eee;
 }
+.navbarme .nav > li:hover {
+    background-color: #f5f5f5;
+    cursor:pointer;
+}
+.navbarme .nav > li .dropdown-menu {
+    margin: 0;
+    top: -120%;
+    left: 140px;
+}
+.navbarme .nav > li:hover .dropdown-menu {
+    display: block;
+}
+.navbarme .nav > li:hover .caret {
+    border-top: 4px solid transparent;
+    border-left: 6px solid ;
+    border-bottom: 4px solid transparent;
+}
 .bLogo {
     height: 50px;
     margin-top: 5px;

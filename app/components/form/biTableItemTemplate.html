@@ -1,0 +1,31 @@
+<div class="form-group {{itemMargin|iif:itemMargin:'bi-margin-b10':'bi-margin-b10'}}">
+    <label class="col-sm-2 control-label bi-pad0">{{itemLabel}}</label>
+    <div class="col-sm-6">
+        <input type="{{itemDataType|ifdef:itemDataType:'text'}}" class="form-control" placeholder="{{itemTip}}"
+               ng-model="itemValue"
+               ng-disabled="itemLocked" ng-required="itemRequired" ng-minlength="itemMinLength"
+               ng-maxlength="itemMaxLength" name="{{::itemName}}"
+               ng-pattern="itemRegExpr"  ng-focus="mCrf()"  ng-keyup="enterEvent($event)" ng-blur="getNewData()"
+        >
+        <!-- ng-show="!itemLocked"-->
+        <table id ="tab" class="table table-condensed bi-margin-b0 crud-m" ng-if="mr" >
+            <tr ng-repeat="g in itemFs" >
+                <td class="text-center">
+                    <i class="fa fa-{{op.rec.opType|optionName:'opTypeIcon'}} text-danger"></i>
+                </td>
+                <!--<td><input type="text"  value= {{g}} ng-blur="getNewData2()"></td>-->
+                <td>{{g}}</td>
+                <td><a ng-click="dele($index)" ><i class="fa fa-minus-circle" ></i></a></td>
+            </tr>
+        </table>
+        <div class="form-control-feedback" aria-hidden="true" ng-show="inputError != '' ">
+            <span class="bi-feedback">{{inputError}}</span>
+        </div>
+    </div>
+    <div ng-if="isNotInsert()" class="col-sm-4 trimL bi-old-val">
+        <div class='weixin right' ng-if="itemValue != itemOldValue" style="padding: 0; border: none;">
+            <textarea class="form-control weixin-content" rows="{{itemRows|iif:itemRows:'2':'2'}}" disabled style="background-color: #FFFFCC;">{{itemOldValue}}</textarea>
+            <div class="arrow"></div>
+        </div>
+    </div>
+</div>

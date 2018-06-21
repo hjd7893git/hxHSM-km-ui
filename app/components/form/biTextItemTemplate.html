@@ -2,7 +2,7 @@
     <label class="col-sm-2 control-label bi-pad0">{{itemLabel}}</label>
     <div class="col-sm-6">
         <textarea class="form-control" rows="{{itemRows|iif:itemRows:'2':'2'}}" placeholder="{{itemTip}}" ng-model="itemValue"
-            ng-disabled="itemLocked" ng-required="itemRequired" ng-minlength="itemMinLength" ng-maxlength="itemMaxLength" name="{{::itemName}}">
+            ng-disabled="itemLocked" ng-required="itemRequired" ng-minlength="itemMinLength" ng-maxlength="itemMaxLength" name="{{::itemName}}" ng-focus="don()">
         </textarea>
         <div class="bi-required-inner text-warning" ng-if="::itemRequired" style="font-size: 20px;">*</div>
         <div class="form-control-feedback" aria-hidden="true" ng-show="isValidated(itemName, itemRequired, itemMinLength, itemMaxLength)">

@@ -2,7 +2,7 @@
     <label class="col-sm-2 control-label bi-pad0">{{itemLabel}}</label>
     <div class="col-sm-6">
         <select class="form-control" ng-model="itemValue" model-format="{{itemDataType|ifdef:itemDataType:'int'}}"
-                ng-disabled="itemLocked" ng-required="itemRequired" name="{{::itemName}}">
+                ng-disabled="itemLocked" ng-required="itemRequired" name="{{::itemName}}" ng-focus="don()">
         <option ng-if="isOptionField"></option>
             <option value="{{o.value}}" ng-repeat="o in itemOptions" ng-selected="itemValue == o.value">{{o.name}}</option>
         </select>

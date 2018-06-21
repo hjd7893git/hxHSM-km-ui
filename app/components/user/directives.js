@@ -53,18 +53,18 @@ angular.module('myApp.components.user', [])
                     //         document.title="ATM管理系统"
                     //     }
                     // }
+
                     $rootScope.signedUp = true;
                     $rootScope.user = ret.data.user;
+                    $rootScope.pow = ret.data.msga;
                     $rootScope.sessionId = ret.data.sessionId;
+
                     $location.path("views/check").replace();
                 } else if (ret.status == 202) {
                     $scope.confirmLabel = '立即更改';
                     $scope.showModal(ret);
                 }
             }, function(ret) { // 处理错误 .reject
-                // if (ret.status == 401)
-                //     $scope.showModalPower(ret)
-                // else
                     $scope.showModal(ret);
             });
         });

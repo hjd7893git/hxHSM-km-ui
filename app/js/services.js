@@ -5,10 +5,22 @@
 'use strict';
 
 angular.module('myApp.services', ['ngResource'])
-
+    // .run(function ($rootScope, $interval) {
+    //     var timer = $interval(function () {
+    //         $http({
+    //             method: 'GET',
+    //             url: 'http://www.runoob.com/try/angularjs/data/sites.php'
+    //         }).then(function successCallback(response) {
+    //             $scope.names = response.data.sites;
+    //         }, function errorCallback(response) {
+    //             // 请求失败执行代码
+    //         });
+    //     }, 2000)
+    // })
     .factory('myServer', ['$http', '$log', '$q', '$resource', '$modal', '$timeout', function($http, $log, $q, $resource, $modal, $timeout) {
         // var URLPrefix = "http://192.168.0.64:8080/service/";
         var URLPrefix = "http://localhost:8100/service/";
+        // var URLPrefix = "service/";
         return {
             URLPrefix: URLPrefix,
             call: function(uri, data, m) {
@@ -47,9 +59,11 @@ angular.module('myApp.services', ['ngResource'])
                     }
                     errorModal.$promise.then(errorModal.show);
                 };
-                $scope.showModalPower = function (ret) {
-                    $scope.title = '系统未授权';
-                    powerModal.$promise.then(powerModal.show);
+                $scope.showModalPower = function (msg) {
+                    $scope.title = '提示';
+                    $scope.errorCode = '通知';
+                    $scope.errorMsg = msg;
+                    errorModal.$promise.then(errorModal.show);
                 }
                 $scope.showTips = function(msg) {
                     $scope.title = '提示';
@@ -191,6 +205,9 @@ angular.module('myApp.services', ['ngResource'])
                 $scope.showEditor = function(idx) {
                     $scope.opType = 0;
                     $scope.selectedRec = $scope.recs[idx].rec;
+                    if ($scope.tableId == 'Application') {
+                        $scope.fcs = $scope.selectedRec.ipList.split(",");
+                    }
                     $scope.selectedIndex = idx;
                     $scope.lock = true;
                     $scope.lockKeyAbout = true;
@@ -285,6 +302,8 @@ angular.module('myApp.services', ['ngResource'])
                     }
                 };
                 $scope.cancelEditing = function() {
+                    if($scope.tableId=='Application')
+                        $("#tab").hide();
                     $scope.opType = 0;
                     $scope.isClusterExist = true;
                     $scope.isIndexExist = true;
@@ -323,6 +342,8 @@ angular.module('myApp.services', ['ngResource'])
                     }
                 };
                 $scope.submitEdited = function() {
+                    if($scope.tableId== 'Application')
+                        $("#tab").hide();
                     if ($scope.tableId == 'Host') {
                         if ($scope.rec.opType == 1) {
                             $scope.rec.os = '-';
@@ -347,7 +368,7 @@ angular.module('myApp.services', ['ngResource'])
                                     else if (obj.opType == 1 || obj.opType == 2 || obj.opType == 3)
                                         return obj;
                                 });
-                                newRec[ele] = chged;
+                                newRec[ele] = chged;  //控制第二层的数据变动
                             }
                         });
                     }
@@ -453,6 +474,7 @@ angular.module('myApp.services', ['ngResource'])
                             else
                                 $scope.isClusterExist = true;
                         }
+
                         $scope.unlockEditor();
                     }
                 };
@@ -549,6 +571,8 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.rec = {opType: 1};
                     if ($scope.tableId == 'Host') {
                         $scope.isNameExist = false;
+                    }if($scope.tableId == 'Application'){
+                        $scope.fcs = "";
                     }if ($scope.tableId == 'SecretKey') {
                         $scope.isCreateKey = false;
                         $scope.isIndexExist = false;
@@ -556,6 +580,7 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.rec.systems = [];
                         $scope.rec.applications = [];
                     }if($scope.tableId == 'Machine'||$scope.tableId =='RsaKey'||$scope.tableId =='MachineReady'||$scope.tableId =='RsaKeyBatch'||$scope.tableId =='SecretCert'||$scope.tableId =='SecretKey'){
+                        //新加数据且缩小作用域
                         $scope.rec.supplyDate="";
                         $scope.rec.produceDate="";
                         $scope.rec.createDatetime="";
@@ -563,6 +588,7 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.rec.readyDate="";
                         $scope.rec.startDatetime="";
                         $scope.rec.invalidDate="";
+                        $scope.rec.driverClass="";
                     }
                     if (angular.isDefined($scope.preInsert))
                         $scope.preInsert($scope.rec);
@@ -971,4 +997,7 @@ angular.module('myApp.services', ['ngResource'])
             journals: $resource(URLPrefix + 'JournalBiz/:status', {seqNo: '@status'}),
             statistics: $resource(URLPrefix + 'statistics/:tableId/:appId', {tableId:'@tableId', appId: '@appId'})
         };
-    }]);
+    }])
+
+
+
