@@ -19,6 +19,9 @@
                                     <div class="col-md-6">
                                         <bi-query-item item-label="'业务流水号'" item-tip="'大于0的整数'" item-value="qry.bizSeq"></bi-query-item>
                                     </div>
+                                    <div class="col-md-6">
+                                        <bi-query-select item-label="'操作状态'" item-options="'journalStatus'|theOption" item-value="qry.status"></bi-query-select>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -27,7 +30,7 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th></th>
-                                <th>流水号</th><th>用户</th><th>动作</th><th>业务流水号</th><th>操作时刻</th></tr>
+                                <th>流水号</th><th>用户</th><th>动作</th><th>业务流水号</th><th>用户ip</th><th>操作状态</th><th>操作时刻</th></tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="r in recs" class="chosen-{{r.chosen}}">
@@ -38,6 +41,8 @@
                                 <td>{{r.userId|optionName:userList}}</td>
                                 <td>{{r.action}}</td>
                                 <td>{{r.bizSeq}}</td>
+                                <td>{{r.userIp}}</td>
+                                <td>{{r.status|optionName:'journalStatus'}}</td>
                                 <td>{{r.journalDate|biDate}}&nbsp;{{r.time|biTime}}.{{r.moment}}</td>
                             </tr>
                             </tbody>

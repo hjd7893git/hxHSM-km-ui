@@ -43,6 +43,7 @@ angular.module('myApp.services', ['ngResource'])
             errorDialog: function($scope, who, jumpTo) {
                 var errorModal = $modal({scope: $scope, templateUrl: 'views/dialog/error.html', show: false});
                 var powerModal = $modal({scope: $scope, templateUrl: 'views/dialog/power.html', show: false});
+
                 $scope.showModal = function(ret) {
                     if (angular.isDefined(ret)) {
                         $scope.title = '服务错误';
@@ -205,8 +206,8 @@ angular.module('myApp.services', ['ngResource'])
                 $scope.showEditor = function(idx) {
                     $scope.opType = 0;
                     $scope.selectedRec = $scope.recs[idx].rec;
-                    if ($scope.tableId == 'Application') {
-                        $scope.fcs = $scope.selectedRec.ipList.split(",");
+                    if ($scope.tableId == 'Application' ) {
+                        $scope.fcs = $scope.selectedRec.ipList || ''.split(",");
                     }
                     $scope.selectedIndex = idx;
                     $scope.lock = true;
@@ -971,7 +972,7 @@ angular.module('myApp.services', ['ngResource'])
                 var ok1 = function(ret) {
                     if (angular.isUndefined(ret.status) || ret.status == 200 | ret.status == 201) {
                         $scope.$root.userList = angular.element.map(ret, function(obj) {
-                            return {value: obj.id, name: obj.name};
+                            return {value: obj.id, name: obj.mobile};
                         });
                     }
                 };

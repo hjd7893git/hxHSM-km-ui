@@ -24,7 +24,7 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'keyExponential', names: [{value: '3', name: '3 - 03'}, {value: '65537', name: '65537 - 010001'}]},
             {option: 'keyType', names: [{value: '000', name: '000(ZMK/BMK)'}, {value: '001', name: '001(ZPK)'}, {value: '002', name: '002(PVK/TPK/TMK/CVK)'}, {value: '402', name: '402(CVK)'}, {value: '003', name: '003(TAK)'}, {value: '008', name: '008(ZAK)'}, {value: '109', name: '109(MDK-AC/MDK-ENC/MDK-MAC/KMC)'}, {value: '209', name: '209(MDK-AC/MDK-ENC/MDK-MAC/KMC)'}, {value: '309', name: '309(MDK-AC/MDK-ENC/MDK-MAC/KMC)'}, {value: '409', name: '409(MDK-AC/MDK-ENC/MDK-MAC/KMC)'}, {value: '00A', name: '00A(ZEK/SEK/LK/LK2/TK)'}, {value: '00B', name: '00B(TEK)'}, {value: '00C', name: '00C(RSA-SK)'},{value:'509',name:'509(MK-DN)'}]},
             {option: 'keySchema', names: [{value: 'Y', name: '3DES-192 Bits'}, {value: 'X', name: '3DES-128 Bits'}, {value: 'Z', name: 'DES-64 Bits'}, {value: 'S', name: 'SM4-128 Bits'}]},
-            {option: 'keyMode', names: [{value: 'RSA-1024', name: 'RSA 1024 Bits'}, {value: 'RSA-1152', name: 'RSA 1152 Bits'}, {value: 'RSA-1408', name: 'RSA 1408 Bits'}, {value: 'SM2-256', name: 'SM2 256 Bits'}]},
+            {option: 'keyMode', names: [{value: 'RSA-1024', name: 'RSA 1024 Bits'}, {value: 'RSA-1152', name: 'RSA 1152 Bits'}, {value: 'RSA-1408', name: 'RSA 1408 Bits'}, {value: 'SM2-256', name: 'SM2 256 Bits'},{value: 'RSA-2048', name: 'RSA 2048 Bits'}]},
             {option: 'keyUse', names: [{value: 0, name: '应用模块'}, {value: 1, name: '设备'}, {value: 2, name: '合作伙伴'}]},
             {option: 'keyUseFor', names: [{value: 0, name: '发卡行密钥'}, {value: 1, name: 'IC卡密钥'}]},
             {option: 'keyUseType', names: [{value: 0, name: '不适用'}, {value: 1, name: '全行统一'}, {value: 2, name: '分行统一'}, {value: 3, name: '网点统一'}, {value: 4, name: '一机一密'}]},
@@ -47,7 +47,9 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'packType' , names: [{value: 0, name: 'HSM'}, {value: 1, name: 'HxHSM'}, {value: 2, name: 'HxJSON'}, {value: 3, name: 'HxHSM+HxJSON'},{value: 4, name: 'HxHSM+HxJSON+INTER'}]},
             {option: 'shortConnection', names: [{value: 0, name: '长连接'}, {value: 1, name: '短连接'}]},
             {option: 'syncRqRs', names: [{value: 0, name: '异步'}, {value: 1, name: '同步'}]},
-            {option: 'hsmEncode', names: [{value: 0, name: 'ASCII'}, {value: 1, name: 'EBCDIC'}, {value: 2, name: 'BINARY'}]}
+            {option: 'hsmEncode', names: [{value: 0, name: 'ASCII'}, {value: 1, name: 'EBCDIC'}, {value: 2, name: 'BINARY'}]},
+            {option: 'journalStatus', names: [{value: 0, name: '成功'}, {value: 1, name: '失败'}, {value: 2, name: '进行中'}]},
+            {option: 'hsmDriver', names: [{value: 'com.hxtc.hsm.socket.HSMSocket', name: 'SJJ1309'}, {value: 'com.hxtc.hsm.socket.SJL06TSocket', name: 'SJL06T'}]}
         ];
         var tableControllers = [
             {tableId: 'Application', title: '渠道接入管理', keyInfo: 'name',

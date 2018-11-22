@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://D:\temp\WL\WL.iml" filepath="D:\temp\WL\WL.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/hxHSM-km-ui.iml" filepath="$PROJECT_DIR$/.idea/hxHSM-km-ui.iml" />
     </modules>
   </component>
