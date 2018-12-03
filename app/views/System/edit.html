@@ -15,6 +15,66 @@
                                               item-value="rec.name" item-old-value="bak.name" item-locked="lock"></bi-edit-item>
                                 <bi-text-item item-label="'系统简介'"
                                               item-value="rec.summary" item-old-value="bak.summary" item-locked="lock"></bi-text-item>
+                                <bi-select-item item-label="'服务集群'" item-options="clusterList"
+                                              item-value="rec.clusterId" item-old-value="bak.clusterId" item-locked="lock"></bi-select-item>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label bi-pr0">接入渠道</label>
+                                    <div class="col-sm-6">
+                                        <table class="table table-condensed bi-margin-b0 crud-r"
+                                               style="margin-top: -1px;">
+                                            <thead>
+                                            <tr>
+                                                <th><i class="fa fa-square-o"></i></th>
+                                                <th style="width: 150px; text-align: left;">渠道代号</th>
+                                                <th>渠道名称</th>
+                                                <th>客户端编码</th>
+                                                <th>权限</th>
+                                                <th style="width: 50px;">
+                                                    <a ng-show="appdrop" ><i ng-click="appdrop=false" class="fa fa-chevron-up pointer"></i></a>
+                                                    <a ng-show="!appdrop"><i ng-click="appdrop=true" class="fa fa-chevron-down pointer"></i></a>
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tr ng-repeat="op in rec.applications" ng-show="appdrop">
+                                                <td class="text-center">
+                                                    <i class="fa fa-{{op.rec.opType|optionName:'opTypeIcon'}} text-danger"></i>
+                                                </td>
+                                                <td>{{op.rec.symbol}}</td>
+                                                <td>{{op.rec.name}}</td>
+                                                <td>{{op.rec.encode|optionName:'appEncode'}}</td>
+                                                <!--<td>{{op.rec.permission|optionName:'permission'}}</td>-->
+                                                <td><bi-select-item  item-options="'permission'|theOption" item-value="op.rec.permission" item-old-value="op.bak.permission" >
+                                                </bi-select-item></td>
+                                                <td>
+                                                    <a ng-click="deleteRefRecX(rec.applications, $index)"
+                                                       ng-show="!lock"><i class="fa fa-minus-circle"></i></a>&nbsp;
+                                                    <a ng-click="ch(rec.applications, $index)"
+                                                       ng-show="!lock"><i class="fa fa-edit"></i></a>&nbsp;
+                                                    <a ng-click="showRefEditor(rec.applications, $index, 'editApplication','System')"><i
+                                                            class="fa fa-search"></i></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <div ng-show="appdrop && !lock">
+                                            <bi-select-item item-label="'接入渠道'" item-options="applicationList"
+                                                            item-margin="'bi-margin-t10 bi-wd400'"
+                                                            item-value="addAppId"
+                                                            item-old-value="addAppId"></bi-select-item>
+                                            <button class="motu"
+                                                    ng-click="addRefRow(rec.applications, applicationRows, addAppId)">
+                                                <i class="fa fa-plus"></i>&nbsp;增加
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div ng-if="rec.opType == 2" class="col-sm-4 trimL bi-old-val"
+                                         style="padding-top: 12px;">
+                                        <div class='weixin right' ng-if="refChanged(rec.applications)">
+                                            <div class='weixin-content'>做过关联维护</div>
+                                            <div class="arrow" style="margin-top: 0;"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </li>

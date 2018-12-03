@@ -49,14 +49,20 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'syncRqRs', names: [{value: 0, name: '异步'}, {value: 1, name: '同步'}]},
             {option: 'hsmEncode', names: [{value: 0, name: 'ASCII'}, {value: 1, name: 'EBCDIC'}, {value: 2, name: 'BINARY'}]},
             {option: 'journalStatus', names: [{value: 0, name: '成功'}, {value: 1, name: '失败'}, {value: 2, name: '进行中'}]},
-            {option: 'hsmDriver', names: [{value: 'com.hxtc.hsm.socket.HSMSocket', name: 'SJJ1309'}, {value: 'com.hxtc.hsm.socket.SJL06TSocket', name: 'SJL06T'}]}
+            {option: 'hsmDriver', names: [{value: 'com.hxtc.hsm.socket.HSMSocket', name: 'SJJ1309'}, {value: 'com.hxtc.hsm.socket.SJL06TSocket', name: 'SJL06T'}]},
+            {option: 'permission', names: [{value: 0, name: '读'}, {value: 1, name: '写'}, {value: 2, name: '其它'}]},
+            {option: 'keySort', names: [{value: 0, name: '对称密钥'}, {value: 1, name: '非对称密钥'}]},
+            {option: 'function', names: [{value: 0, name: '发卡行密钥'}, {value: 1, name: 'IC卡密钥'}]}
+
         ];
+
+
         var tableControllers = [
             {tableId: 'Application', title: '渠道接入管理', keyInfo: 'name',
                 controller: function($log, $rootScope, $scope, myServer) {
                     $scope.drop = false;
                     myServer.retrieveUsersList($scope);
-                    myServer.retrieveGroupList($scope);
+                    myServer.retrieveClusterList($scope);
                     $scope.displayChart = function(appId) {
                         $scope.gotoPage('chart');
                         $scope.dataset = [];//[['January', 10], ['February', 8], ['March', 4], ['April', 13], ['May', 12], ['June', 9]]];
@@ -207,13 +213,14 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveSystemList($scope);
                     myServer.retrieveApplicationList($scope);
                     myServer.retrieveRsaKeyBatchList($scope);
+                    myServer.retrieveRsaKeyBatchListName($scope);
                     $scope.isIndexExist = true;
                 }
             },
             {tableId: 'RsaKeyBatch', title:'非对称密钥批次管理', keyInfo: 'summary',
                 controller:function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveUsersList($scope);
-                    myServer.retrieveApplicationList($scope);
+                    myServer.retrieveSystemList($scope);
                     myServer.retrieveSecretCertList($scope);
                     $scope.preInsert = function(rec) {
                         rec.batchStatus = 0;
@@ -269,7 +276,6 @@ angular.module('myApp.options', ['ngResource'])
                     $scope.appdrop = false;
                     myServer.retrieveGroupList($scope);
                     myServer.retrieveUsersList($scope);
-                    myServer.retrieveApplicationList($scope);
                     myServer.retrieveSystemList($scope);
                     myServer.retrieveKeyDefineList($scope);
                     $scope.isCreateKey = true;
@@ -283,8 +289,10 @@ angular.module('myApp.options', ['ngResource'])
                     $scope.asymdrop = false;
                     myServer.retrieveKeyDefineList($scope);
                     myServer.retrieveUsersList($scope);
+                    myServer.retrieveClusterList($scope);
+                    myServer.retrieveApplicationList($scope);
                     //myServer.retrievePartnerList($scope);
-                    $scope.refFields = ['syms', 'asyms'];
+                    $scope.refFields = ['applications'];
                 }
             },
             {tableId: 'KeyDefine', title: '密钥方案管理', keyInfo: 'keyName',

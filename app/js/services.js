@@ -273,6 +273,7 @@ angular.module('myApp.services', ['ngResource'])
                     if(flag==0){
                         recs.forEach(function(rec){
                             if (rec.id == id && rec.opType!=3) {
+                                rec.permission=0;
                                 var recbuf = rec;
                                 recbuf.opType = 1;
                                 refRecs.push({rec: recbuf});
@@ -518,6 +519,11 @@ angular.module('myApp.services', ['ngResource'])
                     //     refRecs[idx].rec = null;
                     //     refRecs.splice(idx, 1);
                 };
+                $scope.ch = function(refRecs, idx) {
+                    refRecs[idx].rec.opType = 2;
+                    //     refRecs[idx].rec = null;
+                    //     refRecs.splice(idx, 1);
+                };
                 $scope.showHistory = function(chosenIdx) {
                     $scope.rec = angular.isDefined(chosenIdx) ? $scope.recs[chosenIdx].rec : $scope.selectedRec;
                     $scope.gotoPage('history');
@@ -574,12 +580,17 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.isNameExist = false;
                     }if($scope.tableId == 'Application'){
                         $scope.fcs = "";
+                    }if($scope.tableId == 'System'){
+                        $scope.isCreateKey = false;
+                        $scope.isIndexExist = false;
+                        $scope.isClusterExist = false;
+                        $scope.rec.applications = [];
+
                     }if ($scope.tableId == 'SecretKey') {
                         $scope.isCreateKey = false;
                         $scope.isIndexExist = false;
                         $scope.isClusterExist = false;
                         $scope.rec.systems = [];
-                        $scope.rec.applications = [];
                     }if($scope.tableId == 'Machine'||$scope.tableId =='RsaKey'||$scope.tableId =='MachineReady'||$scope.tableId =='RsaKeyBatch'||$scope.tableId =='SecretCert'||$scope.tableId =='SecretKey'){
                         //新加数据且缩小作用域
                         $scope.rec.supplyDate="";
@@ -931,6 +942,17 @@ angular.module('myApp.services', ['ngResource'])
                 };
                 $scope.$root.rsaKeyBatchList = [];
                 $scope.queryBase($resource(URLPrefix + 'RsaKeyBatchList/0'), {}, ok1);
+            },
+            retrieveRsaKeyBatchListName :  function($scope) {
+                var ok1 = function(ret) {
+                    if (angular.isUndefined(ret.status) || ret.status == 200 | ret.status == 201) {
+                        $scope.$root.rsaKeyBatchListName = angular.element.map(ret, function(obj) {
+                           return {value: obj.id, name: obj.summary};
+                        });
+                    }
+                };
+                $scope.$root.rsaKeyBatchListName = [];
+                $scope.queryBase($resource(URLPrefix + 'RsaKeyBatchList/1'), {}, ok1);
             },
             retrieveSecretCertListByStatus :  function($scope) {
                 var ok1 = function(ret) {

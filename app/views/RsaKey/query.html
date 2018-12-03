@@ -34,8 +34,8 @@
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
                                 <th>行内系统</th>
+                                <th>批次</th>
                                 <th>安全服务索引</th>
-                                <th>接入渠道</th>
                                 <th>私钥</th>
                                 <th>公钥</th>
                                 <th>公钥模长</th>
@@ -51,8 +51,8 @@
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td>{{r.rec.systemId|optionName:systemList}}</td>
+                                <td>{{r.rec.batchId|optionName:rsaKeyBatchListName}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.serviceIndex}}</a></td>
-                                <td>{{r.rec.applicationId|optionName:applicationList}}</td>
                                 <td>{{r.rec.privateKeyValue|more:32}}</td>
                                 <td>{{r.rec.publicKeyValue|more:32}}</td>
                                 <td>{{r.rec.keyMode}}</td>

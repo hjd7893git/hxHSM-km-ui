@@ -29,7 +29,7 @@
                     <table class="table table-hover table-condensed bg-white crud-r">
                         <thead><tr>
                             <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                            <th>系统代号</th><th><a ng-click="sortOn('name')">系统名称</a>&nbsp;<i class="fa fa-sort{{sortByname|iif:'-alpha-asc':'-alpha-desc':''}}"></i></th><th>系统简介</th></tr>
+                            <th>系统代号</th><th><a ng-click="sortOn('name')">系统名称</a>&nbsp;<i class="fa fa-sort{{sortByname|iif:'-alpha-asc':'-alpha-desc':''}}"></i></th><th>系统简介</th><th>服务集群</th></tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="r in recs" class="chosen-{{r.rec.chosen}}">
@@ -40,6 +40,7 @@
                             <td>{{r.rec.symbol}}</td>
                             <td><a href ng-click="showEditor($index)">{{r.rec.name}}</a></td>
                             <td>{{r.rec.summary}}</td>
+                            <td>{{r.rec.clusterId|optionName:clusterList}}</td>
                         </tr>
                         </tbody>
                     </table>

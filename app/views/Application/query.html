@@ -43,7 +43,7 @@
                                 <th>连接类型</th>
                                 <th>应答类型</th>
                                 <th>可接收报文类型</th>
-                                <th>密码机分组</th>
+                                <th>所属集群</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -58,7 +58,7 @@
                                 <td>{{r.rec.shortConnection|optionName:'shortConnection'}}</td>
                                 <td>{{r.rec.syncRqRs|optionName:'syncRqRs'}}</td>
                                 <td>{{r.rec.packType|optionName:'packType'}}</td>
-                                <td>{{r.rec.groupId|optionName:groupList}}</td>
+                                <td>{{r.rec.clusterId|optionName:clusterList}}</td>
                             </tr>
                             </tbody>
                         </table>
