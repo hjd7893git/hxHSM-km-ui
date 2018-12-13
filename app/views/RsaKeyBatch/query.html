@@ -30,7 +30,7 @@
                         <table class="table table-hover table-condensed bg-white crud-r">
                             <thead><tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
-                                <th>批次备注</th><th>密钥模长</th><th>密钥指数</th><th>密钥用途</th><th>完成时间</th><th>可用数量</th><th>已完成数量&nbsp;/&nbsp;计划总数</th><th>批次状态</th></tr>
+                                <th>批次备注</th><th>密钥方案</th><th>密钥模长</th><th>密钥类型</th><th>密钥指数</th><th>密钥用途</th><th>完成时间</th><th>可用数量</th><th>已完成数量&nbsp;/&nbsp;计划总数</th><th>批次状态</th></tr>
                             </tr>
                             </thead>
                             <tbody>
@@ -40,9 +40,11 @@
                                     <i class="fa fa-lock" ng-show="r.rec.bizSeq"></i>
                                 </td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.summary}}</a></td>
-                                <td>{{r.rec.keyMode|optionName:'keyMode'}}</td>
+                                <td>{{r.rec.keyDefineId|optionName:keyDefineNameList}}</td>
+                                <td>{{r.rec.keyDefineId|optionName:keyDefineSchemaList}}</td>
+                                <td>{{r.rec.keyDefineId|optionName:keyDefineTypeList}}</td>
                                 <td><p ng-show="r.rec.keyExponential">{{r.rec.keyExponential|optionName:'keyExponential'}}</p></td>
-                                <td>{{r.rec.keyUseFor|optionName:'keyUseFor'}}</td>
+                                <td>{{r.rec.keyDefineId|optionName:keyDefinekeyUseForList}}</td>
                                 <td><p ng-show="r.rec.endDatetime">{{r.rec.endDatetime|biDateTime}}</p></td>
                                 <td>{{r.rec.info}}</td>
                                 <td>{{r.rec.completeQuantity}}&nbsp;/&nbsp;{{r.rec.planQuantity}}</td>

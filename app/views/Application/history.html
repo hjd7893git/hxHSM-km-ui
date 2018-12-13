@@ -14,7 +14,7 @@
                                     <th>是否短连接</th>
                                     <th>可接收报文类型</th>
                                     <th>报文头长</th>
-                                    <th>密码机分组</th>
+                                    <th>所属集群</th>
                                     <th>维护类型</th><th class="his-col-op">操作</th><th class="his-col-ts">时间戳</th><th class="his-col-uid">操作员</th></tr>
                                 </thead>
                                 <tbody>
@@ -25,7 +25,7 @@
                                     <td>{{his.shortConnection|optionName:'YesNo'}}</td>
                                     <td>{{his.packType|optionName:'packType'}}</td>
                                     <td>{{his.headLength}}</td>
-                                    <td>{{his.groupId|optionName:groupList}}</td>
+                                    <td>{{his.clusterId|optionName:clusterList}}</td>
                                     <td>{{his.opType|optionName:'opType'}}</td>
                                     <td colspan="5" style="padding: 0;">
                                         <table class="table table-condensed bi-margin-b0" style="margin-top: -1px;">

@@ -881,11 +881,19 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.$root.keyDefineSchemaList = angular.element.map(ret, function(obj) {
                             return {value: obj.id, name: obj.keySchema};
                         });
+                        $scope.$root.keyDefinekeyUseForList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.keyUseFor};
+                        });
+                        $scope.$root.keyDefineFunctionList = angular.element.map(ret, function(obj) {
+                            return {value: obj.id, name: obj.keyFunction};
+                        });
                     }
                 };
                 $scope.$root.keyDefineNameList = [];
                 $scope.$root.keyDefineTypeList = [];
                 $scope.$root.keyDefineSchemaList = [];
+                $scope.$root.keyDefinekeyUseForList = [];
+                $scope.$root.keyDefineFunctionList = [];
                 $scope.queryBase($resource(URLPrefix + 'KeyDefineList'), {}, ok1);
             },
             retrievePartnerList: function($scope) {

@@ -9,17 +9,23 @@
                             <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
+                                <bi-select-item item-label="'服务系统'" item-options="clusterList"
+                                                item-value="rec.clusterId" item-old-value="bak.clusterId" item-locked="lock"></bi-select-item>
+                                <bi-select-item item-label="'密钥方式'" item-options="'keySort'|theOption"
+                                                item-value="rec.keySort" item-old-value="bak.keySort" item-locked="lock"></bi-select-item>
                                 <bi-edit-item item-label="'密钥方案名称'" item-tip="'如:ATM-P主密钥'" item-name="'keyName'" item-required="'true'"
                                               item-value="rec.keyName" item-old-value="bak.keyName" item-locked="lock"></bi-edit-item>
+                                <bi-select-item item-label="'密钥用途'" item-name="'keyUseFor'" item-required="'true'"
+                                                item-value="rec.keyUseFor" item-old-value="bak.keyUseFor" item-locked="lock" item-options="'keyUseFor'|theOption"></bi-select-item>
+
+                                <bi-select-item item-label="'密钥功能'" item-name="'keyFunction'" item-required="'true'"
+                                                item-value="rec.keyFunction" item-old-value="bak.keyFunction" item-locked="lock" item-options="'funt'|theOption"></bi-select-item>
                                 <bi-select-item item-label="'是否ZMK加密'" item-name="'createMode'" item-required="'true'"
                                                 item-value="rec.createMode" item-old-value="bak.createMode" item-locked="lock" item-options="'YesNo'|theOption"></bi-select-item>
-                                <bi-select-item item-label="'密钥类型'" item-data-type="'text'" item-name="'keyType'" item-required="'true'"
-                                                item-value="rec.keyType" item-old-value="bak.keyType" item-locked="lock" item-options="'keyType'|theOption"></bi-select-item>
-                                <bi-select-item item-label="'密钥长度'" item-data-type="'text'" item-name="'keySchema'" item-required="'true'"
-                                                item-value="rec.keySchema" item-old-value="bak.keySchema" item-locked="lock" item-options="'keySchema'|theOption"></bi-select-item>
-                                <bi-select-item item-label="'密钥用于'" item-name="'keyUseFor'" item-required="'true'"
-                                                item-margin="(isKeySet(rec.keyBizSeq) || (rec.keyUseFor != 0) || rec.createKey)|iif:'':'bi-margin-b0':'bi-margin-b0'"
-                                                item-value="rec.keyUseFor" item-old-value="bak.keyUseFor" item-locked="lock" item-options="'keyUse'|theOption"></bi-select-item>
+                                <bi-edit-item item-label="'密钥类型/算法'" item-data-type="'text'" item-name="'keyType'" item-required="'true'"
+                                                item-value="rec.keyType" item-old-value="bak.keyType" item-locked="lock" ></bi-edit-item>
+                                <bi-edit-item item-label="'密钥标识/长度'" item-data-type="'text'" item-name="'keySchema'" item-required="'true'"
+                                                item-value="rec.keySchema" item-old-value="bak.keySchema" item-locked="lock" ></bi-edit-item>
                             </form>
                         </div>
                     </li>

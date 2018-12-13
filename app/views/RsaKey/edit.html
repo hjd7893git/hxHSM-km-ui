@@ -16,10 +16,23 @@
                                 <bi-edit-item item-label="'安全服务索引'" item-tip="'如：CORE-BOC-ZMK-01(一旦设置将无法更改)'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9-]+[A-Za-z0-9-\.]+[A-Za-z0-9]+$'" item-name="'serviceIndex'"
                                               item-value="rec.serviceIndex" item-old-value="bak.serviceIndex"
                                               item-locked="opType != 1 && isIndexExist"></bi-edit-item>
-                                <bi-select-item item-label="'密钥模长'" item-options="'keyMode'|theOption" item-data-type="'text'"
-                                                item-value="rec.keyMode" item-old-value="bak.keyMode" item-required="'true'"
-                                                item-locked="lock"></bi-select-item>
-                                <div ng-show="rec.keyMode != 'SM2-256'">
+                                <bi-select-item item-label="'密钥方案'" item-options="keyDefineNameList" item-required="'true'"
+                                                item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="lock"></bi-select-item>
+                                <bi-select-item item-label="'密钥算法'" item-options="keyDefineTypeList"
+                                                item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="'true'"></bi-select-item>
+                                <bi-select-item item-label="'密钥模长'" item-options="keyDefineSchemaList"
+                                                item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="'true'"></bi-select-item>
+
+                                <bi-select-item item-label="'密钥用途'" item-options="keyDefinekeyUseForList"
+                                                item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="true" ></bi-select-item>
+                                <bi-select-item item-label="'密钥功能'" item-options="keyDefineFunctionList"
+                                                item-value="rec.keyDefineId" item-old-value="bak.keyDefineId" item-locked="true" ></bi-select-item>
+
+                                <!--<bi-select-item item-label="'密钥模长'" item-options="'keyMode'|theOption" item-data-type="'text'"-->
+                                                <!--item-value="rec.keyMode" item-old-value="bak.keyMode" item-required="'true'"-->
+                                                <!--item-locked="lock"></bi-select-item>-->
+
+                                <div ng-show="keyMode != 'SM2'"> <!--todo:需要设置判断-->
                                     <bi-select-item item-label="'密钥指数'" item-options="'keyExponential'|theOption" item-data-type="'text'"
                                                     item-value="rec.keyExponential" item-old-value="bak.keyExponential" item-required="'true'"
                                                     item-locked="lock"></bi-select-item>

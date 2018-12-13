@@ -415,6 +415,7 @@ angular.module('myApp.views', ['ngRoute'])
         myServer.retrieveMenuTree($scope);
         myServer.retrieveRoleList($scope);
         myServer.retrieveGroupList($scope);
+        myServer.retrieveUsersList($scope);
         $rootScope.detailPanels = [];
         $rootScope.detailPageIDs = {check: 0};
         $scope.showRowDetails = function(rec, idx) {

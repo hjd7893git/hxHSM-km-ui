@@ -34,7 +34,7 @@
                                 <table class="table table-hover table-condensed bg-white crud-r">
                                     <thead><tr>
                                         <th><input type="checkbox" ng-click="toggleTodoChosen();"></th>
-                                        <th>流水号</th><th>应用</th><th>变更类型</th><th>状态</th><th>失败次数</th></tr>
+                                        <th>流水号</th><th>应用</th><th>变更类型</th><th>状态</th><th>失败次数</th><th>操作用户</th><th>提交时间</th></tr>
                                     </thead>
                                     <tbody>
                                     <tr ng-repeat="rec in recs">
@@ -46,6 +46,8 @@
                                         <td>{{rec.opType|optionName:'opType'}}</td>
                                         <td>{{rec.status|optionName:'status'}}</td>
                                         <td>{{rec.failureTimes}}</td>
+                                        <td>{{rec.uId|optionName:userList}}</td>
+                                        <td>{{rec.time|biDateTime}}</td>
                                     </tr>
                                     </tbody>
                                 </table>

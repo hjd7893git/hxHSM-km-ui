@@ -33,10 +33,13 @@
                             <thead>
                             <tr>
                                 <th><input type="checkbox" ng-click="toggleChosen();"></th>
+                                <th>服务系统</th>
+                                <th>密钥方式</th>
                                 <th>密钥方案名称</th>
-                                <th>密钥类型</th>
-                                <th>密钥算法</th>
-                                <th>密钥用于</th>
+                                <th>密钥用途</th>
+                                <th>密钥功能</th>
+                                <th>密钥类型/算法</th>
+                                <th>密钥标识/模长</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -45,10 +48,13 @@
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
                                     <i class="fa fa-fw fa-{{r.rec.opType|optionName:'opTypeIcon'}} text-danger" ng-show="r.rec.bizSeq"></i>
                                 </td>
+                                <td>{{r.rec.clusterId|optionName:clusterList}}</td>
+                                <td>{{r.rec.keySort|optionName:'keySort'}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.keyName}}</a></td>
+                                <td>{{r.rec.keyUseFor | optionName:'keyUse'}}</td>
+                                <td>{{r.rec.keyFunction | optionName:'funt'}}</td>
                                 <td>{{r.rec.keyType | optionName:'keyType'}}</td>
                                 <td>{{r.rec.keySchema | optionName:'keySchema'}}</td>
-                                <td>{{r.rec.keyUseFor | optionName:'keyUse'}}</td>
                             </tr>
                             </tbody>
                         </table>
