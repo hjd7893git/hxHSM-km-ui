@@ -41,7 +41,7 @@
                                 <td>{{r.rec.roleId | optionName:roleList}}</td>
                                 <td>{{r.rec.departmentName}}</td>
                                 <td>{{r.rec.userIp}}</td>
-                                <td>{{r.rec.laseTime}}</td>
+                                <td>{{r.rec.laseTime|biDateTime}}</td>
                                 <td>{{r.rec.userStatus|optionName:'journalStatus'}}</td>
                             </tr>
                             </tbody>

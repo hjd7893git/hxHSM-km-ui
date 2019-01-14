@@ -48,7 +48,7 @@
                                     <input type="checkbox" ng-model="r.rec.chosen" ng-show="!r.rec.bizSeq">
                                     <i class="fa fa-fw fa-{{r.rec.opType|optionName:'opTypeIcon'}} text-danger" ng-show="r.rec.bizSeq"></i>
                                 </td>
-                                <td>{{r.rec.systemId|optionName:systemList}}</td>
+                                <td>{{r.rec.clusterId|optionName:clusterList}}</td>
                                 <td>{{r.rec.keySort|optionName:'keySort'}}</td>
                                 <td><a href ng-click="showEditor($index)">{{r.rec.keyName}}</a></td>
                                 <td>{{r.rec.keyUseFor | optionName:'keyUse'}}</td>

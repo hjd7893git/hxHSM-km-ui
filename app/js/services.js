@@ -1026,6 +1026,7 @@ angular.module('myApp.services', ['ngResource'])
                 $scope.keyAbout = true;
             },
             journals: $resource(URLPrefix + 'JournalBiz/:status', {seqNo: '@status'}),
+            notices: $resource(URLPrefix + 'notice/'),
             statistics: $resource(URLPrefix + 'statistics/:tableId/:appId', {tableId:'@tableId', appId: '@appId'})
         };
     }])

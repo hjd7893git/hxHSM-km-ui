@@ -9,8 +9,8 @@
                             <form class="form-horizontal" name="{{::thePageId}}Form">
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id" item-locked="'true'"></bi-edit-item>
-                                <bi-select-item item-label="'服务系统'" item-options="systemList"
-                                                item-value="rec.systemId" item-old-value="bak.systemId" item-locked="lock"></bi-select-item>
+                                <bi-select-item item-label="'服务系统'" item-options="clusterList"
+                                                item-value="rec.clusterId" item-old-value="bak.clusterId" item-locked="lock"></bi-select-item>
                                 <bi-select-item item-label="'密钥方式'" item-options="'keySort'|theOption"
                                                 item-value="rec.keySort" item-old-value="bak.keySort" item-locked="lock"></bi-select-item>
                                 <bi-edit-item item-label="'密钥方案名称'" item-tip="'如:ATM-P主密钥'" item-name="'keyName'" item-required="'true'"

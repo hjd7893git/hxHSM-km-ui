@@ -20,6 +20,9 @@ angular.module('myApp.views', ['ngRoute'])
         }).when('/views/check', {
             templateUrl: 'views/Todo/check.html',
             controller: 'todoCheckCtrl'
+        }).when('/views/notic', {
+            templateUrl: 'views/Todo/notic.html',
+            controller: 'todoNoticCtrl'
         }).when('/views/deploy', {
             templateUrl: 'views/deploy.html',
             controller: 'myDeployCtrl'
@@ -402,7 +405,73 @@ angular.module('myApp.views', ['ngRoute'])
                 ctrl.controller($log, $rootScope, $scope, myServer);
         }
     }])
+    .controller('todoNoticCtrl', ['$log', '$rootScope', '$scope', 'myServer', 'myOptions', function($log, $rootScope, $scope, myServer, myOptions) {
+        myServer.crud($scope, "notice", '通知事项', myServer.notices);
+        if($rootScope.pow != null){
+            myServer.errorDialog($rootScope);
+            $rootScope.showModalPower($rootScope.pow);
+            $rootScope.pow = null;
+        }
+        // $scope.qry.status = 0;
+        $scope.query($scope.qry);
+        myServer.retrieveMenuTree($scope);
+        myServer.retrieveRoleList($scope);
+        myServer.retrieveGroupList($scope);
+        myServer.retrieveUsersList($scope);
+        $rootScope.detailPanels = [];
+        $rootScope.detailPageIDs = {check: 0};
+        $scope.showRowDetails = function(rec, idx) {
+            $scope.selectedRec = rec;
+            $scope.selectedIndex = idx;
+            $scope.lock = true;
+            $scope.lockKeyAbout = true;
+            $scope.ref = [];
+            $scope.opType = rec.opType;
+            $scope.rec = rec.rec;
+            $scope.recStatus = rec.status;
+            $scope.bak = rec.bak;
+            var chosenPanel = $rootScope.detailPageIDs[rec.table];
+            if (angular.isUndefined(chosenPanel)) {
+                // var page = 'views/' + rec.table + '/edit.html';
+                $rootScope.detailPanels.push('views/' + rec.table + '/edit.html');
+                $rootScope.detailPageIDs[rec.table] = chosenPanel = $rootScope.detailPanels.length;
+            }
+            $scope.crudPanels.activePanel = chosenPanel;
+        };
 
+        $scope.authorize2 = function(ele, action, status) {
+            var uri = "notice/" + $scope.selectedRec.seq + "/" + action +"/"+ele.repeate + "?sessionId=" + $rootScope.sessionId;
+            var promise = myServer.call(uri, {notice:"1111"}); // 同步调用，获得承诺接口
+            promise.then(function (ret) {  // 调用承诺API获取数据 .resolve
+                if (ret.status == 200 || ret.status == 201) {
+                    ele.status = status;
+                    $scope.crudPanels.activePanel = 0;
+                    var ctrl = myOptions.findController($scope.selectedRec.table);
+                    if (angular.isDefined(ctrl) && angular.isDefined(ctrl.postChecked)) {
+                        ctrl.postChecked($log, $rootScope, $scope, myServer);
+                    }
+                    $scope.conditionQuery($scope.qry);
+                    // $scope.showTips('复核操作成功');
+                }
+            }, function (ret) {  // 处理错误 .reject
+                $scope.authorizeState = false;
+                $scope.showModal(ret);
+            });
+        };
+        $scope.authorizeX2 = function(action, status) {
+            $scope.authorizeState = true;
+            angular.element.each($scope.recs, function(n, ele) {
+                if (angular.isDefined(ele.chosen) && ele.chosen) {
+                    $scope.selectedRec = ele;
+                    $scope.authorize2(ele, action, status);
+                    if ($scope.authorizeState) {
+                        // $scope.showTips('复核操作成功')
+                    }
+                }
+            });
+        };
+
+    }])
     .controller('todoCheckCtrl', ['$log', '$rootScope', '$scope', 'myServer', 'myOptions', function($log, $rootScope, $scope, myServer, myOptions) {
         myServer.crud($scope, "JournalBiz", '待办事项', myServer.journals);
         if($rootScope.pow != null){
@@ -438,7 +507,7 @@ angular.module('myApp.views', ['ngRoute'])
         };
         $scope.authorize = function(ele, action, status) {
             var uri = "authorize/" + $scope.selectedRec.seq + "/" + action + "?sessionId=" + $rootScope.sessionId;
-            var promise = myServer.call(uri, {}); // 同步调用，获得承诺接口
+            var promise = myServer.call(uri, {notice:"123"}); // 同步调用，获得承诺接口
             promise.then(function (ret) {  // 调用承诺API获取数据 .resolve
                 if (ret.status == 200 || ret.status == 201) {
                     ele.status = status;
@@ -447,6 +516,8 @@ angular.module('myApp.views', ['ngRoute'])
                     if (angular.isDefined(ctrl) && angular.isDefined(ctrl.postChecked)) {
                         ctrl.postChecked($log, $rootScope, $scope, myServer);
                     }
+                    $scope.conditionQuery($scope.qry);
+                    $scope.showTips('复核操作成功');
                 }
             }, function (ret) {  // 处理错误 .reject
                 $scope.authorizeState = false;

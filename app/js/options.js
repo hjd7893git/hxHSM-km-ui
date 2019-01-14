@@ -13,11 +13,11 @@ angular.module('myApp.options', ['ngResource'])
         var optionNames = [
             {option: 'opType', names: [{value: 0, name: '详情'}, {value: 1, name: '增加'}, {value: 2, name: '修改'}, {value: 3, name: '删除'}]},
             {option: 'opTypeIcon', names: [{value: 0, name: 'flag'}, {value: 1, name: 'plus'}, {value: 2, name: 'edit'}, {value: 3, name: 'trash-o'}]},
-            {option: 'status', names: [{value: 0, name: '待复核'}, {value: 3, name: '拒绝'}, {value: 2, name: '已复核'}]},
+            {option: 'status', names: [{value: 0, name: '待复核'}, {value: 3, name: '拒绝'}, {value: 2, name: '已复核'},{value: 4, name: '确认完毕'}]},
             {option: 'sex', names: [{value: 0, name: '女'}, {value: 1, name: '男'}]},
             {option: 'companyType', names: [{value: 0, name: '生产商'}, {value: 1, name: '供应商'}, {value:2, name: '运维商'}]},
             {option: 'YesNo', names: [{value: 0, name: '否'}, {value: 1, name: '是'}]},
-            {option: 'action', names: [{value: 'input', name: '录入'}, {value: 'check', name: '复核'}, {value: 'reject', name: '拒绝'}]},
+            {option: 'action', names: [{value: 'input', name: '录入'}, {value: 'check', name: '复核'}, {value: 'reject', name: '拒绝'},{value: 'repeated', name: '重申'}]},
             {option: 'equipmentType', names: [{value: 0, name: '自助设备'}, {value: 1, name: 'POS机'}, {value: 2, name: '网银U盾'}, {value: 3, name: '密码键盘'}]},
             {option: 'env', names: [{value: 0, name: '开发'}, {value: 1, name: '测试'}, {value: 2, name: '集成'}, {value: 3, name: '验收'}, {value: 4, name: '演练'}, {value: 5, name: '灾备'}, {value: 6, name: '生产'}]},
             {option: 'acceptRejectPolicy', names: [{value: 0, name: '只允许集合内的'}, {value: 1, name: '除了集合内的'}]},
@@ -53,7 +53,6 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'permission', names: [{value: 0, name: '读'}, {value: 1, name: '写'}, {value: 2, name: '其它'}]},
             {option: 'keySort', names: [{value: 0, name: '对称密钥'}, {value: 1, name: '非对称密钥'}]},
             {option: 'funt', names: [{value: 0, name: '签名'}, {value: 1, name: '验签'},{value:3,name:'签名验签'}]}
-
 
         ];
 
@@ -303,7 +302,7 @@ angular.module('myApp.options', ['ngResource'])
                 controller:function($log, $rootScope, $scope, myServer) {
                     myServer.retrieveUsersList($scope);
                     myServer.setKeyAbout($scope);
-                    myServer.retrieveClusterList($scope);
+                    myServer.retrieveSystemList($scope);
                     //myServer.retrievePartnerList($scope);
                 }
             },

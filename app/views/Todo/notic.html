@@ -1,7 +1,7 @@
 <bi-header></bi-header>
 <div class="container">
     <div class="page-header bi-margin-b0 bi-pad0">
-        <h4>&nbsp;<i class="fa fa-leaf"></i>&nbsp;待办事项</h4>
+        <h4>&nbsp;<i class="fa fa-leaf"></i>&nbsp;通知事项</h4>
     </div>
     <div class="bi-margin0" role="tablist" ng-model="crudPanels.activePanel" bs-collapse>
         <div class="panel-collapse in" role="tabpanel" bs-collapse-target>
@@ -34,7 +34,7 @@
                                 <table class="table table-hover table-condensed bg-white crud-r">
                                     <thead><tr>
                                         <th><input type="checkbox" ng-click="toggleTodoChosen();"></th>
-                                        <th>流水号</th><th>应用</th><th>变更类型</th><th>状态</th><th>失败次数</th><th>操作用户</th><th>提交时间</th><th>备注</th></tr>
+                                        <th>流水号</th><th>应用</th><th>变更类型</th><th>状态</th><th>失败次数</th><th>操作/审核用户</th><th>提交/审核时间</th><th>重申次数</th><th>备注</th></tr>
                                     </thead>
                                     <tbody>
                                     <tr ng-repeat="rec in recs">
@@ -48,6 +48,7 @@
                                         <td>{{rec.failureTimes}}</td>
                                         <td>{{rec.uId|optionName:userList}}</td>
                                         <td>{{rec.time|biDateTime}}</td>
+                                        <td>{{rec.repeate}}</td>
                                         <td>{{rec.notices}}</td>
                                     </tr>
                                     </tbody>
@@ -55,11 +56,11 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="btn-group" role="group" aria-label="操作">
-                                            <button class="btn btn-success bi-bar-lt" disabled>复核</button>
-                                            <button class="btn btn-default" ng-click="authorizeX('check', 2)">
-                                                <i class="fa fa-edit"></i>&nbsp;通过</button>
-                                            <button class="btn btn-default bi-bar-rt" ng-click="authorizeX('reject', 3)">
-                                                <i class="fa fa-edit"></i>&nbsp;拒绝</button>
+                                            <button class="btn btn-success bi-bar-lt" disabled>查看</button>
+                                            <button class="btn btn-default" ng-click="authorizeX2('1', 4)">
+                                                <i class="fa fa-edit"></i>&nbsp;确定</button>
+                                            <button class="btn btn-default bi-bar-rt" ng-click="authorizeX2('2', 4)">
+                                                <i class="fa fa-edit"></i>&nbsp;重申</button>
                                         </div>
                                     </div>
                                     <ng-include src="'components/crud/biMultiPagesBar.html'"></ng-include>
