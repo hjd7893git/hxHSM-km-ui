@@ -593,14 +593,16 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.rec.systems = [];
                     }if($scope.tableId == 'Machine'||$scope.tableId =='RsaKey'||$scope.tableId =='MachineReady'||$scope.tableId =='RsaKeyBatch'||$scope.tableId =='SecretCert'||$scope.tableId =='SecretKey'){
                         //新加数据且缩小作用域
-                        $scope.rec.supplyDate="";
-                        $scope.rec.produceDate="";
-                        $scope.rec.createDatetime="";
-                        $scope.rec.issueDate="";
-                        $scope.rec.readyDate="";
-                        $scope.rec.startDatetime="";
-                        $scope.rec.invalidDate="";
-                        $scope.rec.driverClass="";
+                        $scope.rec.supplyDate = "";
+                        $scope.rec.produceDate = "";
+                        $scope.rec.createDatetime = "";
+                        $scope.rec.issueDate = "";
+                        $scope.rec.readyDate = "";
+                        $scope.rec.startDatetime = "";
+                        $scope.rec.invalidDate = "";
+                        $scope.rec.driverClass = "";
+                        $scope.rec.headLength = 0;
+                        $scope.rec.commandSetVersion = "";
                     }
                     if (angular.isDefined($scope.preInsert))
                         $scope.preInsert($scope.rec);
@@ -639,10 +641,9 @@ angular.module('myApp.services', ['ngResource'])
                         delete $scope.rec.publicKeyExponential;
                         delete $scope.rec.publicKeyCert;
                     }
-                    if($scope.tableId=="SecretKey"){
-                        delete $scope.rec.systems;
-                        delete $scope.rec.applications;
-                    }
+                    // if($scope.tableId=="SecretKey"){
+                    //     delete $scope.rec.systems;
+                    // }
                     if ($scope.tableId == "RsaKeyBatch") {
                         $scope.rec.completeQuantity = 0;
                         delete $scope.rec.endDatetime;
@@ -655,7 +656,7 @@ angular.module('myApp.services', ['ngResource'])
                 $scope.copyEditorX = function() {
                     var chosenIdx = getChosenIdx();
                     if (angular.isDefined(chosenIdx)) {
-                        $scope.showEditor(chosenIdx);
+                        $scope.showEditor(chosenIdx);  //只是两种不同的方式而已
                         $scope.copyEditor();
                     }
                 };
