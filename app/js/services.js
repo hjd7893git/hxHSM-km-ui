@@ -207,7 +207,7 @@ angular.module('myApp.services', ['ngResource'])
                     $scope.opType = 0;
                     $scope.selectedRec = $scope.recs[idx].rec;
                     if ($scope.tableId == 'Application' ) {
-                        $scope.fcs = $scope.selectedRec.ipList || ''.split(",");
+                        $scope.fcs = ($scope.selectedRec.ipList || '').split(",");
                     }
                     $scope.selectedIndex = idx;
                     $scope.lock = true;

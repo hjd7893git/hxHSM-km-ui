@@ -169,15 +169,16 @@ angular.module('myApp.views', ['ngRoute'])
                             points: {show: true},
                             color: '#5bc0de'
                         }];
-                    occupys.memory = [{
-                        label: "系统剩余内存(MB)",
-                        data: updateOccupy([], ret.data.occupys, object + ".osmemory"),
-                        lines: {show: true},
-                        points: {show: true},
-                        color: '#5bc0de'
-                    },
+                    occupys.memory = [
+                    //     {
+                    //     label: "系统剩余内存(MB)",
+                    //     data: updateOccupy([], ret.data.occupys, object + ".osmemory"),
+                    //     lines: {show: true},
+                    //     points: {show: true},
+                    //     color: '#5bc0de'
+                    // },
                         {
-                            label: "应用占用内存(MB)",
+                            label: "应用占用内存(%)",
                             data: updateOccupy([], ret.data.occupys, object + ".appmemory"),
                             lines: {show: true},
                             points: {show: true},
@@ -254,12 +255,12 @@ angular.module('myApp.views', ['ngRoute'])
             }
         };
         function updateOccupy(data, newData, type) {
-            var myPoints = 10;
+            var myPoints = 7;
             switch (type) {
                 case "node.cpu" :
                     return analyOccupy(data, newData, "node", "cpuPercent");
-                case "node.osmemory" :
-                    return analyOccupy(data, newData, "node", "osFreeMemory");
+                // case "node.osmemory" :
+                //     return analyOccupy(data, newData, "node", "osFreeMemory");
                 case "node.appmemory" :
                     return analyOccupy(data, newData, "node", "heapUsed");
                 case "machine.cpu" :
@@ -291,11 +292,11 @@ angular.module('myApp.views', ['ngRoute'])
                 function getValue(ele, entity, value) {
                     if (value in ele)
                         if (value.toUpperCase().indexOf("MEM") >= 0 || value == "heapUsed")
-                            return ele[value] / 1024;
+                            return (ele["heapUsed"] / (ele["osFreeMemory"] + ele["heapUsed"]) * 100).toFixed(2);
                         else
                             return ele[value];
                     else if (value == "memoryPercent" && entity == "machine")
-                        return (ele["usedMemory"] * 100 / (ele["usedMemory"] + ele["freeMemory"])).toFixed(2);
+                        return (ele["usedMemory"]  / (ele["usedMemory"] + ele["freeMemory"]) * 100).toFixed(2);
                     else
                         return "";
                 }
@@ -341,9 +342,9 @@ angular.module('myApp.views', ['ngRoute'])
                     }
                 });
             });
-            var ci = $scope.unsHid(nodes, newData)
+            var ci = $scope.unsHid(nodes, newData) //xin
             angular.element.each(ci, function (n, ele3) {
-                ele3.status = 2;
+               if(ele3.status == 0) ele3.status = 2;
                 ele3.alarmLevel = 2;
                 ele3.osFreeMemory = "";
                 ele3.cpuPercent = "";
@@ -477,7 +478,7 @@ angular.module('myApp.views', ['ngRoute'])
                 $scope.activeCluster.tickInterval = i;
             var m = $scope.activeCluster.historyDate
             var uri = "statistics/" + $scope.activeCluster.cluster.id + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint + "/" + $scope.activeCluster.tickInterval + "/"
-                + $scope.activeCluster.history + "/" + $scope.activeCluster.hti + "/" + $scope.activeCluster.startTime + "/" + $scope.activeCluster.endTime + "/" + $scope.activeCluster.pagex;
+                + $scope.activeCluster.history + "/"  + $scope.activeCluster.startTime + "/" + $scope.activeCluster.endTime + "/" + $scope.activeCluster.pagex;
             var promise2 = myServer.call(uri + "?sessionId=" + $scope.$root.sessionId, {}, 'GET'); // 同步调用，获得承诺接口
             promise2.then(function (ret) { // 调用承诺API获取数据 .resolve
                 if (ret.status == 200 || ret.status == 201) {
@@ -523,14 +524,14 @@ angular.module('myApp.views', ['ngRoute'])
                     document.getElementById("info").innerHTML = angular.isDefined(ret.data.noInfo) ? ret.data.noInfo : 'loading...';
                     $scope.activeCluster.hti = 0;
                     $scope.activeCluster.exchangeQuantity = updateTps($scope.activeCluster.exchangeQuantity, ret.data.exchanges);
-                    $scope.activeCluster.linkQuantity = updateLnks($scope.activeCluster.linkQuantity, ret.data.links);
+                    $scope.activeCluster.linkQuantity = updateLnks($scope.activeCluster.linkQuantity, ret.data.links[0]);
                     $scope.activeCluster.hosts = updateNodes($scope.activeCluster.hosts, ret.data.nodes);
                     $scope.activeCluster.groups = updateMachines($scope.activeCluster.groups, ret.data.machines);
-                    $scope.activeCluster.connections = ret.data.connections;
+                    // $scope.activeCluster.connections = ret.data.connections;
                     $scope.activeCluster.inbounds = ret.data.apps;
                     $scope.setting("apps", ret.data.apps, ret.data.appss);
                     $scope.setting("groups", ret.data.groups, ret.data.groupss);
-                    $scope.setting2(ret.data.appw);
+                    // $scope.setting2(ret.data.appw);
                     $scope.setting21(ret.data.groupsw);
 
                     $scope.activeCluster.outbounds = ret.data.groups;
@@ -1004,7 +1005,7 @@ angular.module('myApp.views', ['ngRoute'])
                         $scope.activeCluster.endTime = $scope.endValue2;
                         $scope.activeCluster.hti = 3;
                         $scope.activeCluster.lastPoint = 0;
-                        $scope.updateQuantities(clusterId);
+                        // $scope.updateQuantities(clusterId);
                         console.log("start:" + $scope.startValue2 + "、end:" + $scope.endValue2);
                     }
                     else {
@@ -1016,7 +1017,7 @@ angular.module('myApp.views', ['ngRoute'])
                             $scope.activeCluster.endTime = $scope.endValue2;
                             $scope.activeCluster.lastPoint = 0;
                             $scope.activeCluster.hti = 3;
-                            $scope.updateQuantities(clusterId);
+                            // $scope.updateQuantities(clusterId);
                             console.log("start:" + $scope.startValue2 + "、end:" + $scope.endValue2);
                         }
                     }
