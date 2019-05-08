@@ -8,73 +8,32 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="boxed-grey">
-                    <form id="contact-form" ng-submit="doLogin(user, keyPwd)">
+                    <form id="contact-form" ng-submit="doLogin(user)">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group" ng-show="!auth">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                        <input type="password" class="form-control" ng-model="keyPwd" placeholder="请输入UKey密码" required="required"/>
-                                    </div>
-                                </div>
-                                <div class="form-group" ng-show="auth">
+                                <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                                         <input type="text" class="form-control" ng-model="user.mobile" placeholder="用户名" required="required"/>
                                     </div>
                                 </div>
-                                <div class="form-group" ng-show="auth">
+                                <div class="form-group">
                                     <div class="input-group">
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                                         <input type="password" class="form-control" ng-model="user.password" placeholder="登录密码" required="required"/>
                                     </div>
                                 </div>
-                                <!--<div class="form-group" ng-show="auth">-->
-                                    <!--<div class="input-group">-->
-                                        <!--<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>-->
-                                        <!--<select class="form-control"   ng-model="user.sys"   >-->
-                                            <!--<option value="KM">密钥统一管理系统</option>-->
-                                            <!--<option value="IC">金融IC卡密钥管理系统</option>-->
-                                            <!--&lt;!&ndash;<option value="ATM">ATM管理系统</option>&ndash;&gt;-->
-                                        <!--</select>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <div class="form-group" ng-show="false">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                        <input id="userSign" type="text" class="form-control" ng-model="user.sign" placeholder="用户签名" />
-                                    </div>
-                                </div>
-                                <div class="form-group" ng-show="false">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                        <input id="loginTime" type="text" class="form-control" ng-model="user.time" placeholder="后台时间" />
-                                    </div>
-                                </div>
-                                <div class="form-group" ng-show="false">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                        <input id="loginData" type="text" class="form-control" ng-model="user.data" placeholder="后台随机数" />
-                                    </div>
-                                </div>
-                                <div class="form-group text-right" style="margin-top: -8px;" ng-show="auth">
+                                <div class="form-group text-right" style="margin-top: -8px;">
                                     <a href="#/find-password">忘记登录密码？</a>
                                 </div>
-                                <div class="form-group">
+                                <!--<div class="form-group">
                                     <div class="input-group">
-                                        <div id="HxUKeyDev" ng-show="false"></div>
-                                        <div id="HxUKeyPK" ng-show="false"></div>
-                                        <div id="HxUKeyDevInfo"></div>
+                                        <div id="UKeyResponse"><p>加载UKey...</p></div>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
-                        <div class="row" ng-show="!auth">
-                            <div class="col-md-12">
-                                <button type="button" ng-click="ukeyLogin(keyPwd)" class="btn btn-skin btn-block">认证</button>
-                            </div>
-                        </div>
-                        <div class="row" ng-show="auth">
+                        <div class="row">
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-skin btn-block">登录</button>
                             </div>

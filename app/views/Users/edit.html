@@ -13,12 +13,12 @@
                                               item-value="rec.mobile" item-old-value="bak.mobile" item-locked="lock || opType!=1"></bi-edit-item>
                                 <bi-edit-item item-label="'姓名'" item-name="'name'" item-required="'true'"
                                               item-value="rec.name" item-old-value="bak.name" item-locked="lock"></bi-edit-item>
-                                <bi-edit-item item-label="'Key公钥'" item-name="'plainKey'" item-required="'true'" item-reg-expr="'^[A-F0-9]+$'"
-                                              item-value="rec.plainKey" item-old-value="bak.plainKey" item-locked="lock"></bi-edit-item>
                                 <bi-select-item item-label="'角色'" is-option-field="'true'" item-required="'true'"
                                                 item-value="rec.roleId" item-old-value="bak.roleId" item-locked="lock" item-options="roleList"></bi-select-item>
                                 <bi-edit-item item-label="'所属部门'" item-tip="'如：总行-资讯科技部-系统管理团队'"
                                               item-value="rec.departmentName" item-old-value="bak.departmentName" item-locked="lock" item-required="'true'"></bi-edit-item>
+                                <bi-select-item item-label="'验证状态'" item-required="'true'"  item-options="'otpStart'|theOption"
+                                                item-value="rec.otpStart" item-old-value="bak.otpStart" item-locked="lock" ></bi-select-item>
                             </form>
                         </div>
                     </li>

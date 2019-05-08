@@ -52,7 +52,8 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'hsmDriver', names: [{value: 'com.hxtc.hsm.socket.HSMSocket', name: 'SJJ1309'}, {value: 'com.hxtc.hsm.socket.SJL06TSocket', name: 'SJL06T'}]},
             {option: 'permission', names: [{value: 0, name: '读'}, {value: 1, name: '写'}, {value: 2, name: '其它'}]},
             {option: 'keySort', names: [{value: 0, name: '对称密钥'}, {value: 1, name: '非对称密钥'}]},
-            {option: 'funt', names: [{value: 0, name: '签名'}, {value: 1, name: '验签'},{value:3,name:'签名验签'}]}
+            {option: 'funt', names: [{value: 0, name: '签名'}, {value: 1, name: '验签'},{value:3,name:'签名验签'}]},
+            {option: 'otpStart', names: [{value: 0, name: '未验证'}, {value: 1, name: '已验证'}]}
 
         ];
 
@@ -320,6 +321,7 @@ angular.module('myApp.options', ['ngResource'])
                     myServer.retrieveRoleList($scope);
                     $scope.preInsert = function(rec) {
                         rec.password = '-';
+                        rec.otpStart = 0;
                         rec.roles = [{}];
                     };
                     $scope.preUpdate = function(rec) {
