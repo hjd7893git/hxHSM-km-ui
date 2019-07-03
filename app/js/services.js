@@ -18,7 +18,7 @@ angular.module('myApp.services', ['ngResource'])
     //     }, 2000)
     // })
     .factory('myServer', ['$http', '$log', '$q', '$resource', '$modal', '$timeout', function($http, $log, $q, $resource, $modal, $timeout) {
-        // var URLPrefix = "http://192.168.0.64:8080/service/";
+        // var URLPrefix = "http://192.168.0.200:8180/service/";
         var URLPrefix = "http://localhost:8100/service/";
         // var URLPrefix = "service/";
         return {
@@ -354,6 +354,9 @@ angular.module('myApp.services', ['ngResource'])
                             $scope.rec.programMemory = '-';
                         }
                     }
+                    // if($scope.tableId == 'SecretKey'){
+                    //     $scope.rec.systemId = $scope.rec.systems[0].rec.id;
+                    // }
                     if ($scope.tableId != 'SecretCert'){ //看不懂valid，更新上传文件时跳出方法，暂时先把SecretCert排除
                         if (!isValidForm(this))
                             return;
@@ -361,7 +364,20 @@ angular.module('myApp.services', ['ngResource'])
                     if (angular.isDefined($scope.preCommit))
                         $scope.preCommit($scope.rec);
                     var newRec = new $scope.resource($scope.rec);
-                    if (angular.isDefined($scope.refFields)) {
+                    if ($scope.tableId == 'SecretKey' && angular.isDefined($scope.refFields)) {
+                        angular.element.each($scope.refFields, function(n, ele) {
+                            if (angular.isDefined(newRec[ele])) { // 过滤掉那些没有改的
+                                var chged = angular.element.map(newRec[ele], function(obj) {
+                                    if (angular.isDefined(obj.rec) && (obj.rec.opType == 1 || obj.rec.opType == 2 || obj.rec.opType == 3))
+                                        return obj.rec.id;
+                                    else if (obj.opType == 1 || obj.opType == 2 || obj.opType == 3)
+                                        return obj;
+                                });
+                                newRec[ele] = chged;  //控制第二层的数据变动
+                            }
+                        });
+                    }else
+                        if ( angular.isDefined($scope.refFields)) {
                         angular.element.each($scope.refFields, function(n, ele) {
                             if (angular.isDefined(newRec[ele])) { // 过滤掉那些没有改的
                                 var chged = angular.element.map(newRec[ele], function(obj) {
@@ -590,7 +606,7 @@ angular.module('myApp.services', ['ngResource'])
                         $scope.isCreateKey = false;
                         $scope.isIndexExist = false;
                         $scope.isClusterExist = false;
-                        $scope.rec.systems = [];
+                        // $scope.rec.systemid = [];
                     }if($scope.tableId == 'Machine'||$scope.tableId =='RsaKey'||$scope.tableId =='MachineReady'||$scope.tableId =='RsaKeyBatch'||$scope.tableId =='SecretCert'||$scope.tableId =='SecretKey'){
                         //新加数据且缩小作用域
                         $scope.rec.supplyDate = "";

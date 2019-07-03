@@ -478,7 +478,7 @@ angular.module('myApp.views', ['ngRoute'])
                 $scope.activeCluster.tickInterval = i;
             var m = $scope.activeCluster.historyDate
             var uri = "statistics/" + $scope.activeCluster.cluster.id + "/" + $scope.activeCluster.displayPoints + "/" + $scope.activeCluster.lastPoint + "/" + $scope.activeCluster.tickInterval + "/"
-                + $scope.activeCluster.history + "/"  + $scope.activeCluster.startTime + "/" + $scope.activeCluster.endTime + "/" + $scope.activeCluster.pagex;
+                + $scope.activeCluster.history + "/"  + $scope.activeCluster.startTime + "/" + $scope.activeCluster.pagex;
             var promise2 = myServer.call(uri + "?sessionId=" + $scope.$root.sessionId, {}, 'GET'); // 同步调用，获得承诺接口
             promise2.then(function (ret) { // 调用承诺API获取数据 .resolve
                 if (ret.status == 200 || ret.status == 201) {

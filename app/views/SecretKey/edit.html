@@ -32,43 +32,45 @@
                                               item-value="rec.useStatus" item-old-value="bak.useStatus" item-locked="lock"></bi-select-item>
                                 <bi-text-item item-label="'说明'" item-value="rec.summary" item-old-value="bak.summary" item-required="'true'"
                                               item-locked="lock"></bi-text-item>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label bi-pr0">系统</label>
-                                    <div class="col-sm-6">
-                                        <table class="table table-condensed bi-margin-b0 crud-r" style="margin-top: -1px;">
-                                            <thead><tr>
-                                                <th><i class="fa fa-square-o"></i></th>
-                                                <th style="width: 150px; text-align: left;">系统代号</th><th>系统名称</th>
-                                                <th style="width: 50px;">
-                                                    <a ng-show="sysdrop"><i ng-click="sysdrop=false" class="fa fa-chevron-up pointer"></i></a>
-                                                    <a ng-show="!sysdrop"><i ng-click="sysdrop=true" class="fa fa-chevron-down pointer"></i></a></th></tr>
-                                            </thead>
-                                            <tr ng-repeat="op in rec.systems" ng-show="sysdrop">
-                                                <td class="text-center">
-                                                    <i class="fa fa-{{op.rec.opType|optionName:'opTypeIcon'}} text-danger"></i>
-                                                </td>
-                                                <td>{{op.rec.symbol}}</td>
-                                                <td>{{op.rec.name}}</td>
-                                                <td>
-                                                    <a ng-click="deleteRefRecX(rec.systems, $index)" ng-show="!lock"><i class="fa fa-minus-circle"></i></a>&nbsp;
-                                                    <a ng-click="showRefEditor(rec.systems, $index, 'editSystem','SecretKey')"><i class="fa fa-search"></i></a>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                        <div ng-show="sysdrop && !lock">
-                                            <bi-select-item item-label="'系统'" item-options="systemList" item-margin="'bi-margin-t10 bi-wd400'"
-                                                            item-value="addSystemId" item-old-value="addSystemId"></bi-select-item>
-                                            <button class="motu" ng-shwo = "rec.systems.size == 0 || refRecs.size !=0 " ng-click="addRefRow(rec.systems, systemRows, addSystemId)">
-                                                <i class="fa fa-plus"></i>&nbsp;增加</button>
-                                        </div>
-                                    </div>
-                                    <div ng-if="rec.opType == 2" class="col-sm-4 trimL bi-old-val" style="padding-top: 12px;">
-                                        <div class='weixin right' ng-if="refChanged(rec.systems)">
-                                            <div class='weixin-content'>做过关联维护</div>
-                                            <div class="arrow" style="margin-top: 0;"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <bi-select-item item-label="'系统'" item-required="'true'" item-options="systemList"
+                                                item-value="rec.systemId" item-old-value="bak.systemId" item-locked="lock"></bi-select-item>
+                                <!--<div class="form-group">-->
+                                    <!--<label class="col-sm-2 control-label bi-pr0">系统</label>-->
+                                    <!--<div class="col-sm-6">-->
+                                        <!--<table class="table table-condensed bi-margin-b0 crud-r" style="margin-top: -1px;">-->
+                                            <!--<thead><tr>-->
+                                                <!--<th><i class="fa fa-square-o"></i></th>-->
+                                                <!--<th style="width: 150px; text-align: left;">系统代号</th><th>系统名称</th>-->
+                                                <!--<th style="width: 50px;">-->
+                                                    <!--<a ng-show="sysdrop"><i ng-click="sysdrop=false" class="fa fa-chevron-up pointer"></i></a>-->
+                                                    <!--<a ng-show="!sysdrop"><i ng-click="sysdrop=true" class="fa fa-chevron-down pointer"></i></a></th></tr>-->
+                                            <!--</thead>-->
+                                            <!--<tr ng-repeat="op in rec.systems" ng-show="sysdrop">-->
+                                                <!--<td class="text-center">-->
+                                                    <!--<i class="fa fa-{{op.rec.opType|optionName:'opTypeIcon'}} text-danger"></i>-->
+                                                <!--</td>-->
+                                                <!--<td>{{op.rec.symbol}}</td>-->
+                                                <!--<td>{{op.rec.name}}</td>-->
+                                                <!--<td>-->
+                                                    <!--<a ng-click="deleteRefRecX(rec.systems, $index)" ng-show="!lock"><i class="fa fa-minus-circle"></i></a>&nbsp;-->
+                                                    <!--<a ng-click="showRefEditor(rec.systems, $index, 'editSystem','SecretKey')"><i class="fa fa-search"></i></a>-->
+                                                <!--</td>-->
+                                            <!--</tr>-->
+                                        <!--</table>-->
+                                        <!--<div ng-show="sysdrop && !lock">-->
+                                            <!--<bi-select-item item-label="'系统'" item-options="systemList" item-margin="'bi-margin-t10 bi-wd400'"-->
+                                                            <!--item-value="addSystemId" item-old-value="addSystemId"></bi-select-item>-->
+                                            <!--<button class="motu" ng-shwo = "rec.systems.size == 0 || refRecs.size !=0 " ng-click="addRefRow(rec.systems, systemRows, addSystemId)">-->
+                                                <!--<i class="fa fa-plus"></i>&nbsp;增加</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div ng-if="rec.opType == 2" class="col-sm-4 trimL bi-old-val" style="padding-top: 12px;">-->
+                                        <!--<div class='weixin right' ng-if="refChanged(rec.systems)">-->
+                                            <!--<div class='weixin-content'>做过关联维护</div>-->
+                                            <!--<div class="arrow" style="margin-top: 0;"></div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
 
                                 <!--<div class="form-group">-->
                                     <!--<label class="col-sm-2 control-label bi-pr0">接入渠道</label>-->
