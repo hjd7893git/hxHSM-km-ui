@@ -49,7 +49,7 @@ angular.module('myApp.options', ['ngResource'])
             },
 
             {option: 'keyUse', names: [{value: 0, name: '应用模块'}, {value: 1, name: '设备'}, {value: 2, name: '合作伙伴'}]},
-            {option: 'keyUseFor', names: [{value: 0, name: '发卡行密钥'}, {value: 1, name: 'IC卡密钥'}]},
+            {option: 'keyUseFor', names: [{value: 1, name: '发卡行密钥'}, {value: 2, name: 'IC卡密钥'},{value : 3,name:'X509证书密钥'}]},
             {option: 'keyUseType', names: [{value: 0, name: '不适用'}, {value: 1, name: '全行统一'}, {value: 2, name: '分行统一'}, {value: 3, name: '网点统一'}, {value: 4, name: '一机一密'}]},
             {option: 'keyUseType4Partner', names: [{value: 0, name: '不适用'}, {value: 1, name: '总对总'}, {value: 2, name: '分对分'}]},
             {option: 'keyUseALL', names: [{value: '0', name: '-'}, {value: '11', name: '全行统一'}, {value: '12', name: '分行统一'}, {value: '13', name: '网点统一'}, {value: '14', name: '一机一密'}, {value: '21', name: '总对总'}, {value: '22', name: '分对分'}]},
@@ -75,7 +75,7 @@ angular.module('myApp.options', ['ngResource'])
             {option: 'hsmDriver', names: [{value: 'com.hxtc.hsm.socket.HSMSocket', name: 'SJJ1309'}, {value: 'com.hxtc.hsm.socket.SJL06TSocket', name: 'SJL06T'}]},
             {option: 'permission', names: [{value: 0, name: '读'}, {value: 1, name: '写'}, {value: 2, name: '其它'}]},
             {option: 'keySort', names: [{value: 0, name: '对称密钥'}, {value: 1, name: '非对称密钥'}]},
-            {option: 'funt', names: [{value: 0, name: '签名'}, {value: 1, name: '验签'},{value:3,name:'签名验签'}]},
+            {option: 'funt', names: [{value: 0, name: '签名'}, {value: 1, name: '验签'},{value:3,name:'签名验签'},{value:4,name:'加密'}]},
             {option: 'otpStart', names: [{value: 0, name: '未验证'}, {value: 1, name: '已验证'}]}
 
         ];
