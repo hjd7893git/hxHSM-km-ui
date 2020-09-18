@@ -186,6 +186,9 @@ angular.module('myApp.components.form', [])
             $scope.inputError = '';
             if (angular.isDefined(form.showError) && form.showError) {
                 if (angular.isDefined(rqr) && form[n].$error.required) {
+                    if (n == 'privateKeyValue' && angular.isDefined(rqr)) {
+                        return false;
+                    }
                     $scope.inputError = '必输域';
                     return true;
                 }

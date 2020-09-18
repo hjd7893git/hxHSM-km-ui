@@ -7,8 +7,8 @@
 angular.module('myApp.services', ['ngResource'])
 
     .factory('myServer', ['$http', '$log', '$q', '$resource', '$modal', '$timeout', function($http, $log, $q, $resource, $modal, $timeout) {
-        var URLPrefix = "http://192.168.0.200:8080/service/";
-        //var URLPrefix = "service/";
+        var URLPrefix = "http://192.168.0.200:8100/service/";
+        // var URLPrefix = "service/";
         return {
             URLPrefix: URLPrefix,
             call: function(uri, data, m) {
@@ -226,7 +226,7 @@ angular.module('myApp.services', ['ngResource'])
                 };
                 var isValidForm = function(sp) {
                     var form = sp[$scope.thePageId + 'Form'];
-                    var valid = (angular.isDefined(form) && !form.$valid) ? false : true;
+                    var valid = (angular.isDefined(form) && !form.$valid) ? $scope.tableId == 'RsaKey' ? true : false : true;
                     if (!valid)
                         form.showError = !valid;
                     return valid;
@@ -322,6 +322,11 @@ angular.module('myApp.services', ['ngResource'])
                             $scope.rec.osUser = '-';
                             $scope.rec.program = '-';
                             $scope.rec.programMemory = '-';
+                        }
+                    }
+                    if ($scope.tableId == 'RsaKey'){
+                        if(!angular.isDefined($scope.rec.privateKeyValue)){
+                            $scope.rec.privateKeyValue =' '
                         }
                     }
                     if ($scope.tableId != 'SecretCert'){ //看不懂valid，更新上传文件时跳出方法，暂时先把SecretCert排除
