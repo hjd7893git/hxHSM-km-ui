@@ -325,6 +325,7 @@ angular.module('myApp.services', ['ngResource'])
                         }
                     }
                     if ($scope.tableId == 'RsaKey'){
+                        $scope.rec.hsmIndex = 99
                         if(!angular.isDefined($scope.rec.privateKeyValue)){
                             $scope.rec.privateKeyValue =' '
                         }

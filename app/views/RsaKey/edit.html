@@ -10,7 +10,7 @@
                                 <bi-edit-item item-label="'标识'" item-tip="'后台自动产生'"
                                               item-value="rec.id" item-old-value="bak.id"
                                               item-locked="'true'"></bi-edit-item>
-                                <bi-edit-item item-label="'安全服务索引'" item-tip="'如：CORE-BOC-ZMK-01(一旦设置将无法更改)'" item-required="'true'" item-reg-expr="'^[A-Za-z0-9-]+[A-Za-z0-9-\.]+[A-Za-z0-9]+$'" item-name="'serviceIndex'"
+                                <bi-edit-item item-label="'安全服务索引'" item-tip="'如：CORE-BOC-ZMK-01(一旦设置将无法更改)'" item-required="'true'"  item-name="'serviceIndex'"
                                               item-value="rec.serviceIndex" item-old-value="bak.serviceIndex"
                                               item-locked="opType != 1 && isIndexExist"></bi-edit-item>
                                 <bi-select-item item-label="'密钥模长'" item-options="'keyMode'|theOption" item-data-type="'text'"
@@ -23,7 +23,7 @@
                                 </div>
                                 <div ng-show="!lock">
                                     <bi-select-item item-label="'是否随机产生'" item-options="'YesNo'|theOption" item-data-type="'text'"
-                                                     item-value="rec.isRandKey" item-old-value="bak.keyExponential" item-required="'true'"
+                                                     item-value="rec.isRandKey"  item-required="'true'"
                                                      item-locked="lock"></bi-select-item>
                                 </div>
                                 <div ng-show="rec.isRandKey == '0' || lock">
